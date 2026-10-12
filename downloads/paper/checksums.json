@@ -1,0 +1,22 @@
+{
+  "CTI-v5.2-LaTeX-Source.zip": {
+    "bytes": 1176798,
+    "sha256": "2817d29e2c913b401edf35df5dc61d2ab5e282058ed442ee4515774b09fbb5fe"
+  },
+  "paper.tex": {
+    "bytes": 39582,
+    "sha256": "0b945151f68feb3caa39dcf7aad28437bab3da6ac27f0665895a35bab4f06ef8"
+  },
+  "CTI-v5.2-Images.zip": {
+    "bytes": 1142956,
+    "sha256": "38cbea333cec1d1236a457a5c0eb42ab1d71e976678309e1cc4dc8587d2eaac5"
+  },
+  "CTI-v5.2-Paper.pdf": {
+    "bytes": 622207,
+    "sha256": "a2feea8d78f018da5b11ac61c94ce16625222c2d8bc059203b7709e15b08c74d"
+  },
+  "README.md": {
+    "bytes": 4653,
+    "sha256": "c57e8b15a7685c013489ac9bab6389d34ca21575fae15e4c401221b182b3159c"
+  }
+}
