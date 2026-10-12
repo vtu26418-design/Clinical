@@ -1,0 +1,506 @@
+\documentclass[10pt,letterpaper,twocolumn]{article}
+
+% Visual format follows the supplied "1(vamsifriend).pdf" reference only.
+% Research content remains specific to the Clinical Trial Intelligence project.
+\usepackage[letterpaper,top=0.62in,bottom=0.65in,left=0.62in,right=0.62in,columnsep=0.25in]{geometry}
+\usepackage{times}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{cite}
+\usepackage{url}
+\usepackage{caption}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+\usepackage{balance}
+
+\setlength{\parindent}{0.18in}
+\setlength{\parskip}{0pt}
+\setlength{\columnsep}{0.25in}
+\setlength{\textfloatsep}{8pt plus 2pt minus 2pt}
+\setlength{\floatsep}{6pt plus 2pt minus 2pt}
+\setlength{\intextsep}{6pt plus 2pt minus 2pt}
+
+% Section appearance matched to the supplied reference: Roman-numbered,
+% centered, uppercase, compact headings.
+\titleformat{\section}
+  {\normalfont\scshape\centering}
+  {\Roman{section}.}
+  {0.45em}
+  {\MakeUppercase}
+\titlespacing*{\section}{0pt}{10pt plus 2pt minus 1pt}{5pt}
+
+\titleformat{\subsection}
+  {\normalfont\itshape}
+  {\Alph{subsection}.}
+  {0.4em}
+  {}
+\titlespacing*{\subsection}{0pt}{7pt plus 2pt minus 1pt}{3pt}
+
+\captionsetup[figure]{font=footnotesize,labelfont=bf,labelsep=period,justification=centering}
+\captionsetup[table]{font=footnotesize,labelfont=bf,labelsep=period,justification=centering}
+
+% Keep the manuscript body in normal weight. Only the labels
+% ``Abstract'' and ``Index Terms'' are emphasized, matching the supplied
+% reference-paper appearance.
+\renewenvironment{abstract}{%
+  \small\normalfont\noindent\textbf{Abstract—}\ignorespaces
+}{\par\vspace{3pt}}
+
+\newcommand{\keywords}[1]{%
+  \small\normalfont\noindent\textbf{Index Terms—}#1\par\vspace{5pt}
+}
+
+\newcommand{\papertitle}{An Explainable Multimodal AI System for Clinical Trial Protocol Complexity Profiling and Prolonged-Duration Risk Prediction}
+
+\begin{document}
+
+% Full-width title and four-author block, matching the supplied reference paper.
+\twocolumn[{
+\begin{center}
+
+\vspace*{2pt}
+
+{\fontsize{22}{25}\selectfont\normalfont
+\papertitle\par}
+
+\vspace{16pt}
+
+\noindent
+\begin{minipage}[t]{0.235\textwidth}
+\centering
+Dr. D. Rajesh\\[2pt]
+\textit{Professor}\\
+\textit{Computer Science and Engineering}\\
+\textit{Vel Tech Rangarajan Dr.Sagunthala}\\
+\textit{R\&D Institute of Science and}\\
+\textit{Technology}\\
+drrajeshd@veltech.edu.in
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.235\textwidth}
+\centering
+Dr. J. Swapna\\[2pt]
+\textit{Assistant Professor}\\
+\textit{Computer Science and Engineering}\\
+\textit{Vel Tech Rangarajan Dr.Sagunthala}\\
+\textit{R\&D Institute of Science and}\\
+\textit{Technology}\\
+swapnaj@veltech.edu.in
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.235\textwidth}
+\centering
+Malepati Prem Kumar Reddy\\[2pt]
+\textit{4\textsuperscript{th} Year B.Tech}\\
+\textit{Computer Science and Engineering}\\
+\textit{Vel Tech Rangarajan Dr.Sagunthala}\\
+\textit{R\&D Institute of Science and}\\
+\textit{Technology}\\
+vtu26418@veltech.edu.in
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.235\textwidth}
+\centering
+Cherukula Lokeshwara Reddy\\[2pt]
+\textit{4\textsuperscript{th} Year B.Tech}\\
+\textit{Computer Science and Engineering}\\
+\textit{Vel Tech Rangarajan Dr.Sagunthala}\\
+\textit{R\&D Institute of Science and}\\
+\textit{Technology}\\
+vtu26381@veltech.edu.in
+\end{minipage}
+
+\vspace{16pt}
+
+\end{center}
+}]
+
+\noindent
+{\bfseries\itshape Abstract—}
+{\bfseries
+Clinical trial protocols contain structured study characteristics and narrative descriptions that can support analysis of study complexity and duration. This project develops Clinical Trial Intelligence, an explainable research workbench for protocol complexity profiling and prolonged-duration risk prediction. The system integrates registry data ingestion, validation, missing-value analysis, feature preparation, and chronological evaluation. A research-defined Protocol Complexity Index combines enrollment, intervention arms, outcome counts, eligibility burden, and text complexity using explicit normalization rules and fixed weights. Structured machine-learning models and TF–IDF text models are evaluated independently and combined through early and late multimodal fusion.
+The experiment uses a frozen ClinicalTrials.gov snapshot containing 800 completed interventional drug studies. Eligibility checks retain 312 records, while temporal purging produces 105 training, nine tuning, 11 calibration, and 64 test records. Prolonged duration is defined as exceeding the training-set upper quartile of 1,101 days. On the test set, the text-only model achieves a mean absolute error of 314.70 days and an AUROC of 0.8075, outperforming early fusion on these measures. A FastAPI backend and React interface present trial profiles, complexity scores, predictions, uncertainty, model-appropriate explanations, and data-quality warnings. The project supports reproducible retrospective research, while small evaluation sets, unverified historical feature availability, and inadequate prediction-interval coverage limit prospective and clinical conclusions.
+}
+
+\vspace{2pt}
+
+\noindent
+{\bfseries\itshape Index Terms—}
+{\bfseries clinical trial informatics, protocol complexity, multimodal machine learning, duration prediction, temporal evaluation, explainability, research reproducibility.}
+
+\vspace{8pt}
+
+\section{Introduction}
+
+Recruitment targets, eligibility rules, treatment arms, outcome measurements, and follow-up schedules all affect the work needed to run a clinical trial. ClinicalTrials.gov records describe these requirements through structured fields and protocol narratives \cite{clinicaltrials}. Those records can be used to study the relationship between trial design and recorded duration. They also have limits: a registry entry reports what was submitted about a study, rather than documenting every event that occurred while the trial was running.
+
+Registry-based studies have documented increasing protocol complexity \cite{markey}, and earlier work has examined duration prediction with statistical and machine-learning models \cite{cho}. Clinical Trial Intelligence builds on this research by connecting a frozen dataset, explicit cohort rules, model comparisons, complexity calculations, and a browser interface. The practical aim is to let an analyst inspect a result and identify the records and saved model that produced it. The project does not depend on treating duration prediction as a new research problem.
+
+Enrollment and outcome counts describe the scale of a study, while protocol text can explain treatment schedules, eligibility restrictions, and planned procedures. Combining these inputs is a multimodal learning problem \cite{multimodal}. Their usefulness together must still be measured. A second input branch can add information, but it can also add noise or emphasize associations that do not carry into a later cohort. This matters particularly here, where only a small number of records remain available for tuning and testing.
+
+The study asks whether registry characteristics and protocol language, used together, improve retrospective prediction under a common temporal evaluation procedure. It also examines how a complexity profile can be shown alongside predictions without implying clinical validation. Three outputs answer different questions: duration regression estimates elapsed days; the classifier estimates whether duration exceeds a training-derived threshold; and PCI summarizes selected protocol characteristics. Their units and definitions are kept visible. A PCI score cannot be read as a probability, and a prolonged-duration label cannot be interpreted without knowing the threshold used to define it.
+
+Leakage can arise from the timing of outcomes or from later changes to predictor fields. A training trial may finish after the start of a validation period. Separately, its enrollment or narrative fields may have been revised after the intended prediction date. Outcome purging addresses the first problem; it does not recover earlier registry entries. Because leakage can distort machine-learning results \cite{leakage}, the project records that baseline feature availability is unverified. The conclusions concern the retrieved retrospective snapshot.
+
+The models and fitted preprocessing are stored as scikit-learn pipelines \cite{sklearn}. Structured, text, and fusion branches use the same retained records and outcome definitions. A constant baseline provides a check on whether a more complex predictor adds value. Duration and risk recommendations are selected separately using tuning data. Test results describe their later performance and are not used to replace those choices. The interface names the saved model being applied, so a displayed output can be distinguished from a model that merely has a favorable test score.
+
+The main contributions are as follows:
+\begin{enumerate}
+\item A reproducible registry-processing workflow with source checksums, explicit inclusion rules, whole-date temporal partitioning, and outcome-availability purging.
+\item A fixed-reference Protocol Complexity Index (PCI) with documented component ceilings, weights, rounding, and missing-value behavior.
+\item Comparable structured, TF--IDF text, early-fusion, and late-fusion branches, with recorded preprocessing and task-specific tuning objectives.
+\item A retrospective experiment that reports measured results from an authentic frozen registry cohort and retains individual held-out predictions for verification.
+\item A model-aware explanation interface that distinguishes constant predictions, supported feature evidence, and optional attribution methods.
+\item A browser workbench linking trial profiles, data-quality warnings, saved predictions, source evidence, and downloadable research records.
+\item A verification procedure that replays saved artifacts and checks numerical results without retraining or altering the frozen experiment.
+\end{enumerate}
+
+The empirical results reported here come from the 800-record ClinicalTrials.gov snapshot. They are not AACT results, population estimates, or evidence that the system predicts trial success. The reported endpoint is elapsed time between recorded start and actual completion dates. A long elapsed duration may be intentional, and the prolonged-duration label does not measure delay against a planned deadline. For example, a protocol with long planned follow-up can exceed the duration threshold while remaining on schedule. Conversely, a shorter study can miss its planned completion date while remaining below the threshold. Registry duration alone does not distinguish these cases, so the interface and manuscript retain the endpoint definition alongside every risk interpretation.
+
+\section{System Architecture}
+
+The project architecture is shown in Fig.~\ref{fig:architecture}. Saved ClinicalTrials.gov responses and a canonical trial table form the evidence base. Acquisition metadata and checksums identify the retrieved data. The application also accepts protocol documents and offers source-search tools, but these interface features do not add inputs to the frozen experiment automatically. The dataset and predictor fields used for the reported results are specified separately, allowing a reviewer to distinguish the research experiment from the application's wider capabilities.
+
+Before a record enters the duration cohort, the processing layer checks its identifier, study status, dates, and required fields. Duplicate identifiers and invalid targets are handled explicitly. It saves cohort exclusions separately from temporal exclusions. This distinction matters when reviewing counts: a record can satisfy the outcome definition yet still be removed because its completion was not known at the next split boundary. The source metadata also identifies the registry state from which the available features were obtained.
+
+Numerical and categorical registry fields are processed separately from protocol language. The numerical pipeline fits median imputation and scaling on training data, while categorical fields use one-hot encoding. The text branch builds unigram and bigram TF--IDF features. These representations feed independent baselines and an early-concatenation model. Structured tree ensembles and late fusion provide further comparisons on the same records and target. Each saved pipeline retains its own learned preprocessing, avoiding the need to reconstruct transformations when a model is loaded.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\columnwidth]{figures/system_architecture.png}
+\caption{Implemented architecture, separating frozen research evidence, model execution, and workbench services.}
+\label{fig:architecture}
+\end{figure}
+
+The PCI service calculates a descriptive profile from a fixed formula configuration. It requires no predictive-model fitting. The training workflow also saves a training-relative complexity index with a different definition; Section~IV explains the distinction. Both are descriptive measures. The workbench keeps their definitions separate from duration estimates and risk probabilities so that an analyst can identify which score is being inspected.
+
+The experiment saves its manifest, metrics, held-out prediction rows, exclusion records, and fitted pipelines. Duration and risk recommendations are selected separately. The bundle illustrated in the prediction view is the duration-selected median baseline, which also supplies its training-prevalence risk score. The text model selected for the separate offline risk task is not the model shown in that view. Keeping the model identity with the output avoids attributing a constant prediction to the text branch.
+
+A FastAPI backend serves stored datasets, model evidence, saved prediction records, authentication, and project access controls. A React interface provides data import, exploration, prediction, comparison, source evidence, and monitoring views. The application also supports optional provider-based assistant streaming. That assistant is a research interface capability; it is not the predictive estimator used to produce the reported duration metrics.
+
+Explanation evidence depends on the selected model. The constant duration baseline can be explained by its training statistic, but it has no feature-specific contributions. The workbench says so and presents the available missing-input and retrospective-provenance warnings. Other explanation methods are shown only where the model and installed dependencies support them. The purpose of this layer is to make a research output inspectable; the interface itself does not validate the model or remove the limitations of its data.
+
+\section{Dataset and Data Science Pipeline}
+
+The empirical source is a frozen ClinicalTrials.gov API snapshot acquired on October~7, 2026. It contains 800 unique completed interventional drug studies, with 200 API-returned records from each start-year stratum: 2000--2005, 2006--2011, 2012--2017, and 2018--2023. The acquisition retained eight raw response pages and a canonical CSV file. Selecting the first returned records within each stratum produces a convenience cohort, not a random or representative sample of registered trials.
+
+Fig.~\ref{fig:pipeline} summarizes cohort construction and temporal evaluation. Duration eligibility requires a completed study, an actual completion date, day-level precision for both start and completion, and a strictly positive elapsed interval. Applying these rules retains 312 records and excludes 488. The canonical snapshot is preserved unchanged; filtering produces derived artifacts so that exclusions can be traced to the original identifiers and recorded reasons.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\columnwidth]{figures/data_pipeline.png}
+\caption{Recorded cohort construction and temporal evaluation; counts refer to the frozen registry experiment.}
+\label{fig:pipeline}
+\end{figure}
+
+For each eligible record, duration $d_i$ is the actual completion date minus the start date, expressed in days. The binary target is $y_i=\mathbf{1}[d_i>q_{0.75}^{\mathrm{train}}]$. The upper quartile of the retained training durations is 1,101 days; equality to this value remains in the negative class. This threshold is derived from training outcomes alone and is fixed for tuning, calibration, and test evaluation. It does not use a planned completion date or an external clinical definition of delay.
+
+\begin{table}[!t]
+\caption{Core Feature Groups}
+\label{tab:features}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{|p{0.19\columnwidth}|p{0.45\columnwidth}|p{0.23\columnwidth}|}
+\hline
+\textbf{Group} & \textbf{Recorded inputs} & \textbf{Role} \\
+\hline
+Study design & Study type and phase & Categorical inputs \\
+\hline
+Scale & Enrollment and arm count & Numerical inputs \\
+\hline
+Outcomes & Primary and secondary outcome counts & Numerical inputs \\
+\hline
+Eligibility & Criterion count & Numerical input \\
+\hline
+Protocol text & Title, summary, description, eligibility & TF--IDF inputs \\
+\hline
+PCI & Versioned normalized components & Separate profile \\
+\hline
+\end{tabular}
+\end{table}
+
+The initial chronological partition uses whole start-calendar-day groups in a 60/20/20 allocation. These proportions apply to date groups, not necessarily to record counts. Training records whose outcomes reach or exceed the validation cutoff are purged; the corresponding rule removes validation outcomes at or beyond the test cutoff. The procedure removes 123 eligible records. The retained validation period is then separated chronologically into tuning and calibration subsets, again without splitting a start-date group.
+
+The resulting partitions contain 105 training, nine tuning, 11 calibration, and 64 test records. The initial validation cutoff is October~10, 2019; the calibration cutoff is July~12, 2020; and the test cutoff is September~14, 2021. There are 26 prolonged-duration outcomes in training and six in the test set. Both tuning and calibration contain zero positive cases, an important constraint on discrimination assessment and probability calibration.
+
+Table~\ref{tab:features} lists the actual predictor groups. Identifiers, status, start date, completion date, duration, and the derived target are excluded from the predictive features. Numerical imputation, standardization, categorical encoding, and text vocabulary construction are fitted on training data. Unknown categories are ignored at transformation, and empty numerical columns are retained by the imputer. Missing text receives a documented sentinel. Both the criterion-count and text-complexity columns are missing in all 800 source records. The criterion-count predictor therefore becomes a constant zero column after the training imputer. These controls prevent cross-partition preprocessing leakage, while unverified historical availability of registry descriptions remains an unresolved limitation.
+
+\section{Protocol Complexity Index}
+
+The workbench implements a fixed-reference descriptive PCI score. For component $j$, a finite nonnegative raw value $x_j$ is normalized as $z_j=\min(1,\max(0,x_j/c_j))$, where $c_j$ is the configured ceiling. Missing or invalid values contribute zero and are disclosed; this handling does not establish that the corresponding burden is absent. The score is
+\begin{equation}
+\begin{split}
+PCI=100(&0.25C+0.20O_p+0.20O_s\\
+       &+0.15A+0.10E+0.10T),
+\end{split}
+\label{eq:pci}
+\end{equation}
+where $C$, $O_p$, $O_s$, $A$, $E$, and $T$ are the normalized eligibility-count, primary-outcome-count, secondary-outcome-count, arm-count, enrollment, and text-complexity inputs, respectively.
+
+The weights and raw-value ceilings are listed in Table~\ref{tab:pciweights}. Text complexity is a numeric project input. It is not computed here as a validated readability grade or substituted with a biomedical embedding. The weight allocation is plotted in Fig.~\ref{fig:pci}, allowing each component's maximum contribution to be checked against the formula.
+
+\begin{table}[ht]
+\caption{Fixed PCI Weights and Normalization Ceilings}
+\label{tab:pciweights}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{|p{0.68\columnwidth}|c|}
+\hline
+\textbf{Component (raw ceiling)} & \textbf{Weight} \\
+\hline
+Eligibility count ($C$; 40) & 0.25 \\
+\hline
+Primary-outcome count ($O_p$; 10) & 0.20 \\
+\hline
+Secondary-outcome count ($O_s$; 20) & 0.20 \\
+\hline
+Arm count ($A$; 8) & 0.15 \\
+\hline
+Enrollment ($E$; 1,000) & 0.10 \\
+\hline
+Text-complexity input ($T$; 20) & 0.10 \\
+\hline
+\textbf{Total} & \textbf{1.00} \\
+\hline
+\end{tabular}
+\end{table}
+
+The score lies in $[0,100]$. The implementation sums unrounded component contributions and applies decimal half-up rounding to two places. Categories use this rounded score: Low below 40, Medium from 40 through 70, and High above 70. These are project-defined descriptive categories, not established clinical or regulatory thresholds. A higher score does not establish a causal increase in duration.
+
+The frozen training artifact separately records an equal-weight index over five numerical inputs. Its imputation and min--max limits are learned from the training set; constant components contribute zero, and transformed values are clipped to $[0,1]$. This training-relative index omits the text-complexity component. In this run, criterion count is constant zero, limiting this index to at most 80. It must not be presented as the six-component fixed-reference score or as a controlled sensitivity experiment, because both the normalization and component definitions differ.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.96\columnwidth]{figures/pci_weights.png}
+\caption{Configured weights of the six-component fixed-reference PCI.}
+\label{fig:pci}
+\end{figure}
+
+\section{Biomedical Natural Language Processing}
+
+The executed text branch concatenates the title, brief summary, detailed description, and eligibility criteria. It uses TF--IDF unigrams and bigrams \cite{tfidf} with sublinear term frequency and a maximum vocabulary of 20,000 features. Vocabulary and inverse-document-frequency statistics are fitted on the training partition. This representation encodes lexical associations rather than biomedical knowledge or causal protocol constraints.
+
+BioBERT provides an established biomedical language representation \cite{biobert} and is an optional extension in the project. The frozen experiment does not contain an executed BioBERT comparison. Accordingly, no transformer accuracy, chunking result, or embedding advantage is attributed to the reported models. The present comparison concerns structured variables and the implemented TF--IDF representation under a shared cohort and evaluation procedure.
+
+\section{Machine Learning and Multimodal Fusion}
+
+The experiment contains nine branches: a median/prevalence baseline; structured, text, and early multimodal linear pipelines; four structured tree-ensemble pipelines; and late fusion. The linear branches pair Ridge regression for duration with logistic classification for prolonged duration. The additional structured branches use extra trees, random forests, gradient boosting, and histogram gradient boosting \cite{extratrees,randomforest,gradientboost}. Each branch retains its own fitted preprocessing and estimators.
+
+Fig.~\ref{fig:experiments} shows the input and fusion relationships. Early fusion concatenates standardized numerical, one-hot categorical, and sparse TF--IDF features. It does not use transformer embeddings or a claimed dimensionality-reduction stage.
+
+Each branch fits its duration estimator and risk classifier separately. They share the recorded input groups and partition membership but optimize different objectives. The comparison does not use trial status, completion dates, or duration as predictor fields. PCI is retained as a descriptive output and is not silently appended to the specified predictor matrix.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=\columnwidth]{figures/multimodal_models.png}
+\caption{Executed unimodal and multimodal branches using shared retained records and targets.}
+\label{fig:experiments}
+\end{figure}
+
+Late fusion averages predictions from histogram gradient boosting and the text model. The selected weight is 0.25 for the structured branch and 0.75 for text, for both duration and risk. Thus $\hat d=0.25\hat d_s+0.75\hat d_t$ and $\hat p=0.25\hat p_s+0.75\hat p_t$. The weights are tuned separately for the two tasks using the tuning subset; the saved component models are not refitted on the test set.
+
+Table~\ref{tab:experiments} groups the nine branches by purpose. The duration recommendation minimizes tuning RMSE and selects the median baseline; the risk recommendation minimizes raw tuning Brier score and selects the text model. These choices are distinct from ranking models by test performance. The small tuning subset makes both recommendations uncertain, especially because it contains no prolonged-duration outcomes.
+
+\begin{table}[!t]
+\caption{Experimental Design}
+\label{tab:experiments}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{|p{0.08\columnwidth}|p{0.27\columnwidth}|p{0.25\columnwidth}|p{0.28\columnwidth}|}
+\hline
+\textbf{ID} & \textbf{Input} & \textbf{Model} & \textbf{Purpose} \\
+\hline
+E1 & Training outcomes & Median / prevalence & Constant control \\
+\hline
+E2 & Structured fields & Linear + four ensembles & Structured controls \\
+\hline
+E3 & TF--IDF text & Ridge / logistic & Text control \\
+\hline
+E4 & Structured + text & Concatenated linear & Early fusion \\
+\hline
+E5 & E2 + E3 outputs & Weighted average & Late fusion \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Explainability and Clinical Trial Intelligence Workbench}
+
+The workbench reports explanation evidence for the model actually selected. SHAP is available as an optional attribution method \cite{shap}, but this does not mean that every saved model has a SHAP result. In particular, the duration-selected median baseline gives the same estimate for every eligible input and has no feature-specific attribution. For nonconstant models, supported attributions describe fitted behavior. They do not establish that changing a protocol feature would cause a corresponding change in the real trial's duration.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=\columnwidth]{figures/project_prediction.png}
+\caption{Actual project prediction view: constant duration bundle, raw prevalence risk, uncertainty, and provenance warnings.}
+\label{fig:dashboard}
+\end{figure}
+
+Fig.~\ref{fig:dashboard} is a capture of the running project using imported registry records. It shows the median duration of 482 days, raw training prevalence of $26/105$ (displayed as 24.8\%), and the saved 37--927-day duration interval. The displayed records illustrate interface behavior; they are not additional test observations or evidence of individual predictive validity.
+
+The FastAPI and React application connects trial selection, complexity profiles, prediction evidence, source records, and exports. User authentication and project controls govern stored workspaces. Source-search and assistant features support exploration, while the prediction evidence identifies the model, source dataset, and warnings needed to interpret a research output.
+
+\section{Frozen Registry Experiment}
+
+The experiment uses the registry cohort defined in Section~III. The retained test set contains 64 studies, six of which exceed the 1,101-day threshold. Randomized estimators and bootstrap summaries use seed 42. Saved models, manifests, and individual predictions allow the reported values to be checked against this fixed cohort. Verification does not require a fresh registry query or selection of a new test sample.
+
+Table~\ref{tab:pilotresults} compares structured linear, text, and early-fusion models on the same test records. MAE and RMSE are measured in days. AP is average precision, rather than trapezoidal precision--recall area. Brier score is calculated from raw prolonged-duration probabilities. The table rounds the values for readability; full-precision values remain available in the project's saved prediction outputs.
+
+\begin{table}[!ht]
+\caption{Held-Out Registry Results ($n=64$; Errors in Days)}
+\label{tab:pilotresults}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2pt}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{|p{0.21\columnwidth}|c|c|c|c|c|c|}
+\hline
+\textbf{Model} & \textbf{MAE} & \textbf{RMSE} & \textbf{$R^2$} & \textbf{Brier} & \textbf{AUROC} & \textbf{AP} \\
+\hline
+Structured & 372.68 & 432.38 & $-.117$ & .1196 & .6121 & .1546 \\
+\hline
+TF--IDF text & 314.70 & 366.98 & .196 & .0776 & .8075 & .3481 \\
+\hline
+Early fusion & 333.00 & 399.28 & .048 & .0934 & .7615 & .2877 \\
+\hline
+\end{tabular}
+\end{table}
+
+The constant baseline has test MAE 351.19 days, RMSE 419.23 days, and $R^2=-0.050$. Late fusion achieves MAE 317.13 days, RMSE 374.88 days, AUROC 0.7557, and Brier score 0.0877. Text has lower duration error than both fusion branches in this test sample. These descriptive differences do not establish statistical superiority or justify changing the preselected duration recommendation after inspecting test outcomes.
+
+The duration baseline's nominal 90\% split-conformal interval covers 48 of 64 test outcomes, or 75\%, with a mean width of 890 days. This observed undercoverage is reported as a limitation rather than presented as calibrated 90\% performance. All reported comparisons use the same retained registry test records.
+
+\section{Evaluation Protocol for the Registry Study}
+
+Model selection and fusion-weight selection use tuning data. The separate calibration subset supplies absolute duration residuals for split-conformal uncertainty \cite{conformal}. With $n_c=11$ and $\alpha=0.10$, the residual rank is $\lceil(n_c+1)(1-\alpha)\rceil=11$. For the median baseline, the selected residual is 445 days. Centering on 482 days gives the interval [37, 927]. Temporal distribution shift can violate the exchangeability conditions underlying nominal coverage.
+
+Regression is evaluated with MAE, RMSE, and $R^2$. Binary-risk evaluation uses AUROC, average precision, and Brier score, with $\mathrm{Brier}=n^{-1}\sum_i(\hat p_i-y_i)^2$. F1 is not reported because no operational probability cutoff is specified for this experiment. The prolonged-duration outcome threshold is distinct from any threshold that might later convert a probability into an operational decision.
+
+Tuning and calibration each contain one outcome class. Their AUROC and average precision are therefore unavailable under the project's evaluation policy. The saved risk scores are raw probabilities; a fitted two-class sigmoid calibrator is unavailable. The experiment also stores percentile bootstrap intervals using 200 resamples and seed 42. These summaries condition on fixed models and independent trial resampling; they omit model-fitting uncertainty, site clustering, and multiple-comparison adjustment.
+
+For duration errors $e_i=\hat d_i-d_i$, the reported definitions are $\mathrm{MAE}=n^{-1}\sum_i|e_i|$ and $\mathrm{RMSE}=\sqrt{n^{-1}\sum_i e_i^2}$. The coefficient of determination is $R^2=1-\sum_i e_i^2/\sum_i(d_i-\bar d)^2$ and can be negative. A constant risk score gives test AUROC 0.5 and average precision equal to the observed positive fraction, $6/64=0.09375$. These controls make the ranking metrics interpretable under the small test prevalence. The selected duration baseline has tuning RMSE 288.77 days, while the selected raw text-risk model has tuning Brier score 0.01966. Neither tuning value is reported as test performance.
+
+\section{Results Reporting and Reproducibility}
+
+The project saves the canonical CSV, raw API pages, acquisition metadata, feature definitions, cohort and temporal exclusions, model manifest, fitted pipelines, and held-out predictions. The canonical CSV's SHA-256 digest begins \texttt{d096795e303b5a10}; the full digest is stored with the data. This identifies the source bytes used in the experiment. Repeating the current live registry query would not necessarily return the same records or field values.
+
+Fig.~\ref{fig:duration_distribution} summarizes the 312 duration-eligible records before temporal purging. Its threshold marker is derived from the 105 retained training records. The histogram describes the source cohort; it is not a plot of test prediction errors or an additional model-performance comparison.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=\columnwidth]{figures/duration_results.png}
+\caption{Observed durations of 312 eligible records before temporal purging; the marker is the training-derived prolonged-duration threshold.}
+\label{fig:duration_distribution}
+\end{figure}
+
+Fig.~\ref{fig:project_overview} shows the project's overview after importing the same 800 registry records. The study-count and completeness cards summarize the full imported table. The explorer displays five rows from the currently loaded page, while the PCI histogram covers its 25 loaded records. These interface summaries describe the imported data; they are not additional test-performance measures. The completeness bars cover three basic fields and do not remove the criterion-count and text-complexity limitations discussed above.
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\textwidth]{figures/project_overview.png}
+\caption{Actual project overview with 800 imported registry records, a study explorer, descriptive PCI distribution, data-completeness indicators, and workflow controls. The histogram summarizes the 25 loaded records; the count and completeness cards refer to the full imported table.}
+\label{fig:project_overview}
+\end{figure*}
+
+
+Saved-artifact verification replays 756 held-out duration predictions across the nine branches and recomputes the point metrics. The largest absolute prediction difference is below $5\times10^{-13}$ in the recorded environment. This checks that the saved pipelines, prediction rows, and reported numbers agree. It does not supply a new test sample, establish prospective accuracy, or correct the selection bias of the completed-only cohort.
+
+Every saved metric is tied to a model branch, target definition, split, and set of trial identifiers. An inference result for a newly imported record can therefore be distinguished from a held-out evaluation result. Retaining source records alongside prediction rows also makes it possible to inspect errors and missing-input warnings without acquiring the data again.
+
+
+The eligible duration distribution is strongly right-skewed. Its 312 studies range from 16 to 8,719 days, with a median of 736.5 days and a mean of 1,026.15 days. The upper quartile of the whole eligible cohort is 1,363 days. That value is descriptive and is not the target threshold. The experiment keeps the 1,101-day upper quartile calculated from retained training records, preventing later outcomes from influencing target construction. The histogram includes eligible studies that were subsequently removed by temporal purging.
+
+The available text and numerical fields do not describe identical information. Detailed descriptions are missing for 346 of the 800 source records, or 43.25\%, although titles, brief summaries, and eligibility narratives are present. Numerical criterion count and the supplied text-complexity input are missing throughout the snapshot. Eligibility language can therefore enter the text model while criterion count becomes a constant after imputation. This helps explain what the branches are able to use. It does not show why a particular prediction is correct or prove that the text branch has a reliable advantage in other cohorts.
+
+The additional structured ensembles show that changing model family does not consistently resolve the observed errors. Extra trees attain test MAE 354.22 days, RMSE 418.79 days, and AUROC 0.6710. Random forests attain MAE 350.55 days, RMSE 428.37 days, and AUROC 0.6724. Gradient boosting attains MAE 372.39 days, RMSE 491.10 days, and AUROC 0.5431. Histogram gradient boosting attains MAE 447.14 days, RMSE 589.99 days, and AUROC 0.5747. These values come from the same 64 test records as the linear and fusion results. They provide additional controls rather than separate replications with independent test data.
+
+The text model has the lowest test MAE and RMSE among the nine saved branches. Its bootstrap 95\% intervals are 265.32--359.60 days for MAE, 319.72--414.26 days for RMSE, and 0.5976--0.9626 for AUROC. Early fusion has intervals of 282.40--383.69 days for MAE and 0.5287--0.9356 for AUROC. These broad ranges indicate that point estimates should be interpreted with care. Individual metric intervals do not directly test the difference between two models, and overlap or nonoverlap should not be substituted for the saved paired comparison.
+
+For the text model, the paired test MAE difference relative to the median baseline is $-36.49$ days, with a bootstrap 95\% interval from $-93.52$ to 23.50 days. Late fusion has a difference of $-34.06$ days, with an interval from $-102.01$ to 31.01 days. Both intervals include zero. The corresponding early-fusion difference is $-18.19$ days, with an interval from $-78.04$ to 44.28 days. These results do not provide a clear conditional duration-error advantage over the constant reference, despite favorable candidate point estimates. The comparisons preserve trial pairing and condition on the already fitted models.
+
+The raw-probability comparison gives a different view. Text has a Brier-score difference of $-0.0311$ relative to the prevalence baseline, with a paired interval from $-0.0430$ to $-0.0165$. Late fusion has a difference of $-0.0209$, with an interval from $-0.0330$ to $-0.0070$. These recorded conditional comparisons favor the candidate scores in this test sample. They are not corrected for comparing multiple candidate models and do not establish external probability calibration. A Brier improvement also does not imply that a particular decision threshold provides acceptable false-positive or false-negative rates.
+
+The prediction screenshot shows what the selected constant bundle actually returns. Its duration center is 482 days for every eligible record, and its raw risk is the training positive fraction, $26/105$. That fraction is approximately 24.76\%, displayed as 24.8\%, compared with $6/64$ (9.375\%) in the held-out set. Different protocol descriptions cannot change a constant predictor. Its explanation identifies the training baseline rather than assigning unsupported feature contributions. The separate offline text-risk recommendation is reported as a model-selection result, not inferred from this screenshot.
+
+The interval's errors are visible in the saved test outcomes. One duration falls below its 37-day lower endpoint, and 15 exceed its 927-day upper endpoint. The remaining 48 outcomes produce the reported 75\% coverage. Its 890-day width is twice the saved 445-day calibration residual. This is a result of the model and calibration procedure, not a clinical tolerance chosen by trial planners. The observations above the upper endpoint show that a wide interval can still fail to capture the longer-duration tail in a later cohort.
+
+The fixed-reference PCI requires similar attention to input completeness. If the unmodified snapshot rows are passed to its calculator, the absent criterion-count and text-complexity inputs contribute zero under the documented policy. Their configured weights total 35 points, so the remaining observed components can contribute at most 65 points even if all reach their ceilings. The configured High category above 70 is consequently unattainable for those unfilled rows. This is a consequence of missing source inputs, not evidence that the actual protocols lack eligibility or textual burden. Manually completed or separately derived inputs would need explicit provenance before being compared with the original snapshot scores.
+
+An analyst starts with the record's provenance and missing fields, then examines the PCI definition and the selected model's prediction evidence. Comparisons between trials need the same target definition and model branch. A different imported cohort or predictor does not inherit the frozen experiment's performance figures. Saving the new inputs and outputs keeps the comparison traceable and prevents interface summaries from being treated as interchangeable with held-out model measurements.
+
+\section{Limitations, Ethics, and Responsible Use}
+
+The duration cohort contains completed studies only. Ongoing and discontinued trials are not represented in this analysis. Convenience sampling, date-precision requirements, and outcome purging reduce the cohort further. Only six test studies have prolonged duration, while tuning and calibration have no positive cases. These counts limit the stability of discrimination estimates, model selection, probability calibration, and subgroup comparisons.
+
+Predictor fields come from the latest retrieved registry entries, rather than verified pre-start records. Actual enrollment and revised narratives may contain information added after a trial began. Purging outcomes across split boundaries does not resolve this uncertainty. PCI weights and categories are documented research choices without claimed clinical validation; missing inputs can lower a score. Model explanations likewise describe the estimator's behavior and do not provide causal recommendations.
+
+The experiment also does not model right censoring: its duration target is available only after an actual completion date is recorded. A model for ongoing studies would require a different outcome design, such as an explicitly specified time-to-event analysis. Sponsor, site, and therapeutic-area clustering may produce dependencies between records, while the saved bootstrap treats trials as independently resampled units. The current evidence cannot quantify these sources of uncertainty or establish performance for an unseen institution.
+
+The system supports research and operational exploration rather than diagnosis, treatment selection, or regulatory decisions. Public registry data do not establish individual patient benefit. External validation on historically versioned records and prospectively defined prediction times remains necessary. The workbench presents these restrictions alongside the prediction evidence so that analysts can assess the scope of each result.
+
+\section{Conclusion}
+
+Clinical Trial Intelligence links registry validation, explicit complexity scoring, unimodal and multimodal models, and a browser workbench. The experiment reports measured results from a frozen ClinicalTrials.gov cohort with documented targets and temporal partitions. Replaying the saved pipelines confirms that the prediction rows and reported point metrics agree.
+
+The text branch has lower test duration error than early and late fusion across the 64 retained test studies. Tuning nevertheless selects the median baseline for duration, so these test rankings do not replace the development-stage recommendation. The nominal 90\% interval covers only 75\% of the test outcomes. Historical availability of predictor fields is also unverified. These findings keep the results within the scope of retrospective research.
+
+The project provides a research workflow whose inputs, formulas, model choices, predictions, and interface summaries can be inspected together. Further scientific evaluation requires larger independent cohorts, historical registry entries, sufficient positive outcomes, and a prospectively defined prediction time. The saved experiment and workbench provide a basis for that work, while the present results do not establish clinical validation.
+
+\section*{Acknowledgment}
+
+The authors acknowledge the U.S. National Library of Medicine for ClinicalTrials.gov and the open-source software used by the project. OpenAI Codex assisted in revising manuscript text and writing figure-rendering and verification scripts. Assistance affected Sections~I--XII and the code for Figs.~1--4 and~6; Figs.~5 and~7 are project browser captures. The authors retain responsibility for checking the content and references.
+
+\begin{thebibliography}{99}
+\footnotesize
+
+\bibitem{clinicaltrials}
+National Library of Medicine, ``ClinicalTrials.gov API,'' accessed Oct. 12, 2026. [Online]. Available: \url{https://clinicaltrials.gov/data-api/api}
+
+\bibitem{markey}
+N. Markey, B. Howitt, I. El-Mansouri, C. Schwartzenberg, O. Kotova, and C. Meier, ``Clinical trials are becoming more complex: A machine learning analysis of data from over 16,000 trials,'' \emph{Sci. Rep.}, vol. 14, no. 1, Art. no. 3514, Feb. 2024, doi: 10.1038/s41598-024-53211-z.
+
+\bibitem{cho}
+J. Cho, Q. Xu, C. H. Wong, and A. W. Lo, ``Predicting clinical trial duration via statistical and machine learning models,'' \emph{Contemp. Clin. Trials Commun.}, vol. 45, Art. no. 101473, Jun. 2025, doi: 10.1016/j.conctc.2025.101473.
+
+\bibitem{multimodal}
+T. Baltru\v{s}aitis, C. Ahuja, and L.-P. Morency, ``Multimodal machine learning: A survey and taxonomy,'' \emph{IEEE Trans. Pattern Anal. Mach. Intell.}, vol. 41, no. 2, pp. 423--443, Feb. 2019, doi: 10.1109/TPAMI.2018.2798607.
+
+\bibitem{leakage}
+S. Kapoor and A. Narayanan, ``Leakage and the reproducibility crisis in machine-learning-based science,'' \emph{Patterns}, vol. 4, no. 9, Art. no. 100804, Sep. 2023, doi: 10.1016/j.patter.2023.100804.
+
+\bibitem{sklearn}
+F. Pedregosa \emph{et al.}, ``Scikit-learn: Machine learning in Python,'' \emph{J. Mach. Learn. Res.}, vol. 12, pp. 2825--2830, 2011.
+
+\bibitem{tfidf}
+G. Salton and C. Buckley, ``Term-weighting approaches in automatic text retrieval,'' \emph{Inf. Process. Manage.}, vol. 24, no. 5, pp. 513--523, 1988, doi: 10.1016/0306-4573(88)90021-0.
+
+\bibitem{biobert}
+J. Lee \emph{et al.}, ``BioBERT: A pre-trained biomedical language representation model for biomedical text mining,'' \emph{Bioinformatics}, vol. 36, no. 4, pp. 1234--1240, Feb. 2020, doi: 10.1093/bioinformatics/btz682.
+
+\bibitem{extratrees}
+P. Geurts, D. Ernst, and L. Wehenkel, ``Extremely randomized trees,'' \emph{Mach. Learn.}, vol. 63, no. 1, pp. 3--42, Apr. 2006, doi: 10.1007/s10994-006-6226-1.
+
+\bibitem{randomforest}
+L. Breiman, ``Random forests,'' \emph{Mach. Learn.}, vol. 45, no. 1, pp. 5--32, Oct. 2001, doi: 10.1023/A:1010933404324.
+
+
+\bibitem{gradientboost}
+J. H. Friedman, ``Greedy function approximation: A gradient boosting machine,'' \emph{Ann. Statist.}, vol. 29, no. 5, pp. 1189--1232, Oct. 2001, doi: 10.1214/aos/1013203451.
+
+\bibitem{shap}
+S. M. Lundberg and S.-I. Lee, ``A unified approach to interpreting model predictions,'' in \emph{Advances in Neural Information Processing Systems}, vol. 30, 2017, pp. 4765--4774.
+
+\balance
+\bibitem{conformal}
+A. N. Angelopoulos and S. Bates, ``Conformal prediction: A gentle introduction,'' \emph{Found. Trends Mach. Learn.}, vol. 16, no. 4, pp. 494--591, 2023, doi: 10.1561/2200000101.
+
+
+\end{thebibliography}
+\end{document}
