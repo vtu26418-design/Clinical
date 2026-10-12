@@ -1,20 +1,12 @@
-# Clinical Trial Intelligence v5.2 downloads
+# Clinical Trial Intelligence paper
 
-## Updated LaTeX paper
+Eight-page project manuscript with no project version labels. The supplied two-column format, title, author block, section sequence and six figure slots are retained. All figures stay on their original pages and in their original columns.
 
-- [Complete LaTeX source ZIP](https://raw.githubusercontent.com/vtu26418-design/Clinical/refs/heads/cti-v5.2-downloads/downloads/paper/CTI-v5.2-LaTeX-Source.zip)
-- [Standalone paper.tex](https://raw.githubusercontent.com/vtu26418-design/Clinical/refs/heads/cti-v5.2-downloads/downloads/paper/paper.tex)
-- [Figures ZIP](https://raw.githubusercontent.com/vtu26418-design/Clinical/refs/heads/cti-v5.2-downloads/downloads/paper/CTI-v5.2-Images.zip)
-- [Seven-page PDF preview](https://raw.githubusercontent.com/vtu26418-design/Clinical/refs/heads/cti-v5.2-downloads/downloads/paper/CTI-v5.2-Paper.pdf)
-- [Compilation guide and verification notes](downloads/paper/README.md)
+- [LaTeX code](https://raw.githubusercontent.com/vtu26418-design/Clinical/refs/heads/clinical-paper/downloads/project-paper/Clinical_Trial_Intelligence.tex)
+- [LaTeX code only ZIP](https://raw.githubusercontent.com/vtu26418-design/Clinical/refs/heads/clinical-paper/downloads/project-paper/Clinical_Trial_LaTeX.zip)
+- [Six section images ZIP](https://raw.githubusercontent.com/vtu26418-design/Clinical/refs/heads/clinical-paper/downloads/project-paper/Clinical_Trial_Images.zip)
+- [Compiled eight-page PDF](https://raw.githubusercontent.com/vtu26418-design/Clinical/refs/heads/clinical-paper/downloads/project-paper/Clinical_Trial_Intelligence.pdf)
 
-The source ZIP includes the LaTeX file, project-derived figures and numerical verification receipts. Upload it directly to Overleaf and compile paper.tex with pdfLaTeX. The supplied custom two-column format is preserved; it is not the official IEEE Access submission template. Measured retrospective results and AI-assistance disclosure are included. No plagiarism or detector score is certified.
+Upload the six PNG images beside Clinical_Trial_Intelligence.tex and compile with pdfLaTeX. The images ZIP contains images only, with filenames matching the LaTeX references. [Individual images](downloads/project-paper/images).
 
-## Workbench project
-
-- [Complete v5.2 application, offline preview, walkthrough and guides](https://raw.githubusercontent.com/vtu26418-design/Clinical/refs/heads/cti-v5.2-downloads/downloads/CTI-v5.2-All-Downloads.zip)
-- [Application ZIP checksum](downloads/SHA256SUMS.txt)
-
-Source base: https://github.com/mprem27/Clinical-trail-mltimodelv5
-
-These artifacts support research and development; software functionality does not establish clinical predictive validity.
+Results are drawn from the saved project experiment. AI assistance is disclosed in the manuscript acknowledgment. The supplied custom article format is preserved; it is not the official IEEE Access template.
