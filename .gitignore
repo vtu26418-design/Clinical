@@ -18,3 +18,7 @@ models/*
 results/
 *.log
 .vercel/
+
+.superpowers/
+
+.venv

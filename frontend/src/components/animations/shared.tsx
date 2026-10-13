@@ -32,13 +32,13 @@ export function useMotion(active=true) {
  const [reduced,setReduced]=useState(prefersReduced);
  const [paused,setPaused]=useState(false);
  useEffect(()=>{const query=window.matchMedia('(prefers-reduced-motion: reduce)');const change=()=>setReduced(prefersReduced());query.addEventListener('change',change);window.addEventListener('cti-preferences-changed',change);return()=>{query.removeEventListener('change',change);window.removeEventListener('cti-preferences-changed',change)}},[]);
- return {running:active&&!paused&&!reduced,paused,reduced,toggle:()=>setPaused(v=>!v)};
+ return {running:active&&!paused&&!reduced,paused,reduced,toggle:()=>setPaused(v=>!v),setPlaying:(playing:boolean)=>setPaused(!playing)};
 }
 export function MotionControl({motion}:{motion:ReturnType<typeof useMotion>}) {
  return <button type="button" className="cti-motion-button" onClick={motion.toggle} disabled={motion.reduced} aria-pressed={motion.paused}>{motion.running?<Pause size={15}/>:<Play size={15}/>} {motion.reduced?'Reduced motion':motion.paused?'Resume motion':'Pause motion'}</button>;
 }
-export function AnimationPanel({title,description,children,motion,eyebrow='EVIDENCE EXPLORER'}:{title:string;description:string;children:ReactNode;motion?:ReturnType<typeof useMotion>;eyebrow?:string}) {
- return <section className={`cti-animation${motion&&!motion.running?' cti-motion-paused':''}`}><header className="cti-animation-header"><div><h2>{title}</h2><p>{description}</p></div>{motion&&<MotionControl motion={motion}/>}</header><div className="cti-animation-body">{children}</div></section>;
+export function AnimationPanel({title,description,children,motion,eyebrow='EVIDENCE EXPLORER',guided=false}:{title:string;description:string;children:ReactNode;motion?:ReturnType<typeof useMotion>;eyebrow?:string;guided?:boolean}) {
+ return <section className={`cti-animation${motion&&!motion.running?' cti-motion-paused':''}`}><header className="cti-animation-header"><div><h2>{title}</h2><p>{description}</p></div>{motion&&!guided&&<MotionControl motion={motion}/>}</header><div className="cti-animation-body">{children}</div></section>;
 }
 export function EvidenceState({nctId,loading,error,retry}:{nctId?:string;loading:boolean;error:string;retry:()=>void}) {
  if(error)return <div className="cti-evidence-state cti-evidence-error" role="alert"><Info size={20}/><div><strong>Evidence unavailable</strong><p>{error}</p><button className="cti-motion-button" type="button" onClick={retry}><RefreshCw size={15}/>Retry</button></div></div>;

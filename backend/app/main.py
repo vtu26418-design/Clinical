@@ -48,7 +48,7 @@ def create_research_app(config: Settings | None = None, *, training_slot=None) -
             if registry.engine is not None:
                 registry.engine.dispose()
 
-    app = FastAPI(title='Clinical Trial Intelligence API', version='5.2.0.2', description='Research decision support; not clinical or regulatory advice.', lifespan=lifespan)
+    app = FastAPI(title='Clinical Trial Intelligence API', version='5.2.0.3', description='Research decision support; not clinical or regulatory advice.', lifespan=lifespan)
     app.state.settings = config
     app.state.registry = registry
     training_slot = training_slot or threading.BoundedSemaphore(1)
@@ -94,7 +94,7 @@ def create_research_app(config: Settings | None = None, *, training_slot=None) -
     def health():
         key_configured = bool(config.openai_api_key.strip())
         routing = assistant_status(config)
-        return {'status': 'ok', 'version': '5.2.0.2', 'ai_provider': routing['selected_label'] if routing['enabled'] else 'disabled', 'openai_configured': key_configured, 'assistant_enabled': routing['enabled'], 'assistant': routing, 'sample_data': True, 'default_dataset_id': SAMPLE_ID, 'auth_required': bool(config.api_bearer_token), 'database': 'postgresql', 'configuration': {'storage_ready': registry.root.is_dir(), 'openai_key_present': key_configured, 'openai_model': config.openai_model, 'remote_auth_configured': bool(config.api_bearer_token)}}
+        return {'status': 'ok', 'version': '5.2.0.3', 'ai_provider': routing['selected_label'] if routing['enabled'] else 'disabled', 'openai_configured': key_configured, 'assistant_enabled': routing['enabled'], 'assistant': routing, 'sample_data': True, 'default_dataset_id': SAMPLE_ID, 'auth_required': bool(config.api_bearer_token), 'database': 'postgresql', 'configuration': {'storage_ready': registry.root.is_dir(), 'openai_key_present': key_configured, 'openai_model': config.openai_model, 'remote_auth_configured': bool(config.api_bearer_token)}}
 
     @api.get('/readiness')
     def readiness(dataset_id: str = SAMPLE_ID):
@@ -217,7 +217,8 @@ def create_research_app(config: Settings | None = None, *, training_slot=None) -
                 else:
                     from src.clinical_trial_intelligence.research import ExperimentConfig, train_experiment
                     manifest = train_experiment(df, output, source_metadata=metadata,
-                                                config=ExperimentConfig(enable_catboost=bool(record.get('enable_catboost', False))))
+                                                config=ExperimentConfig(enable_catboost=bool(record.get('enable_catboost', False)),
+                                                                        catboost_search=record.get('catboost_search', 'basic')))
             metrics_path = output / ('phase_metrics.json' if record.get('task') == 'phase' else 'metrics.json')
             metrics = json.loads(metrics_path.read_text(encoding='utf-8')) if metrics_path.exists() else manifest.get('metrics', {})
             record.update(status='completed', completed_at=now(), manifest=manifest, metrics=metrics, error=None)
@@ -249,7 +250,8 @@ def create_research_app(config: Settings | None = None, *, training_slot=None) -
         if not training_slot.acquire(blocking=False):
             raise HTTPException(409, 'An experiment is already running on this server. Wait for it to finish.')
         record = {'id': uuid.uuid4().hex, 'task': task, 'dataset_id': value['id'], 'dataset_sha256': value['sha256'], 'status': 'queued', 'created_at': now(), 'error': None, 'metrics': None, 'manifest': None,
-                  'enable_catboost': bool(getattr(req, 'enable_catboost', False)) if task == 'duration' else False}
+                  'enable_catboost': bool(getattr(req, 'enable_catboost', False)) if task == 'duration' else False,
+                  'catboost_search': getattr(req, 'catboost_search', 'basic') if task == 'duration' else 'basic'}
         try:
             registry.save_experiment(record)
             background.add_task(run_training, record.copy(), df, metadata)

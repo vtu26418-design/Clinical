@@ -10,7 +10,7 @@ ROOT=Path(__file__).resolve().parents[1]
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output',required=True)
-    parser.add_argument('--version',default='5.2.0.2')
+    parser.add_argument('--version',default='5.2.0.3')
     args=parser.parse_args()
     if not re.fullmatch(r"[0-9]+\.[0-9]+\.[0-9]+(?:\.[0-9]+)?",args.version):
         parser.error("Version must use three or four numeric components.")

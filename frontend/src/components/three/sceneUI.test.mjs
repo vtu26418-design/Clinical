@@ -1,0 +1,17 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {createRequire} from 'node:module';
+import Module from 'node:module';
+import ts from 'typescript';
+import React from 'react';
+import {renderToStaticMarkup} from 'react-dom/server';
+const require=createRequire(import.meta.url);
+for(const extension of ['.ts','.tsx'])require.extensions[extension]=(module,filename)=>module._compile(ts.transpileModule(readFileSync(filename,'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,jsx:ts.JsxEmit.ReactJSX}}).outputText,filename);
+function subject(){try{return require('./SceneUI.tsx')}catch(error){if(error.code==='MODULE_NOT_FOUND')assert.fail('Accessible scene controls and fallback are missing');throw error}}
+const callbacks={onPrevious(){},onNext(){},onReplay(){},onPlay(){},onSpeed(){}};
+test('reduced motion disables automatic controls but keeps manual navigation',()=>{const {SceneControls}=subject();const html=renderToStaticMarkup(React.createElement(SceneControls,{...callbacks,step:1,count:4,playing:false,reduced:true,speed:1}));assert.match(html,/disabled=""[^>]*>.*?Play/);assert.match(html,/aria-label="Playback speed" disabled/);assert.match(html,/<button[^>]*>Previous<\/button>/);assert.match(html,/<button[^>]*>Next<\/button>/);assert.match(html,/Reduced motion/)});
+test('fallback keeps exact signed evidence and missingness in readable HTML',()=>{const {SceneFallback,SceneValues}=subject();const props={kind:'xai',title:'Local model evidence',mode:'evidence',steps:[{title:'Review output',detail:'Attributions are not causal proof.'}],values:[{label:'Negative contribution',value:-12,unit:'days'},{label:'Unreported',value:null,status:'not reported'}]};const html=renderToStaticMarkup(React.createElement('div',null,React.createElement(SceneFallback,{...props,step:0}),React.createElement(SceneValues,{values:props.values})));assert.match(html,/Review output/);assert.match(html,/Attributions are not causal proof/);assert.match(html,/-12 days/);assert.match(html,/Unknown/);assert.match(html,/not reported/);assert.doesNotMatch(html,/<canvas/)});
+test('conceptual fallback explicitly warns symbols are not enrollment counts',()=>{const {SceneFallback}=subject();const html=renderToStaticMarkup(React.createElement(SceneFallback,{kind:'phase',title:'Phase I',mode:'conceptual',steps:[],step:0}));assert.match(html,/do not represent actual enrollment/);assert.match(html,/Conceptual/)});
+test('nonnumeric source labels remain accessible alongside 3D',()=>{const {SceneLabels}=subject();assert.equal(typeof SceneLabels,'function','Scene label rail is missing');const html=renderToStaticMarkup(React.createElement(SceneLabels,{labels:['Completion: 2026-10 (month precision)','Completion date type: estimated']}));assert.match(html,/2026-10 \(month precision\)/);assert.match(html,/date type: estimated/)});
+test('narration Off removes the speech control and On keeps explicit click activation',()=>{const {SceneNarrationButton}=subject();assert.equal(typeof SceneNarrationButton,'function','Preference-aware narration control is missing');let clicked=0;const props={allowed:false,speaking:false,onRead:()=>{clicked++}};assert.equal(renderToStaticMarkup(React.createElement(SceneNarrationButton,props)),'');const html=renderToStaticMarkup(React.createElement(SceneNarrationButton,{...props,allowed:true}));assert.match(html,/Read aloud/);assert.match(html,/type="button"/);assert.equal(clicked,0)});

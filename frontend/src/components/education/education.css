@@ -1,0 +1,48 @@
+/* Education content only. Shared surfaces and palette come from the application theme. */
+.pa-guided-scene{padding:0;min-width:0;overflow:visible}
+.pa-guided-scene .cti-scene-panel{height:auto}
+.pa-guided-track{margin-top:16px}
+.pa-guided-track button{min-height:40px;font-size:12px}
+.pa-guided-scene>.pa-motion-note{font-size:12px;line-height:1.7;padding:0 4px;margin-top:12px}
+.pa-guided-scene .pa-diagram{margin-top:20px}
+.pa-guided-scene .pa-diagram-note{font-size:11px;line-height:1.65;padding:0 12px}
+.phase-academy .pa-stage-tab{min-height:78px}
+.phase-academy .pa-stage-tab strong{font-size:14px}
+.phase-academy .pa-stage-tab small{font-size:12px}
+.phase-academy .pa-caption,.phase-academy .pa-section-intro,.phase-academy .pa-label-item p,.phase-academy .pa-no-example p,.phase-academy .pa-example-list footer{font-size:12px}
+.phase-academy .pa-lesson>p,.phase-academy .pa-quiz-option,.phase-academy .pa-feedback,.phase-academy .pa-example-list h3{font-size:14px}
+.phase-academy .pa-oversight p,.phase-academy .pa-scale p,.phase-academy .pa-reading p,.phase-academy .pa-reading a,.phase-academy .pa-source-link,.phase-academy .pa-label-item a{font-size:12px}
+.cti-research-journey{margin:24px 0;min-width:0}
+.cti-research-journey-action{display:flex;justify-content:space-between;align-items:center;gap:16px;margin:14px 4px 0}
+.cti-research-journey-action>span{font-size:13px;color:var(--muted,#647a78)}
+.cti-research-journey-action .btn{display:inline-flex;align-items:center;gap:8px;min-height:40px}
+.cti-research-journey-flat{padding:46px 24px 24px;display:flex;flex-direction:column;justify-content:center;min-height:290px}
+.cti-research-journey-flat ol{display:flex;align-items:flex-start;justify-content:center;gap:12px;list-style:none;padding:0;margin:18px 0 24px}
+.cti-research-journey-flat li{position:relative;flex:1;max-width:110px}
+.cti-research-journey-flat li:not(:last-child)::after{position:absolute;content:'';width:calc(100% - 38px);height:1px;background:var(--border,#dce7e3);left:calc(50% + 25px);top:24px}
+.cti-research-journey-flat button{display:flex;flex-direction:column;align-items:center;gap:14px;width:100%;padding:0;border:0;background:transparent;color:var(--muted,#647a78);font-size:13px}
+.cti-research-journey-flat button span{display:grid;place-items:center;width:48px;height:48px;border-radius:14px;border:1px solid var(--border,#dce7e3);background:var(--panel,#fff);font-weight:700}
+.cti-research-journey-flat li[aria-current=step] button{color:var(--accent,#17776d)}
+.cti-research-journey-flat li[aria-current=step] button span{background:#e8f4ee;border-color:#8ebdad}
+.cti-research-journey-flat>p{font-size:14px;line-height:1.8;max-width:600px;margin:0 auto;text-align:center;color:var(--muted,#647a78)}
+.cti-research-journey-paused{padding:24px}
+.cti-research-journey-paused>p{font-size:14px;line-height:1.7;color:var(--muted,#647a78)}
+.cti-home-helix-choice{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;padding:12px 8px}
+.cti-home-helix-choice p{font-size:12px;margin:0;color:var(--muted,#647a78)}
+.cti-home-helix-choice .btn{font-size:12px;min-height:36px}
+.cti-home-molecule .cti-scene-layout{grid-template-columns:1fr}
+.cti-home-molecule .cti-scene-caption{padding:16px}
+.cti-home-molecule .cti-scene-caption ol{display:none}
+.cti-home-molecule .cti-scene-viewport .cti-helix-layout{grid-template-columns:1fr}
+.cti-home-molecule .cti-scene-viewport .cti-helix-copy{padding:16px}
+.cti-home-molecule .cti-scene-viewport .cti-helix-canvas{min-height:240px}
+.cti-helix-motion-note{font-size:12px;line-height:1.6;color:var(--muted,#647a78)}
+@media(max-width:1250px){.pa-guided-scene .cti-scene-layout{grid-template-columns:1fr}.pa-guided-scene .cti-scene-caption ol{display:grid;grid-template-columns:1fr 1fr;gap:14px}.pa-guided-scene .cti-scene-caption li{margin:0}}
+@media(max-width:760px){.cti-research-journey-action{align-items:flex-start;flex-direction:column}.cti-research-journey-action .btn{width:100%;justify-content:center}.cti-research-journey-flat{padding:46px 12px 20px;min-height:280px}.cti-research-journey-flat ol{gap:6px}.cti-research-journey-flat button{font-size:11px;gap:10px}.cti-research-journey-flat button span{height:36px;width:36px;border-radius:10px}.cti-research-journey-flat li:not(:last-child)::after{top:18px;left:calc(50% + 19px);width:calc(100% - 26px)}.cti-research-journey-flat>p{font-size:13px}.pa-guided-scene .cti-scene-caption ol{grid-template-columns:1fr}.phase-academy .pa-stage-tab strong{font-size:13px}.phase-academy .pa-stage-tab small{font-size:11px}.pa-guided-track button{font-size:11px}.cti-home-helix-choice{align-items:flex-start;flex-direction:column}}
+.cti-education-still .v52-helix{animation:none!important}
+.cti-education-still>svg{transition:none!important}
+.pa-guided-scene .cti-scene-panel{margin-top:0}
+.phase-academy .pa-stage-tab small{white-space:normal;line-height:1.4}
+.cti-home-molecule .cti-helix-layout{grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:18px}
+.cti-home-molecule .cti-helix-copy,.cti-home-molecule .cti-helix-canvas{min-width:0}
+@media(max-width:1180px){.cti-home-molecule .cti-helix-layout{grid-template-columns:1fr}}

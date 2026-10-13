@@ -1,44 +1,40 @@
-# Clinical Trial Intelligence Workbench — v5.2.0.2
+# Clinical Trial Intelligence Workbench — v5.2.0.3
 
-A PostgreSQL-backed research application for trial records, protocol complexity, saved-model prediction, evidence review and grounded conversations.
+A PostgreSQL-backed research application for trial records, protocol complexity, saved-model prediction, evidence review and grounded conversations. The complete ZIP includes editable source, the prebuilt interface, frozen 800-record public registry cohort, saved models and an end-to-end guide.
 
-## Run
+## Windows: run without Docker
 
-Install Python 3.12 and Docker Desktop, extract the ZIP, then:
+1. Install [Python 3.12](https://www.python.org/downloads/windows/) with its Python launcher and [PostgreSQL for Windows](https://www.postgresql.org/download/windows/). Remember the `postgres` administrator password you choose during installation; the usual database port is 5432.
+2. Extract the complete ZIP into a writable folder, such as `C:\CTI`. Run `SETUP_WINDOWS.bat` once.
+3. Run `CONNECT_DATABASE_WINDOWS.bat`. Accept the local defaults, retain the generated application password with Enter, and enter your PostgreSQL administrator password at its hidden prompt. Wait for **Application database login verified.**
+4. Run `START_WINDOWS.bat`, then open http://localhost:8000. Keep the terminal open.
+5. Read `SETUP_TOKEN` from your private local `.env`, create the first owner and a project, then use More tools → Data Manager to load the 800-record starter cohort.
+6. Review Overview and use Prediction Studio. Bundled predictions do not require training.
 
-```bash
-python3.12 scripts/initialize_env.py --start
-```
+The connector creates only missing application roles/databases, preserves existing data/passwords and verifies the application login. Docker and Node are optional for the packaged Windows workflow. PostgreSQL is required; there is no SQLite fallback.
 
-Windows: double-click `START_DOCKER_WINDOWS.bat`. Open http://localhost:8000 after startup. Use the generated local setup token, create an owner and project, then load the starter cohort from Data Manager.
-
-[Start here](START-HERE.md) · [Full guide](docs/V5_2_0_2_FULL_GUIDE.md) · [Guide PDF](docs/Clinical-Trial-Intelligence-v5.2.0.2-Full-Guide.pdf)
+[Start here](START-HERE.md) · [Full operating guide](docs/v5.2.0.3-full-guide.md) · [Downloadable guide PDF](docs/Clinical-Trial-Intelligence-v5.2.0.3-Full-Guide.pdf) · [Changes](docs/v5.2.0.3-changelog.md)
 
 ## Included
 
-- Navy/teal interface with restrained textured navigation, Projects launcher, responsive charts and appearance/motion settings.
-- Twelve selectable full-cohort overview graphs, filters, study comparison, ordering/fullscreen and exports.
-- Seven accessible visual explanations: pipeline, phases/dates, actual attribution, recruitment availability, model-backed scenarios, supported text/metadata fusion and a decorative helix.
-- PostgreSQL accounts, sessions, memberships, audit, feedback, chat and research metadata. No SQLite fallback.
-- Server-enforced owner/researcher/reviewer/viewer capabilities, invitations, password/session controls and request limits.
-- Readable streamed assistant replies, source references, configurable budgets, copy/export and reviewed corrections.
-- Nine existing research branches plus opt-in CatBoost fitting and genuine native TreeSHAP.
-- Frozen 800-record public registry cohort, verified artifacts, source hashes, tests, setup scripts and guide PDF.
+- All 26 research routes, 12 configurable full-cohort graphs, study comparison and exports.
+- Guided 3D explanations with exact evidence captions, accessible 2D fallbacks, reduced motion and optional click-to-read browser narration.
+- Phase Academy with optional Phase 0 and phases I–IV, source links, quizzes and recorded examples.
+- Project/session restoration after reload; browser appearance, spacing, scene and narration settings with preference import/export/reset.
+- PostgreSQL accounts, memberships, role enforcement, sessions, audit, feedback and chat.
+- Streamed assistant replies for general and evidence-grounded questions, up to 32,768 input characters; new projects have no daily application quota by default. Provider/context/output and abuse limits still apply.
+- Preserved approved models plus optional basic or expanded CatBoost candidate search and genuine native TreeSHAP. Training does not activate a candidate.
 
-## Evidence
+## Evidence and limits
 
-The approved baseline remains selected; the CatBoost candidate is evaluated without claiming guaranteed accuracy gains. Observational charts disclose missingness. No invented SHAP, confidence intervals, recruitment counts or silent simulation fallback are substituted for evidence.
+Source records, hashes, historical evidence and approved artifacts remain preserved. Expanded search is an evaluated capability, not a guaranteed accuracy improvement. Unknown recruitment/date values stay unknown; SHAP attribution does not establish causation. Completed-only retrospective cohorts and small retained splits limit interpretation. Bundled models do not validate clinical success, treatment effects, recruitment risk or amendment risk.
 
-Completed-only retrospective analysis and small retained splits limit interpretation. Clinical-success, treatment-effect, recruitment-risk and amendment-risk probabilities are not validated bundled tasks. See the guide and release evidence.
+For current release-check status, consult `docs/v5.2.0.3-release-verification.md`; the v5.2.0.2 reports describe that historical release.
 
-## Development
+## Other installation and development paths
 
-```bash
-python3.12 scripts/setup.py --dev
-docker compose up -d postgres
-.venv/bin/python scripts/start.py
-```
+Linux/macOS native: install Python 3.12 and PostgreSQL, run `python3.12 scripts/setup.py`, `.venv/bin/python scripts/configure_postgres.py`, then `.venv/bin/python scripts/start.py`. Docker remains available through `START_DOCKER_WINDOWS.bat` or `python3.12 scripts/initialize_env.py --start`.
 
-Frontend: `npm ci`, `npm run dev` / `npm run build` in `frontend/`. Tests: start `docker compose --profile test up -d postgres-test`, then `.venv/bin/python scripts/run_tests.py`. Windows uses `.venv\Scripts\python.exe`.
+Development: `scripts/setup.py --dev` installs test dependencies. Node.js 22 is needed only to modify/rebuild the frontend (`npm ci`, `npm run dev` / `npm run build` in `frontend/`). Automated tests require a separate disposable PostgreSQL database configured as `TEST_DATABASE_URL`; run `.venv/bin/python scripts/run_tests.py`. See the guide for Windows commands and the 37-step acceptance workflow.
 
-Provider keys/API model IDs belong in the private server `.env`; they are not included in browser assets or release downloads. Provider/email/remote deployment access requires operator configuration.
+Provider keys and account-supported API model IDs belong in the private server `.env`. Never include `.env`, credentials, logs or runtime databases in shared ZIPs. Back up PostgreSQL and research files together. This application is research decision support, not clinical or regulatory advice.

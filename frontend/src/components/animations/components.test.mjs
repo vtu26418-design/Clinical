@@ -19,6 +19,11 @@ for(const name of ['AnimatedPipeline','TrialTimeline','XAIAnimations','Recruitme
  test(`${name} has no scientific output without a selected study`, async()=>{
   const html=await render(name);
   assert.match(html,/Select a study/);
+  assert.match(html,/Pause motion/);
   assert.doesNotMatch(html,/26\.4|1850|NCT04982120|0\.89|74%/);
  });
 }
+test('PredictionJourney preserves unavailable phase and model duration evidence in its 2D view',async()=>{
+ const html=await render('PredictionJourney',{study:{nct_id:'NCT-real',phase:'PHASE2',start_date:'2024-01'},duration:{status:'unavailable',duration_days:900,reason:'No compatible model'},phase:{status:'available',is_demo:true,predicted_phase:'PHASE3'}});
+ assert.match(html,/No compatible model/);assert.match(html,/2024-01/);assert.doesNotMatch(html,/900 days|PHASE3/);
+});

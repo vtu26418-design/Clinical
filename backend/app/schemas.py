@@ -11,6 +11,7 @@ class ClinicalTrialsImportRequest(BaseModel):
 class ExperimentRequest(BaseModel):
     dataset_id: str = Field(default='sample-fixture', min_length=1, max_length=80)
     enable_catboost: bool = False
+    catboost_search: Literal['basic', 'expanded'] = 'basic'
 
 
 class AssistantRequest(BaseModel):

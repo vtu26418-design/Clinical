@@ -16,7 +16,7 @@ from pathlib import Path
 import platform
 import pickle
 import re
-from typing import Any
+from typing import Any, Literal
 import uuid
 
 import joblib
@@ -66,6 +66,7 @@ class ExperimentConfig:
     enable_advanced_models: bool = True
     enable_catboost: bool = False
     uncertainty_alpha: float = 0.1
+    catboost_search: Literal['basic', 'expanded'] = 'basic'
 
     def validate(self):
         if not (0 < self.train_fraction < 1 and 0 < self.validation_fraction < 1 and self.train_fraction + self.validation_fraction < 1):
@@ -80,6 +81,8 @@ class ExperimentConfig:
             raise ValueError("enable_advanced_models must be a boolean.")
         if not isinstance(self.enable_catboost, bool):
             raise ValueError("enable_catboost must be a boolean.")
+        if self.catboost_search not in ('basic', 'expanded'):
+            raise ValueError("catboost_search must be 'basic' or 'expanded'.")
         if isinstance(self.uncertainty_alpha, bool) or not np.isfinite(self.uncertainty_alpha) or not 0 < self.uncertainty_alpha < 1:
             raise ValueError("uncertainty_alpha must be finite and strictly between 0 and 1.")
 
@@ -518,19 +521,27 @@ def _fit_advanced_models(X_train, duration_train, labels_train, X_validation, du
 
 def _fit_catboost_models(X_train, duration_train, labels_train, X_validation, duration_validation, labels_validation, config):
     """Opt-in CPU candidate; tuning never sees calibration/test records."""
+    config.validate()
     try:
+        from catboost import __version__ as catboost_version
         from .models.catboost_compat import CTICatBoostClassifier as CatBoostClassifier, CTICatBoostRegressor as CatBoostRegressor
     except ImportError as exc:
         raise ValueError("CatBoost was requested but is not installed. Install the release requirements first.") from exc
-    pair, parameters = {}, {}
+    # Keep the original two candidates and their implicit native defaults exact.
+    grid = ([{"depth": depth} for depth in (4, 6)] if config.catboost_search == 'basic' else
+            [{"depth": depth, "l2_leaf_reg": l2, "iterations": iterations}
+             for depth in (4, 6) for l2 in (3, 10) for iterations in (120, 300)])
+    pair, parameters, trials, selected_trials = {}, {}, {}, {}
     for task, estimator, target in (("regressor", CatBoostRegressor, duration_train), ("classifier", CatBoostClassifier, labels_train)):
+        trials[task] = []
+        selected_trials[task] = None
         if task == "classifier" and len(np.unique(labels_train)) < 2:
             pair[task] = DummyClassifier(strategy="prior").fit(X_train, target)
             parameters[task] = None
             continue
         best, best_score, selected = None, float("inf"), None
-        for depth in (4, 6):
-            params = {"iterations": 120, "depth": depth, "learning_rate": .05,
+        for candidate_parameters in grid:
+            params = {"iterations": 120, **candidate_parameters, "learning_rate": .05,
                       "random_seed": config.random_seed, "thread_count": 1,
                       "task_type": "CPU", "verbose": False, "allow_writing_files": False,
                       "loss_function": "RMSE" if task == "regressor" else "Logloss"}
@@ -539,11 +550,19 @@ def _fit_catboost_models(X_train, duration_train, labels_train, X_validation, du
             model.fit(X_train, target)
             score = (float(mean_squared_error(duration_validation, np.maximum(0, model.predict(X_validation))))
                      if task == "regressor" else float(brier_score_loss(labels_validation, _positive_probability(model, X_validation))))
+            trials[task].append({"parameters": params, "effective_parameters": model.named_steps['model'].get_all_params(),
+                                 "metric": "rmse" if task == "regressor" else "brier",
+                                 "score": float(np.sqrt(score)) if task == "regressor" else score})
             if score < best_score:
                 best, best_score, selected = model, score, params
+                selected_trials[task] = len(trials[task]) - 1
         pair[task], parameters[task] = best, selected
     return {"structured_catboost": pair}, {"structured_catboost": {
         "regressor_parameters": parameters["regressor"], "classifier_parameters": parameters["classifier"],
+        "search_mode": config.catboost_search, "candidate_configurations": grid, "trials": trials,
+        "selected_trial_indices": selected_trials, "selection_split": "validation",
+        "selection_rows": len(X_validation), "training_rows": len(X_train),
+        "tie_breaker": "first candidate in declared order", "catboost_version": catboost_version,
         "candidate_depths": [4, 6], "regression_selection": "minimum tuning validation RMSE",
         "classification_selection": "minimum raw tuning validation Brier", "refit_on_validation": False,
         "native_task": "CPU", "one_class_fallback": parameters["classifier"] is None,

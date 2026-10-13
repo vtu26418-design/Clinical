@@ -36,8 +36,10 @@ from .services.pci_service import METHODOLOGY, calculate_pci_details
 Role = Literal['owner', 'researcher', 'reviewer', 'viewer']
 Provider = Literal['auto', 'openai', 'anthropic', 'gemini', 'compatible']
 Profile = Literal['fast', 'balanced', 'deep']
-DEFAULT_SETTINGS = {'default_provider':'auto', 'default_profile':'balanced', 'chat_daily_limit':50, 'chat_retention_days':90,
+DEFAULT_SETTINGS = {'default_provider':'auto', 'default_profile':'balanced', 'chat_daily_limit':0, 'chat_retention_days':90,
                     'chat_max_output_tokens':16000,'chat_context_chars':120000}
+# Older projects with omitted fields keep the previous quota; no storage migration.
+EXISTING_SETTINGS = {**DEFAULT_SETTINGS, 'chat_daily_limit':50}
 PROFILES = {'fast':{'history_messages':6,'context_chars':16000,'max_output_tokens':2000},
             'balanced':{'history_messages':16,'context_chars':60000,'max_output_tokens':8192},
             'deep':{'history_messages':30,'context_chars':262144,'max_output_tokens':65536}}
@@ -116,7 +118,7 @@ class ConversationInput(Input):
 
 
 class MessageInput(Input):
-    message: str = Field(min_length=1,max_length=4000)
+    message: str = Field(min_length=1,max_length=32768)
     dataset_id: str = Field(default=SAMPLE_ID,max_length=80,pattern=r'^[a-zA-Z0-9_-]+$')
     nct_id: str | None = Field(default=None,max_length=100)
     provider: Provider | None = None
@@ -163,7 +165,7 @@ def create_app(config: Settings | None = None):
                     subapp.state.registry.engine.dispose()
             store.engine.dispose()
 
-    app = FastAPI(title='Clinical Trial Intelligence v5.2',version='5.2.0.2',lifespan=lifespan)
+    app = FastAPI(title='Clinical Trial Intelligence v5.2',version='5.2.0.3',lifespan=lifespan)
     app.state.settings = config
     app.state.platform_store = store
     origins = {v.strip().rstrip('/') for v in config.cors_origins.split(',') if v.strip()}
@@ -183,7 +185,7 @@ def create_app(config: Settings | None = None):
     def list_projects(user):
         rows = store.execute('SELECT p.*,m.role FROM v5_projects p JOIN v5_members m ON m.project_id=p.id WHERE m.user_id=:user ORDER BY p.created_at',{'user':user['id']},True)
         for row in rows:
-            row['settings'] = {**DEFAULT_SETTINGS,**json.loads(row['settings'])}
+            row['settings'] = {**EXISTING_SETTINGS,**json.loads(row['settings'])}
             row['capabilities'] = role_capabilities(row['role'])
         return rows
 
@@ -202,7 +204,7 @@ def create_app(config: Settings | None = None):
             raise HTTPException(403,'Project role is invalid. Ask an owner to update membership.')
         if roles and row['role'] not in roles:
             raise HTTPException(403,'Your project role does not permit this action.')
-        row['settings'] = {**DEFAULT_SETTINGS,**json.loads(row['settings'])}
+        row['settings'] = {**EXISTING_SETTINGS,**json.loads(row['settings'])}
         row['capabilities'] = role_capabilities(row['role'])
         return row
 
@@ -360,7 +362,7 @@ def create_app(config: Settings | None = None):
     @app.get('/api/v1/health')
     def health():
         status = assistant_service.assistant_status(config)
-        return {'status':'ok','version':'5.2.0.2','database':store.kind,'auth_required':config.auth_mode=='session',
+        return {'status':'ok','version':'5.2.0.3','database':store.kind,'auth_required':config.auth_mode=='session',
                 'assistant':status,'assistant_enabled':status['enabled'],'default_dataset_id':SAMPLE_ID,'sample_data':True}
 
     @app.get('/api/v5/bootstrap')

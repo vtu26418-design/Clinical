@@ -210,7 +210,7 @@ def test_stream_protects_owner_project_role_validation_and_busy_gate(tmp_path, m
         path, project = conversation(client)
         with TestClient(client.app) as anonymous:
             assert anonymous.post(path+'/messages/stream',json={'message':'Explain'}).status_code == 401
-        assert client.post(path+'/messages/stream',json={'message':'x'*4001}).status_code == 422
+        assert client.post(path+'/messages/stream',json={'message':'x'*32769}).status_code == 422
         assert client.post(path+'/messages/stream',json={'message':'Explain','dataset_id':'missing'}).status_code == 404
         token = client.post('/api/v5/projects/'+project['id']+'/members',json={'email':'viewer@example.org','role':'viewer'}).json()['invitation_token']
         with TestClient(client.app) as viewer:

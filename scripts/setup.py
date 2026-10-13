@@ -33,7 +33,8 @@ def main():
     if not (ROOT / 'frontend/dist/index.html').exists():
         print('UI missing. Install Node.js 22, then run npm ci and npm run build in frontend/.')
         return 1
-    print('Python setup complete. Start PostgreSQL: docker compose up -d postgres')
+    print('Python setup complete. Native PostgreSQL: start its installed service, then run CONNECT_DATABASE_WINDOWS.bat (Windows) or .venv/bin/python scripts/configure_postgres.py (Linux/macOS).')
+    print('Docker is optional. For its database service: docker compose up -d postgres')
     print('Then run START_WINDOWS.bat or .venv/bin/python scripts/start.py')
     print('First owner: open .env in a text editor, copy SETUP_TOKEN, and use it in the first-run form. Keep .env private.')
     return 0
