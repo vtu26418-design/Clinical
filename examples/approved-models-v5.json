@@ -1,0 +1,33 @@
+{
+  "release": "v5-research",
+  "models": [
+    {
+      "id": "bundled-duration-v5",
+      "name": "Bundled duration research model",
+      "task": "duration",
+      "directory": "examples/starter-duration-v5",
+      "manifest_sha256": "72c93ffcb6c43aa9cdbbe6a401957aa2a3177196f08a65a4609a19b6c2ab8bec",
+      "artifact_sha256": "22ceddccf48f932cd92780b35a9575e67759c62fb02f0e579a3fdc4c7ae665f5",
+      "approval": {
+        "scope": "research_only",
+        "approved_by": "v5 release validation",
+        "approved_at": "2026-10-09T05:08:50.331923+00:00",
+        "notes": "Authentic 800-record ClinicalTrials.gov starter; completed-only retrospective registry snapshot, not prospective or clinical validation. Software release approval only."
+      }
+    },
+    {
+      "id": "bundled-phase-v5",
+      "name": "Bundled phase research model",
+      "task": "phase",
+      "directory": "examples/starter-phase-v5",
+      "manifest_sha256": "06fd5b8d57094811400fe5933943c3128aa2a3ee7ea915c93296e26ce810e8da",
+      "artifact_sha256": "aedb5f59e159e378acd91aa5a59526b53671f6f6bdf20c8c83ce66760abe1ac9",
+      "approval": {
+        "scope": "research_only",
+        "approved_by": "v5 release validation",
+        "approved_at": "2026-10-09T05:08:50.334244+00:00",
+        "notes": "Authentic 800-record ClinicalTrials.gov starter; completed-only retrospective registry snapshot, not prospective or clinical validation. Software release approval only."
+      }
+    }
+  ]
+}

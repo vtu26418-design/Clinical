@@ -1,0 +1,2178 @@
+{
+  "preview_kind": "frozen_real_research_api_outputs",
+  "source": {
+    "name": "ClinicalTrials.gov completed drug-trial starter cohort",
+    "source": "ClinicalTrials.gov API v2",
+    "retrieved_at": "2026-10-07T15:41:09.711500+00:00",
+    "canonical_sha256": "d096795e303b5a103e0aba8bd79ffe7e85609827ea810d1c08e8e0811b5496d2",
+    "source_record_count": 800,
+    "preview_record_count": 3,
+    "record_ids": [
+      "NCT04814381",
+      "NCT04922554",
+      "NCT04727970"
+    ],
+    "subset_sha256": "f6673f690f94bd7c59ac7aad151e3357b2e692dead9da1887cbc16c8d1d17b49",
+    "selection": "First three chronological IDs common to both untouched test splits; no performance-based selection.",
+    "warning": "Frozen retrospective research outputs from real public records. These are separate from interface fixtures. No browser model inference, prospective validation, recruitment-risk or amendment-risk prediction is provided."
+  },
+  "models": [
+    {
+      "id": "bundled-duration-v5",
+      "name": "Bundled duration research model",
+      "task": "duration",
+      "branch": "median_baseline",
+      "status": "approved",
+      "active": true,
+      "artifact_version": 3,
+      "run_id": "e608f4ac-bf38-4172-a4b8-aa1be5987501",
+      "artifact_sha256": "22ceddccf48f932cd92780b35a9575e67759c62fb02f0e579a3fdc4c7ae665f5",
+      "manifest_sha256": "72c93ffcb6c43aa9cdbbe6a401957aa2a3177196f08a65a4609a19b6c2ab8bec",
+      "training_dataset": {
+        "id": null,
+        "name": "ClinicalTrials.gov completed drug-trial starter cohort",
+        "sha256": "d096795e303b5a103e0aba8bd79ffe7e85609827ea810d1c08e8e0811b5496d2",
+        "row_count": 800
+      },
+      "validation_metrics": {
+        "regression": {
+          "mae": 263.22222222222223,
+          "rmse": 288.7676882509153,
+          "r2": -4.913603778078181
+        },
+        "classification": {
+          "auroc": null,
+          "average_precision": null,
+          "brier": 0.06131519274376418
+        },
+        "calibration": {
+          "method": "10 equal-width reliability bins; probabilities are not post-hoc calibrated",
+          "bins": [
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "count": 9,
+              "mean_probability": 0.24761904761904763,
+              "observed_fraction": 0.0
+            }
+          ],
+          "expected_calibration_error": 0.24761904761904763
+        },
+        "n": 9,
+        "positive_count": 0,
+        "confidence_intervals": {
+          "method": "paired trial bootstrap percentile",
+          "level": 0.95,
+          "requested_resamples": 200,
+          "random_seed": 42,
+          "mae": {
+            "lower": 193.64166666666665,
+            "upper": 340.55833333333334,
+            "valid_resamples": 200
+          },
+          "rmse": {
+            "lower": 214.20114916652707,
+            "upper": 355.27120152232817,
+            "valid_resamples": 200
+          },
+          "r2": {
+            "lower": -22.856580312122542,
+            "upper": -2.923101551720517,
+            "valid_resamples": 200
+          },
+          "auroc": {
+            "lower": null,
+            "upper": null,
+            "valid_resamples": 0
+          },
+          "average_precision": {
+            "lower": null,
+            "upper": null,
+            "valid_resamples": 0
+          },
+          "brier": {
+            "lower": 0.06131519274376418,
+            "upper": 0.06131519274376418,
+            "valid_resamples": 200
+          },
+          "interpretation": "Descriptive resampling intervals on tuning data; selection optimism is not corrected and coverage is not guaranteed."
+        },
+        "probability_semantics": "raw",
+        "split_role": "tuning"
+      },
+      "test_metrics": {
+        "regression": {
+          "mae": 351.1875,
+          "rmse": 419.22938977366556,
+          "r2": -0.0496253725399769
+        },
+        "classification": {
+          "auroc": 0.5,
+          "average_precision": 0.09375,
+          "brier": 0.10863662131519275
+        },
+        "calibration": {
+          "method": "10 equal-width reliability bins; probabilities are not post-hoc calibrated",
+          "bins": [
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "count": 64,
+              "mean_probability": 0.24761904761904763,
+              "observed_fraction": 0.09375
+            }
+          ],
+          "expected_calibration_error": 0.15386904761904763
+        },
+        "n": 64,
+        "positive_count": 6,
+        "confidence_intervals": {
+          "method": "paired trial bootstrap percentile",
+          "level": 0.95,
+          "requested_resamples": 200,
+          "random_seed": 42,
+          "mae": {
+            "lower": 292.7296875,
+            "upper": 405.863671875,
+            "valid_resamples": 200
+          },
+          "rmse": {
+            "lower": 353.02137379835847,
+            "upper": 481.83009082920347,
+            "valid_resamples": 200
+          },
+          "r2": {
+            "lower": -0.22468143297587972,
+            "upper": -8.853341383815975e-05,
+            "valid_resamples": 200
+          },
+          "auroc": {
+            "lower": 0.5,
+            "upper": 0.5,
+            "valid_resamples": 200
+          },
+          "average_precision": {
+            "lower": 0.03125,
+            "upper": 0.15625,
+            "valid_resamples": 200
+          },
+          "brier": {
+            "lower": 0.0770890022675737,
+            "upper": 0.1401842403628118,
+            "valid_resamples": 200
+          },
+          "interpretation": "Conditional on the fitted model and independent-trial resampling; excludes model-fitting uncertainty."
+        },
+        "probability_semantics": "raw",
+        "split_role": "test",
+        "comparison_to_baseline": {
+          "reference_model": "median_baseline",
+          "n": 64,
+          "method": "paired trial bootstrap percentile of model-minus-baseline loss",
+          "level": 0.95,
+          "requested_resamples": 200,
+          "random_seed": 42,
+          "interpretation": "Negative differences favor the candidate. Conditional on fixed models and independent trials; excludes fitting uncertainty, clustering and multiple-comparison correction. Descriptive test evidence only; never model selection.",
+          "mae_delta": {
+            "estimate": 0.0,
+            "lower": 0.0,
+            "upper": 0.0,
+            "valid_resamples": 200
+          },
+          "brier_delta": {
+            "estimate": 0.0,
+            "lower": 0.0,
+            "upper": 0.0,
+            "valid_resamples": 200
+          }
+        },
+        "by_phase": [
+          {
+            "phase": "PHASE1",
+            "n": 22,
+            "positive_count": 1,
+            "regression": {
+              "mae": 335.27272727272725,
+              "rmse": 387.17402711536226,
+              "r2": -0.05675592346900071
+            },
+            "classification": {
+              "auroc": 0.5,
+              "average_precision": 0.045454545454545456,
+              "brier": 0.0842589156874871
+            },
+            "caution": "Exploratory held-out subgroup; registry phase labels do not establish clinical validity. Fewer than 30 trials: estimates may be unstable."
+          },
+          {
+            "phase": "PHASE1/PHASE2",
+            "n": 3,
+            "positive_count": 1,
+            "regression": {
+              "mae": 522.6666666666666,
+              "rmse": 600.8421867123957,
+              "r2": -0.8153050723026332
+            },
+            "classification": {
+              "auroc": 0.5,
+              "average_precision": 0.3333333333333333,
+              "brier": 0.22956916099773242
+            },
+            "caution": "Exploratory held-out subgroup; registry phase labels do not establish clinical validity. Fewer than 30 trials: estimates may be unstable."
+          },
+          {
+            "phase": "PHASE2",
+            "n": 17,
+            "positive_count": 3,
+            "regression": {
+              "mae": 411.52941176470586,
+              "rmse": 472.9581501197605,
+              "r2": -0.5368274271351661
+            },
+            "classification": {
+              "auroc": 0.5,
+              "average_precision": 0.17647058823529413,
+              "brier": 0.150390822995865
+            },
+            "caution": "Exploratory held-out subgroup; registry phase labels do not establish clinical validity. Fewer than 30 trials: estimates may be unstable."
+          },
+          {
+            "phase": "PHASE2/PHASE3",
+            "n": 2,
+            "positive_count": 0,
+            "regression": {
+              "mae": 328.0,
+              "rmse": 346.27301367562563,
+              "r2": -8.73175878581284
+            },
+            "classification": {
+              "auroc": null,
+              "average_precision": null,
+              "brier": 0.06131519274376418
+            },
+            "caution": "Exploratory held-out subgroup; registry phase labels do not establish clinical validity. Fewer than 30 trials: estimates may be unstable. Only one risk class is present; AUROC and average precision are undefined."
+          },
+          {
+            "phase": "PHASE3",
+            "n": 8,
+            "positive_count": 0,
+            "regression": {
+              "mae": 233.875,
+              "rmse": 288.6561535806919,
+              "r2": -0.06463752011181767
+            },
+            "classification": {
+              "auroc": null,
+              "average_precision": null,
+              "brier": 0.06131519274376418
+            },
+            "caution": "Exploratory held-out subgroup; registry phase labels do not establish clinical validity. Fewer than 30 trials: estimates may be unstable. Only one risk class is present; AUROC and average precision are undefined."
+          },
+          {
+            "phase": "PHASE4",
+            "n": 12,
+            "positive_count": 1,
+            "regression": {
+              "mae": 334.0833333333333,
+              "rmse": 424.08578141692044,
+              "r2": -0.015214724243829414
+            },
+            "classification": {
+              "auroc": 0.5,
+              "average_precision": 0.08333333333333333,
+              "brier": 0.1033786848072562
+            },
+            "caution": "Exploratory held-out subgroup; registry phase labels do not establish clinical validity. Fewer than 30 trials: estimates may be unstable."
+          }
+        ],
+        "duration_uncertainty": {
+          "n": 64,
+          "covered_count": 48,
+          "observed_coverage": 0.75,
+          "mean_interval_width_days": 890.0,
+          "interpretation": "Descriptive observed held-out coverage; does not guarantee future coverage. Infinite intervals trivially cover every finite outcome."
+        }
+      },
+      "selection": {
+        "objective": "duration MAE",
+        "data": "validation only",
+        "rule": "Minimum finite validation duration MAE; stable first candidate wins ties"
+      },
+      "features": {
+        "numeric": [
+          "enrollment",
+          "number_of_arms",
+          "primary_outcomes",
+          "secondary_outcomes",
+          "criteria_count"
+        ],
+        "categorical": [
+          "study_type",
+          "phase"
+        ],
+        "text": [
+          "title",
+          "brief_summary",
+          "detailed_description",
+          "eligibility_criteria"
+        ],
+        "excluded": [
+          "nct_id",
+          "status",
+          "start_date",
+          "completion_date",
+          "duration_days",
+          "prolonged"
+        ]
+      },
+      "approval_scope": "research_only",
+      "approval": {
+        "scope": "research_only",
+        "approved_by": "v5 release validation",
+        "approved_at": "2026-10-09T05:08:50.331923+00:00",
+        "notes": "Authentic 800-record ClinicalTrials.gov starter; completed-only retrospective registry snapshot, not prospective or clinical validation. Software release approval only."
+      },
+      "gates": {
+        "passed": true,
+        "errors": []
+      },
+      "warnings": [
+        "Research approval only; not clinical, regulatory or prospective validation.",
+        "Research decision support only. Completed-only cohort creates follow-up/selection bias; minimum sample guard is not evidence of scientific validity. RETROSPECTIVE SNAPSHOT: baseline feature availability is unverified; post-start registry updates and narrative text may leak outcome information. Do not claim prospective validation."
+      ]
+    },
+    {
+      "id": "bundled-phase-v5",
+      "name": "Bundled phase research model",
+      "task": "phase",
+      "branch": "phase_logistic",
+      "status": "approved",
+      "active": true,
+      "artifact_version": 1,
+      "run_id": "e49e7317-6752-4f04-a7ad-8ff002ac8d7f",
+      "artifact_sha256": "aedb5f59e159e378acd91aa5a59526b53671f6f6bdf20c8c83ce66760abe1ac9",
+      "manifest_sha256": "06fd5b8d57094811400fe5933943c3128aa2a3ee7ea915c93296e26ce810e8da",
+      "training_dataset": {
+        "id": null,
+        "name": "ClinicalTrials.gov completed drug-trial starter cohort",
+        "sha256": "d096795e303b5a103e0aba8bd79ffe7e85609827ea810d1c08e8e0811b5496d2",
+        "row_count": 800
+      },
+      "validation_metrics": {
+        "n": 57,
+        "accuracy": 0.5964912280701754,
+        "balanced_accuracy": 0.5384615384615384,
+        "macro_f1": 0.5364630467571644,
+        "labels": [
+          "EARLY_PHASE1",
+          "PHASE1",
+          "PHASE2",
+          "PHASE3",
+          "PHASE4"
+        ],
+        "confusion_matrix": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            20,
+            6,
+            0,
+            0
+          ],
+          [
+            0,
+            3,
+            6,
+            2,
+            1
+          ],
+          [
+            0,
+            2,
+            3,
+            5,
+            3
+          ],
+          [
+            0,
+            0,
+            3,
+            0,
+            3
+          ]
+        ],
+        "class_support": {
+          "EARLY_PHASE1": 0,
+          "PHASE1": 26,
+          "PHASE2": 12,
+          "PHASE3": 13,
+          "PHASE4": 6
+        },
+        "macro_f1_labels": [
+          "PHASE1",
+          "PHASE2",
+          "PHASE3",
+          "PHASE4"
+        ],
+        "unseen_training_labels": []
+      },
+      "test_metrics": {
+        "n": 59,
+        "accuracy": 0.559322033898305,
+        "balanced_accuracy": 0.4817847593582888,
+        "macro_f1": 0.4752371541501976,
+        "labels": [
+          "EARLY_PHASE1",
+          "PHASE1",
+          "PHASE2",
+          "PHASE3",
+          "PHASE4"
+        ],
+        "confusion_matrix": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            17,
+            4,
+            0,
+            1
+          ],
+          [
+            0,
+            5,
+            9,
+            1,
+            2
+          ],
+          [
+            0,
+            1,
+            2,
+            1,
+            4
+          ],
+          [
+            0,
+            1,
+            4,
+            1,
+            6
+          ]
+        ],
+        "class_support": {
+          "EARLY_PHASE1": 0,
+          "PHASE1": 22,
+          "PHASE2": 17,
+          "PHASE3": 8,
+          "PHASE4": 12
+        },
+        "macro_f1_labels": [
+          "PHASE1",
+          "PHASE2",
+          "PHASE3",
+          "PHASE4"
+        ],
+        "unseen_training_labels": []
+      },
+      "selection": {
+        "objective": "phase classification",
+        "data": "validation only",
+        "rule": "Recorded validation-selected phase classifier"
+      },
+      "features": {
+        "numeric": [
+          "enrollment",
+          "number_of_arms",
+          "primary_outcomes",
+          "secondary_outcomes",
+          "criteria_count"
+        ],
+        "text": [
+          "title",
+          "brief_summary",
+          "detailed_description",
+          "eligibility_criteria"
+        ],
+        "redaction": "Explicit Arabic/Roman/word phase labels, early labels and combined mentions removed before TF-IDF.",
+        "excluded": [
+          "phase",
+          "reported_phase",
+          "nct_id",
+          "study_type",
+          "status",
+          "start_date",
+          "completion_date",
+          "completion_date_type",
+          "duration_days",
+          "prolonged"
+        ]
+      },
+      "approval_scope": "research_only",
+      "approval": {
+        "scope": "research_only",
+        "approved_by": "v5 release validation",
+        "approved_at": "2026-10-09T05:08:50.334244+00:00",
+        "notes": "Authentic 800-record ClinicalTrials.gov starter; completed-only retrospective registry snapshot, not prospective or clinical validation. Software release approval only."
+      },
+      "gates": {
+        "passed": true,
+        "errors": []
+      },
+      "warnings": [
+        "Research approval only; not clinical, regulatory or prospective validation.",
+        "Educational registry-phase consistency check only; not clinical advice or regulatory phase assignment. Class probabilities are uncalibrated model outputs, not clinical success probabilities. Minimum sample guards do not establish scientific validity. RETROSPECTIVE SNAPSHOT: baseline feature and label availability is unverified; registry updates and indirect narrative cues may cause leakage. Do not claim prospective validation.",
+        "Phase consistency classification is not trial success or progression probability."
+      ]
+    }
+  ],
+  "active": {
+    "duration": "bundled-duration-v5",
+    "phase": "bundled-phase-v5"
+  },
+  "batch": {
+    "id": "c6eebf1eba57433da86adcb5ea717919",
+    "created_at": "2026-10-09T15:28:51.814004+00:00",
+    "mode": "retrospective",
+    "model": {
+      "id": "bundled-duration-v5",
+      "name": "Bundled duration research model",
+      "task": "duration",
+      "branch": "median_baseline",
+      "status": "approved",
+      "active": false,
+      "artifact_version": 3,
+      "run_id": "e608f4ac-bf38-4172-a4b8-aa1be5987501",
+      "artifact_sha256": "22ceddccf48f932cd92780b35a9575e67759c62fb02f0e579a3fdc4c7ae665f5",
+      "manifest_sha256": "72c93ffcb6c43aa9cdbbe6a401957aa2a3177196f08a65a4609a19b6c2ab8bec",
+      "training_dataset": {
+        "id": null,
+        "name": "ClinicalTrials.gov completed drug-trial starter cohort",
+        "sha256": "d096795e303b5a103e0aba8bd79ffe7e85609827ea810d1c08e8e0811b5496d2",
+        "row_count": 800
+      },
+      "validation_metrics": {
+        "regression": {
+          "mae": 263.22222222222223,
+          "rmse": 288.7676882509153,
+          "r2": -4.913603778078181
+        },
+        "classification": {
+          "auroc": null,
+          "average_precision": null,
+          "brier": 0.06131519274376418
+        },
+        "calibration": {
+          "method": "10 equal-width reliability bins; probabilities are not post-hoc calibrated",
+          "bins": [
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "count": 9,
+              "mean_probability": 0.24761904761904763,
+              "observed_fraction": 0.0
+            }
+          ],
+          "expected_calibration_error": 0.24761904761904763
+        },
+        "n": 9,
+        "positive_count": 0,
+        "confidence_intervals": {
+          "method": "paired trial bootstrap percentile",
+          "level": 0.95,
+          "requested_resamples": 200,
+          "random_seed": 42,
+          "mae": {
+            "lower": 193.64166666666665,
+            "upper": 340.55833333333334,
+            "valid_resamples": 200
+          },
+          "rmse": {
+            "lower": 214.20114916652707,
+            "upper": 355.27120152232817,
+            "valid_resamples": 200
+          },
+          "r2": {
+            "lower": -22.856580312122542,
+            "upper": -2.923101551720517,
+            "valid_resamples": 200
+          },
+          "auroc": {
+            "lower": null,
+            "upper": null,
+            "valid_resamples": 0
+          },
+          "average_precision": {
+            "lower": null,
+            "upper": null,
+            "valid_resamples": 0
+          },
+          "brier": {
+            "lower": 0.06131519274376418,
+            "upper": 0.06131519274376418,
+            "valid_resamples": 200
+          },
+          "interpretation": "Descriptive resampling intervals on tuning data; selection optimism is not corrected and coverage is not guaranteed."
+        },
+        "probability_semantics": "raw",
+        "split_role": "tuning"
+      },
+      "test_metrics": {
+        "regression": {
+          "mae": 351.1875,
+          "rmse": 419.22938977366556,
+          "r2": -0.0496253725399769
+        },
+        "classification": {
+          "auroc": 0.5,
+          "average_precision": 0.09375,
+          "brier": 0.10863662131519275
+        },
+        "calibration": {
+          "method": "10 equal-width reliability bins; probabilities are not post-hoc calibrated",
+          "bins": [
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "count": 64,
+              "mean_probability": 0.24761904761904763,
+              "observed_fraction": 0.09375
+            }
+          ],
+          "expected_calibration_error": 0.15386904761904763
+        },
+        "n": 64,
+        "positive_count": 6,
+        "confidence_intervals": {
+          "method": "paired trial bootstrap percentile",
+          "level": 0.95,
+          "requested_resamples": 200,
+          "random_seed": 42,
+          "mae": {
+            "lower": 292.7296875,
+            "upper": 405.863671875,
+            "valid_resamples": 200
+          },
+          "rmse": {
+            "lower": 353.02137379835847,
+            "upper": 481.83009082920347,
+            "valid_resamples": 200
+          },
+          "r2": {
+            "lower": -0.22468143297587972,
+            "upper": -8.853341383815975e-05,
+            "valid_resamples": 200
+          },
+          "auroc": {
+            "lower": 0.5,
+            "upper": 0.5,
+            "valid_resamples": 200
+          },
+          "average_precision": {
+            "lower": 0.03125,
+            "upper": 0.15625,
+            "valid_resamples": 200
+          },
+          "brier": {
+            "lower": 0.0770890022675737,
+            "upper": 0.1401842403628118,
+            "valid_resamples": 200
+          },
+          "interpretation": "Conditional on the fitted model and independent-trial resampling; excludes model-fitting uncertainty."
+        },
+        "probability_semantics": "raw",
+        "split_role": "test",
+        "comparison_to_baseline": {
+          "reference_model": "median_baseline",
+          "n": 64,
+          "method": "paired trial bootstrap percentile of model-minus-baseline loss",
+          "level": 0.95,
+          "requested_resamples": 200,
+          "random_seed": 42,
+          "interpretation": "Negative differences favor the candidate. Conditional on fixed models and independent trials; excludes fitting uncertainty, clustering and multiple-comparison correction. Descriptive test evidence only; never model selection.",
+          "mae_delta": {
+            "estimate": 0.0,
+            "lower": 0.0,
+            "upper": 0.0,
+            "valid_resamples": 200
+          },
+          "brier_delta": {
+            "estimate": 0.0,
+            "lower": 0.0,
+            "upper": 0.0,
+            "valid_resamples": 200
+          }
+        },
+        "by_phase": [
+          {
+            "phase": "PHASE1",
+            "n": 22,
+            "positive_count": 1,
+            "regression": {
+              "mae": 335.27272727272725,
+              "rmse": 387.17402711536226,
+              "r2": -0.05675592346900071
+            },
+            "classification": {
+              "auroc": 0.5,
+              "average_precision": 0.045454545454545456,
+              "brier": 0.0842589156874871
+            },
+            "caution": "Exploratory held-out subgroup; registry phase labels do not establish clinical validity. Fewer than 30 trials: estimates may be unstable."
+          },
+          {
+            "phase": "PHASE1/PHASE2",
+            "n": 3,
+            "positive_count": 1,
+            "regression": {
+              "mae": 522.6666666666666,
+              "rmse": 600.8421867123957,
+              "r2": -0.8153050723026332
+            },
+            "classification": {
+              "auroc": 0.5,
+              "average_precision": 0.3333333333333333,
+              "brier": 0.22956916099773242
+            },
+            "caution": "Exploratory held-out subgroup; registry phase labels do not establish clinical validity. Fewer than 30 trials: estimates may be unstable."
+          },
+          {
+            "phase": "PHASE2",
+            "n": 17,
+            "positive_count": 3,
+            "regression": {
+              "mae": 411.52941176470586,
+              "rmse": 472.9581501197605,
+              "r2": -0.5368274271351661
+            },
+            "classification": {
+              "auroc": 0.5,
+              "average_precision": 0.17647058823529413,
+              "brier": 0.150390822995865
+            },
+            "caution": "Exploratory held-out subgroup; registry phase labels do not establish clinical validity. Fewer than 30 trials: estimates may be unstable."
+          },
+          {
+            "phase": "PHASE2/PHASE3",
+            "n": 2,
+            "positive_count": 0,
+            "regression": {
+              "mae": 328.0,
+              "rmse": 346.27301367562563,
+              "r2": -8.73175878581284
+            },
+            "classification": {
+              "auroc": null,
+              "average_precision": null,
+              "brier": 0.06131519274376418
+            },
+            "caution": "Exploratory held-out subgroup; registry phase labels do not establish clinical validity. Fewer than 30 trials: estimates may be unstable. Only one risk class is present; AUROC and average precision are undefined."
+          },
+          {
+            "phase": "PHASE3",
+            "n": 8,
+            "positive_count": 0,
+            "regression": {
+              "mae": 233.875,
+              "rmse": 288.6561535806919,
+              "r2": -0.06463752011181767
+            },
+            "classification": {
+              "auroc": null,
+              "average_precision": null,
+              "brier": 0.06131519274376418
+            },
+            "caution": "Exploratory held-out subgroup; registry phase labels do not establish clinical validity. Fewer than 30 trials: estimates may be unstable. Only one risk class is present; AUROC and average precision are undefined."
+          },
+          {
+            "phase": "PHASE4",
+            "n": 12,
+            "positive_count": 1,
+            "regression": {
+              "mae": 334.0833333333333,
+              "rmse": 424.08578141692044,
+              "r2": -0.015214724243829414
+            },
+            "classification": {
+              "auroc": 0.5,
+              "average_precision": 0.08333333333333333,
+              "brier": 0.1033786848072562
+            },
+            "caution": "Exploratory held-out subgroup; registry phase labels do not establish clinical validity. Fewer than 30 trials: estimates may be unstable."
+          }
+        ],
+        "duration_uncertainty": {
+          "n": 64,
+          "covered_count": 48,
+          "observed_coverage": 0.75,
+          "mean_interval_width_days": 890.0,
+          "interpretation": "Descriptive observed held-out coverage; does not guarantee future coverage. Infinite intervals trivially cover every finite outcome."
+        }
+      },
+      "selection": {
+        "objective": "duration MAE",
+        "data": "validation only",
+        "rule": "Minimum finite validation duration MAE; stable first candidate wins ties"
+      },
+      "features": {
+        "numeric": [
+          "enrollment",
+          "number_of_arms",
+          "primary_outcomes",
+          "secondary_outcomes",
+          "criteria_count"
+        ],
+        "categorical": [
+          "study_type",
+          "phase"
+        ],
+        "text": [
+          "title",
+          "brief_summary",
+          "detailed_description",
+          "eligibility_criteria"
+        ],
+        "excluded": [
+          "nct_id",
+          "status",
+          "start_date",
+          "completion_date",
+          "duration_days",
+          "prolonged"
+        ]
+      },
+      "approval_scope": "research_only",
+      "approval": {
+        "scope": "research_only",
+        "approved_by": "v5 release validation",
+        "approved_at": "2026-10-09T05:08:50.331923+00:00",
+        "notes": "Authentic 800-record ClinicalTrials.gov starter; completed-only retrospective registry snapshot, not prospective or clinical validation. Software release approval only."
+      },
+      "gates": {
+        "passed": true,
+        "errors": []
+      },
+      "warnings": [
+        "Research approval only; not clinical, regulatory or prospective validation.",
+        "Research decision support only. Completed-only cohort creates follow-up/selection bias; minimum sample guard is not evidence of scientific validity. RETROSPECTIVE SNAPSHOT: baseline feature availability is unverified; post-start registry updates and narrative text may leak outcome information. Do not claim prospective validation."
+      ]
+    },
+    "dataset": {
+      "id": "efe6d4b744814c2a8d75ee0b1eaa5a92",
+      "name": "Frozen ClinicalTrials.gov held-out research records",
+      "sha256": "f6673f690f94bd7c59ac7aad151e3357b2e692dead9da1887cbc16c8d1d17b49",
+      "row_count": 3
+    },
+    "items": [
+      {
+        "nct_id": "NCT04814381",
+        "status": "available",
+        "prediction": {
+          "status": "available",
+          "run_id": "e608f4ac-bf38-4172-a4b8-aa1be5987501",
+          "model_name": "median_baseline",
+          "probability": 0.24761904761904763,
+          "raw_probability": 0.24761904761904763,
+          "calibrated_probability": null,
+          "probability_semantics": "raw",
+          "uncertainty": {
+            "status": "available",
+            "method": "split conformal absolute duration residuals",
+            "split": "calibration",
+            "n": 11,
+            "alpha": 0.1,
+            "nominal_coverage": 0.9,
+            "rank": 11,
+            "residual_quantile_days": 445.0,
+            "bounded": true,
+            "interpretation": "Nominal marginal coverage relies on exchangeability; chronological distribution shift can invalidate it. Calibration is not test evidence.",
+            "test_diagnostics": {
+              "n": 64,
+              "covered_count": 48,
+              "observed_coverage": 0.75,
+              "mean_interval_width_days": 890.0,
+              "interpretation": "Descriptive observed held-out coverage; does not guarantee future coverage. Infinite intervals trivially cover every finite outcome."
+            },
+            "lower_days": 37.0,
+            "upper_days": 927.0,
+            "prediction_scope": "Held-out test estimate; the source-provenance and completed-only cohort limitations still apply."
+          },
+          "calibration": {
+            "status": "unavailable",
+            "n": 11,
+            "class_counts": {
+              "0": 11,
+              "1": 0
+            },
+            "method": "sigmoid calibration of clipped raw-probability logit",
+            "split": "calibration",
+            "minimum_rows": 10,
+            "minimum_per_class": 2,
+            "clip_epsilon": 1e-06,
+            "regularization_C": 1.0,
+            "reason": "Requires at least 10 reserved calibration rows and at least two labels of each class; raw probabilities remain available."
+          },
+          "extrapolation": {
+            "outside_training_support": false,
+            "numeric_out_of_range": [],
+            "unseen_categories": [],
+            "numeric_tail_features": [],
+            "text_length": {
+              "minimum": 522,
+              "maximum": 17571,
+              "lower_quantile": 591.16,
+              "upper_quantile": 12182.399999999998,
+              "unit": "characters",
+              "value": 2717,
+              "outside_observed_range": false,
+              "outside_central_range": false
+            },
+            "distribution_warning": false,
+            "missing_numeric_features": [
+              "criteria_count"
+            ],
+            "method": "Training-only observed numeric ranges, central 98% marginal ranges, text lengths and categorical levels",
+            "interpretation": "Descriptive marginal distribution warnings, not an OOD probability or a validity guarantee. Central 98% cutoffs are heuristic and not multiplicity-adjusted. In-range inputs may still differ from training; text length does not measure semantic novelty."
+          },
+          "duration_days": 482.0,
+          "predicted_duration_days": 482.0,
+          "prolonged_threshold_days": 1101.0,
+          "cohort_membership": "test",
+          "prediction_scope": "Held-out test estimate; the source-provenance and completed-only cohort limitations still apply.",
+          "explanation": {
+            "method": "constant training baseline",
+            "units": "log-odds",
+            "features": [],
+            "note": "No feature-specific attribution is defined for this constant predictor.",
+            "scope": "global"
+          },
+          "duration_explanation": {
+            "method": "constant training baseline",
+            "units": "days (before nonnegative clipping)",
+            "features": [],
+            "note": "No feature-specific attribution is defined for this constant predictor.",
+            "scope": "global"
+          },
+          "pci": {
+            "score": 14.111913035999102,
+            "components": {
+              "enrollment": 0.016520021547854192,
+              "number_of_arms": 0.07142857142857142,
+              "primary_outcomes": 0.0,
+              "secondary_outcomes": 0.6176470588235294,
+              "criteria_count": 0.0
+            },
+            "method": "equal-weight training-fitted min-max complexity index"
+          },
+          "warning": "Research decision support only. Completed-only cohort creates follow-up/selection bias; minimum sample guard is not evidence of scientific validity. RETROSPECTIVE SNAPSHOT: baseline feature availability is unverified; post-start registry updates and narrative text may leak outcome information. Do not claim prospective validation."
+        },
+        "availability_warnings": [
+          "Retrospective snapshot: baseline feature availability is unverified; post-start registry updates can leak outcomes.",
+          "Missing feature values use saved training imputers: criteria_count."
+        ]
+      },
+      {
+        "nct_id": "NCT04922554",
+        "status": "available",
+        "prediction": {
+          "status": "available",
+          "run_id": "e608f4ac-bf38-4172-a4b8-aa1be5987501",
+          "model_name": "median_baseline",
+          "probability": 0.24761904761904763,
+          "raw_probability": 0.24761904761904763,
+          "calibrated_probability": null,
+          "probability_semantics": "raw",
+          "uncertainty": {
+            "status": "available",
+            "method": "split conformal absolute duration residuals",
+            "split": "calibration",
+            "n": 11,
+            "alpha": 0.1,
+            "nominal_coverage": 0.9,
+            "rank": 11,
+            "residual_quantile_days": 445.0,
+            "bounded": true,
+            "interpretation": "Nominal marginal coverage relies on exchangeability; chronological distribution shift can invalidate it. Calibration is not test evidence.",
+            "test_diagnostics": {
+              "n": 64,
+              "covered_count": 48,
+              "observed_coverage": 0.75,
+              "mean_interval_width_days": 890.0,
+              "interpretation": "Descriptive observed held-out coverage; does not guarantee future coverage. Infinite intervals trivially cover every finite outcome."
+            },
+            "lower_days": 37.0,
+            "upper_days": 927.0,
+            "prediction_scope": "Held-out test estimate; the source-provenance and completed-only cohort limitations still apply."
+          },
+          "calibration": {
+            "status": "unavailable",
+            "n": 11,
+            "class_counts": {
+              "0": 11,
+              "1": 0
+            },
+            "method": "sigmoid calibration of clipped raw-probability logit",
+            "split": "calibration",
+            "minimum_rows": 10,
+            "minimum_per_class": 2,
+            "clip_epsilon": 1e-06,
+            "regularization_C": 1.0,
+            "reason": "Requires at least 10 reserved calibration rows and at least two labels of each class; raw probabilities remain available."
+          },
+          "extrapolation": {
+            "outside_training_support": false,
+            "numeric_out_of_range": [],
+            "unseen_categories": [],
+            "numeric_tail_features": [],
+            "text_length": {
+              "minimum": 522,
+              "maximum": 17571,
+              "lower_quantile": 591.16,
+              "upper_quantile": 12182.399999999998,
+              "unit": "characters",
+              "value": 2785,
+              "outside_observed_range": false,
+              "outside_central_range": false
+            },
+            "distribution_warning": false,
+            "missing_numeric_features": [
+              "criteria_count"
+            ],
+            "method": "Training-only observed numeric ranges, central 98% marginal ranges, text lengths and categorical levels",
+            "interpretation": "Descriptive marginal distribution warnings, not an OOD probability or a validity guarantee. Central 98% cutoffs are heuristic and not multiplicity-adjusted. In-range inputs may still differ from training; text length does not measure semantic novelty."
+          },
+          "duration_days": 482.0,
+          "predicted_duration_days": 482.0,
+          "prolonged_threshold_days": 1101.0,
+          "cohort_membership": "test",
+          "prediction_scope": "Held-out test estimate; the source-provenance and completed-only cohort limitations still apply.",
+          "explanation": {
+            "method": "constant training baseline",
+            "units": "log-odds",
+            "features": [],
+            "note": "No feature-specific attribution is defined for this constant predictor.",
+            "scope": "global"
+          },
+          "duration_explanation": {
+            "method": "constant training baseline",
+            "units": "days (before nonnegative clipping)",
+            "features": [],
+            "note": "No feature-specific attribution is defined for this constant predictor.",
+            "scope": "global"
+          },
+          "pci": {
+            "score": 13.9404875283189,
+            "components": {
+              "enrollment": 0.011671754354462202,
+              "number_of_arms": 0.07142857142857142,
+              "primary_outcomes": 0.11392405063291139,
+              "secondary_outcomes": 0.5,
+              "criteria_count": 0.0
+            },
+            "method": "equal-weight training-fitted min-max complexity index"
+          },
+          "warning": "Research decision support only. Completed-only cohort creates follow-up/selection bias; minimum sample guard is not evidence of scientific validity. RETROSPECTIVE SNAPSHOT: baseline feature availability is unverified; post-start registry updates and narrative text may leak outcome information. Do not claim prospective validation."
+        },
+        "availability_warnings": [
+          "Retrospective snapshot: baseline feature availability is unverified; post-start registry updates can leak outcomes.",
+          "Missing feature values use saved training imputers: criteria_count."
+        ]
+      },
+      {
+        "nct_id": "NCT04727970",
+        "status": "available",
+        "prediction": {
+          "status": "available",
+          "run_id": "e608f4ac-bf38-4172-a4b8-aa1be5987501",
+          "model_name": "median_baseline",
+          "probability": 0.24761904761904763,
+          "raw_probability": 0.24761904761904763,
+          "calibrated_probability": null,
+          "probability_semantics": "raw",
+          "uncertainty": {
+            "status": "available",
+            "method": "split conformal absolute duration residuals",
+            "split": "calibration",
+            "n": 11,
+            "alpha": 0.1,
+            "nominal_coverage": 0.9,
+            "rank": 11,
+            "residual_quantile_days": 445.0,
+            "bounded": true,
+            "interpretation": "Nominal marginal coverage relies on exchangeability; chronological distribution shift can invalidate it. Calibration is not test evidence.",
+            "test_diagnostics": {
+              "n": 64,
+              "covered_count": 48,
+              "observed_coverage": 0.75,
+              "mean_interval_width_days": 890.0,
+              "interpretation": "Descriptive observed held-out coverage; does not guarantee future coverage. Infinite intervals trivially cover every finite outcome."
+            },
+            "lower_days": 37.0,
+            "upper_days": 927.0,
+            "prediction_scope": "Held-out test estimate; the source-provenance and completed-only cohort limitations still apply."
+          },
+          "calibration": {
+            "status": "unavailable",
+            "n": 11,
+            "class_counts": {
+              "0": 11,
+              "1": 0
+            },
+            "method": "sigmoid calibration of clipped raw-probability logit",
+            "split": "calibration",
+            "minimum_rows": 10,
+            "minimum_per_class": 2,
+            "clip_epsilon": 1e-06,
+            "regularization_C": 1.0,
+            "reason": "Requires at least 10 reserved calibration rows and at least two labels of each class; raw probabilities remain available."
+          },
+          "extrapolation": {
+            "outside_training_support": false,
+            "numeric_out_of_range": [],
+            "unseen_categories": [],
+            "numeric_tail_features": [],
+            "text_length": {
+              "minimum": 522,
+              "maximum": 17571,
+              "lower_quantile": 591.16,
+              "upper_quantile": 12182.399999999998,
+              "unit": "characters",
+              "value": 2388,
+              "outside_observed_range": false,
+              "outside_central_range": false
+            },
+            "distribution_warning": false,
+            "missing_numeric_features": [
+              "criteria_count"
+            ],
+            "method": "Training-only observed numeric ranges, central 98% marginal ranges, text lengths and categorical levels",
+            "interpretation": "Descriptive marginal distribution warnings, not an OOD probability or a validity guarantee. Central 98% cutoffs are heuristic and not multiplicity-adjusted. In-range inputs may still differ from training; text length does not measure semantic novelty."
+          },
+          "duration_days": 482.0,
+          "predicted_duration_days": 482.0,
+          "prolonged_threshold_days": 1101.0,
+          "cohort_membership": "test",
+          "prediction_scope": "Held-out test estimate; the source-provenance and completed-only cohort limitations still apply.",
+          "explanation": {
+            "method": "constant training baseline",
+            "units": "log-odds",
+            "features": [],
+            "note": "No feature-specific attribution is defined for this constant predictor.",
+            "scope": "global"
+          },
+          "duration_explanation": {
+            "method": "constant training baseline",
+            "units": "days (before nonnegative clipping)",
+            "features": [],
+            "note": "No feature-specific attribution is defined for this constant predictor.",
+            "scope": "global"
+          },
+          "pci": {
+            "score": 1.7079388653843404,
+            "components": {
+              "enrollment": 0.0012569581612497755,
+              "number_of_arms": 0.0,
+              "primary_outcomes": 0.02531645569620253,
+              "secondary_outcomes": 0.058823529411764705,
+              "criteria_count": 0.0
+            },
+            "method": "equal-weight training-fitted min-max complexity index"
+          },
+          "warning": "Research decision support only. Completed-only cohort creates follow-up/selection bias; minimum sample guard is not evidence of scientific validity. RETROSPECTIVE SNAPSHOT: baseline feature availability is unverified; post-start registry updates and narrative text may leak outcome information. Do not claim prospective validation."
+        },
+        "availability_warnings": [
+          "Retrospective snapshot: baseline feature availability is unverified; post-start registry updates can leak outcomes.",
+          "Missing feature values use saved training imputers: criteria_count, detailed_description."
+        ]
+      }
+    ],
+    "warnings": [
+      "Research approval only; not clinical, regulatory or prospective validation.",
+      "Retrospective snapshot: baseline feature availability is unverified; post-start registry updates can leak outcomes."
+    ],
+    "summary": {
+      "requested": 3,
+      "available": 3,
+      "blocked": 0,
+      "unavailable": 0
+    }
+  },
+  "batches": {
+    "duration": {
+      "id": "c6eebf1eba57433da86adcb5ea717919",
+      "created_at": "2026-10-09T15:28:51.814004+00:00",
+      "mode": "retrospective",
+      "model": {
+        "id": "bundled-duration-v5",
+        "name": "Bundled duration research model",
+        "task": "duration",
+        "branch": "median_baseline",
+        "status": "approved",
+        "active": false,
+        "artifact_version": 3,
+        "run_id": "e608f4ac-bf38-4172-a4b8-aa1be5987501",
+        "artifact_sha256": "22ceddccf48f932cd92780b35a9575e67759c62fb02f0e579a3fdc4c7ae665f5",
+        "manifest_sha256": "72c93ffcb6c43aa9cdbbe6a401957aa2a3177196f08a65a4609a19b6c2ab8bec",
+        "training_dataset": {
+          "id": null,
+          "name": "ClinicalTrials.gov completed drug-trial starter cohort",
+          "sha256": "d096795e303b5a103e0aba8bd79ffe7e85609827ea810d1c08e8e0811b5496d2",
+          "row_count": 800
+        },
+        "validation_metrics": {
+          "regression": {
+            "mae": 263.22222222222223,
+            "rmse": 288.7676882509153,
+            "r2": -4.913603778078181
+          },
+          "classification": {
+            "auroc": null,
+            "average_precision": null,
+            "brier": 0.06131519274376418
+          },
+          "calibration": {
+            "method": "10 equal-width reliability bins; probabilities are not post-hoc calibrated",
+            "bins": [
+              {
+                "lower": 0.2,
+                "upper": 0.3,
+                "count": 9,
+                "mean_probability": 0.24761904761904763,
+                "observed_fraction": 0.0
+              }
+            ],
+            "expected_calibration_error": 0.24761904761904763
+          },
+          "n": 9,
+          "positive_count": 0,
+          "confidence_intervals": {
+            "method": "paired trial bootstrap percentile",
+            "level": 0.95,
+            "requested_resamples": 200,
+            "random_seed": 42,
+            "mae": {
+              "lower": 193.64166666666665,
+              "upper": 340.55833333333334,
+              "valid_resamples": 200
+            },
+            "rmse": {
+              "lower": 214.20114916652707,
+              "upper": 355.27120152232817,
+              "valid_resamples": 200
+            },
+            "r2": {
+              "lower": -22.856580312122542,
+              "upper": -2.923101551720517,
+              "valid_resamples": 200
+            },
+            "auroc": {
+              "lower": null,
+              "upper": null,
+              "valid_resamples": 0
+            },
+            "average_precision": {
+              "lower": null,
+              "upper": null,
+              "valid_resamples": 0
+            },
+            "brier": {
+              "lower": 0.06131519274376418,
+              "upper": 0.06131519274376418,
+              "valid_resamples": 200
+            },
+            "interpretation": "Descriptive resampling intervals on tuning data; selection optimism is not corrected and coverage is not guaranteed."
+          },
+          "probability_semantics": "raw",
+          "split_role": "tuning"
+        },
+        "test_metrics": {
+          "regression": {
+            "mae": 351.1875,
+            "rmse": 419.22938977366556,
+            "r2": -0.0496253725399769
+          },
+          "classification": {
+            "auroc": 0.5,
+            "average_precision": 0.09375,
+            "brier": 0.10863662131519275
+          },
+          "calibration": {
+            "method": "10 equal-width reliability bins; probabilities are not post-hoc calibrated",
+            "bins": [
+              {
+                "lower": 0.2,
+                "upper": 0.3,
+                "count": 64,
+                "mean_probability": 0.24761904761904763,
+                "observed_fraction": 0.09375
+              }
+            ],
+            "expected_calibration_error": 0.15386904761904763
+          },
+          "n": 64,
+          "positive_count": 6,
+          "confidence_intervals": {
+            "method": "paired trial bootstrap percentile",
+            "level": 0.95,
+            "requested_resamples": 200,
+            "random_seed": 42,
+            "mae": {
+              "lower": 292.7296875,
+              "upper": 405.863671875,
+              "valid_resamples": 200
+            },
+            "rmse": {
+              "lower": 353.02137379835847,
+              "upper": 481.83009082920347,
+              "valid_resamples": 200
+            },
+            "r2": {
+              "lower": -0.22468143297587972,
+              "upper": -8.853341383815975e-05,
+              "valid_resamples": 200
+            },
+            "auroc": {
+              "lower": 0.5,
+              "upper": 0.5,
+              "valid_resamples": 200
+            },
+            "average_precision": {
+              "lower": 0.03125,
+              "upper": 0.15625,
+              "valid_resamples": 200
+            },
+            "brier": {
+              "lower": 0.0770890022675737,
+              "upper": 0.1401842403628118,
+              "valid_resamples": 200
+            },
+            "interpretation": "Conditional on the fitted model and independent-trial resampling; excludes model-fitting uncertainty."
+          },
+          "probability_semantics": "raw",
+          "split_role": "test",
+          "comparison_to_baseline": {
+            "reference_model": "median_baseline",
+            "n": 64,
+            "method": "paired trial bootstrap percentile of model-minus-baseline loss",
+            "level": 0.95,
+            "requested_resamples": 200,
+            "random_seed": 42,
+            "interpretation": "Negative differences favor the candidate. Conditional on fixed models and independent trials; excludes fitting uncertainty, clustering and multiple-comparison correction. Descriptive test evidence only; never model selection.",
+            "mae_delta": {
+              "estimate": 0.0,
+              "lower": 0.0,
+              "upper": 0.0,
+              "valid_resamples": 200
+            },
+            "brier_delta": {
+              "estimate": 0.0,
+              "lower": 0.0,
+              "upper": 0.0,
+              "valid_resamples": 200
+            }
+          },
+          "by_phase": [
+            {
+              "phase": "PHASE1",
+              "n": 22,
+              "positive_count": 1,
+              "regression": {
+                "mae": 335.27272727272725,
+                "rmse": 387.17402711536226,
+                "r2": -0.05675592346900071
+              },
+              "classification": {
+                "auroc": 0.5,
+                "average_precision": 0.045454545454545456,
+                "brier": 0.0842589156874871
+              },
+              "caution": "Exploratory held-out subgroup; registry phase labels do not establish clinical validity. Fewer than 30 trials: estimates may be unstable."
+            },
+            {
+              "phase": "PHASE1/PHASE2",
+              "n": 3,
+              "positive_count": 1,
+              "regression": {
+                "mae": 522.6666666666666,
+                "rmse": 600.8421867123957,
+                "r2": -0.8153050723026332
+              },
+              "classification": {
+                "auroc": 0.5,
+                "average_precision": 0.3333333333333333,
+                "brier": 0.22956916099773242
+              },
+              "caution": "Exploratory held-out subgroup; registry phase labels do not establish clinical validity. Fewer than 30 trials: estimates may be unstable."
+            },
+            {
+              "phase": "PHASE2",
+              "n": 17,
+              "positive_count": 3,
+              "regression": {
+                "mae": 411.52941176470586,
+                "rmse": 472.9581501197605,
+                "r2": -0.5368274271351661
+              },
+              "classification": {
+                "auroc": 0.5,
+                "average_precision": 0.17647058823529413,
+                "brier": 0.150390822995865
+              },
+              "caution": "Exploratory held-out subgroup; registry phase labels do not establish clinical validity. Fewer than 30 trials: estimates may be unstable."
+            },
+            {
+              "phase": "PHASE2/PHASE3",
+              "n": 2,
+              "positive_count": 0,
+              "regression": {
+                "mae": 328.0,
+                "rmse": 346.27301367562563,
+                "r2": -8.73175878581284
+              },
+              "classification": {
+                "auroc": null,
+                "average_precision": null,
+                "brier": 0.06131519274376418
+              },
+              "caution": "Exploratory held-out subgroup; registry phase labels do not establish clinical validity. Fewer than 30 trials: estimates may be unstable. Only one risk class is present; AUROC and average precision are undefined."
+            },
+            {
+              "phase": "PHASE3",
+              "n": 8,
+              "positive_count": 0,
+              "regression": {
+                "mae": 233.875,
+                "rmse": 288.6561535806919,
+                "r2": -0.06463752011181767
+              },
+              "classification": {
+                "auroc": null,
+                "average_precision": null,
+                "brier": 0.06131519274376418
+              },
+              "caution": "Exploratory held-out subgroup; registry phase labels do not establish clinical validity. Fewer than 30 trials: estimates may be unstable. Only one risk class is present; AUROC and average precision are undefined."
+            },
+            {
+              "phase": "PHASE4",
+              "n": 12,
+              "positive_count": 1,
+              "regression": {
+                "mae": 334.0833333333333,
+                "rmse": 424.08578141692044,
+                "r2": -0.015214724243829414
+              },
+              "classification": {
+                "auroc": 0.5,
+                "average_precision": 0.08333333333333333,
+                "brier": 0.1033786848072562
+              },
+              "caution": "Exploratory held-out subgroup; registry phase labels do not establish clinical validity. Fewer than 30 trials: estimates may be unstable."
+            }
+          ],
+          "duration_uncertainty": {
+            "n": 64,
+            "covered_count": 48,
+            "observed_coverage": 0.75,
+            "mean_interval_width_days": 890.0,
+            "interpretation": "Descriptive observed held-out coverage; does not guarantee future coverage. Infinite intervals trivially cover every finite outcome."
+          }
+        },
+        "selection": {
+          "objective": "duration MAE",
+          "data": "validation only",
+          "rule": "Minimum finite validation duration MAE; stable first candidate wins ties"
+        },
+        "features": {
+          "numeric": [
+            "enrollment",
+            "number_of_arms",
+            "primary_outcomes",
+            "secondary_outcomes",
+            "criteria_count"
+          ],
+          "categorical": [
+            "study_type",
+            "phase"
+          ],
+          "text": [
+            "title",
+            "brief_summary",
+            "detailed_description",
+            "eligibility_criteria"
+          ],
+          "excluded": [
+            "nct_id",
+            "status",
+            "start_date",
+            "completion_date",
+            "duration_days",
+            "prolonged"
+          ]
+        },
+        "approval_scope": "research_only",
+        "approval": {
+          "scope": "research_only",
+          "approved_by": "v5 release validation",
+          "approved_at": "2026-10-09T05:08:50.331923+00:00",
+          "notes": "Authentic 800-record ClinicalTrials.gov starter; completed-only retrospective registry snapshot, not prospective or clinical validation. Software release approval only."
+        },
+        "gates": {
+          "passed": true,
+          "errors": []
+        },
+        "warnings": [
+          "Research approval only; not clinical, regulatory or prospective validation.",
+          "Research decision support only. Completed-only cohort creates follow-up/selection bias; minimum sample guard is not evidence of scientific validity. RETROSPECTIVE SNAPSHOT: baseline feature availability is unverified; post-start registry updates and narrative text may leak outcome information. Do not claim prospective validation."
+        ]
+      },
+      "dataset": {
+        "id": "efe6d4b744814c2a8d75ee0b1eaa5a92",
+        "name": "Frozen ClinicalTrials.gov held-out research records",
+        "sha256": "f6673f690f94bd7c59ac7aad151e3357b2e692dead9da1887cbc16c8d1d17b49",
+        "row_count": 3
+      },
+      "items": [
+        {
+          "nct_id": "NCT04814381",
+          "status": "available",
+          "prediction": {
+            "status": "available",
+            "run_id": "e608f4ac-bf38-4172-a4b8-aa1be5987501",
+            "model_name": "median_baseline",
+            "probability": 0.24761904761904763,
+            "raw_probability": 0.24761904761904763,
+            "calibrated_probability": null,
+            "probability_semantics": "raw",
+            "uncertainty": {
+              "status": "available",
+              "method": "split conformal absolute duration residuals",
+              "split": "calibration",
+              "n": 11,
+              "alpha": 0.1,
+              "nominal_coverage": 0.9,
+              "rank": 11,
+              "residual_quantile_days": 445.0,
+              "bounded": true,
+              "interpretation": "Nominal marginal coverage relies on exchangeability; chronological distribution shift can invalidate it. Calibration is not test evidence.",
+              "test_diagnostics": {
+                "n": 64,
+                "covered_count": 48,
+                "observed_coverage": 0.75,
+                "mean_interval_width_days": 890.0,
+                "interpretation": "Descriptive observed held-out coverage; does not guarantee future coverage. Infinite intervals trivially cover every finite outcome."
+              },
+              "lower_days": 37.0,
+              "upper_days": 927.0,
+              "prediction_scope": "Held-out test estimate; the source-provenance and completed-only cohort limitations still apply."
+            },
+            "calibration": {
+              "status": "unavailable",
+              "n": 11,
+              "class_counts": {
+                "0": 11,
+                "1": 0
+              },
+              "method": "sigmoid calibration of clipped raw-probability logit",
+              "split": "calibration",
+              "minimum_rows": 10,
+              "minimum_per_class": 2,
+              "clip_epsilon": 1e-06,
+              "regularization_C": 1.0,
+              "reason": "Requires at least 10 reserved calibration rows and at least two labels of each class; raw probabilities remain available."
+            },
+            "extrapolation": {
+              "outside_training_support": false,
+              "numeric_out_of_range": [],
+              "unseen_categories": [],
+              "numeric_tail_features": [],
+              "text_length": {
+                "minimum": 522,
+                "maximum": 17571,
+                "lower_quantile": 591.16,
+                "upper_quantile": 12182.399999999998,
+                "unit": "characters",
+                "value": 2717,
+                "outside_observed_range": false,
+                "outside_central_range": false
+              },
+              "distribution_warning": false,
+              "missing_numeric_features": [
+                "criteria_count"
+              ],
+              "method": "Training-only observed numeric ranges, central 98% marginal ranges, text lengths and categorical levels",
+              "interpretation": "Descriptive marginal distribution warnings, not an OOD probability or a validity guarantee. Central 98% cutoffs are heuristic and not multiplicity-adjusted. In-range inputs may still differ from training; text length does not measure semantic novelty."
+            },
+            "duration_days": 482.0,
+            "predicted_duration_days": 482.0,
+            "prolonged_threshold_days": 1101.0,
+            "cohort_membership": "test",
+            "prediction_scope": "Held-out test estimate; the source-provenance and completed-only cohort limitations still apply.",
+            "explanation": {
+              "method": "constant training baseline",
+              "units": "log-odds",
+              "features": [],
+              "note": "No feature-specific attribution is defined for this constant predictor.",
+              "scope": "global"
+            },
+            "duration_explanation": {
+              "method": "constant training baseline",
+              "units": "days (before nonnegative clipping)",
+              "features": [],
+              "note": "No feature-specific attribution is defined for this constant predictor.",
+              "scope": "global"
+            },
+            "pci": {
+              "score": 14.111913035999102,
+              "components": {
+                "enrollment": 0.016520021547854192,
+                "number_of_arms": 0.07142857142857142,
+                "primary_outcomes": 0.0,
+                "secondary_outcomes": 0.6176470588235294,
+                "criteria_count": 0.0
+              },
+              "method": "equal-weight training-fitted min-max complexity index"
+            },
+            "warning": "Research decision support only. Completed-only cohort creates follow-up/selection bias; minimum sample guard is not evidence of scientific validity. RETROSPECTIVE SNAPSHOT: baseline feature availability is unverified; post-start registry updates and narrative text may leak outcome information. Do not claim prospective validation."
+          },
+          "availability_warnings": [
+            "Retrospective snapshot: baseline feature availability is unverified; post-start registry updates can leak outcomes.",
+            "Missing feature values use saved training imputers: criteria_count."
+          ]
+        },
+        {
+          "nct_id": "NCT04922554",
+          "status": "available",
+          "prediction": {
+            "status": "available",
+            "run_id": "e608f4ac-bf38-4172-a4b8-aa1be5987501",
+            "model_name": "median_baseline",
+            "probability": 0.24761904761904763,
+            "raw_probability": 0.24761904761904763,
+            "calibrated_probability": null,
+            "probability_semantics": "raw",
+            "uncertainty": {
+              "status": "available",
+              "method": "split conformal absolute duration residuals",
+              "split": "calibration",
+              "n": 11,
+              "alpha": 0.1,
+              "nominal_coverage": 0.9,
+              "rank": 11,
+              "residual_quantile_days": 445.0,
+              "bounded": true,
+              "interpretation": "Nominal marginal coverage relies on exchangeability; chronological distribution shift can invalidate it. Calibration is not test evidence.",
+              "test_diagnostics": {
+                "n": 64,
+                "covered_count": 48,
+                "observed_coverage": 0.75,
+                "mean_interval_width_days": 890.0,
+                "interpretation": "Descriptive observed held-out coverage; does not guarantee future coverage. Infinite intervals trivially cover every finite outcome."
+              },
+              "lower_days": 37.0,
+              "upper_days": 927.0,
+              "prediction_scope": "Held-out test estimate; the source-provenance and completed-only cohort limitations still apply."
+            },
+            "calibration": {
+              "status": "unavailable",
+              "n": 11,
+              "class_counts": {
+                "0": 11,
+                "1": 0
+              },
+              "method": "sigmoid calibration of clipped raw-probability logit",
+              "split": "calibration",
+              "minimum_rows": 10,
+              "minimum_per_class": 2,
+              "clip_epsilon": 1e-06,
+              "regularization_C": 1.0,
+              "reason": "Requires at least 10 reserved calibration rows and at least two labels of each class; raw probabilities remain available."
+            },
+            "extrapolation": {
+              "outside_training_support": false,
+              "numeric_out_of_range": [],
+              "unseen_categories": [],
+              "numeric_tail_features": [],
+              "text_length": {
+                "minimum": 522,
+                "maximum": 17571,
+                "lower_quantile": 591.16,
+                "upper_quantile": 12182.399999999998,
+                "unit": "characters",
+                "value": 2785,
+                "outside_observed_range": false,
+                "outside_central_range": false
+              },
+              "distribution_warning": false,
+              "missing_numeric_features": [
+                "criteria_count"
+              ],
+              "method": "Training-only observed numeric ranges, central 98% marginal ranges, text lengths and categorical levels",
+              "interpretation": "Descriptive marginal distribution warnings, not an OOD probability or a validity guarantee. Central 98% cutoffs are heuristic and not multiplicity-adjusted. In-range inputs may still differ from training; text length does not measure semantic novelty."
+            },
+            "duration_days": 482.0,
+            "predicted_duration_days": 482.0,
+            "prolonged_threshold_days": 1101.0,
+            "cohort_membership": "test",
+            "prediction_scope": "Held-out test estimate; the source-provenance and completed-only cohort limitations still apply.",
+            "explanation": {
+              "method": "constant training baseline",
+              "units": "log-odds",
+              "features": [],
+              "note": "No feature-specific attribution is defined for this constant predictor.",
+              "scope": "global"
+            },
+            "duration_explanation": {
+              "method": "constant training baseline",
+              "units": "days (before nonnegative clipping)",
+              "features": [],
+              "note": "No feature-specific attribution is defined for this constant predictor.",
+              "scope": "global"
+            },
+            "pci": {
+              "score": 13.9404875283189,
+              "components": {
+                "enrollment": 0.011671754354462202,
+                "number_of_arms": 0.07142857142857142,
+                "primary_outcomes": 0.11392405063291139,
+                "secondary_outcomes": 0.5,
+                "criteria_count": 0.0
+              },
+              "method": "equal-weight training-fitted min-max complexity index"
+            },
+            "warning": "Research decision support only. Completed-only cohort creates follow-up/selection bias; minimum sample guard is not evidence of scientific validity. RETROSPECTIVE SNAPSHOT: baseline feature availability is unverified; post-start registry updates and narrative text may leak outcome information. Do not claim prospective validation."
+          },
+          "availability_warnings": [
+            "Retrospective snapshot: baseline feature availability is unverified; post-start registry updates can leak outcomes.",
+            "Missing feature values use saved training imputers: criteria_count."
+          ]
+        },
+        {
+          "nct_id": "NCT04727970",
+          "status": "available",
+          "prediction": {
+            "status": "available",
+            "run_id": "e608f4ac-bf38-4172-a4b8-aa1be5987501",
+            "model_name": "median_baseline",
+            "probability": 0.24761904761904763,
+            "raw_probability": 0.24761904761904763,
+            "calibrated_probability": null,
+            "probability_semantics": "raw",
+            "uncertainty": {
+              "status": "available",
+              "method": "split conformal absolute duration residuals",
+              "split": "calibration",
+              "n": 11,
+              "alpha": 0.1,
+              "nominal_coverage": 0.9,
+              "rank": 11,
+              "residual_quantile_days": 445.0,
+              "bounded": true,
+              "interpretation": "Nominal marginal coverage relies on exchangeability; chronological distribution shift can invalidate it. Calibration is not test evidence.",
+              "test_diagnostics": {
+                "n": 64,
+                "covered_count": 48,
+                "observed_coverage": 0.75,
+                "mean_interval_width_days": 890.0,
+                "interpretation": "Descriptive observed held-out coverage; does not guarantee future coverage. Infinite intervals trivially cover every finite outcome."
+              },
+              "lower_days": 37.0,
+              "upper_days": 927.0,
+              "prediction_scope": "Held-out test estimate; the source-provenance and completed-only cohort limitations still apply."
+            },
+            "calibration": {
+              "status": "unavailable",
+              "n": 11,
+              "class_counts": {
+                "0": 11,
+                "1": 0
+              },
+              "method": "sigmoid calibration of clipped raw-probability logit",
+              "split": "calibration",
+              "minimum_rows": 10,
+              "minimum_per_class": 2,
+              "clip_epsilon": 1e-06,
+              "regularization_C": 1.0,
+              "reason": "Requires at least 10 reserved calibration rows and at least two labels of each class; raw probabilities remain available."
+            },
+            "extrapolation": {
+              "outside_training_support": false,
+              "numeric_out_of_range": [],
+              "unseen_categories": [],
+              "numeric_tail_features": [],
+              "text_length": {
+                "minimum": 522,
+                "maximum": 17571,
+                "lower_quantile": 591.16,
+                "upper_quantile": 12182.399999999998,
+                "unit": "characters",
+                "value": 2388,
+                "outside_observed_range": false,
+                "outside_central_range": false
+              },
+              "distribution_warning": false,
+              "missing_numeric_features": [
+                "criteria_count"
+              ],
+              "method": "Training-only observed numeric ranges, central 98% marginal ranges, text lengths and categorical levels",
+              "interpretation": "Descriptive marginal distribution warnings, not an OOD probability or a validity guarantee. Central 98% cutoffs are heuristic and not multiplicity-adjusted. In-range inputs may still differ from training; text length does not measure semantic novelty."
+            },
+            "duration_days": 482.0,
+            "predicted_duration_days": 482.0,
+            "prolonged_threshold_days": 1101.0,
+            "cohort_membership": "test",
+            "prediction_scope": "Held-out test estimate; the source-provenance and completed-only cohort limitations still apply.",
+            "explanation": {
+              "method": "constant training baseline",
+              "units": "log-odds",
+              "features": [],
+              "note": "No feature-specific attribution is defined for this constant predictor.",
+              "scope": "global"
+            },
+            "duration_explanation": {
+              "method": "constant training baseline",
+              "units": "days (before nonnegative clipping)",
+              "features": [],
+              "note": "No feature-specific attribution is defined for this constant predictor.",
+              "scope": "global"
+            },
+            "pci": {
+              "score": 1.7079388653843404,
+              "components": {
+                "enrollment": 0.0012569581612497755,
+                "number_of_arms": 0.0,
+                "primary_outcomes": 0.02531645569620253,
+                "secondary_outcomes": 0.058823529411764705,
+                "criteria_count": 0.0
+              },
+              "method": "equal-weight training-fitted min-max complexity index"
+            },
+            "warning": "Research decision support only. Completed-only cohort creates follow-up/selection bias; minimum sample guard is not evidence of scientific validity. RETROSPECTIVE SNAPSHOT: baseline feature availability is unverified; post-start registry updates and narrative text may leak outcome information. Do not claim prospective validation."
+          },
+          "availability_warnings": [
+            "Retrospective snapshot: baseline feature availability is unverified; post-start registry updates can leak outcomes.",
+            "Missing feature values use saved training imputers: criteria_count, detailed_description."
+          ]
+        }
+      ],
+      "warnings": [
+        "Research approval only; not clinical, regulatory or prospective validation.",
+        "Retrospective snapshot: baseline feature availability is unverified; post-start registry updates can leak outcomes."
+      ],
+      "summary": {
+        "requested": 3,
+        "available": 3,
+        "blocked": 0,
+        "unavailable": 0
+      }
+    },
+    "phase": {
+      "id": "74f8bb88d73940cca6cb92930f71a2f2",
+      "created_at": "2026-10-09T15:28:53.449913+00:00",
+      "mode": "retrospective",
+      "model": {
+        "id": "bundled-phase-v5",
+        "name": "Bundled phase research model",
+        "task": "phase",
+        "branch": "phase_logistic",
+        "status": "approved",
+        "active": false,
+        "artifact_version": 1,
+        "run_id": "e49e7317-6752-4f04-a7ad-8ff002ac8d7f",
+        "artifact_sha256": "aedb5f59e159e378acd91aa5a59526b53671f6f6bdf20c8c83ce66760abe1ac9",
+        "manifest_sha256": "06fd5b8d57094811400fe5933943c3128aa2a3ee7ea915c93296e26ce810e8da",
+        "training_dataset": {
+          "id": null,
+          "name": "ClinicalTrials.gov completed drug-trial starter cohort",
+          "sha256": "d096795e303b5a103e0aba8bd79ffe7e85609827ea810d1c08e8e0811b5496d2",
+          "row_count": 800
+        },
+        "validation_metrics": {
+          "n": 57,
+          "accuracy": 0.5964912280701754,
+          "balanced_accuracy": 0.5384615384615384,
+          "macro_f1": 0.5364630467571644,
+          "labels": [
+            "EARLY_PHASE1",
+            "PHASE1",
+            "PHASE2",
+            "PHASE3",
+            "PHASE4"
+          ],
+          "confusion_matrix": [
+            [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              20,
+              6,
+              0,
+              0
+            ],
+            [
+              0,
+              3,
+              6,
+              2,
+              1
+            ],
+            [
+              0,
+              2,
+              3,
+              5,
+              3
+            ],
+            [
+              0,
+              0,
+              3,
+              0,
+              3
+            ]
+          ],
+          "class_support": {
+            "EARLY_PHASE1": 0,
+            "PHASE1": 26,
+            "PHASE2": 12,
+            "PHASE3": 13,
+            "PHASE4": 6
+          },
+          "macro_f1_labels": [
+            "PHASE1",
+            "PHASE2",
+            "PHASE3",
+            "PHASE4"
+          ],
+          "unseen_training_labels": []
+        },
+        "test_metrics": {
+          "n": 59,
+          "accuracy": 0.559322033898305,
+          "balanced_accuracy": 0.4817847593582888,
+          "macro_f1": 0.4752371541501976,
+          "labels": [
+            "EARLY_PHASE1",
+            "PHASE1",
+            "PHASE2",
+            "PHASE3",
+            "PHASE4"
+          ],
+          "confusion_matrix": [
+            [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              17,
+              4,
+              0,
+              1
+            ],
+            [
+              0,
+              5,
+              9,
+              1,
+              2
+            ],
+            [
+              0,
+              1,
+              2,
+              1,
+              4
+            ],
+            [
+              0,
+              1,
+              4,
+              1,
+              6
+            ]
+          ],
+          "class_support": {
+            "EARLY_PHASE1": 0,
+            "PHASE1": 22,
+            "PHASE2": 17,
+            "PHASE3": 8,
+            "PHASE4": 12
+          },
+          "macro_f1_labels": [
+            "PHASE1",
+            "PHASE2",
+            "PHASE3",
+            "PHASE4"
+          ],
+          "unseen_training_labels": []
+        },
+        "selection": {
+          "objective": "phase classification",
+          "data": "validation only",
+          "rule": "Recorded validation-selected phase classifier"
+        },
+        "features": {
+          "numeric": [
+            "enrollment",
+            "number_of_arms",
+            "primary_outcomes",
+            "secondary_outcomes",
+            "criteria_count"
+          ],
+          "text": [
+            "title",
+            "brief_summary",
+            "detailed_description",
+            "eligibility_criteria"
+          ],
+          "redaction": "Explicit Arabic/Roman/word phase labels, early labels and combined mentions removed before TF-IDF.",
+          "excluded": [
+            "phase",
+            "reported_phase",
+            "nct_id",
+            "study_type",
+            "status",
+            "start_date",
+            "completion_date",
+            "completion_date_type",
+            "duration_days",
+            "prolonged"
+          ]
+        },
+        "approval_scope": "research_only",
+        "approval": {
+          "scope": "research_only",
+          "approved_by": "v5 release validation",
+          "approved_at": "2026-10-09T05:08:50.334244+00:00",
+          "notes": "Authentic 800-record ClinicalTrials.gov starter; completed-only retrospective registry snapshot, not prospective or clinical validation. Software release approval only."
+        },
+        "gates": {
+          "passed": true,
+          "errors": []
+        },
+        "warnings": [
+          "Research approval only; not clinical, regulatory or prospective validation.",
+          "Educational registry-phase consistency check only; not clinical advice or regulatory phase assignment. Class probabilities are uncalibrated model outputs, not clinical success probabilities. Minimum sample guards do not establish scientific validity. RETROSPECTIVE SNAPSHOT: baseline feature and label availability is unverified; registry updates and indirect narrative cues may cause leakage. Do not claim prospective validation.",
+          "Phase consistency classification is not trial success or progression probability."
+        ]
+      },
+      "dataset": {
+        "id": "efe6d4b744814c2a8d75ee0b1eaa5a92",
+        "name": "Frozen ClinicalTrials.gov held-out research records",
+        "sha256": "f6673f690f94bd7c59ac7aad151e3357b2e692dead9da1887cbc16c8d1d17b49",
+        "row_count": 3
+      },
+      "items": [
+        {
+          "nct_id": "NCT04814381",
+          "status": "available",
+          "prediction": {
+            "status": "available",
+            "task": "phase",
+            "model_name": "phase_logistic",
+            "reported_phase": "PHASE4",
+            "normalized_reported_phase": "PHASE4",
+            "predicted_phase": "PHASE2",
+            "class_probabilities": {
+              "EARLY_PHASE1": 0.0,
+              "PHASE1": 0.10104561746307208,
+              "PHASE2": 0.4531222228474551,
+              "PHASE3": 0.2785160010213246,
+              "PHASE4": 0.16731615866814814
+            },
+            "run_id": "e49e7317-6752-4f04-a7ad-8ff002ac8d7f",
+            "cohort_membership": "test",
+            "prediction_scope": "Held-out test estimate; source-provenance and retrospective snapshot limitations still apply.",
+            "warning": "Educational registry-phase consistency check only; not clinical advice or regulatory phase assignment. Class probabilities are uncalibrated model outputs, not clinical success probabilities. Minimum sample guards do not establish scientific validity. RETROSPECTIVE SNAPSHOT: baseline feature and label availability is unverified; registry updates and indirect narrative cues may cause leakage. Do not claim prospective validation."
+          },
+          "availability_warnings": [
+            "Retrospective snapshot: baseline feature availability is unverified; post-start registry updates can leak outcomes.",
+            "Missing feature values use saved training imputers: criteria_count."
+          ]
+        },
+        {
+          "nct_id": "NCT04922554",
+          "status": "available",
+          "prediction": {
+            "status": "available",
+            "task": "phase",
+            "model_name": "phase_logistic",
+            "reported_phase": "PHASE2",
+            "normalized_reported_phase": "PHASE2",
+            "predicted_phase": "PHASE2",
+            "class_probabilities": {
+              "EARLY_PHASE1": 0.0,
+              "PHASE1": 0.1472001610056971,
+              "PHASE2": 0.7719132745002749,
+              "PHASE3": 0.07671688067428392,
+              "PHASE4": 0.004169683819744163
+            },
+            "run_id": "e49e7317-6752-4f04-a7ad-8ff002ac8d7f",
+            "cohort_membership": "test",
+            "prediction_scope": "Held-out test estimate; source-provenance and retrospective snapshot limitations still apply.",
+            "warning": "Educational registry-phase consistency check only; not clinical advice or regulatory phase assignment. Class probabilities are uncalibrated model outputs, not clinical success probabilities. Minimum sample guards do not establish scientific validity. RETROSPECTIVE SNAPSHOT: baseline feature and label availability is unverified; registry updates and indirect narrative cues may cause leakage. Do not claim prospective validation."
+          },
+          "availability_warnings": [
+            "Retrospective snapshot: baseline feature availability is unverified; post-start registry updates can leak outcomes.",
+            "Missing feature values use saved training imputers: criteria_count."
+          ]
+        },
+        {
+          "nct_id": "NCT04727970",
+          "status": "available",
+          "prediction": {
+            "status": "available",
+            "task": "phase",
+            "model_name": "phase_logistic",
+            "reported_phase": "PHASE1",
+            "normalized_reported_phase": "PHASE1",
+            "predicted_phase": "PHASE2",
+            "class_probabilities": {
+              "EARLY_PHASE1": 0.0,
+              "PHASE1": 0.34950873341149863,
+              "PHASE2": 0.44887924950300134,
+              "PHASE3": 0.14639251910961218,
+              "PHASE4": 0.05521949797588778
+            },
+            "run_id": "e49e7317-6752-4f04-a7ad-8ff002ac8d7f",
+            "cohort_membership": "test",
+            "prediction_scope": "Held-out test estimate; source-provenance and retrospective snapshot limitations still apply.",
+            "warning": "Educational registry-phase consistency check only; not clinical advice or regulatory phase assignment. Class probabilities are uncalibrated model outputs, not clinical success probabilities. Minimum sample guards do not establish scientific validity. RETROSPECTIVE SNAPSHOT: baseline feature and label availability is unverified; registry updates and indirect narrative cues may cause leakage. Do not claim prospective validation."
+          },
+          "availability_warnings": [
+            "Retrospective snapshot: baseline feature availability is unverified; post-start registry updates can leak outcomes.",
+            "Missing feature values use saved training imputers: criteria_count, detailed_description."
+          ]
+        }
+      ],
+      "warnings": [
+        "Research approval only; not clinical, regulatory or prospective validation.",
+        "Retrospective snapshot: baseline feature availability is unverified; post-start registry updates can leak outcomes."
+      ],
+      "summary": {
+        "requested": 3,
+        "available": 3,
+        "blocked": 0,
+        "unavailable": 0
+      }
+    }
+  }
+}

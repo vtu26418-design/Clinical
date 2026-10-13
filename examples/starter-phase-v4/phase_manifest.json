@@ -1,0 +1,971 @@
+{
+  "task": "phase",
+  "artifact_version": 1,
+  "run_id": "b942bf8d-ca05-40f9-84bc-1e543ebf18e1",
+  "source_metadata": {
+    "dataset_id": "clinicaltrials-starter-v3",
+    "sha256": "d096795e303b5a103e0aba8bd79ffe7e85609827ea810d1c08e8e0811b5496d2",
+    "source_name": "ClinicalTrials.gov v2 frozen starter subset",
+    "fixture": false,
+    "baseline_provenance": false,
+    "snapshot": {
+      "dataset_name": "ClinicalTrials.gov completed drug-trial starter cohort",
+      "schema_version": 1,
+      "is_fixture": false,
+      "source": "ClinicalTrials.gov API v2",
+      "endpoint": "https://clinicaltrials.gov/api/v2/studies",
+      "source_documentation": "https://clinicaltrials.gov/data-api/api",
+      "acquisition_started_at": "2026-10-07T15:39:49.122877+00:00",
+      "retrieved_at": "2026-10-07T15:41:09.711500+00:00",
+      "snapshot_type": "latest registry state",
+      "baseline_provenance": false,
+      "sampling_method": "Convenience subset: first API-returned records in each fixed start-date stratum; default API order, no outcome-duration or model-performance selection.",
+      "not_population_representative": true,
+      "requested_maximum_per_period": 200,
+      "rows": 800,
+      "duplicate_ids": 0,
+      "strata": [
+        {
+          "start_year_min": 2000,
+          "start_year_max": 2005,
+          "query": "AREA[StudyType]INTERVENTIONAL AND AREA[OverallStatus]COMPLETED AND AREA[InterventionType]DRUG AND (AREA[Phase]PHASE1 OR AREA[Phase]PHASE2 OR AREA[Phase]PHASE3 OR AREA[Phase]PHASE4) AND AREA[StartDate]RANGE[2000-01-01,2005-12-31]",
+          "requested_maximum": 200,
+          "rows": 200,
+          "last_reported_total_count": null
+        },
+        {
+          "start_year_min": 2006,
+          "start_year_max": 2011,
+          "query": "AREA[StudyType]INTERVENTIONAL AND AREA[OverallStatus]COMPLETED AND AREA[InterventionType]DRUG AND (AREA[Phase]PHASE1 OR AREA[Phase]PHASE2 OR AREA[Phase]PHASE3 OR AREA[Phase]PHASE4) AND AREA[StartDate]RANGE[2006-01-01,2011-12-31]",
+          "requested_maximum": 200,
+          "rows": 200,
+          "last_reported_total_count": null
+        },
+        {
+          "start_year_min": 2012,
+          "start_year_max": 2017,
+          "query": "AREA[StudyType]INTERVENTIONAL AND AREA[OverallStatus]COMPLETED AND AREA[InterventionType]DRUG AND (AREA[Phase]PHASE1 OR AREA[Phase]PHASE2 OR AREA[Phase]PHASE3 OR AREA[Phase]PHASE4) AND AREA[StartDate]RANGE[2012-01-01,2017-12-31]",
+          "requested_maximum": 200,
+          "rows": 200,
+          "last_reported_total_count": null
+        },
+        {
+          "start_year_min": 2018,
+          "start_year_max": 2023,
+          "query": "AREA[StudyType]INTERVENTIONAL AND AREA[OverallStatus]COMPLETED AND AREA[InterventionType]DRUG AND (AREA[Phase]PHASE1 OR AREA[Phase]PHASE2 OR AREA[Phase]PHASE3 OR AREA[Phase]PHASE4) AND AREA[StartDate]RANGE[2018-01-01,2023-12-31]",
+          "requested_maximum": 200,
+          "rows": 200,
+          "last_reported_total_count": null
+        }
+      ],
+      "canonical_file": "trials.csv",
+      "canonical_sha256": "d096795e303b5a103e0aba8bd79ffe7e85609827ea810d1c08e8e0811b5496d2",
+      "canonical_bytes": 2976872,
+      "raw_response_pages": [
+        {
+          "file": "raw/2000-2005-page-001.json.gz",
+          "request_parameters": {
+            "query.term": "AREA[StudyType]INTERVENTIONAL AND AREA[OverallStatus]COMPLETED AND AREA[InterventionType]DRUG AND (AREA[Phase]PHASE1 OR AREA[Phase]PHASE2 OR AREA[Phase]PHASE3 OR AREA[Phase]PHASE4) AND AREA[StartDate]RANGE[2000-01-01,2005-12-31]",
+            "format": "json",
+            "pageSize": 100,
+            "countTotal": "true"
+          },
+          "retrieved_at": "2026-10-07T15:39:59.598377+00:00",
+          "http_date": "Wed, 07 Oct 2026 15:39:59 GMT",
+          "rows": 100,
+          "uncompressed_bytes": 1965643,
+          "response_sha256": "fe3ba8753b07d4e1d119314665b95b1b507dee3030435a45f676e4c250464d81",
+          "gzip_sha256": "41dd46bf5605ce83d898b6c4efe1c0aeff7a48f63117e81cd429452b47b28e65"
+        },
+        {
+          "file": "raw/2000-2005-page-002.json.gz",
+          "request_parameters": {
+            "query.term": "AREA[StudyType]INTERVENTIONAL AND AREA[OverallStatus]COMPLETED AND AREA[InterventionType]DRUG AND (AREA[Phase]PHASE1 OR AREA[Phase]PHASE2 OR AREA[Phase]PHASE3 OR AREA[Phase]PHASE4) AND AREA[StartDate]RANGE[2000-01-01,2005-12-31]",
+            "format": "json",
+            "pageSize": 100,
+            "countTotal": "true",
+            "pageToken": "ZVNj7o2Elu8o3lpwRM-l47L2mpOQJJxtZvin1Pg"
+          },
+          "retrieved_at": "2026-10-07T15:40:07.309037+00:00",
+          "http_date": "Wed, 07 Oct 2026 15:40:07 GMT",
+          "rows": 100,
+          "uncompressed_bytes": 2184693,
+          "response_sha256": "17852d77a04cd7d78e954541c72d2bd00a7b638e3bf4e104dd352ba7e0429b93",
+          "gzip_sha256": "c88856a4f2e53674bd3ef902b8f7d5ff02af91c8b8e2fe9bdb2d4fe89bd04c5a"
+        },
+        {
+          "file": "raw/2006-2011-page-001.json.gz",
+          "request_parameters": {
+            "query.term": "AREA[StudyType]INTERVENTIONAL AND AREA[OverallStatus]COMPLETED AND AREA[InterventionType]DRUG AND (AREA[Phase]PHASE1 OR AREA[Phase]PHASE2 OR AREA[Phase]PHASE3 OR AREA[Phase]PHASE4) AND AREA[StartDate]RANGE[2006-01-01,2011-12-31]",
+            "format": "json",
+            "pageSize": 100,
+            "countTotal": "true"
+          },
+          "retrieved_at": "2026-10-07T15:40:17.250793+00:00",
+          "http_date": "Wed, 07 Oct 2026 15:40:17 GMT",
+          "rows": 100,
+          "uncompressed_bytes": 4057554,
+          "response_sha256": "fe9bce2e0ddcd113c121d9a51b37b3cec83da8b91295f83c800dffc0da7398a3",
+          "gzip_sha256": "5f8a726570378c2b09134a3b19d254fc447fa5cf1ae7cd96ed9faee0c0a3cb54"
+        },
+        {
+          "file": "raw/2006-2011-page-002.json.gz",
+          "request_parameters": {
+            "query.term": "AREA[StudyType]INTERVENTIONAL AND AREA[OverallStatus]COMPLETED AND AREA[InterventionType]DRUG AND (AREA[Phase]PHASE1 OR AREA[Phase]PHASE2 OR AREA[Phase]PHASE3 OR AREA[Phase]PHASE4) AND AREA[StartDate]RANGE[2006-01-01,2011-12-31]",
+            "format": "json",
+            "pageSize": 100,
+            "countTotal": "true",
+            "pageToken": "ZVNj7o2Elu8o3lpwRM-l47L2mpOQJJxuYfel2fg"
+          },
+          "retrieved_at": "2026-10-07T15:40:27.293171+00:00",
+          "http_date": "Wed, 07 Oct 2026 15:40:27 GMT",
+          "rows": 100,
+          "uncompressed_bytes": 2267567,
+          "response_sha256": "d79aa15f4f3c9c1a6ee47201e196256e38af0d68e6f9d8517a88f9d932387de0",
+          "gzip_sha256": "103ef64b5ec6ade6ed428a7e6db4a06306e0fb92f8f88b1a720b1948f77c3f1a"
+        },
+        {
+          "file": "raw/2012-2017-page-001.json.gz",
+          "request_parameters": {
+            "query.term": "AREA[StudyType]INTERVENTIONAL AND AREA[OverallStatus]COMPLETED AND AREA[InterventionType]DRUG AND (AREA[Phase]PHASE1 OR AREA[Phase]PHASE2 OR AREA[Phase]PHASE3 OR AREA[Phase]PHASE4) AND AREA[StartDate]RANGE[2012-01-01,2017-12-31]",
+            "format": "json",
+            "pageSize": 100,
+            "countTotal": "true"
+          },
+          "retrieved_at": "2026-10-07T15:40:38.309090+00:00",
+          "http_date": "Wed, 07 Oct 2026 15:40:38 GMT",
+          "rows": 100,
+          "uncompressed_bytes": 4405387,
+          "response_sha256": "b4a5ee4e1177ca36214d5427dfab56dc633b4e4406dffdee6493034df92758c1",
+          "gzip_sha256": "935c34d4e8e7dc90e647edff7ed9aa3f32ddf3c794709c69fd99df3c2cb5a81b"
+        },
+        {
+          "file": "raw/2012-2017-page-002.json.gz",
+          "request_parameters": {
+            "query.term": "AREA[StudyType]INTERVENTIONAL AND AREA[OverallStatus]COMPLETED AND AREA[InterventionType]DRUG AND (AREA[Phase]PHASE1 OR AREA[Phase]PHASE2 OR AREA[Phase]PHASE3 OR AREA[Phase]PHASE4) AND AREA[StartDate]RANGE[2012-01-01,2017-12-31]",
+            "format": "json",
+            "pageSize": 100,
+            "countTotal": "true",
+            "pageToken": "ZVNj7o2Elu8o3lpwRM-l47L2mpOQJJxuYPGn3Pg"
+          },
+          "retrieved_at": "2026-10-07T15:40:49.661917+00:00",
+          "http_date": "Wed, 07 Oct 2026 15:40:49 GMT",
+          "rows": 100,
+          "uncompressed_bytes": 3760924,
+          "response_sha256": "84c05d69c0f0d306efaf1ccb9b907d299019ab68388362f0baf62b0cda13bc47",
+          "gzip_sha256": "e29bd49a84bff6933b1a235b010f0c91da9a03a0784555b57d21df760a4b479b"
+        },
+        {
+          "file": "raw/2018-2023-page-001.json.gz",
+          "request_parameters": {
+            "query.term": "AREA[StudyType]INTERVENTIONAL AND AREA[OverallStatus]COMPLETED AND AREA[InterventionType]DRUG AND (AREA[Phase]PHASE1 OR AREA[Phase]PHASE2 OR AREA[Phase]PHASE3 OR AREA[Phase]PHASE4) AND AREA[StartDate]RANGE[2018-01-01,2023-12-31]",
+            "format": "json",
+            "pageSize": 100,
+            "countTotal": "true"
+          },
+          "retrieved_at": "2026-10-07T15:41:00.459065+00:00",
+          "http_date": "Wed, 07 Oct 2026 15:41:00 GMT",
+          "rows": 100,
+          "uncompressed_bytes": 2766521,
+          "response_sha256": "a5771a1ec6c2ddd110bb5be2658476a3de916c19133e0422ca890d8e4a3d9bff",
+          "gzip_sha256": "311f6fa070fed0b0a70994b7f817fca897e5cab26201c64a2eaba07dd426ea2b"
+        },
+        {
+          "file": "raw/2018-2023-page-002.json.gz",
+          "request_parameters": {
+            "query.term": "AREA[StudyType]INTERVENTIONAL AND AREA[OverallStatus]COMPLETED AND AREA[InterventionType]DRUG AND (AREA[Phase]PHASE1 OR AREA[Phase]PHASE2 OR AREA[Phase]PHASE3 OR AREA[Phase]PHASE4) AND AREA[StartDate]RANGE[2018-01-01,2023-12-31]",
+            "format": "json",
+            "pageSize": 100,
+            "countTotal": "true",
+            "pageToken": "ZVNj7o2Elu8o3lpwRM-l47L2mpOQJJxuY_Ks3_g"
+          },
+          "retrieved_at": "2026-10-07T15:41:09.552817+00:00",
+          "http_date": "Wed, 07 Oct 2026 15:41:09 GMT",
+          "rows": 100,
+          "uncompressed_bytes": 2693373,
+          "response_sha256": "f31b25f455881c981b0b66162b43d20aafff1f6c35a8b2c3c008be3536116b1d",
+          "gzip_sha256": "88f099360aa85e820dc3665100f7cf096237174e74d6283e8b853f32c7301764"
+        }
+      ],
+      "coverage": {
+        "start_period_counts": {
+          "2000-2005": 200,
+          "2006-2011": 200,
+          "2012-2017": 200,
+          "2018-2023": 200
+        },
+        "start_year_counts": {
+          "2000": 12,
+          "2001": 19,
+          "2002": 33,
+          "2003": 32,
+          "2004": 47,
+          "2005": 57,
+          "2006": 34,
+          "2007": 28,
+          "2008": 36,
+          "2009": 40,
+          "2010": 28,
+          "2011": 34,
+          "2012": 32,
+          "2013": 30,
+          "2014": 42,
+          "2015": 29,
+          "2016": 35,
+          "2017": 32,
+          "2018": 48,
+          "2019": 34,
+          "2020": 35,
+          "2021": 27,
+          "2022": 30,
+          "2023": 26
+        },
+        "phase_counts": {
+          "PHASE1": 197,
+          "PHASE1|PHASE2": 41,
+          "PHASE2": 233,
+          "PHASE2|PHASE3": 21,
+          "PHASE3": 153,
+          "PHASE4": 155
+        },
+        "status_counts": {
+          "COMPLETED": 800
+        },
+        "study_type_counts": {
+          "INTERVENTIONAL": 800
+        },
+        "start_date_min": "2000-01",
+        "start_date_max": "2023-12-23",
+        "completion_date_type_counts": {
+          "ACTUAL": 744,
+          "Not reported": 56
+        },
+        "exact_start_and_actual_completion_date_rows": 312,
+        "partial_start_date_rows": 482,
+        "partial_completion_date_rows": 428
+      },
+      "date_policy": "Preserve original registry date strings and ACTUAL/ESTIMATED labels; no day/month/year imputation. Training excludes partial dates.",
+      "missingness_policy": "Source-missing values remain missing. criteria_count and text_complexity are not invented.",
+      "limitations": [
+        "Not a frozen historical baseline snapshot.",
+        "Not a population-representative or exhaustive registry export.",
+        "Completed-trial restriction creates selection bias; no censored trials are represented.",
+        "Results support a reproducible retrospective workflow demonstration, not validated prospective or clinical claims.",
+        "The live API may change. Exact bundled-data reproduction uses the preserved raw responses and checksums."
+      ]
+    }
+  },
+  "dataset_id": "clinicaltrials-starter-v3",
+  "input_sha256": "d096795e303b5a103e0aba8bd79ffe7e85609827ea810d1c08e8e0811b5496d2",
+  "pipeline_source_sha256": "4556a01347c69f3919d8f4016475a449dedf5459af56fe9fdf1ec4cc9fbce5b5",
+  "config": {
+    "max_text_features": 20000,
+    "logistic_cs": [
+      0.1,
+      1.0,
+      10.0
+    ],
+    "max_iter": 2000,
+    "random_seed": 42
+  },
+  "labels": [
+    "EARLY_PHASE1",
+    "PHASE1",
+    "PHASE2",
+    "PHASE3",
+    "PHASE4"
+  ],
+  "training_classes": [
+    "PHASE1",
+    "PHASE2",
+    "PHASE3",
+    "PHASE4"
+  ],
+  "splits": {
+    "train": {
+      "rows": 175,
+      "start_date_min": "2000-07-14T00:00:00",
+      "start_date_max": "2019-09-16T00:00:00",
+      "nct_ids": [
+        "NCT00006107",
+        "NCT00501020",
+        "NCT07228481",
+        "NCT00480805",
+        "NCT00066690",
+        "NCT00086294",
+        "NCT00092937",
+        "NCT00096551",
+        "NCT00398541",
+        "NCT00128102",
+        "NCT00309842",
+        "NCT00305695",
+        "NCT00679770",
+        "NCT00352027",
+        "NCT00436956",
+        "NCT00589420",
+        "NCT00500760",
+        "NCT00541970",
+        "NCT00554788",
+        "NCT00874874",
+        "NCT00679783",
+        "NCT00678561",
+        "NCT00765973",
+        "NCT00857883",
+        "NCT00871351",
+        "NCT00976066",
+        "NCT00910624",
+        "NCT01004003",
+        "NCT01220856",
+        "NCT01176461",
+        "NCT01241383",
+        "NCT01351623",
+        "NCT01675297",
+        "NCT01640080",
+        "NCT01682759",
+        "NCT01709305",
+        "NCT01677780",
+        "NCT01755156",
+        "NCT01805453",
+        "NCT01850641",
+        "NCT01913951",
+        "NCT02058576",
+        "NCT02007629",
+        "NCT02051413",
+        "NCT02000622",
+        "NCT02224729",
+        "NCT02245256",
+        "NCT02152761",
+        "NCT02100423",
+        "NCT03340870",
+        "NCT02262026",
+        "NCT02163759",
+        "NCT02157883",
+        "NCT03462173",
+        "NCT02108860",
+        "NCT02391662",
+        "NCT02517866",
+        "NCT02426086",
+        "NCT02654054",
+        "NCT06082596",
+        "NCT04141241",
+        "NCT02603705",
+        "NCT02573012",
+        "NCT02751411",
+        "NCT02735122",
+        "NCT03743896",
+        "NCT02800642",
+        "NCT02801071",
+        "NCT02671383",
+        "NCT02520154",
+        "NCT02833545",
+        "NCT04560283",
+        "NCT02896127",
+        "NCT02959983",
+        "NCT02807922",
+        "NCT02967159",
+        "NCT02679573",
+        "NCT02982161",
+        "NCT02980042",
+        "NCT03005288",
+        "NCT02852694",
+        "NCT03050151",
+        "NCT03036605",
+        "NCT04380324",
+        "NCT03127956",
+        "NCT03053466",
+        "NCT03068780",
+        "NCT03067727",
+        "NCT03523988",
+        "NCT03797625",
+        "NCT03139279",
+        "NCT03151720",
+        "NCT04089605",
+        "NCT03150810",
+        "NCT03174405",
+        "NCT03109080",
+        "NCT03150082",
+        "NCT03257930",
+        "NCT03272425",
+        "NCT03206645",
+        "NCT03418727",
+        "NCT03076203",
+        "NCT02637583",
+        "NCT03345979",
+        "NCT03363841",
+        "NCT03335527",
+        "NCT07223073",
+        "NCT02931045",
+        "NCT03413020",
+        "NCT03418896",
+        "NCT03372629",
+        "NCT03833570",
+        "NCT03234686",
+        "NCT03161379",
+        "NCT02973542",
+        "NCT03406702",
+        "NCT03563846",
+        "NCT03070483",
+        "NCT03519971",
+        "NCT03463473",
+        "NCT03531229",
+        "NCT03531697",
+        "NCT03474679",
+        "NCT03051256",
+        "NCT03798899",
+        "NCT03563560",
+        "NCT03589066",
+        "NCT03458546",
+        "NCT03551288",
+        "NCT03539302",
+        "NCT03518242",
+        "NCT03493854",
+        "NCT03505723",
+        "NCT03378323",
+        "NCT03496571",
+        "NCT03235505",
+        "NCT03518203",
+        "NCT03625466",
+        "NCT03627611",
+        "NCT03583346",
+        "NCT03740659",
+        "NCT03664882",
+        "NCT05286346",
+        "NCT03647969",
+        "NCT03733561",
+        "NCT03541603",
+        "NCT03729973",
+        "NCT03538041",
+        "NCT03717896",
+        "NCT03768466",
+        "NCT03990480",
+        "NCT05753280",
+        "NCT03817346",
+        "NCT03717103",
+        "NCT03758170",
+        "NCT05469113",
+        "NCT03746041",
+        "NCT05190783",
+        "NCT03713580",
+        "NCT03789656",
+        "NCT03699254",
+        "NCT03910088",
+        "NCT03934203",
+        "NCT03937882",
+        "NCT03977805",
+        "NCT03909646",
+        "NCT03782701",
+        "NCT03955783",
+        "NCT04361279",
+        "NCT03809273",
+        "NCT03637556",
+        "NCT04004429",
+        "NCT04193722",
+        "NCT04083846",
+        "NCT04019041"
+      ],
+      "class_support": {
+        "EARLY_PHASE1": 0,
+        "PHASE1": 50,
+        "PHASE2": 48,
+        "PHASE3": 39,
+        "PHASE4": 38
+      }
+    },
+    "validation": {
+      "rows": 57,
+      "start_date_min": "2019-09-17T00:00:00",
+      "start_date_max": "2021-09-13T00:00:00",
+      "nct_ids": [
+        "NCT04091451",
+        "NCT04094662",
+        "NCT02836470",
+        "NCT04124094",
+        "NCT04080622",
+        "NCT04890873",
+        "NCT04091646",
+        "NCT04034485",
+        "NCT03851588",
+        "NCT04191486",
+        "NCT04235270",
+        "NCT05712642",
+        "NCT04267081",
+        "NCT04282746",
+        "NCT04232423",
+        "NCT04370262",
+        "NCT04542694",
+        "NCT04400682",
+        "NCT05821543",
+        "NCT04733001",
+        "NCT04478123",
+        "NCT04203797",
+        "NCT04470154",
+        "NCT05244759",
+        "NCT04917679",
+        "NCT04482270",
+        "NCT04745273",
+        "NCT04510220",
+        "NCT06802679",
+        "NCT04558294",
+        "NCT04307186",
+        "NCT04287062",
+        "NCT04635631",
+        "NCT04570410",
+        "NCT04669262",
+        "NCT04686669",
+        "NCT04460560",
+        "NCT04667156",
+        "NCT04300920",
+        "NCT04472182",
+        "NCT04680273",
+        "NCT04747197",
+        "NCT04659174",
+        "NCT04712396",
+        "NCT04763759",
+        "NCT04629703",
+        "NCT04461041",
+        "NCT07212842",
+        "NCT04868565",
+        "NCT04388501",
+        "NCT04969497",
+        "NCT04893512",
+        "NCT04744662",
+        "NCT05075603",
+        "NCT06001580",
+        "NCT04987970",
+        "NCT05019729"
+      ],
+      "class_support": {
+        "EARLY_PHASE1": 0,
+        "PHASE1": 26,
+        "PHASE2": 12,
+        "PHASE3": 13,
+        "PHASE4": 6
+      }
+    },
+    "test": {
+      "rows": 59,
+      "start_date_min": "2021-09-15T00:00:00",
+      "start_date_max": "2023-12-23T00:00:00",
+      "nct_ids": [
+        "NCT04814381",
+        "NCT04922554",
+        "NCT04727970",
+        "NCT07343323",
+        "NCT05123196",
+        "NCT05184062",
+        "NCT04795427",
+        "NCT06874140",
+        "NCT04924166",
+        "NCT05206370",
+        "NCT05059327",
+        "NCT05169671",
+        "NCT05299476",
+        "NCT05412446",
+        "NCT05878899",
+        "NCT05389696",
+        "NCT05362110",
+        "NCT05939622",
+        "NCT05335005",
+        "NCT05280496",
+        "NCT05387941",
+        "NCT05404724",
+        "NCT05327296",
+        "NCT06564961",
+        "NCT05448469",
+        "NCT05465460",
+        "NCT05491759",
+        "NCT05515796",
+        "NCT05543369",
+        "NCT05546762",
+        "NCT05889351",
+        "NCT05594602",
+        "NCT05523141",
+        "NCT05559554",
+        "NCT07212946",
+        "NCT06494007",
+        "NCT05642923",
+        "NCT07077954",
+        "NCT05680870",
+        "NCT07014631",
+        "NCT05905120",
+        "NCT05830799",
+        "NCT05883124",
+        "NCT05812417",
+        "NCT05834023",
+        "NCT05660954",
+        "NCT05901961",
+        "NCT05891262",
+        "NCT05864846",
+        "NCT05968482",
+        "NCT05595369",
+        "NCT05891483",
+        "NCT05970354",
+        "NCT06086886",
+        "NCT06181370",
+        "NCT06148272",
+        "NCT06173466",
+        "NCT06218290",
+        "NCT05954962"
+      ],
+      "class_support": {
+        "EARLY_PHASE1": 0,
+        "PHASE1": 22,
+        "PHASE2": 17,
+        "PHASE3": 8,
+        "PHASE4": 12
+      }
+    }
+  },
+  "warning": "Educational registry-phase consistency check only; not clinical advice or regulatory phase assignment. Class probabilities are uncalibrated model outputs, not clinical success probabilities. Minimum sample guards do not establish scientific validity. RETROSPECTIVE SNAPSHOT: baseline feature and label availability is unverified; registry updates and indirect narrative cues may cause leakage. Do not claim prospective validation.",
+  "status": "completed",
+  "created_at": "2026-10-08T11:19:58.613912+00:00",
+  "environment": {
+    "python": "3.12.14",
+    "pandas": "2.2.3",
+    "numpy": "2.3.5",
+    "scikit_learn": "1.8.0",
+    "joblib": "1.5.3"
+  },
+  "cohort": {
+    "input_rows": 800,
+    "eligible_rows": 291,
+    "excluded_rows": 509,
+    "target": "normalized single registry phase"
+  },
+  "temporal_cutoffs": {
+    "validation": "2019-09-17T00:00:00",
+    "test": "2021-09-15T00:00:00",
+    "policy": "Whole start-date groups; fixed 60/20/20 shares of distinct dates. No refit on validation. No outcome-availability purge: phase is a protocol label, with baseline availability separately unverified."
+  },
+  "features": {
+    "numeric": [
+      "enrollment",
+      "number_of_arms",
+      "primary_outcomes",
+      "secondary_outcomes",
+      "criteria_count"
+    ],
+    "text": [
+      "title",
+      "brief_summary",
+      "detailed_description",
+      "eligibility_criteria"
+    ],
+    "redaction": "Explicit Arabic/Roman/word phase labels, early labels and combined mentions removed before TF-IDF.",
+    "excluded": [
+      "phase",
+      "reported_phase",
+      "nct_id",
+      "study_type",
+      "status",
+      "start_date",
+      "completion_date",
+      "completion_date_type",
+      "duration_days",
+      "prolonged"
+    ]
+  },
+  "models": {
+    "majority_baseline": {
+      "selection": {
+        "rule": "most frequent training phase"
+      },
+      "metrics": {
+        "validation": {
+          "n": 57,
+          "accuracy": 0.45614035087719296,
+          "balanced_accuracy": 0.25,
+          "macro_f1": 0.1566265060240964,
+          "labels": [
+            "EARLY_PHASE1",
+            "PHASE1",
+            "PHASE2",
+            "PHASE3",
+            "PHASE4"
+          ],
+          "confusion_matrix": [
+            [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              26,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              12,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              13,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              6,
+              0,
+              0,
+              0
+            ]
+          ],
+          "class_support": {
+            "EARLY_PHASE1": 0,
+            "PHASE1": 26,
+            "PHASE2": 12,
+            "PHASE3": 13,
+            "PHASE4": 6
+          },
+          "macro_f1_labels": [
+            "PHASE1",
+            "PHASE2",
+            "PHASE3",
+            "PHASE4"
+          ],
+          "unseen_training_labels": []
+        },
+        "test": {
+          "n": 59,
+          "accuracy": 0.3728813559322034,
+          "balanced_accuracy": 0.25,
+          "macro_f1": 0.13580246913580246,
+          "labels": [
+            "EARLY_PHASE1",
+            "PHASE1",
+            "PHASE2",
+            "PHASE3",
+            "PHASE4"
+          ],
+          "confusion_matrix": [
+            [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              22,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              17,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              8,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              12,
+              0,
+              0,
+              0
+            ]
+          ],
+          "class_support": {
+            "EARLY_PHASE1": 0,
+            "PHASE1": 22,
+            "PHASE2": 17,
+            "PHASE3": 8,
+            "PHASE4": 12
+          },
+          "macro_f1_labels": [
+            "PHASE1",
+            "PHASE2",
+            "PHASE3",
+            "PHASE4"
+          ],
+          "unseen_training_labels": []
+        }
+      }
+    },
+    "phase_logistic": {
+      "selection": {
+        "rule": "maximum validation macro-F1; first candidate wins ties",
+        "logistic_C": 10.0,
+        "candidates": [
+          {
+            "logistic_C": 0.1,
+            "validation_macro_f1": 0.2824786324786325
+          },
+          {
+            "logistic_C": 1.0,
+            "validation_macro_f1": 0.48605019493177387
+          },
+          {
+            "logistic_C": 10.0,
+            "validation_macro_f1": 0.5364630467571644
+          }
+        ]
+      },
+      "metrics": {
+        "validation": {
+          "n": 57,
+          "accuracy": 0.5964912280701754,
+          "balanced_accuracy": 0.5384615384615384,
+          "macro_f1": 0.5364630467571644,
+          "labels": [
+            "EARLY_PHASE1",
+            "PHASE1",
+            "PHASE2",
+            "PHASE3",
+            "PHASE4"
+          ],
+          "confusion_matrix": [
+            [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              20,
+              6,
+              0,
+              0
+            ],
+            [
+              0,
+              3,
+              6,
+              2,
+              1
+            ],
+            [
+              0,
+              2,
+              3,
+              5,
+              3
+            ],
+            [
+              0,
+              0,
+              3,
+              0,
+              3
+            ]
+          ],
+          "class_support": {
+            "EARLY_PHASE1": 0,
+            "PHASE1": 26,
+            "PHASE2": 12,
+            "PHASE3": 13,
+            "PHASE4": 6
+          },
+          "macro_f1_labels": [
+            "PHASE1",
+            "PHASE2",
+            "PHASE3",
+            "PHASE4"
+          ],
+          "unseen_training_labels": []
+        },
+        "test": {
+          "n": 59,
+          "accuracy": 0.559322033898305,
+          "balanced_accuracy": 0.4817847593582888,
+          "macro_f1": 0.4752371541501976,
+          "labels": [
+            "EARLY_PHASE1",
+            "PHASE1",
+            "PHASE2",
+            "PHASE3",
+            "PHASE4"
+          ],
+          "confusion_matrix": [
+            [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              17,
+              4,
+              0,
+              1
+            ],
+            [
+              0,
+              5,
+              9,
+              1,
+              2
+            ],
+            [
+              0,
+              1,
+              2,
+              1,
+              4
+            ],
+            [
+              0,
+              1,
+              4,
+              1,
+              6
+            ]
+          ],
+          "class_support": {
+            "EARLY_PHASE1": 0,
+            "PHASE1": 22,
+            "PHASE2": 17,
+            "PHASE3": 8,
+            "PHASE4": 12
+          },
+          "macro_f1_labels": [
+            "PHASE1",
+            "PHASE2",
+            "PHASE3",
+            "PHASE4"
+          ],
+          "unseen_training_labels": []
+        }
+      }
+    }
+  },
+  "recommended_model": "phase_logistic",
+  "limitations": [
+    "This task predicts recorded phase from protocol characteristics; it does not predict progression or trial success.",
+    "Combined, NA and unknown phases are excluded. Class support can be small or absent, and classes absent from training have zero predicted probability.",
+    "All held-out records count, including labels absent from training. Confusion matrices use the five canonical labels (rows actual, columns predicted); macro-F1 averages the union of actual/predicted labels; balanced accuracy averages recall for actual supported classes.",
+    "Validation scores are optimistic after hyperparameter selection; untouched test scores are the held-out estimate. No performance improvement is guaranteed.",
+    "Redaction removes explicit phase mentions but cannot eliminate indirect phase cues or post-start updates in current registry snapshots.",
+    "Temporal ordering does not establish that current registry labels or protocol features existed at trial start; baseline provenance must be established separately."
+  ],
+  "files": {
+    "artifact": "phase_models.joblib",
+    "metrics": "phase_metrics.json",
+    "predictions": "phase_held_out_predictions.csv",
+    "cohort_exclusions": "phase_cohort_exclusions.csv"
+  },
+  "artifact_sha256": "9c74755ce4953cf3371c32f016be18d5046e5a0a2a8acdf27a50afbb96ddc960"
+}

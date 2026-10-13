@@ -1,0 +1,1678 @@
+{
+  "median_baseline": {
+    "validation": {
+      "regression": {
+        "mae": 303.5,
+        "rmse": 322.1186116945123,
+        "r2": -7.907886660113409
+      },
+      "classification": {
+        "auroc": null,
+        "average_precision": null,
+        "brier": 0.06131519274376416
+      },
+      "calibration": {
+        "method": "10 equal-width reliability bins; probabilities are not post-hoc calibrated",
+        "bins": [
+          {
+            "lower": 0.2,
+            "upper": 0.3,
+            "count": 20,
+            "mean_probability": 0.24761904761904763,
+            "observed_fraction": 0.0
+          }
+        ],
+        "expected_calibration_error": 0.24761904761904763
+      },
+      "n": 20,
+      "positive_count": 0,
+      "confidence_intervals": {
+        "method": "paired trial bootstrap percentile",
+        "level": 0.95,
+        "requested_resamples": 200,
+        "random_seed": 42,
+        "mae": {
+          "lower": 255.3,
+          "upper": 345.67750000000007,
+          "valid_resamples": 200
+        },
+        "rmse": {
+          "lower": 279.61798091810334,
+          "upper": 361.791837688187,
+          "valid_resamples": 200
+        },
+        "r2": {
+          "lower": -20.145701612256023,
+          "upper": -4.551991792249741,
+          "valid_resamples": 200
+        },
+        "auroc": {
+          "lower": null,
+          "upper": null,
+          "valid_resamples": 0
+        },
+        "average_precision": {
+          "lower": null,
+          "upper": null,
+          "valid_resamples": 0
+        },
+        "brier": {
+          "lower": 0.06131519274376416,
+          "upper": 0.06131519274376416,
+          "valid_resamples": 200
+        },
+        "interpretation": "Descriptive resampling intervals on tuning data; selection optimism is not corrected and coverage is not guaranteed."
+      }
+    },
+    "test": {
+      "regression": {
+        "mae": 351.1875,
+        "rmse": 419.22938977366556,
+        "r2": -0.0496253725399769
+      },
+      "classification": {
+        "auroc": 0.5,
+        "average_precision": 0.09375,
+        "brier": 0.10863662131519275
+      },
+      "calibration": {
+        "method": "10 equal-width reliability bins; probabilities are not post-hoc calibrated",
+        "bins": [
+          {
+            "lower": 0.2,
+            "upper": 0.3,
+            "count": 64,
+            "mean_probability": 0.24761904761904763,
+            "observed_fraction": 0.09375
+          }
+        ],
+        "expected_calibration_error": 0.15386904761904763
+      },
+      "n": 64,
+      "positive_count": 6,
+      "confidence_intervals": {
+        "method": "paired trial bootstrap percentile",
+        "level": 0.95,
+        "requested_resamples": 200,
+        "random_seed": 42,
+        "mae": {
+          "lower": 292.7296875,
+          "upper": 405.863671875,
+          "valid_resamples": 200
+        },
+        "rmse": {
+          "lower": 353.02137379835847,
+          "upper": 481.83009082920347,
+          "valid_resamples": 200
+        },
+        "r2": {
+          "lower": -0.22468143297587972,
+          "upper": -8.853341383815975e-05,
+          "valid_resamples": 200
+        },
+        "auroc": {
+          "lower": 0.5,
+          "upper": 0.5,
+          "valid_resamples": 200
+        },
+        "average_precision": {
+          "lower": 0.03125,
+          "upper": 0.15625,
+          "valid_resamples": 200
+        },
+        "brier": {
+          "lower": 0.0770890022675737,
+          "upper": 0.1401842403628118,
+          "valid_resamples": 200
+        },
+        "interpretation": "Conditional on the fitted model and independent-trial resampling; excludes model-fitting uncertainty."
+      },
+      "by_phase": [
+        {
+          "phase": "PHASE1",
+          "n": 22,
+          "positive_count": 1,
+          "regression": {
+            "mae": 335.27272727272725,
+            "rmse": 387.17402711536226,
+            "r2": -0.05675592346900071
+          },
+          "classification": {
+            "auroc": 0.5,
+            "average_precision": 0.045454545454545456,
+            "brier": 0.0842589156874871
+          },
+          "caution": "Exploratory held-out subgroup; registry phase labels do not establish clinical validity. Fewer than 30 trials: estimates may be unstable."
+        },
+        {
+          "phase": "PHASE1|PHASE2",
+          "n": 3,
+          "positive_count": 1,
+          "regression": {
+            "mae": 522.6666666666666,
+            "rmse": 600.8421867123957,
+            "r2": -0.8153050723026332
+          },
+          "classification": {
+            "auroc": 0.5,
+            "average_precision": 0.3333333333333333,
+            "brier": 0.22956916099773242
+          },
+          "caution": "Exploratory held-out subgroup; registry phase labels do not establish clinical validity. Fewer than 30 trials: estimates may be unstable."
+        },
+        {
+          "phase": "PHASE2",
+          "n": 17,
+          "positive_count": 3,
+          "regression": {
+            "mae": 411.52941176470586,
+            "rmse": 472.9581501197605,
+            "r2": -0.5368274271351661
+          },
+          "classification": {
+            "auroc": 0.5,
+            "average_precision": 0.17647058823529413,
+            "brier": 0.150390822995865
+          },
+          "caution": "Exploratory held-out subgroup; registry phase labels do not establish clinical validity. Fewer than 30 trials: estimates may be unstable."
+        },
+        {
+          "phase": "PHASE2|PHASE3",
+          "n": 2,
+          "positive_count": 0,
+          "regression": {
+            "mae": 328.0,
+            "rmse": 346.27301367562563,
+            "r2": -8.73175878581284
+          },
+          "classification": {
+            "auroc": null,
+            "average_precision": null,
+            "brier": 0.06131519274376418
+          },
+          "caution": "Exploratory held-out subgroup; registry phase labels do not establish clinical validity. Fewer than 30 trials: estimates may be unstable. Only one risk class is present; AUROC and average precision are undefined."
+        },
+        {
+          "phase": "PHASE3",
+          "n": 8,
+          "positive_count": 0,
+          "regression": {
+            "mae": 233.875,
+            "rmse": 288.6561535806919,
+            "r2": -0.06463752011181767
+          },
+          "classification": {
+            "auroc": null,
+            "average_precision": null,
+            "brier": 0.06131519274376418
+          },
+          "caution": "Exploratory held-out subgroup; registry phase labels do not establish clinical validity. Fewer than 30 trials: estimates may be unstable. Only one risk class is present; AUROC and average precision are undefined."
+        },
+        {
+          "phase": "PHASE4",
+          "n": 12,
+          "positive_count": 1,
+          "regression": {
+            "mae": 334.0833333333333,
+            "rmse": 424.08578141692044,
+            "r2": -0.015214724243829414
+          },
+          "classification": {
+            "auroc": 0.5,
+            "average_precision": 0.08333333333333333,
+            "brier": 0.1033786848072562
+          },
+          "caution": "Exploratory held-out subgroup; registry phase labels do not establish clinical validity. Fewer than 30 trials: estimates may be unstable."
+        }
+      ]
+    }
+  },
+  "structured": {
+    "validation": {
+      "regression": {
+        "mae": 485.5138450548805,
+        "rmse": 513.2531200282252,
+        "r2": -21.615502480540492
+      },
+      "classification": {
+        "auroc": null,
+        "average_precision": null,
+        "brier": 0.06065574004951707
+      },
+      "calibration": {
+        "method": "10 equal-width reliability bins; probabilities are not post-hoc calibrated",
+        "bins": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "count": 1,
+            "mean_probability": 0.08705807757177272,
+            "observed_fraction": 0.0
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "count": 8,
+            "mean_probability": 0.17108878954391837,
+            "observed_fraction": 0.0
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.3,
+            "count": 8,
+            "mean_probability": 0.25214540599189117,
+            "observed_fraction": 0.0
+          },
+          {
+            "lower": 0.3,
+            "upper": 0.4,
+            "count": 2,
+            "mean_probability": 0.3691647245644517,
+            "observed_fraction": 0.0
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "count": 1,
+            "mean_probability": 0.4245714542695965,
+            "observed_fraction": 0.0
+          }
+        ],
+        "expected_calibration_error": 0.23179162726283747
+      },
+      "n": 20,
+      "positive_count": 0,
+      "confidence_intervals": {
+        "method": "paired trial bootstrap percentile",
+        "level": 0.95,
+        "requested_resamples": 200,
+        "random_seed": 42,
+        "mae": {
+          "lower": 410.2606862078532,
+          "upper": 555.4054238168374,
+          "valid_resamples": 200
+        },
+        "rmse": {
+          "lower": 443.08388239646393,
+          "upper": 584.4271833843992,
+          "valid_resamples": 200
+        },
+        "r2": {
+          "lower": -53.12774769978395,
+          "upper": -12.017355191878138,
+          "valid_resamples": 200
+        },
+        "auroc": {
+          "lower": null,
+          "upper": null,
+          "valid_resamples": 0
+        },
+        "average_precision": {
+          "lower": null,
+          "upper": null,
+          "valid_resamples": 0
+        },
+        "brier": {
+          "lower": 0.04418883778044267,
+          "upper": 0.07832803439651549,
+          "valid_resamples": 200
+        },
+        "interpretation": "Descriptive resampling intervals on tuning data; selection optimism is not corrected and coverage is not guaranteed."
+      }
+    },
+    "test": {
+      "regression": {
+        "mae": 380.3906420718619,
+        "rmse": 459.84030304126935,
+        "r2": -0.262830154852443
+      },
+      "classification": {
+        "auroc": 0.6120689655172413,
+        "average_precision": 0.15462962962962962,
+        "brier": 0.11959289940191678
+      },
+      "calibration": {
+        "method": "10 equal-width reliability bins; probabilities are not post-hoc calibrated",
+        "bins": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "count": 2,
+            "mean_probability": 0.033583735276903864,
+            "observed_fraction": 0.0
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "count": 21,
+            "mean_probability": 0.16076726701342783,
+            "observed_fraction": 0.09523809523809523
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.3,
+            "count": 20,
+            "mean_probability": 0.24127749738604037,
+            "observed_fraction": 0.0
+          },
+          {
+            "lower": 0.3,
+            "upper": 0.4,
+            "count": 6,
+            "mean_probability": 0.35858706474172664,
+            "observed_fraction": 0.3333333333333333
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "count": 14,
+            "mean_probability": 0.42634511832009,
+            "observed_fraction": 0.14285714285714285
+          },
+          {
+            "lower": 0.6,
+            "upper": 0.7,
+            "count": 1,
+            "mean_probability": 0.6048948512276124,
+            "observed_fraction": 0.0
+          }
+        ],
+        "expected_calibration_error": 0.17178248315180988
+      },
+      "n": 64,
+      "positive_count": 6,
+      "confidence_intervals": {
+        "method": "paired trial bootstrap percentile",
+        "level": 0.95,
+        "requested_resamples": 200,
+        "random_seed": 42,
+        "mae": {
+          "lower": 325.4207434066397,
+          "upper": 434.3973957992913,
+          "valid_resamples": 200
+        },
+        "rmse": {
+          "lower": 395.23441006023916,
+          "upper": 520.175793002991,
+          "valid_resamples": 200
+        },
+        "r2": {
+          "lower": -0.7411993460959913,
+          "upper": 0.037559379731021546,
+          "valid_resamples": 200
+        },
+        "auroc": {
+          "lower": 0.30723516949152546,
+          "upper": 0.8592880978865406,
+          "valid_resamples": 200
+        },
+        "average_precision": {
+          "lower": 0.07307986706689537,
+          "upper": 0.36405348619634337,
+          "valid_resamples": 200
+        },
+        "brier": {
+          "lower": 0.08332633036241545,
+          "upper": 0.15207026257000517,
+          "valid_resamples": 200
+        },
+        "interpretation": "Conditional on the fitted model and independent-trial resampling; excludes model-fitting uncertainty."
+      },
+      "by_phase": [
+        {
+          "phase": "PHASE1",
+          "n": 22,
+          "positive_count": 1,
+          "regression": {
+            "mae": 437.32819906594125,
+            "rmse": 478.6292537969533,
+            "r2": -0.6149561612325964
+          },
+          "classification": {
+            "auroc": 0.1428571428571429,
+            "average_precision": 0.05263157894736842,
+            "brier": 0.08220840475729162
+          },
+          "caution": "Exploratory held-out subgroup; registry phase labels do not establish clinical validity. Fewer than 30 trials: estimates may be unstable."
+        },
+        {
+          "phase": "PHASE1|PHASE2",
+          "n": 3,
+          "positive_count": 1,
+          "regression": {
+            "mae": 467.4396129490121,
+            "rmse": 495.00234199834364,
+            "r2": -0.23209243923450407
+          },
+          "classification": {
+            "auroc": 0.5,
+            "average_precision": 0.5,
+            "brier": 0.2976570683551428
+          },
+          "caution": "Exploratory held-out subgroup; registry phase labels do not establish clinical validity. Fewer than 30 trials: estimates may be unstable."
+        },
+        {
+          "phase": "PHASE2",
+          "n": 17,
+          "positive_count": 3,
+          "regression": {
+            "mae": 402.57044347741953,
+            "rmse": 524.1722841650742,
+            "r2": -0.8876774271849521
+          },
+          "classification": {
+            "auroc": 0.4523809523809524,
+            "average_precision": 0.1986161986161986,
+            "brier": 0.2002767533958106
+          },
+          "caution": "Exploratory held-out subgroup; registry phase labels do not establish clinical validity. Fewer than 30 trials: estimates may be unstable."
+        },
+        {
+          "phase": "PHASE2|PHASE3",
+          "n": 2,
+          "positive_count": 0,
+          "regression": {
+            "mae": 99.29185186069861,
+            "rmse": 124.76709479760677,
+            "r2": -0.2634386773991555
+          },
+          "classification": {
+            "auroc": null,
+            "average_precision": null,
+            "brier": 0.16764021514836264
+          },
+          "caution": "Exploratory held-out subgroup; registry phase labels do not establish clinical validity. Fewer than 30 trials: estimates may be unstable. Only one risk class is present; AUROC and average precision are undefined."
+        },
+        {
+          "phase": "PHASE3",
+          "n": 8,
+          "positive_count": 0,
+          "regression": {
+            "mae": 263.9966392952387,
+            "rmse": 303.73172954977514,
+            "r2": -0.1787466010322598
+          },
+          "classification": {
+            "auroc": null,
+            "average_precision": null,
+            "brier": 0.03797937159496777
+          },
+          "caution": "Exploratory held-out subgroup; registry phase labels do not establish clinical validity. Fewer than 30 trials: estimates may be unstable. Only one risk class is present; AUROC and average precision are undefined."
+        },
+        {
+          "phase": "PHASE4",
+          "n": 12,
+          "positive_count": 1,
+          "regression": {
+            "mae": 347.2672930918314,
+            "rmse": 439.5078932819816,
+            "r2": -0.0903949777769062
+          },
+          "classification": {
+            "auroc": 1.0,
+            "average_precision": 1.0,
+            "brier": 0.07571410343429856
+          },
+          "caution": "Exploratory held-out subgroup; registry phase labels do not establish clinical validity. Fewer than 30 trials: estimates may be unstable."
+        }
+      ]
+    }
+  },
+  "text": {
+    "validation": {
+      "regression": {
+        "mae": 402.81977607438097,
+        "rmse": 429.6343568501702,
+        "r2": -14.846780869585249
+      },
+      "classification": {
+        "auroc": null,
+        "average_precision": null,
+        "brier": 0.017728954904427684
+      },
+      "calibration": {
+        "method": "10 equal-width reliability bins; probabilities are not post-hoc calibrated",
+        "bins": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "count": 13,
+            "mean_probability": 0.07389077980583707,
+            "observed_fraction": 0.0
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "count": 5,
+            "mean_probability": 0.15200535028165799,
+            "observed_fraction": 0.0
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.3,
+            "count": 1,
+            "mean_probability": 0.22646606346784048,
+            "observed_fraction": 0.0
+          },
+          {
+            "lower": 0.3,
+            "upper": 0.4,
+            "count": 1,
+            "mean_probability": 0.331495335317871,
+            "observed_fraction": 0.0
+          }
+        ],
+        "expected_calibration_error": 0.11392841438349417
+      },
+      "n": 20,
+      "positive_count": 0,
+      "confidence_intervals": {
+        "method": "paired trial bootstrap percentile",
+        "level": 0.95,
+        "requested_resamples": 200,
+        "random_seed": 42,
+        "mae": {
+          "lower": 334.8853996261343,
+          "upper": 465.8990709648445,
+          "valid_resamples": 200
+        },
+        "rmse": {
+          "lower": 352.9613785192317,
+          "upper": 502.17967331837747,
+          "valid_resamples": 200
+        },
+        "r2": {
+          "lower": -34.340062453689605,
+          "upper": -9.038184906127254,
+          "valid_resamples": 200
+        },
+        "auroc": {
+          "lower": null,
+          "upper": null,
+          "valid_resamples": 0
+        },
+        "average_precision": {
+          "lower": null,
+          "upper": null,
+          "valid_resamples": 0
+        },
+        "brier": {
+          "lower": 0.007430311453534009,
+          "upper": 0.02766356446414421,
+          "valid_resamples": 200
+        },
+        "interpretation": "Descriptive resampling intervals on tuning data; selection optimism is not corrected and coverage is not guaranteed."
+      }
+    },
+    "test": {
+      "regression": {
+        "mae": 314.70094620585854,
+        "rmse": 366.98233683691484,
+        "r2": 0.19569419710806812
+      },
+      "classification": {
+        "auroc": 0.8074712643678161,
+        "average_precision": 0.3481178908810487,
+        "brier": 0.07756935665479857
+      },
+      "calibration": {
+        "method": "10 equal-width reliability bins; probabilities are not post-hoc calibrated",
+        "bins": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "count": 14,
+            "mean_probability": 0.08147488977427807,
+            "observed_fraction": 0.0
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "count": 41,
+            "mean_probability": 0.14332143827945318,
+            "observed_fraction": 0.07317073170731707
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.3,
+            "count": 4,
+            "mean_probability": 0.2287794009541329,
+            "observed_fraction": 0.25
+          },
+          {
+            "lower": 0.3,
+            "upper": 0.4,
+            "count": 5,
+            "mean_probability": 0.3753073454646048,
+            "observed_fraction": 0.4
+          }
+        ],
+        "expected_calibration_error": 0.06601832961184247
+      },
+      "n": 64,
+      "positive_count": 6,
+      "confidence_intervals": {
+        "method": "paired trial bootstrap percentile",
+        "level": 0.95,
+        "requested_resamples": 200,
+        "random_seed": 42,
+        "mae": {
+          "lower": 265.3237470440493,
+          "upper": 359.5989184950701,
+          "valid_resamples": 200
+        },
+        "rmse": {
+          "lower": 319.7190739163796,
+          "upper": 414.2552569210961,
+          "valid_resamples": 200
+        },
+        "r2": {
+          "lower": -0.1014118097152707,
+          "upper": 0.3098549845985985,
+          "valid_resamples": 200
+        },
+        "auroc": {
+          "lower": 0.5976293103448276,
+          "upper": 0.9626310483870968,
+          "valid_resamples": 200
+        },
+        "average_precision": {
+          "lower": 0.14703760162601626,
+          "upper": 0.7349407048958485,
+          "valid_resamples": 200
+        },
+        "brier": {
+          "lower": 0.041949843327542286,
+          "upper": 0.11592466401793673,
+          "valid_resamples": 200
+        },
+        "interpretation": "Conditional on the fitted model and independent-trial resampling; excludes model-fitting uncertainty."
+      },
+      "by_phase": [
+        {
+          "phase": "PHASE1",
+          "n": 22,
+          "positive_count": 1,
+          "regression": {
+            "mae": 325.7448031387148,
+            "rmse": 367.38496894643816,
+            "r2": 0.048508250242230266
+          },
+          "classification": {
+            "auroc": 1.0,
+            "average_precision": 1.0,
+            "brier": 0.038721231192812906
+          },
+          "caution": "Exploratory held-out subgroup; registry phase labels do not establish clinical validity. Fewer than 30 trials: estimates may be unstable."
+        },
+        {
+          "phase": "PHASE1|PHASE2",
+          "n": 3,
+          "positive_count": 1,
+          "regression": {
+            "mae": 241.98577973940928,
+            "rmse": 275.4403747700577,
+            "r2": 0.6185092726373959
+          },
+          "classification": {
+            "auroc": 1.0,
+            "average_precision": 1.0,
+            "brier": 0.14933714696361997
+          },
+          "caution": "Exploratory held-out subgroup; registry phase labels do not establish clinical validity. Fewer than 30 trials: estimates may be unstable."
+        },
+        {
+          "phase": "PHASE2",
+          "n": 17,
+          "positive_count": 3,
+          "regression": {
+            "mae": 305.05051629189654,
+            "rmse": 360.44279963050695,
+            "r2": 0.10740924626786963
+          },
+          "classification": {
+            "auroc": 0.5476190476190477,
+            "average_precision": 0.31666666666666665,
+            "brier": 0.1483965685312356
+          },
+          "caution": "Exploratory held-out subgroup; registry phase labels do not establish clinical validity. Fewer than 30 trials: estimates may be unstable."
+        },
+        {
+          "phase": "PHASE2|PHASE3",
+          "n": 2,
+          "positive_count": 0,
+          "regression": {
+            "mae": 204.44702754996229,
+            "rmse": 249.71777998352343,
+            "r2": -4.061193867372731
+          },
+          "classification": {
+            "auroc": null,
+            "average_precision": null,
+            "brier": 0.020041621617157824
+          },
+          "caution": "Exploratory held-out subgroup; registry phase labels do not establish clinical validity. Fewer than 30 trials: estimates may be unstable. Only one risk class is present; AUROC and average precision are undefined."
+        },
+        {
+          "phase": "PHASE3",
+          "n": 8,
+          "positive_count": 0,
+          "regression": {
+            "mae": 267.6165898925698,
+            "rmse": 288.1257274227899,
+            "r2": -0.060728421112533626
+          },
+          "classification": {
+            "auroc": null,
+            "average_precision": null,
+            "brier": 0.01937789366731541
+          },
+          "caution": "Exploratory held-out subgroup; registry phase labels do not establish clinical validity. Fewer than 30 trials: estimates may be unstable. Only one risk class is present; AUROC and average precision are undefined."
+        },
+        {
+          "phase": "PHASE4",
+          "n": 12,
+          "positive_count": 1,
+          "regression": {
+            "mae": 376.0693331418559,
+            "rmse": 449.51953217578296,
+            "r2": -0.14063742901916743
+          },
+          "classification": {
+            "auroc": 0.8181818181818181,
+            "average_precision": 0.3333333333333333,
+            "brier": 0.07889268676421014
+          },
+          "caution": "Exploratory held-out subgroup; registry phase labels do not establish clinical validity. Fewer than 30 trials: estimates may be unstable."
+        }
+      ]
+    }
+  },
+  "multimodal": {
+    "validation": {
+      "regression": {
+        "mae": 381.5558545605762,
+        "rmse": 421.3690164646922,
+        "r2": -14.242922527304511
+      },
+      "classification": {
+        "auroc": null,
+        "average_precision": null,
+        "brier": 0.0341070344546887
+      },
+      "calibration": {
+        "method": "10 equal-width reliability bins; probabilities are not post-hoc calibrated",
+        "bins": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "count": 13,
+            "mean_probability": 0.062472240726246825,
+            "observed_fraction": 0.0
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "count": 5,
+            "mean_probability": 0.13673340412344262,
+            "observed_fraction": 0.0
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "count": 1,
+            "mean_probability": 0.44542436459790963,
+            "observed_fraction": 0.0
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6,
+            "count": 1,
+            "mean_probability": 0.578436308897339,
+            "observed_fraction": 0.0
+          }
+        ],
+        "expected_calibration_error": 0.12598334117768353
+      },
+      "n": 20,
+      "positive_count": 0,
+      "confidence_intervals": {
+        "method": "paired trial bootstrap percentile",
+        "level": 0.95,
+        "requested_resamples": 200,
+        "random_seed": 42,
+        "mae": {
+          "lower": 299.26011694786337,
+          "upper": 457.3963921689503,
+          "valid_resamples": 200
+        },
+        "rmse": {
+          "lower": 330.3717402171195,
+          "upper": 494.99764039270417,
+          "valid_resamples": 200
+        },
+        "r2": {
+          "lower": -34.64459111228417,
+          "upper": -7.459522577596621,
+          "valid_resamples": 200
+        },
+        "auroc": {
+          "lower": null,
+          "upper": null,
+          "valid_resamples": 0
+        },
+        "average_precision": {
+          "lower": null,
+          "upper": null,
+          "valid_resamples": 0
+        },
+        "brier": {
+          "lower": 0.006798163586850974,
+          "upper": 0.06817042908095164,
+          "valid_resamples": 200
+        },
+        "interpretation": "Descriptive resampling intervals on tuning data; selection optimism is not corrected and coverage is not guaranteed."
+      }
+    },
+    "test": {
+      "regression": {
+        "mae": 332.9980175279545,
+        "rmse": 399.2832425847465,
+        "r2": 0.04787702262610416
+      },
+      "classification": {
+        "auroc": 0.7614942528735632,
+        "average_precision": 0.2877005347593583,
+        "brier": 0.09341359183787928
+      },
+      "calibration": {
+        "method": "10 equal-width reliability bins; probabilities are not post-hoc calibrated",
+        "bins": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "count": 28,
+            "mean_probability": 0.06531005916150592,
+            "observed_fraction": 0.0
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "count": 15,
+            "mean_probability": 0.12837313068925077,
+            "observed_fraction": 0.13333333333333333
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.3,
+            "count": 9,
+            "mean_probability": 0.24135806983663835,
+            "observed_fraction": 0.1111111111111111
+          },
+          {
+            "lower": 0.3,
+            "upper": 0.4,
+            "count": 5,
+            "mean_probability": 0.33629022221515753,
+            "observed_fraction": 0.2
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "count": 2,
+            "mean_probability": 0.4505218845022755,
+            "observed_fraction": 0.0
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6,
+            "count": 3,
+            "mean_probability": 0.5225794361801006,
+            "observed_fraction": 0.3333333333333333
+          },
+          {
+            "lower": 0.6,
+            "upper": 0.7,
+            "count": 1,
+            "mean_probability": 0.615422777446778,
+            "observed_fraction": 1.0
+          },
+          {
+            "lower": 0.8,
+            "upper": 0.9,
+            "count": 1,
+            "mean_probability": 0.8145621278181083,
+            "observed_fraction": 0.0
+          }
+        ],
+        "expected_calibration_error": 0.1003856228703925
+      },
+      "n": 64,
+      "positive_count": 6,
+      "confidence_intervals": {
+        "method": "paired trial bootstrap percentile",
+        "level": 0.95,
+        "requested_resamples": 200,
+        "random_seed": 42,
+        "mae": {
+          "lower": 282.4048746811887,
+          "upper": 383.68898546300636,
+          "valid_resamples": 200
+        },
+        "rmse": {
+          "lower": 345.1940381891213,
+          "upper": 457.2901401691928,
+          "valid_resamples": 200
+        },
+        "r2": {
+          "lower": -0.32023899813603723,
+          "upper": 0.2759979656976097,
+          "valid_resamples": 200
+        },
+        "auroc": {
+          "lower": 0.5287182203389832,
+          "upper": 0.9356160882432069,
+          "valid_resamples": 200
+        },
+        "average_precision": {
+          "lower": 0.10526785714285714,
+          "upper": 0.6923611111111111,
+          "valid_resamples": 200
+        },
+        "brier": {
+          "lower": 0.052238765184886786,
+          "upper": 0.13441444728492669,
+          "valid_resamples": 200
+        },
+        "interpretation": "Conditional on the fitted model and independent-trial resampling; excludes model-fitting uncertainty."
+      },
+      "by_phase": [
+        {
+          "phase": "PHASE1",
+          "n": 22,
+          "positive_count": 1,
+          "regression": {
+            "mae": 339.344552629186,
+            "rmse": 387.5124427710578,
+            "r2": -0.058604079681133125
+          },
+          "classification": {
+            "auroc": 0.5714285714285714,
+            "average_precision": 0.1,
+            "brier": 0.04900657846470168
+          },
+          "caution": "Exploratory held-out subgroup; registry phase labels do not establish clinical validity. Fewer than 30 trials: estimates may be unstable."
+        },
+        {
+          "phase": "PHASE1|PHASE2",
+          "n": 3,
+          "positive_count": 1,
+          "regression": {
+            "mae": 331.8666328249564,
+            "rmse": 342.66486659042494,
+            "r2": 0.4095706442935598
+          },
+          "classification": {
+            "auroc": 0.5,
+            "average_precision": 0.5,
+            "brier": 0.27517095881949444
+          },
+          "caution": "Exploratory held-out subgroup; registry phase labels do not establish clinical validity. Fewer than 30 trials: estimates may be unstable."
+        },
+        {
+          "phase": "PHASE2",
+          "n": 17,
+          "positive_count": 3,
+          "regression": {
+            "mae": 367.74968652926077,
+            "rmse": 453.77620337587024,
+            "r2": -0.41469594757027206
+          },
+          "classification": {
+            "auroc": 0.5952380952380951,
+            "average_precision": 0.28327228327228327,
+            "brier": 0.16766480814213822
+          },
+          "caution": "Exploratory held-out subgroup; registry phase labels do not establish clinical validity. Fewer than 30 trials: estimates may be unstable."
+        },
+        {
+          "phase": "PHASE2|PHASE3",
+          "n": 2,
+          "positive_count": 0,
+          "regression": {
+            "mae": 182.24274319428088,
+            "rmse": 183.44393524289865,
+            "r2": -1.7312456275789945
+          },
+          "classification": {
+            "auroc": null,
+            "average_precision": null,
+            "brier": 0.15569388267542467
+          },
+          "caution": "Exploratory held-out subgroup; registry phase labels do not establish clinical validity. Fewer than 30 trials: estimates may be unstable. Only one risk class is present; AUROC and average precision are undefined."
+        },
+        {
+          "phase": "PHASE3",
+          "n": 8,
+          "positive_count": 0,
+          "regression": {
+            "mae": 250.83049387176106,
+            "rmse": 285.3904851933807,
+            "r2": -0.040684549170950435
+          },
+          "classification": {
+            "auroc": null,
+            "average_precision": null,
+            "brier": 0.009360085195628812
+          },
+          "caution": "Exploratory held-out subgroup; registry phase labels do not establish clinical validity. Fewer than 30 trials: estimates may be unstable. Only one risk class is present; AUROC and average precision are undefined."
+        },
+        {
+          "phase": "PHASE4",
+          "n": 12,
+          "positive_count": 1,
+          "regression": {
+            "mae": 352.31824642600395,
+            "rmse": 440.45659083468576,
+            "r2": -0.09510739146319702
+          },
+          "classification": {
+            "auroc": 1.0,
+            "average_precision": 1.0,
+            "brier": 0.0698535074675103
+          },
+          "caution": "Exploratory held-out subgroup; registry phase labels do not establish clinical validity. Fewer than 30 trials: estimates may be unstable."
+        }
+      ]
+    }
+  },
+  "structured_extra_trees": {
+    "validation": {
+      "regression": {
+        "mae": 463.8215020280715,
+        "rmse": 494.1105678440633,
+        "r2": -19.960002511573318
+      },
+      "classification": {
+        "auroc": null,
+        "average_precision": null,
+        "brier": 0.05911740557848842
+      },
+      "calibration": {
+        "method": "10 equal-width reliability bins; probabilities are not post-hoc calibrated",
+        "bins": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "count": 1,
+            "mean_probability": 0.08037338512267406,
+            "observed_fraction": 0.0
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "count": 10,
+            "mean_probability": 0.15161075235063415,
+            "observed_fraction": 0.0
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.3,
+            "count": 5,
+            "mean_probability": 0.23231690985133255,
+            "observed_fraction": 0.0
+          },
+          {
+            "lower": 0.3,
+            "upper": 0.4,
+            "count": 1,
+            "mean_probability": 0.311298162125897,
+            "observed_fraction": 0.0
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "count": 3,
+            "mean_probability": 0.4356977533135698,
+            "observed_fraction": 0.0
+          }
+        ],
+        "expected_calibration_error": 0.21882284399761423
+      },
+      "n": 20,
+      "positive_count": 0,
+      "confidence_intervals": {
+        "method": "paired trial bootstrap percentile",
+        "level": 0.95,
+        "requested_resamples": 200,
+        "random_seed": 42,
+        "mae": {
+          "lower": 385.78507124998833,
+          "upper": 535.2295862051295,
+          "valid_resamples": 200
+        },
+        "rmse": {
+          "lower": 416.62098269102347,
+          "upper": 569.2386746523815,
+          "valid_resamples": 200
+        },
+        "r2": {
+          "lower": -48.651945368407056,
+          "upper": -10.919626027570217,
+          "valid_resamples": 200
+        },
+        "auroc": {
+          "lower": null,
+          "upper": null,
+          "valid_resamples": 0
+        },
+        "average_precision": {
+          "lower": null,
+          "upper": null,
+          "valid_resamples": 0
+        },
+        "brier": {
+          "lower": 0.036815393129284224,
+          "upper": 0.08538172624942068,
+          "valid_resamples": 200
+        },
+        "interpretation": "Descriptive resampling intervals on tuning data; selection optimism is not corrected and coverage is not guaranteed."
+      }
+    },
+    "test": {
+      "regression": {
+        "mae": 328.5305379385537,
+        "rmse": 413.65654814619904,
+        "r2": -0.021905379982597895
+      },
+      "classification": {
+        "auroc": 0.646551724137931,
+        "average_precision": 0.34190632062972487,
+        "brier": 0.1136705347954248
+      },
+      "calibration": {
+        "method": "10 equal-width reliability bins; probabilities are not post-hoc calibrated",
+        "bins": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "count": 4,
+            "mean_probability": 0.07873244754605792,
+            "observed_fraction": 0.25
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "count": 26,
+            "mean_probability": 0.1486153313208208,
+            "observed_fraction": 0.038461538461538464
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.3,
+            "count": 11,
+            "mean_probability": 0.22425554052157917,
+            "observed_fraction": 0.0
+          },
+          {
+            "lower": 0.3,
+            "upper": 0.4,
+            "count": 9,
+            "mean_probability": 0.3478020276522467,
+            "observed_fraction": 0.0
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "count": 11,
+            "mean_probability": 0.43750862627619136,
+            "observed_fraction": 0.2727272727272727
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6,
+            "count": 1,
+            "mean_probability": 0.5726016636272616,
+            "observed_fraction": 0.0
+          },
+          {
+            "lower": 0.7,
+            "upper": 0.8,
+            "count": 2,
+            "mean_probability": 0.7032840511895939,
+            "observed_fraction": 0.5
+          }
+        ],
+        "expected_calibration_error": 0.1865291042782696
+      },
+      "n": 64,
+      "positive_count": 6,
+      "confidence_intervals": {
+        "method": "paired trial bootstrap percentile",
+        "level": 0.95,
+        "requested_resamples": 200,
+        "random_seed": 42,
+        "mae": {
+          "lower": 272.7533721398999,
+          "upper": 382.6351368748283,
+          "valid_resamples": 200
+        },
+        "rmse": {
+          "lower": 345.7913063754518,
+          "upper": 474.52477329850984,
+          "valid_resamples": 200
+        },
+        "r2": {
+          "lower": -0.4050234360337096,
+          "upper": 0.23496512500539926,
+          "valid_resamples": 200
+        },
+        "auroc": {
+          "lower": 0.321219262295082,
+          "upper": 0.9322316384180792,
+          "valid_resamples": 200
+        },
+        "average_precision": {
+          "lower": 0.07261002886002886,
+          "upper": 0.659453550170068,
+          "valid_resamples": 200
+        },
+        "brier": {
+          "lower": 0.07853301141538102,
+          "upper": 0.14916307812951665,
+          "valid_resamples": 200
+        },
+        "interpretation": "Conditional on the fitted model and independent-trial resampling; excludes model-fitting uncertainty."
+      },
+      "by_phase": [
+        {
+          "phase": "PHASE1",
+          "n": 22,
+          "positive_count": 1,
+          "regression": {
+            "mae": 363.61787485552554,
+            "rmse": 423.95401012581135,
+            "r2": -0.2670675087756904
+          },
+          "classification": {
+            "auroc": 0.2857142857142857,
+            "average_precision": 0.0625,
+            "brier": 0.06762099985439993
+          },
+          "caution": "Exploratory held-out subgroup; registry phase labels do not establish clinical validity. Fewer than 30 trials: estimates may be unstable."
+        },
+        {
+          "phase": "PHASE1|PHASE2",
+          "n": 3,
+          "positive_count": 1,
+          "regression": {
+            "mae": 331.6032808519718,
+            "rmse": 406.62331701359614,
+            "r2": 0.16859363950689632
+          },
+          "classification": {
+            "auroc": 1.0,
+            "average_precision": 1.0,
+            "brier": 0.30138052738109905
+          },
+          "caution": "Exploratory held-out subgroup; registry phase labels do not establish clinical validity. Fewer than 30 trials: estimates may be unstable."
+        },
+        {
+          "phase": "PHASE2",
+          "n": 17,
+          "positive_count": 3,
+          "regression": {
+            "mae": 355.46708744785565,
+            "rmse": 472.0027202507262,
+            "r2": -0.5306245623426868
+          },
+          "classification": {
+            "auroc": 0.6666666666666666,
+            "average_precision": 0.3055555555555556,
+            "brier": 0.18716806239454528
+          },
+          "caution": "Exploratory held-out subgroup; registry phase labels do not establish clinical validity. Fewer than 30 trials: estimates may be unstable."
+        },
+        {
+          "phase": "PHASE2|PHASE3",
+          "n": 2,
+          "positive_count": 0,
+          "regression": {
+            "mae": 125.446725432434,
+            "rmse": 127.14173506765937,
+            "r2": -0.31198935119023496
+          },
+          "classification": {
+            "auroc": null,
+            "average_precision": null,
+            "brier": 0.18434926129790982
+          },
+          "caution": "Exploratory held-out subgroup; registry phase labels do not establish clinical validity. Fewer than 30 trials: estimates may be unstable. Only one risk class is present; AUROC and average precision are undefined."
+        },
+        {
+          "phase": "PHASE3",
+          "n": 8,
+          "positive_count": 0,
+          "regression": {
+            "mae": 246.1792250456537,
+            "rmse": 283.9104212400048,
+            "r2": -0.029918348161756425
+          },
+          "classification": {
+            "auroc": null,
+            "average_precision": null,
+            "brier": 0.03506470423504406
+          },
+          "caution": "Exploratory held-out subgroup; registry phase labels do not establish clinical validity. Fewer than 30 trials: estimates may be unstable. Only one risk class is present; AUROC and average precision are undefined."
+        },
+        {
+          "phase": "PHASE4",
+          "n": 12,
+          "positive_count": 1,
+          "regression": {
+            "mae": 314.0236334038597,
+            "rmse": 411.9432615546783,
+            "r2": 0.04208871279196613
+          },
+          "classification": {
+            "auroc": 0.09090909090909094,
+            "average_precision": 0.09090909090909091,
+            "brier": 0.08766978589863746
+          },
+          "caution": "Exploratory held-out subgroup; registry phase labels do not establish clinical validity. Fewer than 30 trials: estimates may be unstable."
+        }
+      ]
+    }
+  },
+  "structured_random_forest": {
+    "validation": {
+      "regression": {
+        "mae": 461.7208400892233,
+        "rmse": 495.1112640752982,
+        "r2": -20.044986870381965
+      },
+      "classification": {
+        "auroc": null,
+        "average_precision": null,
+        "brier": 0.06101984498336656
+      },
+      "calibration": {
+        "method": "10 equal-width reliability bins; probabilities are not post-hoc calibrated",
+        "bins": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "count": 2,
+            "mean_probability": 0.0797669054433611,
+            "observed_fraction": 0.0
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "count": 10,
+            "mean_probability": 0.15847407892691173,
+            "observed_fraction": 0.0
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.3,
+            "count": 3,
+            "mean_probability": 0.23293937396440276,
+            "observed_fraction": 0.0
+          },
+          {
+            "lower": 0.3,
+            "upper": 0.4,
+            "count": 3,
+            "mean_probability": 0.373296545875184,
+            "observed_fraction": 0.0
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "count": 2,
+            "mean_probability": 0.42624121228333417,
+            "observed_fraction": 0.0
+          }
+        ],
+        "expected_calibration_error": 0.2207732392120634
+      },
+      "n": 20,
+      "positive_count": 0,
+      "confidence_intervals": {
+        "method": "paired trial bootstrap percentile",
+        "level": 0.95,
+        "requested_resamples": 200,
+        "random_seed": 42,
+        "mae": {
+          "lower": 389.0342387960861,
+          "upper": 538.1530183530741,
+          "valid_resamples": 200
+        },
+        "rmse": {
+          "lower": 417.06861024965536,
+          "upper": 569.991459003449,
+          "valid_resamples": 200
+        },
+        "r2": {
+          "lower": -52.713695973146585,
+          "upper": -10.792249351637803,
+          "valid_resamples": 200
+        },
+        "auroc": {
+          "lower": null,
+          "upper": null,
+          "valid_resamples": 0
+        },
+        "average_precision": {
+          "lower": null,
+          "upper": null,
+          "valid_resamples": 0
+        },
+        "brier": {
+          "lower": 0.03835331458286317,
+          "upper": 0.08800138502040487,
+          "valid_resamples": 200
+        },
+        "interpretation": "Descriptive resampling intervals on tuning data; selection optimism is not corrected and coverage is not guaranteed."
+      }
+    },
+    "test": {
+      "regression": {
+        "mae": 350.5499504960001,
+        "rmse": 428.3732894241274,
+        "r2": -0.0959119053769868
+      },
+      "classification": {
+        "auroc": 0.6724137931034483,
+        "average_precision": 0.1578627178007635,
+        "brier": 0.11278716103738216
+      },
+      "calibration": {
+        "method": "10 equal-width reliability bins; probabilities are not post-hoc calibrated",
+        "bins": [
+          {
+            "lower": 0.0,
+            "upper": 0.1,
+            "count": 2,
+            "mean_probability": 0.07501293560204138,
+            "observed_fraction": 0.0
+          },
+          {
+            "lower": 0.1,
+            "upper": 0.2,
+            "count": 23,
+            "mean_probability": 0.1554309663486002,
+            "observed_fraction": 0.043478260869565216
+          },
+          {
+            "lower": 0.2,
+            "upper": 0.3,
+            "count": 21,
+            "mean_probability": 0.25131789011710864,
+            "observed_fraction": 0.09523809523809523
+          },
+          {
+            "lower": 0.3,
+            "upper": 0.4,
+            "count": 12,
+            "mean_probability": 0.3446580250523166,
+            "observed_fraction": 0.25
+          },
+          {
+            "lower": 0.4,
+            "upper": 0.5,
+            "count": 3,
+            "mean_probability": 0.41049222266456753,
+            "observed_fraction": 0.0
+          },
+          {
+            "lower": 0.5,
+            "upper": 0.6,
+            "count": 3,
+            "mean_probability": 0.5339626927957131,
+            "observed_fraction": 0.0
+          }
+        ],
+        "expected_calibration_error": 0.1558105443232783
+      },
+      "n": 64,
+      "positive_count": 6,
+      "confidence_intervals": {
+        "method": "paired trial bootstrap percentile",
+        "level": 0.95,
+        "requested_resamples": 200,
+        "random_seed": 42,
+        "mae": {
+          "lower": 291.8663712462856,
+          "upper": 407.35859035601817,
+          "valid_resamples": 200
+        },
+        "rmse": {
+          "lower": 365.41839906376106,
+          "upper": 483.3277597624556,
+          "valid_resamples": 200
+        },
+        "r2": {
+          "lower": -0.519212037150821,
+          "upper": 0.1494310396521098,
+          "valid_resamples": 200
+        },
+        "auroc": {
+          "lower": 0.47355932203389833,
+          "upper": 0.8451981246218996,
+          "valid_resamples": 200
+        },
+        "average_precision": {
+          "lower": 0.07297619047619049,
+          "upper": 0.34491018492377185,
+          "valid_resamples": 200
+        },
+        "brier": {
+          "lower": 0.08157644141608478,
+          "upper": 0.14742148201471106,
+          "valid_resamples": 200
+        },
+        "interpretation": "Conditional on the fitted model and independent-trial resampling; excludes model-fitting uncertainty."
+      },
+      "by_phase": [
+        {
+          "phase": "PHASE1",
+          "n": 22,
+          "positive_count": 1,
+          "regression": {
+            "mae": 387.62951196676806,
+            "rmse": 446.5837827164018,
+            "r2": -0.4059444296978518
+          },
+          "classification": {
+            "auroc": 0.7142857142857143,
+            "average_precision": 0.14285714285714285,
+            "brier": 0.0790418522880866
+          },
+          "caution": "Exploratory held-out subgroup; registry phase labels do not establish clinical validity. Fewer than 30 trials: estimates may be unstable."
+        },
+        {
+          "phase": "PHASE1|PHASE2",
+          "n": 3,
+          "positive_count": 1,
+          "regression": {
+            "mae": 388.55786489385355,
+            "rmse": 443.8128478932162,
+            "r2": 0.009559191616345442
+          },
+          "classification": {
+            "auroc": 1.0,
+            "average_precision": 1.0,
+            "brier": 0.2105733264520235
+          },
+          "caution": "Exploratory held-out subgroup; registry phase labels do not establish clinical validity. Fewer than 30 trials: estimates may be unstable."
+        },
+        {
+          "phase": "PHASE2",
+          "n": 17,
+          "positive_count": 3,
+          "regression": {
+            "mae": 358.31568427863874,
+            "rmse": 472.98440015138254,
+            "r2": -0.5369980252655515
+          },
+          "classification": {
+            "auroc": 0.5238095238095238,
+            "average_precision": 0.22424242424242424,
+            "brier": 0.19095229849184872
+          },
+          "caution": "Exploratory held-out subgroup; registry phase labels do not establish clinical validity. Fewer than 30 trials: estimates may be unstable."
+        },
+        {
+          "phase": "PHASE2|PHASE3",
+          "n": 2,
+          "positive_count": 0,
+          "regression": {
+            "mae": 162.24523669573614,
+            "rmse": 163.21298215695631,
+            "r2": -1.1620385962638533
+          },
+          "classification": {
+            "auroc": null,
+            "average_precision": null,
+            "brier": 0.0695196465369771
+          },
+          "caution": "Exploratory held-out subgroup; registry phase labels do not establish clinical validity. Fewer than 30 trials: estimates may be unstable. Only one risk class is present; AUROC and average precision are undefined."
+        },
+        {
+          "phase": "PHASE3",
+          "n": 8,
+          "positive_count": 0,
+          "regression": {
+            "mae": 273.34471819905133,
+            "rmse": 313.0832799913266,
+            "r2": -0.2524485005599373
+          },
+          "classification": {
+            "auroc": null,
+            "average_precision": null,
+            "brier": 0.05444359181703709
+          },
+          "caution": "Exploratory held-out subgroup; registry phase labels do not establish clinical validity. Fewer than 30 trials: estimates may be unstable. Only one risk class is present; AUROC and average precision are undefined."
+        },
+        {
+          "phase": "PHASE4",
+          "n": 12,
+          "positive_count": 1,
+          "regression": {
+            "mae": 344.92159350606767,
+            "rmse": 420.8247675901498,
+            "r2": 0.00033826447378348945
+          },
+          "classification": {
+            "auroc": 0.6363636363636364,
+            "average_precision": 0.2,
+            "brier": 0.08558003956056702
+          },
+          "caution": "Exploratory held-out subgroup; registry phase labels do not establish clinical validity. Fewer than 30 trials: estimates may be unstable."
+        }
+      ]
+    }
+  }
+}

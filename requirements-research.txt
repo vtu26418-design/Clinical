@@ -1,0 +1,5 @@
+# Optional larger extensions, separate from core app verification.
+-r requirements-shap.txt
+transformers>=4.48,<5
+torch>=2.6,<3
+lifelines>=0.30,<0.31

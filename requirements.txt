@@ -1,0 +1,23 @@
+# Tested core stack; Python 3.12. Optional packages have separate files.
+fastapi==0.115.12
+starlette==0.46.2
+uvicorn==0.34.2
+pydantic==2.13.5
+pydantic-settings==2.9.1
+python-dotenv==1.1.0
+pandas==2.2.3
+numpy==2.3.5
+scipy==1.17.0
+scikit-learn==1.8.0
+pyarrow==21.0.0
+joblib==1.5.3
+httpx==0.28.1
+openai==1.109.1
+python-multipart==0.0.20
+SQLAlchemy==2.0.40
+psycopg[binary]==3.2.6
+pypdf==5.5.0
+openpyxl==3.1.5
+defusedxml==0.7.1
+threadpoolctl==3.7.0
+catboost==1.2.8

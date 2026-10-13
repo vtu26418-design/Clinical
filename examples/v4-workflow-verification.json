@@ -1,0 +1,538 @@
+{
+  "version": "4.0.0",
+  "health": {
+    "status": "ok",
+    "version": "4.0.0",
+    "ai_provider": "disabled",
+    "openai_configured": false,
+    "assistant_enabled": false,
+    "sample_data": true,
+    "default_dataset_id": "sample-fixture",
+    "auth_required": false,
+    "database": "sqlite",
+    "configuration": {
+      "storage_ready": true,
+      "openai_key_present": false,
+      "openai_model": "gpt-5.4-mini",
+      "remote_auth_configured": false
+    }
+  },
+  "ui_assets_served": 2,
+  "dataset_id": "clinicaltrials-starter-v3",
+  "dataset_sha256": "d096795e303b5a103e0aba8bd79ffe7e85609827ea810d1c08e8e0811b5496d2",
+  "duration_experiment_id": "3cc70b0d2ef2485b9a4f84a83c1021e9",
+  "phase_experiment_id": "7171b02f64ba44a39813a805ffe0a4c2",
+  "source_unchanged": true,
+  "scenario": {
+    "id": "87d2477d1c9d41e49a36e79f83a57cda",
+    "name": "Known-answer planning verification",
+    "created_at": "2026-10-08T11:19:45.846036+00:00",
+    "base": {
+      "study": {
+        "nct_id": "NCT04892342",
+        "title": "Study of ESG401 in Adults With Solid Tumors",
+        "study_type": "INTERVENTIONAL",
+        "phase": "PHASE1|PHASE2",
+        "enrollment": 156.0,
+        "enrollment_type": "ACTUAL",
+        "status": "COMPLETED",
+        "start_date": "2021-09-14",
+        "start_date_type": "ACTUAL",
+        "completion_date": "2025-06-30",
+        "completion_date_type": "ACTUAL",
+        "number_of_arms": 10.0,
+        "primary_outcomes": 2.0,
+        "secondary_outcomes": 6.0,
+        "criteria_count": null,
+        "text_complexity": null,
+        "brief_summary": "The primary objective in Phase I is to evaluate the safety and tolerability of ESG401 as a single agent administered in 21-day treatment cycles in previously treated participants with advanced epithelial cancer. In Phase II, the primary objective is to evaluate the safety and efficacy of ESG401 administered in 21-day treatment cycles at a dose selected in Phase I.\n\nTumor types in the study will include: cervical, colorectal, endometrial, ovarian, esophageal, gastric adenocarcinoma, glioblastoma multiforme, head and neck cancers- squamous cell, hepatocellular, prostate, non-small-cell lung cancer, pancreatic, renal cell, small-cell lung cancer, non-triple negative breast cancer (non-TNBC), triple-negative breast cancer (TNBC) and metastatic urothelial cancer (mUC).",
+        "eligibility_criteria": "Inclusion Criteria:\n\n* Individuals able to understand and give written informed consent.\n* Subjects must have a histologically or cytologically confirmed advanced or metastatic solid tumor(s) for which no effective standard therapy is available or tolerable.\n* Eastern Cooperative Oncology Group (ECOG) performance status of 0 or 1.\n* Life expectancy \u226512 weeks.\n* Subject must have adequate organ function\n* Fertile men and women of childbearing potential must agree to use an effective method of birth control from providing signed consent and for 180 days after last investigational product administration. Women of childbearing potential include pre-menopausal women and women within the first 2 years of the onset of menopause.\n\nExclusion Criteria:\n\n* Subjects receiving cancer therapy (chemotherapy or other systemic anti-cancer therapies, immunotherapy, or radiation therapy) within 4 weeks before the first investigational product administration..\n* Has not recovered from adverse events (e.g., returned to baseline or grade 0\\~1) due to a previously administered agent.\n\nNote: Subjects with Grade 2 alopecia or anemia are exceptions to this criterion and may qualify for the study.\n\n* Had major surgery within 4 weeks before dosing, or will not have fully recovered from surgery; or has surgery planned during the time the subject is expected to participate in the study or within 4 weeks after the last dose of study drug administration.\n* Use of any investigational anti-cancer drug within 28 days before the first investigational product administration.\n* New thromboembolic events, intestinal obstruction, gastrointestinal bleeding or perforation within 6 months\n* Uncontrolled systemic bacterial, viral or fungal infections\n* Subjects with symptomatic or untreated CNS metastases, or those requiring ongoing treatment for CNS metastases.\n* Primary CNS malignancy; Or a second primary tumor other than the confirmed solid tumor within the previous 3 years\n* Evidence of serious or uncontrolled systemic disease (e.g., unstable or decompensated respiratory disease, liver disease or kidney disease)\n* Patients with gastrointestinal diseases (such as chronic gastritis, chronic enteritis or gastric ulcers), or with a previous history of severe or chronic diarrhea\n* History of chronic skin disease and present skin disease (e.g. bullous dermatitis, acnelike rash, skin ulcer, etc.)\n* Subjects with clinically significant cardiovascular disease as defined by the following:\n\n  * Baseline left ventricular ejection fraction (LVEF) \u2264 50% measured by Echocardiogram (ECHO) or Multi-gated acquisition (MUGA)\n  * Heart failure New York Heart Association (NYHA) Class II or above\n  * Uncontrolled hypertension (BP \u2265 150/95 mmHg despite optimal therapy)\n  * Prior or current cardiomyopathy\n  * Atrial fibrillation with heart rate \\> 100 bpm\n  * Unstable ischaemic heart disease (myocardial infarction (MI) within 6 months prior to starting treatment, or angina requiring use of nitrates more than once weekly)\n  * QTc interval \\>/= 450 msecs for male or \\>/= 470 msecs for female (Fridericia's formula: QTc=QT/RR0.33).\n* Human Immunodeficiency Virus (HIV) infection.\n* Subjects who are Hepatitis B surface antigen (HBsAg) and Hepatitis B core antibody (HBcAb) positive or Hepatitis C virus (HCV) antibody positive at screening must not be enrolled until further definite testing with Hepatitis B virus (HBV) DNA titres and HCV RNA tests can conclusively rule out presence of active infection (HBV DNA \u2265 1000 cps/mL or 200 IU/mL) requiring antiviral therapy with Hepatitis B and C, respectively\n* Known immediate or delayed hypersensitivity reaction to irinotecan or other camptocampin derivatives such as topotecan or to have had grade \u22653 gastrointestinal reactions associated with irinotecan, or allergies, or to any investigational drug or excipient ingredient\n* Concurrent condition that in the investigator's opinion would jeopardize compliance with the protocol.\n* Unwillingness or inability to follow the procedures outlined in the protocol.",
+        "source_url": "https://clinicaltrials.gov/study/NCT04892342",
+        "last_update_posted_date": "2025-09-12",
+        "detailed_description": null,
+        "intervention_types": "DRUG",
+        "starter_start_period": "2018-2023"
+      },
+      "pci": {
+        "score": 26.56,
+        "category": "Low",
+        "components": {
+          "Eligibility burden": 0.0,
+          "Primary outcome burden": 4.0,
+          "Secondary outcome burden": 6.0,
+          "Arm complexity": 15.0,
+          "Enrollment burden": 1.56,
+          "Text complexity": 0.0
+        },
+        "methodology": "Fixed-reference descriptive PCI (0\u2013100): eligibility 25%, primary outcomes 20%, secondary outcomes 20%, arms 15%, enrollment 10%, text complexity 10%. Fixed component ceilings: 40, 10, 20, 8, 1000, 20 respectively. Missing, invalid and non-finite components contribute zero and are disclosed in missing_fields, so incomplete records may be understated. Clip each normalized component to [0,1]; sum unrounded weighted terms; round the total to two decimals, exact decimal half-up. Categorize the rounded score: Low <40, Medium 40\u201370 inclusive, High >70. These are explicit research assumptions, not a clinically validated score, clinical thresholds, causal forecasts or duration probabilities. Training-relative research PCI is a separate methodology.",
+        "missing_fields": [
+          "criteria_count",
+          "text_complexity"
+        ],
+        "formula_id": "fixed_reference_pci_v1"
+      },
+      "duration": {
+        "status": "available",
+        "run_id": "a8e41523-353d-4546-866d-f8d8b7be5cb3",
+        "model_name": "text",
+        "probability": 0.3752288528430852,
+        "raw_probability": 0.3752288528430852,
+        "calibrated_probability": null,
+        "probability_semantics": "raw",
+        "uncertainty": {
+          "status": "available",
+          "method": "split conformal absolute duration residuals",
+          "split": "calibration",
+          "n": 11,
+          "alpha": 0.1,
+          "nominal_coverage": 0.9,
+          "rank": 11,
+          "residual_quantile_days": 783.8159375847646,
+          "bounded": true,
+          "interpretation": "Nominal marginal coverage relies on exchangeability; chronological distribution shift can invalidate it. Calibration is not test evidence.",
+          "test_diagnostics": {
+            "n": 64,
+            "covered_count": 63,
+            "observed_coverage": 0.984375,
+            "mean_interval_width_days": 1440.2167901854332,
+            "interpretation": "Descriptive observed held-out coverage; does not guarantee future coverage. Infinite intervals trivially cover every finite outcome."
+          },
+          "lower_days": 268.1925503291658,
+          "upper_days": 1835.8244254986948,
+          "prediction_scope": "Held-out test estimate; the source-provenance and completed-only cohort limitations still apply."
+        },
+        "calibration": {
+          "status": "unavailable",
+          "n": 11,
+          "class_counts": {
+            "0": 11,
+            "1": 0
+          },
+          "method": "sigmoid calibration of clipped raw-probability logit",
+          "split": "calibration",
+          "minimum_rows": 10,
+          "minimum_per_class": 2,
+          "clip_epsilon": 1e-06,
+          "regularization_C": 1.0,
+          "reason": "Requires at least 10 reserved calibration rows and at least two labels of each class; raw probabilities remain available."
+        },
+        "extrapolation": {
+          "outside_training_support": false,
+          "numeric_out_of_range": [],
+          "unseen_categories": [],
+          "missing_numeric_features": [
+            "criteria_count"
+          ],
+          "method": "Training-only observed numeric ranges and categorical levels",
+          "interpretation": "Descriptive extrapolation indicators, not an OOD probability or a validity guarantee. In-range inputs may still differ from training."
+        },
+        "duration_days": 1052.0084879139304,
+        "predicted_duration_days": 1052.0084879139304,
+        "prolonged_threshold_days": 1101.0,
+        "cohort_membership": "test",
+        "prediction_scope": "Held-out test estimate; the source-provenance and completed-only cohort limitations still apply.",
+        "explanation": {
+          "method": "linear feature contributions",
+          "units": "log-odds",
+          "intercept": -1.51480220746128,
+          "sum_all_contributions": 1.00495290340546,
+          "features": [
+            {
+              "feature": "text__cancer",
+              "contribution": 0.06281582504407221
+            },
+            {
+              "feature": "text__subjects",
+              "contribution": -0.0428512073741296
+            },
+            {
+              "feature": "text__tumor",
+              "contribution": 0.0418471594466579
+            },
+            {
+              "feature": "text__therapy",
+              "contribution": 0.03815346412223092
+            },
+            {
+              "feature": "text__metastatic",
+              "contribution": 0.034717837710243886
+            },
+            {
+              "feature": "text__must",
+              "contribution": 0.03443777572332811
+            },
+            {
+              "feature": "text__advanced",
+              "contribution": 0.034390410296236136
+            },
+            {
+              "feature": "text__cell",
+              "contribution": 0.034045799463556396
+            },
+            {
+              "feature": "text__must have",
+              "contribution": 0.03188617464915764
+            },
+            {
+              "feature": "text__must not",
+              "contribution": 0.025240193382782376
+            },
+            {
+              "feature": "text__not have",
+              "contribution": 0.024078024338160788
+            },
+            {
+              "feature": "text__prostate",
+              "contribution": 0.02270474114606345
+            }
+          ],
+          "note": "Contribution = transformed feature value \u00d7 fitted coefficient. Top 12 shown; not SHAP and not causal evidence. Classification contributions are log-odds, not probability percentage points.",
+          "scope": "local"
+        },
+        "duration_explanation": {
+          "method": "linear feature contributions",
+          "units": "days (before nonnegative clipping)",
+          "intercept": 707.4756600661611,
+          "sum_all_contributions": 344.53282784776945,
+          "features": [
+            {
+              "feature": "text__tumor",
+              "contribution": 15.980462288050521
+            },
+            {
+              "feature": "text__metastatic",
+              "contribution": 11.446974577696615
+            },
+            {
+              "feature": "text__subjects",
+              "contribution": -10.803159351333441
+            },
+            {
+              "feature": "text__cancer",
+              "contribution": 10.608482029616562
+            },
+            {
+              "feature": "text__advanced",
+              "contribution": 9.920502394023211
+            },
+            {
+              "feature": "text__cell",
+              "contribution": 9.002639403626626
+            },
+            {
+              "feature": "text__therapy",
+              "contribution": 8.991721707863016
+            },
+            {
+              "feature": "text__metastases",
+              "contribution": 8.713009333289833
+            },
+            {
+              "feature": "text__uncontrolled",
+              "contribution": 6.515186625282815
+            },
+            {
+              "feature": "text__phase",
+              "contribution": 5.7225596827683525
+            },
+            {
+              "feature": "text__grade",
+              "contribution": 5.633356473577241
+            },
+            {
+              "feature": "text__must have",
+              "contribution": 5.360377456746722
+            }
+          ],
+          "note": "Contribution = transformed feature value \u00d7 fitted coefficient. Top 12 shown; not SHAP and not causal evidence. Classification contributions are log-odds, not probability percentage points.",
+          "scope": "local"
+        },
+        "pci": {
+          "score": 16.60813678467516,
+          "components": {
+            "enrollment": 0.027832644999102173,
+            "number_of_arms": 0.6428571428571429,
+            "primary_outcomes": 0.012658227848101266,
+            "secondary_outcomes": 0.14705882352941177,
+            "criteria_count": 0.0
+          },
+          "method": "equal-weight training-fitted min-max complexity index"
+        },
+        "warning": "Research decision support only. Completed-only cohort creates follow-up/selection bias; minimum sample guard is not evidence of scientific validity. RETROSPECTIVE SNAPSHOT: baseline feature availability is unverified; post-start registry updates and narrative text may leak outcome information. Do not claim prospective validation."
+      }
+    },
+    "scenario": {
+      "study": {
+        "nct_id": "NCT04892342",
+        "title": "Study of ESG401 in Adults With Solid Tumors",
+        "study_type": "INTERVENTIONAL",
+        "phase": "PHASE1|PHASE2",
+        "enrollment": 120.0,
+        "enrollment_type": "ACTUAL",
+        "status": "COMPLETED",
+        "start_date": "2021-09-14",
+        "start_date_type": "ACTUAL",
+        "completion_date": "2025-06-30",
+        "completion_date_type": "ACTUAL",
+        "number_of_arms": 10.0,
+        "primary_outcomes": 2.0,
+        "secondary_outcomes": 6.0,
+        "criteria_count": null,
+        "text_complexity": null,
+        "brief_summary": "The primary objective in Phase I is to evaluate the safety and tolerability of ESG401 as a single agent administered in 21-day treatment cycles in previously treated participants with advanced epithelial cancer. In Phase II, the primary objective is to evaluate the safety and efficacy of ESG401 administered in 21-day treatment cycles at a dose selected in Phase I.\n\nTumor types in the study will include: cervical, colorectal, endometrial, ovarian, esophageal, gastric adenocarcinoma, glioblastoma multiforme, head and neck cancers- squamous cell, hepatocellular, prostate, non-small-cell lung cancer, pancreatic, renal cell, small-cell lung cancer, non-triple negative breast cancer (non-TNBC), triple-negative breast cancer (TNBC) and metastatic urothelial cancer (mUC).",
+        "eligibility_criteria": "Inclusion Criteria:\n\n* Individuals able to understand and give written informed consent.\n* Subjects must have a histologically or cytologically confirmed advanced or metastatic solid tumor(s) for which no effective standard therapy is available or tolerable.\n* Eastern Cooperative Oncology Group (ECOG) performance status of 0 or 1.\n* Life expectancy \u226512 weeks.\n* Subject must have adequate organ function\n* Fertile men and women of childbearing potential must agree to use an effective method of birth control from providing signed consent and for 180 days after last investigational product administration. Women of childbearing potential include pre-menopausal women and women within the first 2 years of the onset of menopause.\n\nExclusion Criteria:\n\n* Subjects receiving cancer therapy (chemotherapy or other systemic anti-cancer therapies, immunotherapy, or radiation therapy) within 4 weeks before the first investigational product administration..\n* Has not recovered from adverse events (e.g., returned to baseline or grade 0\\~1) due to a previously administered agent.\n\nNote: Subjects with Grade 2 alopecia or anemia are exceptions to this criterion and may qualify for the study.\n\n* Had major surgery within 4 weeks before dosing, or will not have fully recovered from surgery; or has surgery planned during the time the subject is expected to participate in the study or within 4 weeks after the last dose of study drug administration.\n* Use of any investigational anti-cancer drug within 28 days before the first investigational product administration.\n* New thromboembolic events, intestinal obstruction, gastrointestinal bleeding or perforation within 6 months\n* Uncontrolled systemic bacterial, viral or fungal infections\n* Subjects with symptomatic or untreated CNS metastases, or those requiring ongoing treatment for CNS metastases.\n* Primary CNS malignancy; Or a second primary tumor other than the confirmed solid tumor within the previous 3 years\n* Evidence of serious or uncontrolled systemic disease (e.g., unstable or decompensated respiratory disease, liver disease or kidney disease)\n* Patients with gastrointestinal diseases (such as chronic gastritis, chronic enteritis or gastric ulcers), or with a previous history of severe or chronic diarrhea\n* History of chronic skin disease and present skin disease (e.g. bullous dermatitis, acnelike rash, skin ulcer, etc.)\n* Subjects with clinically significant cardiovascular disease as defined by the following:\n\n  * Baseline left ventricular ejection fraction (LVEF) \u2264 50% measured by Echocardiogram (ECHO) or Multi-gated acquisition (MUGA)\n  * Heart failure New York Heart Association (NYHA) Class II or above\n  * Uncontrolled hypertension (BP \u2265 150/95 mmHg despite optimal therapy)\n  * Prior or current cardiomyopathy\n  * Atrial fibrillation with heart rate \\> 100 bpm\n  * Unstable ischaemic heart disease (myocardial infarction (MI) within 6 months prior to starting treatment, or angina requiring use of nitrates more than once weekly)\n  * QTc interval \\>/= 450 msecs for male or \\>/= 470 msecs for female (Fridericia's formula: QTc=QT/RR0.33).\n* Human Immunodeficiency Virus (HIV) infection.\n* Subjects who are Hepatitis B surface antigen (HBsAg) and Hepatitis B core antibody (HBcAb) positive or Hepatitis C virus (HCV) antibody positive at screening must not be enrolled until further definite testing with Hepatitis B virus (HBV) DNA titres and HCV RNA tests can conclusively rule out presence of active infection (HBV DNA \u2265 1000 cps/mL or 200 IU/mL) requiring antiviral therapy with Hepatitis B and C, respectively\n* Known immediate or delayed hypersensitivity reaction to irinotecan or other camptocampin derivatives such as topotecan or to have had grade \u22653 gastrointestinal reactions associated with irinotecan, or allergies, or to any investigational drug or excipient ingredient\n* Concurrent condition that in the investigator's opinion would jeopardize compliance with the protocol.\n* Unwillingness or inability to follow the procedures outlined in the protocol.",
+        "source_url": "https://clinicaltrials.gov/study/NCT04892342",
+        "last_update_posted_date": "2025-09-12",
+        "detailed_description": null,
+        "intervention_types": "DRUG",
+        "starter_start_period": "2018-2023"
+      },
+      "pci": {
+        "score": 26.2,
+        "category": "Low",
+        "components": {
+          "Eligibility burden": 0.0,
+          "Primary outcome burden": 4.0,
+          "Secondary outcome burden": 6.0,
+          "Arm complexity": 15.0,
+          "Enrollment burden": 1.2,
+          "Text complexity": 0.0
+        },
+        "methodology": "Fixed-reference descriptive PCI (0\u2013100): eligibility 25%, primary outcomes 20%, secondary outcomes 20%, arms 15%, enrollment 10%, text complexity 10%. Fixed component ceilings: 40, 10, 20, 8, 1000, 20 respectively. Missing, invalid and non-finite components contribute zero and are disclosed in missing_fields, so incomplete records may be understated. Clip each normalized component to [0,1]; sum unrounded weighted terms; round the total to two decimals, exact decimal half-up. Categorize the rounded score: Low <40, Medium 40\u201370 inclusive, High >70. These are explicit research assumptions, not a clinically validated score, clinical thresholds, causal forecasts or duration probabilities. Training-relative research PCI is a separate methodology.",
+        "missing_fields": [
+          "criteria_count",
+          "text_complexity"
+        ],
+        "formula_id": "fixed_reference_pci_v1"
+      },
+      "duration": {
+        "status": "available",
+        "run_id": "a8e41523-353d-4546-866d-f8d8b7be5cb3",
+        "model_name": "text",
+        "probability": 0.3752288528430852,
+        "raw_probability": 0.3752288528430852,
+        "calibrated_probability": null,
+        "probability_semantics": "raw",
+        "uncertainty": {
+          "status": "available",
+          "method": "split conformal absolute duration residuals",
+          "split": "calibration",
+          "n": 11,
+          "alpha": 0.1,
+          "nominal_coverage": 0.9,
+          "rank": 11,
+          "residual_quantile_days": 783.8159375847646,
+          "bounded": true,
+          "interpretation": "Nominal marginal coverage relies on exchangeability; chronological distribution shift can invalidate it. Calibration is not test evidence.",
+          "test_diagnostics": {
+            "n": 64,
+            "covered_count": 63,
+            "observed_coverage": 0.984375,
+            "mean_interval_width_days": 1440.2167901854332,
+            "interpretation": "Descriptive observed held-out coverage; does not guarantee future coverage. Infinite intervals trivially cover every finite outcome."
+          },
+          "lower_days": 268.1925503291658,
+          "upper_days": 1835.8244254986948,
+          "prediction_scope": "Hypothetical protocol query to a source-compatible model; source cohort membership is provenance, not scenario validation.",
+          "hypothetical": true,
+          "source_prediction_scope": "Held-out test estimate; the source-provenance and completed-only cohort limitations still apply.",
+          "scenario_coverage": "No empirical coverage guarantee is established for this altered protocol."
+        },
+        "calibration": {
+          "status": "unavailable",
+          "n": 11,
+          "class_counts": {
+            "0": 11,
+            "1": 0
+          },
+          "method": "sigmoid calibration of clipped raw-probability logit",
+          "split": "calibration",
+          "minimum_rows": 10,
+          "minimum_per_class": 2,
+          "clip_epsilon": 1e-06,
+          "regularization_C": 1.0,
+          "reason": "Requires at least 10 reserved calibration rows and at least two labels of each class; raw probabilities remain available."
+        },
+        "extrapolation": {
+          "outside_training_support": false,
+          "numeric_out_of_range": [],
+          "unseen_categories": [],
+          "missing_numeric_features": [
+            "criteria_count"
+          ],
+          "method": "Training-only observed numeric ranges and categorical levels",
+          "interpretation": "Descriptive extrapolation indicators, not an OOD probability or a validity guarantee. In-range inputs may still differ from training."
+        },
+        "duration_days": 1052.0084879139304,
+        "predicted_duration_days": 1052.0084879139304,
+        "prolonged_threshold_days": 1101.0,
+        "cohort_membership": "test",
+        "prediction_scope": "Hypothetical protocol query to a source-compatible model; source cohort membership is provenance, not scenario validation.",
+        "explanation": {
+          "method": "linear feature contributions",
+          "units": "log-odds",
+          "intercept": -1.51480220746128,
+          "sum_all_contributions": 1.00495290340546,
+          "features": [
+            {
+              "feature": "text__cancer",
+              "contribution": 0.06281582504407221
+            },
+            {
+              "feature": "text__subjects",
+              "contribution": -0.0428512073741296
+            },
+            {
+              "feature": "text__tumor",
+              "contribution": 0.0418471594466579
+            },
+            {
+              "feature": "text__therapy",
+              "contribution": 0.03815346412223092
+            },
+            {
+              "feature": "text__metastatic",
+              "contribution": 0.034717837710243886
+            },
+            {
+              "feature": "text__must",
+              "contribution": 0.03443777572332811
+            },
+            {
+              "feature": "text__advanced",
+              "contribution": 0.034390410296236136
+            },
+            {
+              "feature": "text__cell",
+              "contribution": 0.034045799463556396
+            },
+            {
+              "feature": "text__must have",
+              "contribution": 0.03188617464915764
+            },
+            {
+              "feature": "text__must not",
+              "contribution": 0.025240193382782376
+            },
+            {
+              "feature": "text__not have",
+              "contribution": 0.024078024338160788
+            },
+            {
+              "feature": "text__prostate",
+              "contribution": 0.02270474114606345
+            }
+          ],
+          "note": "Contribution = transformed feature value \u00d7 fitted coefficient. Top 12 shown; not SHAP and not causal evidence. Classification contributions are log-odds, not probability percentage points.",
+          "scope": "local"
+        },
+        "duration_explanation": {
+          "method": "linear feature contributions",
+          "units": "days (before nonnegative clipping)",
+          "intercept": 707.4756600661611,
+          "sum_all_contributions": 344.53282784776945,
+          "features": [
+            {
+              "feature": "text__tumor",
+              "contribution": 15.980462288050521
+            },
+            {
+              "feature": "text__metastatic",
+              "contribution": 11.446974577696615
+            },
+            {
+              "feature": "text__subjects",
+              "contribution": -10.803159351333441
+            },
+            {
+              "feature": "text__cancer",
+              "contribution": 10.608482029616562
+            },
+            {
+              "feature": "text__advanced",
+              "contribution": 9.920502394023211
+            },
+            {
+              "feature": "text__cell",
+              "contribution": 9.002639403626626
+            },
+            {
+              "feature": "text__therapy",
+              "contribution": 8.991721707863016
+            },
+            {
+              "feature": "text__metastases",
+              "contribution": 8.713009333289833
+            },
+            {
+              "feature": "text__uncontrolled",
+              "contribution": 6.515186625282815
+            },
+            {
+              "feature": "text__phase",
+              "contribution": 5.7225596827683525
+            },
+            {
+              "feature": "text__grade",
+              "contribution": 5.633356473577241
+            },
+            {
+              "feature": "text__must have",
+              "contribution": 5.360377456746722
+            }
+          ],
+          "note": "Contribution = transformed feature value \u00d7 fitted coefficient. Top 12 shown; not SHAP and not causal evidence. Classification contributions are log-odds, not probability percentage points.",
+          "scope": "local"
+        },
+        "pci": {
+          "score": 16.478849659518044,
+          "components": {
+            "enrollment": 0.021368288741246185,
+            "number_of_arms": 0.6428571428571429,
+            "primary_outcomes": 0.012658227848101266,
+            "secondary_outcomes": 0.14705882352941177,
+            "criteria_count": 0.0
+          },
+          "method": "equal-weight training-fitted min-max complexity index"
+        },
+        "warning": "Research decision support only. Completed-only cohort creates follow-up/selection bias; minimum sample guard is not evidence of scientific validity. RETROSPECTIVE SNAPSHOT: baseline feature availability is unverified; post-start registry updates and narrative text may leak outcome information. Do not claim prospective validation.",
+        "hypothetical": true,
+        "source_cohort_membership": "test",
+        "source_prediction_scope": "Held-out test estimate; the source-provenance and completed-only cohort limitations still apply."
+      }
+    },
+    "planning": {
+      "sites": 10,
+      "monthly_rate_per_site": 2.0,
+      "startup_months": 3.0,
+      "followup_months": 12.0,
+      "target_enrollment": 120.0,
+      "recruitment_months": 6.0,
+      "total_months": 21.0,
+      "formula": "recruitment_months = target_enrollment / (sites * monthly_rate_per_site); total_months = startup_months + recruitment_months + followup_months",
+      "assumptions": [
+        "Constant per-site monthly recruitment; all sites recruit throughout the modeled interval.",
+        "Startup, recruitment and followup are sequential additive assumptions.",
+        "Planning arithmetic is not a recruitment risk prediction or a causal clinical forecast."
+      ]
+    },
+    "overrides": {
+      "enrollment": 120.0
+    },
+    "changes": {
+      "pci": -0.36,
+      "duration_days": 0.0,
+      "probability": 0.0
+    },
+    "warning": "Hypothetical research scenario. Protocol changes are not causal intervention evidence. Source data remains immutable; model provenance and original cohort membership do not validate the altered design.",
+    "provenance": {
+      "dataset_id": "clinicaltrials-starter-v3",
+      "sha256": "d096795e303b5a103e0aba8bd79ffe7e85609827ea810d1c08e8e0811b5496d2",
+      "canonical_sha256": "d096795e303b5a103e0aba8bd79ffe7e85609827ea810d1c08e8e0811b5496d2",
+      "source": "ClinicalTrials.gov v2 frozen starter subset",
+      "is_fixture": false
+    },
+    "evidence_sha256": "942abde6aaa471738ab6a0454981b4d79847f38a38a3bcc3613af5341c59bce2"
+  },
+  "evidence_digest_verified": true
+}

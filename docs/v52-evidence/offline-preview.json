@@ -1,0 +1,12 @@
+{
+  "single_html_over_loopback": true,
+  "file_navigation": "blocked by managed Chromium policy",
+  "reduced_motion": true,
+  "errors": [],
+  "external_requests": [],
+  "checks": [
+    "home opens from standalone HTML",
+    "saved model evidence",
+    "scenario calculate/save"
+  ]
+}

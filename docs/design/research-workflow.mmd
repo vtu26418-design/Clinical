@@ -1,0 +1,12 @@
+flowchart TD
+  A["Import a real cohort"] --> B{"Schema and dates valid?"}
+  B -->|No| C["Review validation errors"]
+  C --> A
+  B -->|Yes| D["Preserve raw and canonical data"]
+  D --> E["Explore PCI and missingness"]
+  D --> F{"Eligible temporal cohort?"}
+  F -->|No| G["Review exclusions and time span"]
+  G --> A
+  F -->|Yes| H["Fit on training; tune on validation"]
+  H --> I["Evaluate untouched test records"]
+  I --> J["Export evidence and limitations"]

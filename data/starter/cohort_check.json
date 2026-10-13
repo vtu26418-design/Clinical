@@ -1,0 +1,52 @@
+{
+  "checked_at": "2026-10-07T15:42:37.764792+00:00",
+  "canonical_sha256": "d096795e303b5a103e0aba8bd79ffe7e85609827ea810d1c08e8e0811b5496d2",
+  "method": "prepare_cohort and temporal_split using default ExperimentConfig; no models fitted",
+  "config": {
+    "train_fraction": 0.6,
+    "validation_fraction": 0.2,
+    "prolonged_quantile": 0.75,
+    "bootstrap_samples": 200,
+    "random_seed": 42,
+    "max_text_features": 20000,
+    "enable_advanced_models": true
+  },
+  "source_rows": 800,
+  "eligible_rows": 312,
+  "cohort_excluded_rows": 488,
+  "cohort_exclusion_reason_combinations": {
+    "start_date_day_precision_not_established;completion_date_day_precision_not_established;missing_or_invalid_start_date;missing_or_invalid_completion_date": 401,
+    "actual_completion_not_established;start_date_day_precision_not_established;missing_or_invalid_start_date;missing_or_invalid_completion_date": 31,
+    "start_date_day_precision_not_established;missing_or_invalid_start_date": 27,
+    "actual_completion_not_established;start_date_day_precision_not_established;completion_date_day_precision_not_established;missing_or_invalid_start_date;missing_or_invalid_completion_date": 23,
+    "completion_date_day_precision_not_established;missing_or_invalid_completion_date": 4,
+    "actual_completion_not_established": 1,
+    "actual_completion_not_established;missing_or_invalid_completion_date": 1
+  },
+  "train_rows": 105,
+  "validation_rows": 20,
+  "test_rows": 64,
+  "temporal_purged_rows": 123,
+  "validation_cutoff": "2019-10-10T00:00:00",
+  "test_cutoff": "2021-09-14T00:00:00",
+  "training_only_prolonged_threshold_days": 1101.0,
+  "split_prolonged_class_counts": {
+    "train": {
+      "not_prolonged": 79,
+      "prolonged": 26
+    },
+    "validation": {
+      "not_prolonged": 20,
+      "prolonged": 0
+    },
+    "test": {
+      "not_prolonged": 58,
+      "prolonged": 6
+    }
+  },
+  "eligible_start_date_type_counts": {
+    "ACTUAL": 307,
+    "Not reported": 5
+  },
+  "no_model_fitting_or_performance_selection": true
+}

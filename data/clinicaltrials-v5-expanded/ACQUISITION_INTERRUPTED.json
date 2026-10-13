@@ -1,0 +1,103 @@
+{
+  "status": "interrupted_before_manifest",
+  "usable_original_dataset": false,
+  "requested_total": 4000,
+  "requested_per_period": 1000,
+  "configured_process_time_bound_seconds": 600,
+  "observed_raw_pages": 15,
+  "observed_raw_records": 1500,
+  "unique_raw_identifiers": 1500,
+  "pages": [
+    {
+      "file": "raw/2000-2005-page-001.json.gz",
+      "rows": 100,
+      "gzip_sha256": "a48caf2821a115aecbf7e81add06ef8e9079312f392d4987510e969237b97577",
+      "response_sha256": "22ea88911229874a19a32f594fefb851181bee08b6980817999ebbd9e8ef83cb"
+    },
+    {
+      "file": "raw/2000-2005-page-002.json.gz",
+      "rows": 100,
+      "gzip_sha256": "40f923afeeabbf3874c7841a5a18657562088cc42a0d148aa767afb4e7be0cb2",
+      "response_sha256": "66721662cd5086adb4d037890a7e1ed9c4183e38e688b164c2b5715840a6e8fc"
+    },
+    {
+      "file": "raw/2000-2005-page-003.json.gz",
+      "rows": 100,
+      "gzip_sha256": "2db506bab2704f82a61115ff336c3686815be6845a4c93f72eff720c399ad92c",
+      "response_sha256": "4195fe23a978fe4c5d2b3fd343c203b0687af2d9b18b65bdc0180a68ebdc1af4"
+    },
+    {
+      "file": "raw/2000-2005-page-004.json.gz",
+      "rows": 100,
+      "gzip_sha256": "a4fb6fde56dcf4a945c20bd365bf0b70b813eebb6d29e297d5932d0dcc458eab",
+      "response_sha256": "d572e36cb8cea80e799850a5d679a5eac6e0f4bca0296348634ccc1c52af40a7"
+    },
+    {
+      "file": "raw/2000-2005-page-005.json.gz",
+      "rows": 100,
+      "gzip_sha256": "df082e78e22be49903929c2abc02afd9da66ba229fe0509a7a149f17c8e386b0",
+      "response_sha256": "6caf099f1b6e9d2ab13895d24e025fd637f10ed61b6c90e95faa4607d7e748bb"
+    },
+    {
+      "file": "raw/2000-2005-page-006.json.gz",
+      "rows": 100,
+      "gzip_sha256": "af82964da5901a2f64a29b371d0fc47e6ab7dd855be86eb4db3bf32b3071a4cc",
+      "response_sha256": "44fa331ababbe1e5dfa7ca1a40bed59c72ee3dbf342ede7497cd4c03559143b6"
+    },
+    {
+      "file": "raw/2000-2005-page-007.json.gz",
+      "rows": 100,
+      "gzip_sha256": "3a8e1111bb86b82d52fc2c0c6edc7ba7c0a1dfda8eadad1d81dbea80f6c1cc8f",
+      "response_sha256": "b54afcf7a7c7fed6812cff20f87b14cf23cb613d6615c5f7805e51db010cacd2"
+    },
+    {
+      "file": "raw/2000-2005-page-008.json.gz",
+      "rows": 100,
+      "gzip_sha256": "da4437b6faa114ba9b65e4dddf75b5086c6b3f39934658f1f74ce24b1e79bb5c",
+      "response_sha256": "2e4a06504cb2c713def1844f5142f00b0043fca70cbdf1594a58e0da3396603a"
+    },
+    {
+      "file": "raw/2000-2005-page-009.json.gz",
+      "rows": 100,
+      "gzip_sha256": "e2eb507e20ccba09e6ce4ad9a62110d99d4e8b35fe2b9adc0c5747431a436a93",
+      "response_sha256": "df0ecd4805dc6706e93a6f08fdb31df9f70024b9591468e14b06f18f8d42ece3"
+    },
+    {
+      "file": "raw/2000-2005-page-010.json.gz",
+      "rows": 100,
+      "gzip_sha256": "867d3a0ed99110ebc2879256ae0fde6330892fabb4d00f42b097d1d43f8adcb5",
+      "response_sha256": "9727afc8eaa1071569e31ba4efbc98982da367be8317ecfa72b31f1a9fe21cf9"
+    },
+    {
+      "file": "raw/2006-2011-page-001.json.gz",
+      "rows": 100,
+      "gzip_sha256": "e309aafdbb68ca0ab6073f44c91575b79cb95a78c387ec13986c832039b37b0d",
+      "response_sha256": "7eb50d49d8ef52a56016ced6d898453f4a280b29820e64f1da0703336ebd053e"
+    },
+    {
+      "file": "raw/2006-2011-page-002.json.gz",
+      "rows": 100,
+      "gzip_sha256": "4480de8f4c41500191ea78d96acfae1f049157140e4a193ae38661db4e11f52a",
+      "response_sha256": "df5fd0ca506d317526eb503ea9cbe1dbb019889938384090d2f637ee7e08fcd4"
+    },
+    {
+      "file": "raw/2006-2011-page-003.json.gz",
+      "rows": 100,
+      "gzip_sha256": "89f991b3230f31b7b0be036e686b37d4064bfe229333acaf743ec807e5733018",
+      "response_sha256": "0c5b4ce676a5eb0e10b1b129905df6d6eb2d4a736f48aab90fe4ecef4c3409cd"
+    },
+    {
+      "file": "raw/2006-2011-page-004.json.gz",
+      "rows": 100,
+      "gzip_sha256": "697fd271d22103579198c53bce35fec641b07a48554223ab392e532707771579",
+      "response_sha256": "264b8909518ac77a75f63d6d106f3b4fa72aadcadd9928687c8a959b3a817567"
+    },
+    {
+      "file": "raw/2006-2011-page-005.json.gz",
+      "rows": 100,
+      "gzip_sha256": "a3e2f183293e529ba8d0aa69a8d64c0058e0cfd439b182f36f9159162f1caf90",
+      "response_sha256": "6de164e63666988e1cf894f03d033857b7345ad3b9f443cde51e075b4b6b6f0f"
+    }
+  ],
+  "note": "Execution interrupted before finalization; exact exit status and original HTTP retrieval timestamps were not preserved. No synthetic fallback. Raw records across attempts may overlap and must not be added as unique counts."
+}

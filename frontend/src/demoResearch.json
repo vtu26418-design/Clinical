@@ -1,0 +1,512 @@
+{
+  "NCT-SAMPLE-001": {
+    "study": {
+      "nct_id": "NCT-SAMPLE-001",
+      "title": "Phase 2 study of an investigational therapy",
+      "study_type": "Interventional",
+      "phase": "PHASE2",
+      "enrollment": 240,
+      "status": "COMPLETED",
+      "start_date": "2021-01-10",
+      "completion_date": "2023-02-15",
+      "number_of_arms": 2,
+      "primary_outcomes": 1,
+      "secondary_outcomes": 4,
+      "criteria_count": 14,
+      "text_complexity": 9.2,
+      "brief_summary": "Randomized study evaluating efficacy and safety.",
+      "eligibility_criteria": null,
+      "completion_date_type": "Not reported"
+    },
+    "pci": {
+      "score": 25.5,
+      "category": "Low",
+      "components": {
+        "Eligibility burden": 8.75,
+        "Primary outcome burden": 2.0,
+        "Secondary outcome burden": 4.0,
+        "Arm complexity": 3.75,
+        "Enrollment burden": 2.4,
+        "Text complexity": 4.6
+      },
+      "methodology": "Fixed-reference descriptive PCI (0–100): eligibility 25%, primary outcomes 20%, secondary outcomes 20%, arms 15%, enrollment 10%, text complexity 10%. Fixed component ceilings: 40, 10, 20, 8, 1000, 20 respectively. Missing, invalid and non-finite components contribute zero and are disclosed in missing_fields, so incomplete records may be understated. Clip each normalized component to [0,1]; sum unrounded weighted terms; round the total to two decimals, exact decimal half-up. Categorize the rounded score: Low <40, Medium 40–70 inclusive, High >70. These are explicit research assumptions, not a clinically validated score, clinical thresholds, causal forecasts or duration probabilities. Training-relative research PCI is a separate methodology.",
+      "missing_fields": [],
+      "formula_id": "fixed_reference_pci_v1"
+    },
+    "duration": {
+      "status": "unavailable",
+      "probability": null,
+      "duration_days": null,
+      "model_name": null,
+      "explanation": null,
+      "reason": "Bundled fixtures are software test data and do not support scientific predictions."
+    },
+    "phase": {
+      "status": "unavailable",
+      "reported_phase": "PHASE2",
+      "predicted_phase": null,
+      "class_probabilities": null,
+      "reason": "Software-test fixtures cannot support phase predictions."
+    },
+    "similar": {
+      "items": [],
+      "method": "TF-IDF cosine similarity over title, brief summary and eligibility criteria; descriptive retrieval, not clinical equivalence.",
+      "scope": {
+        "dataset_id": "sample-fixture",
+        "source_sha256": "a250aa972f1f63203d4c6015c29461f65fdd9e3d5ab9ffec0fb7842767f3ef19",
+        "canonical_sha256": "5c7cd716053a34ee38116702240ef3c9d38f0f2f34f6c3a6c05a225ff4cc08ac",
+        "source": "bundled software-test fixtures",
+        "is_fixture": true,
+        "source_rows": 5,
+        "indexed_rows": 5,
+        "max_indexed_rows": 10000,
+        "index_selection": "First study identifiers in ascending order.",
+        "text_fields": [
+          "title",
+          "brief_summary",
+          "eligibility_criteria"
+        ],
+        "max_document_words": 100,
+        "same_phase": true,
+        "phase": "PHASE2",
+        "self_excluded": true,
+        "clinical_equivalence": false,
+        "zero_norm_policy": "Zero-norm documents have retrieval cosine zero; zero-score results are omitted.",
+        "warning": "Cosine similarity describes text overlap; no clinical equivalence or outcome probability is established."
+      }
+    },
+    "phase_context": {
+      "phase": "PHASE2",
+      "count": 2,
+      "median_enrollment": 420.0,
+      "median_pci": 39.2
+    },
+    "provenance": {
+      "dataset_id": "sample-fixture",
+      "sha256": "a250aa972f1f63203d4c6015c29461f65fdd9e3d5ab9ffec0fb7842767f3ef19",
+      "canonical_sha256": "5c7cd716053a34ee38116702240ef3c9d38f0f2f34f6c3a6c05a225ff4cc08ac",
+      "source": "bundled software-test fixtures",
+      "is_fixture": true
+    },
+    "risk_availability": {
+      "recruitment": {
+        "status": "unavailable",
+        "probability": null,
+        "reason": "No curated task labels and validated model are available; planning assumptions do not estimate this risk."
+      },
+      "amendment": {
+        "status": "unavailable",
+        "probability": null,
+        "reason": "No curated task labels and validated model are available; planning assumptions do not estimate this risk."
+      }
+    }
+  },
+  "NCT-SAMPLE-002": {
+    "study": {
+      "nct_id": "NCT-SAMPLE-002",
+      "title": "Comparative study with complex eligibility",
+      "study_type": "Interventional",
+      "phase": "PHASE3",
+      "enrollment": 820,
+      "status": "COMPLETED",
+      "start_date": "2020-03-01",
+      "completion_date": "2024-08-20",
+      "number_of_arms": 4,
+      "primary_outcomes": 2,
+      "secondary_outcomes": 8,
+      "criteria_count": 32,
+      "text_complexity": 15.4,
+      "brief_summary": "Large multicenter study with extensive eligibility criteria.",
+      "eligibility_criteria": null,
+      "completion_date_type": "Not reported"
+    },
+    "pci": {
+      "score": 55.4,
+      "category": "Medium",
+      "components": {
+        "Eligibility burden": 20.0,
+        "Primary outcome burden": 4.0,
+        "Secondary outcome burden": 8.0,
+        "Arm complexity": 7.5,
+        "Enrollment burden": 8.2,
+        "Text complexity": 7.7
+      },
+      "methodology": "Fixed-reference descriptive PCI (0–100): eligibility 25%, primary outcomes 20%, secondary outcomes 20%, arms 15%, enrollment 10%, text complexity 10%. Fixed component ceilings: 40, 10, 20, 8, 1000, 20 respectively. Missing, invalid and non-finite components contribute zero and are disclosed in missing_fields, so incomplete records may be understated. Clip each normalized component to [0,1]; sum unrounded weighted terms; round the total to two decimals, exact decimal half-up. Categorize the rounded score: Low <40, Medium 40–70 inclusive, High >70. These are explicit research assumptions, not a clinically validated score, clinical thresholds, causal forecasts or duration probabilities. Training-relative research PCI is a separate methodology.",
+      "missing_fields": [],
+      "formula_id": "fixed_reference_pci_v1"
+    },
+    "duration": {
+      "status": "unavailable",
+      "probability": null,
+      "duration_days": null,
+      "model_name": null,
+      "explanation": null,
+      "reason": "Bundled fixtures are software test data and do not support scientific predictions."
+    },
+    "phase": {
+      "status": "unavailable",
+      "reported_phase": "PHASE3",
+      "predicted_phase": null,
+      "class_probabilities": null,
+      "reason": "Software-test fixtures cannot support phase predictions."
+    },
+    "similar": {
+      "items": [],
+      "method": "TF-IDF cosine similarity over title, brief summary and eligibility criteria; descriptive retrieval, not clinical equivalence.",
+      "scope": {
+        "dataset_id": "sample-fixture",
+        "source_sha256": "a250aa972f1f63203d4c6015c29461f65fdd9e3d5ab9ffec0fb7842767f3ef19",
+        "canonical_sha256": "5c7cd716053a34ee38116702240ef3c9d38f0f2f34f6c3a6c05a225ff4cc08ac",
+        "source": "bundled software-test fixtures",
+        "is_fixture": true,
+        "source_rows": 5,
+        "indexed_rows": 5,
+        "max_indexed_rows": 10000,
+        "index_selection": "First study identifiers in ascending order.",
+        "text_fields": [
+          "title",
+          "brief_summary",
+          "eligibility_criteria"
+        ],
+        "max_document_words": 100,
+        "same_phase": true,
+        "phase": "PHASE3",
+        "self_excluded": true,
+        "clinical_equivalence": false,
+        "zero_norm_policy": "Zero-norm documents have retrieval cosine zero; zero-score results are omitted.",
+        "warning": "Cosine similarity describes text overlap; no clinical equivalence or outcome probability is established."
+      }
+    },
+    "phase_context": {
+      "phase": "PHASE3",
+      "count": 1,
+      "median_enrollment": 820.0,
+      "median_pci": 55.4
+    },
+    "provenance": {
+      "dataset_id": "sample-fixture",
+      "sha256": "a250aa972f1f63203d4c6015c29461f65fdd9e3d5ab9ffec0fb7842767f3ef19",
+      "canonical_sha256": "5c7cd716053a34ee38116702240ef3c9d38f0f2f34f6c3a6c05a225ff4cc08ac",
+      "source": "bundled software-test fixtures",
+      "is_fixture": true
+    },
+    "risk_availability": {
+      "recruitment": {
+        "status": "unavailable",
+        "probability": null,
+        "reason": "No curated task labels and validated model are available; planning assumptions do not estimate this risk."
+      },
+      "amendment": {
+        "status": "unavailable",
+        "probability": null,
+        "reason": "No curated task labels and validated model are available; planning assumptions do not estimate this risk."
+      }
+    }
+  },
+  "NCT-SAMPLE-003": {
+    "study": {
+      "nct_id": "NCT-SAMPLE-003",
+      "title": "Early feasibility investigation",
+      "study_type": "Interventional",
+      "phase": "PHASE1",
+      "enrollment": 45,
+      "status": "COMPLETED",
+      "start_date": "2022-06-10",
+      "completion_date": "2023-01-20",
+      "number_of_arms": 1,
+      "primary_outcomes": 1,
+      "secondary_outcomes": 1,
+      "criteria_count": 7,
+      "text_complexity": 5.8,
+      "brief_summary": "Early-stage safety and feasibility assessment.",
+      "eligibility_criteria": null,
+      "completion_date_type": "Not reported"
+    },
+    "pci": {
+      "score": 12.6,
+      "category": "Low",
+      "components": {
+        "Eligibility burden": 4.375,
+        "Primary outcome burden": 2.0,
+        "Secondary outcome burden": 1.0,
+        "Arm complexity": 1.875,
+        "Enrollment burden": 0.45,
+        "Text complexity": 2.9
+      },
+      "methodology": "Fixed-reference descriptive PCI (0–100): eligibility 25%, primary outcomes 20%, secondary outcomes 20%, arms 15%, enrollment 10%, text complexity 10%. Fixed component ceilings: 40, 10, 20, 8, 1000, 20 respectively. Missing, invalid and non-finite components contribute zero and are disclosed in missing_fields, so incomplete records may be understated. Clip each normalized component to [0,1]; sum unrounded weighted terms; round the total to two decimals, exact decimal half-up. Categorize the rounded score: Low <40, Medium 40–70 inclusive, High >70. These are explicit research assumptions, not a clinically validated score, clinical thresholds, causal forecasts or duration probabilities. Training-relative research PCI is a separate methodology.",
+      "missing_fields": [],
+      "formula_id": "fixed_reference_pci_v1"
+    },
+    "duration": {
+      "status": "unavailable",
+      "probability": null,
+      "duration_days": null,
+      "model_name": null,
+      "explanation": null,
+      "reason": "Bundled fixtures are software test data and do not support scientific predictions."
+    },
+    "phase": {
+      "status": "unavailable",
+      "reported_phase": "PHASE1",
+      "predicted_phase": null,
+      "class_probabilities": null,
+      "reason": "Software-test fixtures cannot support phase predictions."
+    },
+    "similar": {
+      "items": [],
+      "method": "TF-IDF cosine similarity over title, brief summary and eligibility criteria; descriptive retrieval, not clinical equivalence.",
+      "scope": {
+        "dataset_id": "sample-fixture",
+        "source_sha256": "a250aa972f1f63203d4c6015c29461f65fdd9e3d5ab9ffec0fb7842767f3ef19",
+        "canonical_sha256": "5c7cd716053a34ee38116702240ef3c9d38f0f2f34f6c3a6c05a225ff4cc08ac",
+        "source": "bundled software-test fixtures",
+        "is_fixture": true,
+        "source_rows": 5,
+        "indexed_rows": 5,
+        "max_indexed_rows": 10000,
+        "index_selection": "First study identifiers in ascending order.",
+        "text_fields": [
+          "title",
+          "brief_summary",
+          "eligibility_criteria"
+        ],
+        "max_document_words": 100,
+        "same_phase": true,
+        "phase": "PHASE1",
+        "self_excluded": true,
+        "clinical_equivalence": false,
+        "zero_norm_policy": "Zero-norm documents have retrieval cosine zero; zero-score results are omitted.",
+        "warning": "Cosine similarity describes text overlap; no clinical equivalence or outcome probability is established."
+      }
+    },
+    "phase_context": {
+      "phase": "PHASE1",
+      "count": 1,
+      "median_enrollment": 45.0,
+      "median_pci": 12.6
+    },
+    "provenance": {
+      "dataset_id": "sample-fixture",
+      "sha256": "a250aa972f1f63203d4c6015c29461f65fdd9e3d5ab9ffec0fb7842767f3ef19",
+      "canonical_sha256": "5c7cd716053a34ee38116702240ef3c9d38f0f2f34f6c3a6c05a225ff4cc08ac",
+      "source": "bundled software-test fixtures",
+      "is_fixture": true
+    },
+    "risk_availability": {
+      "recruitment": {
+        "status": "unavailable",
+        "probability": null,
+        "reason": "No curated task labels and validated model are available; planning assumptions do not estimate this risk."
+      },
+      "amendment": {
+        "status": "unavailable",
+        "probability": null,
+        "reason": "No curated task labels and validated model are available; planning assumptions do not estimate this risk."
+      }
+    }
+  },
+  "NCT-SAMPLE-004": {
+    "study": {
+      "nct_id": "NCT-SAMPLE-004",
+      "title": "Longitudinal observational registry",
+      "study_type": "Observational",
+      "phase": "NA",
+      "enrollment": 1200,
+      "status": "COMPLETED",
+      "start_date": "2019-05-12",
+      "completion_date": "2024-11-01",
+      "number_of_arms": 1,
+      "primary_outcomes": 1,
+      "secondary_outcomes": 5,
+      "criteria_count": 25,
+      "text_complexity": 13.1,
+      "brief_summary": "Longitudinal registry with broad eligibility.",
+      "eligibility_criteria": null,
+      "completion_date_type": "Not reported"
+    },
+    "pci": {
+      "score": 41.05,
+      "category": "Medium",
+      "components": {
+        "Eligibility burden": 15.625,
+        "Primary outcome burden": 2.0,
+        "Secondary outcome burden": 5.0,
+        "Arm complexity": 1.875,
+        "Enrollment burden": 10.0,
+        "Text complexity": 6.55
+      },
+      "methodology": "Fixed-reference descriptive PCI (0–100): eligibility 25%, primary outcomes 20%, secondary outcomes 20%, arms 15%, enrollment 10%, text complexity 10%. Fixed component ceilings: 40, 10, 20, 8, 1000, 20 respectively. Missing, invalid and non-finite components contribute zero and are disclosed in missing_fields, so incomplete records may be understated. Clip each normalized component to [0,1]; sum unrounded weighted terms; round the total to two decimals, exact decimal half-up. Categorize the rounded score: Low <40, Medium 40–70 inclusive, High >70. These are explicit research assumptions, not a clinically validated score, clinical thresholds, causal forecasts or duration probabilities. Training-relative research PCI is a separate methodology.",
+      "missing_fields": [],
+      "formula_id": "fixed_reference_pci_v1"
+    },
+    "duration": {
+      "status": "unavailable",
+      "probability": null,
+      "duration_days": null,
+      "model_name": null,
+      "explanation": null,
+      "reason": "Bundled fixtures are software test data and do not support scientific predictions."
+    },
+    "phase": {
+      "status": "unavailable",
+      "reported_phase": "NA",
+      "predicted_phase": null,
+      "class_probabilities": null,
+      "reason": "Software-test fixtures cannot support phase predictions."
+    },
+    "similar": {
+      "items": [],
+      "method": "TF-IDF cosine similarity over title, brief summary and eligibility criteria; descriptive retrieval, not clinical equivalence.",
+      "scope": {
+        "dataset_id": "sample-fixture",
+        "source_sha256": "a250aa972f1f63203d4c6015c29461f65fdd9e3d5ab9ffec0fb7842767f3ef19",
+        "canonical_sha256": "5c7cd716053a34ee38116702240ef3c9d38f0f2f34f6c3a6c05a225ff4cc08ac",
+        "source": "bundled software-test fixtures",
+        "is_fixture": true,
+        "source_rows": 5,
+        "indexed_rows": 5,
+        "max_indexed_rows": 10000,
+        "index_selection": "First study identifiers in ascending order.",
+        "text_fields": [
+          "title",
+          "brief_summary",
+          "eligibility_criteria"
+        ],
+        "max_document_words": 100,
+        "same_phase": true,
+        "phase": "NA",
+        "self_excluded": true,
+        "clinical_equivalence": false,
+        "zero_norm_policy": "Zero-norm documents have retrieval cosine zero; zero-score results are omitted.",
+        "warning": "Cosine similarity describes text overlap; no clinical equivalence or outcome probability is established."
+      }
+    },
+    "phase_context": {
+      "phase": "NA",
+      "count": 1,
+      "median_enrollment": 1200.0,
+      "median_pci": 41.05
+    },
+    "provenance": {
+      "dataset_id": "sample-fixture",
+      "sha256": "a250aa972f1f63203d4c6015c29461f65fdd9e3d5ab9ffec0fb7842767f3ef19",
+      "canonical_sha256": "5c7cd716053a34ee38116702240ef3c9d38f0f2f34f6c3a6c05a225ff4cc08ac",
+      "source": "bundled software-test fixtures",
+      "is_fixture": true
+    },
+    "risk_availability": {
+      "recruitment": {
+        "status": "unavailable",
+        "probability": null,
+        "reason": "No curated task labels and validated model are available; planning assumptions do not estimate this risk."
+      },
+      "amendment": {
+        "status": "unavailable",
+        "probability": null,
+        "reason": "No curated task labels and validated model are available; planning assumptions do not estimate this risk."
+      }
+    }
+  },
+  "NCT-SAMPLE-005": {
+    "study": {
+      "nct_id": "NCT-SAMPLE-005",
+      "title": "Adaptive multi-arm trial",
+      "study_type": "Interventional",
+      "phase": "PHASE2",
+      "enrollment": 600,
+      "status": "RECRUITING",
+      "start_date": "2023-02-11",
+      "completion_date": null,
+      "number_of_arms": 5,
+      "primary_outcomes": 2,
+      "secondary_outcomes": 7,
+      "criteria_count": 29,
+      "text_complexity": 16.8,
+      "brief_summary": "Adaptive design with multiple treatment groups.",
+      "eligibility_criteria": null,
+      "completion_date_type": "Not reported"
+    },
+    "pci": {
+      "score": 52.9,
+      "category": "Medium",
+      "components": {
+        "Eligibility burden": 18.125,
+        "Primary outcome burden": 4.0,
+        "Secondary outcome burden": 7.0,
+        "Arm complexity": 9.375,
+        "Enrollment burden": 6.0,
+        "Text complexity": 8.4
+      },
+      "methodology": "Fixed-reference descriptive PCI (0–100): eligibility 25%, primary outcomes 20%, secondary outcomes 20%, arms 15%, enrollment 10%, text complexity 10%. Fixed component ceilings: 40, 10, 20, 8, 1000, 20 respectively. Missing, invalid and non-finite components contribute zero and are disclosed in missing_fields, so incomplete records may be understated. Clip each normalized component to [0,1]; sum unrounded weighted terms; round the total to two decimals, exact decimal half-up. Categorize the rounded score: Low <40, Medium 40–70 inclusive, High >70. These are explicit research assumptions, not a clinically validated score, clinical thresholds, causal forecasts or duration probabilities. Training-relative research PCI is a separate methodology.",
+      "missing_fields": [],
+      "formula_id": "fixed_reference_pci_v1"
+    },
+    "duration": {
+      "status": "unavailable",
+      "probability": null,
+      "duration_days": null,
+      "model_name": null,
+      "explanation": null,
+      "reason": "Bundled fixtures are software test data and do not support scientific predictions."
+    },
+    "phase": {
+      "status": "unavailable",
+      "reported_phase": "PHASE2",
+      "predicted_phase": null,
+      "class_probabilities": null,
+      "reason": "Software-test fixtures cannot support phase predictions."
+    },
+    "similar": {
+      "items": [],
+      "method": "TF-IDF cosine similarity over title, brief summary and eligibility criteria; descriptive retrieval, not clinical equivalence.",
+      "scope": {
+        "dataset_id": "sample-fixture",
+        "source_sha256": "a250aa972f1f63203d4c6015c29461f65fdd9e3d5ab9ffec0fb7842767f3ef19",
+        "canonical_sha256": "5c7cd716053a34ee38116702240ef3c9d38f0f2f34f6c3a6c05a225ff4cc08ac",
+        "source": "bundled software-test fixtures",
+        "is_fixture": true,
+        "source_rows": 5,
+        "indexed_rows": 5,
+        "max_indexed_rows": 10000,
+        "index_selection": "First study identifiers in ascending order.",
+        "text_fields": [
+          "title",
+          "brief_summary",
+          "eligibility_criteria"
+        ],
+        "max_document_words": 100,
+        "same_phase": true,
+        "phase": "PHASE2",
+        "self_excluded": true,
+        "clinical_equivalence": false,
+        "zero_norm_policy": "Zero-norm documents have retrieval cosine zero; zero-score results are omitted.",
+        "warning": "Cosine similarity describes text overlap; no clinical equivalence or outcome probability is established."
+      }
+    },
+    "phase_context": {
+      "phase": "PHASE2",
+      "count": 2,
+      "median_enrollment": 420.0,
+      "median_pci": 39.2
+    },
+    "provenance": {
+      "dataset_id": "sample-fixture",
+      "sha256": "a250aa972f1f63203d4c6015c29461f65fdd9e3d5ab9ffec0fb7842767f3ef19",
+      "canonical_sha256": "5c7cd716053a34ee38116702240ef3c9d38f0f2f34f6c3a6c05a225ff4cc08ac",
+      "source": "bundled software-test fixtures",
+      "is_fixture": true
+    },
+    "risk_availability": {
+      "recruitment": {
+        "status": "unavailable",
+        "probability": null,
+        "reason": "No curated task labels and validated model are available; planning assumptions do not estimate this risk."
+      },
+      "amendment": {
+        "status": "unavailable",
+        "probability": null,
+        "reason": "No curated task labels and validated model are available; planning assumptions do not estimate this risk."
+      }
+    }
+  }
+}

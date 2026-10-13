@@ -1,0 +1,40 @@
+{
+  "status": "completed",
+  "run_id": "451a6375-734c-4dc1-bfda-773e40e57d21",
+  "cohort": {
+    "input_rows": 800,
+    "eligible_rows": 312,
+    "excluded_rows": 488,
+    "temporally_purged_rows": 123,
+    "outcomes": "completed actual completion minus start date in days"
+  },
+  "splits": {
+    "train": 105,
+    "validation": 9,
+    "calibration": 11,
+    "test": 64
+  },
+  "branches": [
+    "median_baseline",
+    "structured",
+    "text",
+    "multimodal",
+    "structured_extra_trees",
+    "structured_random_forest",
+    "structured_gradient_boosting",
+    "structured_hist_gradient_boosting",
+    "multimodal_late_fusion"
+  ],
+  "config": {
+    "train_fraction": 0.6,
+    "validation_fraction": 0.2,
+    "prolonged_quantile": 0.75,
+    "bootstrap_samples": 200,
+    "random_seed": 42,
+    "max_text_features": 20000,
+    "enable_advanced_models": true,
+    "uncertainty_alpha": 0.1
+  },
+  "warning": "Research decision support only. Completed-only cohort creates follow-up/selection bias; minimum sample guard is not evidence of scientific validity. RETROSPECTIVE SNAPSHOT: baseline feature availability is unverified; post-start registry updates and narrative text may leak outcome information. Do not claim prospective validation.",
+  "approved_artifacts_changed": false
+}

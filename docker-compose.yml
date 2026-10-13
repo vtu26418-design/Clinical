@@ -1,0 +1,62 @@
+services:
+  postgres:
+    image: postgres:16-bookworm
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-cti}
+      POSTGRES_DB: ${POSTGRES_DB:-cti}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Run setup to generate POSTGRES_PASSWORD in .env}
+      POSTGRES_INITDB_ARGS: --auth-host=scram-sha-256
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U \"$$POSTGRES_USER\" -d \"$$POSTGRES_DB\""]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 10s
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - "127.0.0.1:${POSTGRES_PORT:-5432}:5432"
+    restart: unless-stopped
+  postgres-test:
+    image: postgres:16-bookworm
+    profiles: [test]
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-cti}
+      POSTGRES_DB: cti_test
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Run setup to generate POSTGRES_PASSWORD in .env}
+      POSTGRES_INITDB_ARGS: --auth-host=scram-sha-256
+    ports:
+      - "127.0.0.1:5433:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U \"$$POSTGRES_USER\" -d cti_test"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+  workbench:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    env_file: ${CTI_ENV_FILE:-.env}
+    environment:
+      DATABASE_URL: ${COMPOSE_DATABASE_URL:-postgresql+psycopg://${POSTGRES_USER:-cti}:${POSTGRES_PASSWORD:?Run setup to generate POSTGRES_PASSWORD in .env}@postgres:5432/${POSTGRES_DB:-cti}}
+      API_HOST: 0.0.0.0
+      API_PORT: 8000
+      STORAGE_DIR: /app/data/workbench
+      FRONTEND_DIST: /app/frontend/dist
+    ports:
+      - "127.0.0.1:8000:8000"
+    volumes:
+      - workbench-data:/app/data/workbench
+      - ./data/raw:/app/data/raw:ro
+      - ./data/sample:/app/data/sample:ro
+      - ./models:/app/models:ro
+      - workbench-results:/app/results
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  postgres-data:
+  workbench-data:
+  workbench-results:

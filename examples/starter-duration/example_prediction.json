@@ -1,0 +1,140 @@
+{
+  "nct_id": "NCT04892342",
+  "status": "available",
+  "run_id": "73d91e19-1ab0-4522-9a22-1b969311dcc7",
+  "model_name": "text",
+  "probability": 0.3752288528430852,
+  "duration_days": 1052.0084879139304,
+  "predicted_duration_days": 1052.0084879139304,
+  "prolonged_threshold_days": 1101.0,
+  "cohort_membership": "test",
+  "prediction_scope": "Held-out test estimate; the source-provenance and completed-only cohort limitations still apply.",
+  "explanation": {
+    "method": "linear feature contributions",
+    "units": "log-odds",
+    "intercept": -1.51480220746128,
+    "sum_all_contributions": 1.00495290340546,
+    "features": [
+      {
+        "feature": "text__cancer",
+        "contribution": 0.06281582504407221
+      },
+      {
+        "feature": "text__subjects",
+        "contribution": -0.0428512073741296
+      },
+      {
+        "feature": "text__tumor",
+        "contribution": 0.0418471594466579
+      },
+      {
+        "feature": "text__therapy",
+        "contribution": 0.03815346412223092
+      },
+      {
+        "feature": "text__metastatic",
+        "contribution": 0.034717837710243886
+      },
+      {
+        "feature": "text__must",
+        "contribution": 0.03443777572332811
+      },
+      {
+        "feature": "text__advanced",
+        "contribution": 0.034390410296236136
+      },
+      {
+        "feature": "text__cell",
+        "contribution": 0.034045799463556396
+      },
+      {
+        "feature": "text__must have",
+        "contribution": 0.03188617464915764
+      },
+      {
+        "feature": "text__must not",
+        "contribution": 0.025240193382782376
+      },
+      {
+        "feature": "text__not have",
+        "contribution": 0.024078024338160788
+      },
+      {
+        "feature": "text__prostate",
+        "contribution": 0.02270474114606345
+      }
+    ],
+    "note": "Contribution = transformed feature value \u00d7 fitted coefficient. Top 12 shown; not SHAP and not causal evidence. Classification contributions are log-odds, not probability percentage points.",
+    "scope": "local"
+  },
+  "duration_explanation": {
+    "method": "linear feature contributions",
+    "units": "days (before nonnegative clipping)",
+    "intercept": 707.4756600661611,
+    "sum_all_contributions": 344.53282784776945,
+    "features": [
+      {
+        "feature": "text__tumor",
+        "contribution": 15.980462288050521
+      },
+      {
+        "feature": "text__metastatic",
+        "contribution": 11.446974577696615
+      },
+      {
+        "feature": "text__subjects",
+        "contribution": -10.803159351333441
+      },
+      {
+        "feature": "text__cancer",
+        "contribution": 10.608482029616562
+      },
+      {
+        "feature": "text__advanced",
+        "contribution": 9.920502394023211
+      },
+      {
+        "feature": "text__cell",
+        "contribution": 9.002639403626626
+      },
+      {
+        "feature": "text__therapy",
+        "contribution": 8.991721707863016
+      },
+      {
+        "feature": "text__metastases",
+        "contribution": 8.713009333289833
+      },
+      {
+        "feature": "text__uncontrolled",
+        "contribution": 6.515186625282815
+      },
+      {
+        "feature": "text__phase",
+        "contribution": 5.7225596827683525
+      },
+      {
+        "feature": "text__grade",
+        "contribution": 5.633356473577241
+      },
+      {
+        "feature": "text__must have",
+        "contribution": 5.360377456746722
+      }
+    ],
+    "note": "Contribution = transformed feature value \u00d7 fitted coefficient. Top 12 shown; not SHAP and not causal evidence. Classification contributions are log-odds, not probability percentage points.",
+    "scope": "local"
+  },
+  "pci": {
+    "score": 16.60813678467516,
+    "components": {
+      "enrollment": 0.027832644999102173,
+      "number_of_arms": 0.6428571428571429,
+      "primary_outcomes": 0.012658227848101266,
+      "secondary_outcomes": 0.14705882352941177,
+      "criteria_count": 0.0
+    },
+    "method": "equal-weight training-fitted min-max complexity index"
+  },
+  "warning": "Research decision support only. Completed-only cohort creates follow-up/selection bias; minimum sample guard is not evidence of scientific validity. RETROSPECTIVE SNAPSHOT: baseline feature availability is unverified; post-start registry updates and narrative text may leak outcome information. Do not claim prospective validation."
+}

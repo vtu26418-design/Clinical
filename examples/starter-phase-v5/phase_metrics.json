@@ -1,0 +1,262 @@
+{
+  "majority_baseline": {
+    "validation": {
+      "n": 57,
+      "accuracy": 0.45614035087719296,
+      "balanced_accuracy": 0.25,
+      "macro_f1": 0.1566265060240964,
+      "labels": [
+        "EARLY_PHASE1",
+        "PHASE1",
+        "PHASE2",
+        "PHASE3",
+        "PHASE4"
+      ],
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          26,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          12,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          13,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          6,
+          0,
+          0,
+          0
+        ]
+      ],
+      "class_support": {
+        "EARLY_PHASE1": 0,
+        "PHASE1": 26,
+        "PHASE2": 12,
+        "PHASE3": 13,
+        "PHASE4": 6
+      },
+      "macro_f1_labels": [
+        "PHASE1",
+        "PHASE2",
+        "PHASE3",
+        "PHASE4"
+      ],
+      "unseen_training_labels": []
+    },
+    "test": {
+      "n": 59,
+      "accuracy": 0.3728813559322034,
+      "balanced_accuracy": 0.25,
+      "macro_f1": 0.13580246913580246,
+      "labels": [
+        "EARLY_PHASE1",
+        "PHASE1",
+        "PHASE2",
+        "PHASE3",
+        "PHASE4"
+      ],
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          22,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          17,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          8,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          12,
+          0,
+          0,
+          0
+        ]
+      ],
+      "class_support": {
+        "EARLY_PHASE1": 0,
+        "PHASE1": 22,
+        "PHASE2": 17,
+        "PHASE3": 8,
+        "PHASE4": 12
+      },
+      "macro_f1_labels": [
+        "PHASE1",
+        "PHASE2",
+        "PHASE3",
+        "PHASE4"
+      ],
+      "unseen_training_labels": []
+    }
+  },
+  "phase_logistic": {
+    "validation": {
+      "n": 57,
+      "accuracy": 0.5964912280701754,
+      "balanced_accuracy": 0.5384615384615384,
+      "macro_f1": 0.5364630467571644,
+      "labels": [
+        "EARLY_PHASE1",
+        "PHASE1",
+        "PHASE2",
+        "PHASE3",
+        "PHASE4"
+      ],
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          20,
+          6,
+          0,
+          0
+        ],
+        [
+          0,
+          3,
+          6,
+          2,
+          1
+        ],
+        [
+          0,
+          2,
+          3,
+          5,
+          3
+        ],
+        [
+          0,
+          0,
+          3,
+          0,
+          3
+        ]
+      ],
+      "class_support": {
+        "EARLY_PHASE1": 0,
+        "PHASE1": 26,
+        "PHASE2": 12,
+        "PHASE3": 13,
+        "PHASE4": 6
+      },
+      "macro_f1_labels": [
+        "PHASE1",
+        "PHASE2",
+        "PHASE3",
+        "PHASE4"
+      ],
+      "unseen_training_labels": []
+    },
+    "test": {
+      "n": 59,
+      "accuracy": 0.559322033898305,
+      "balanced_accuracy": 0.4817847593582888,
+      "macro_f1": 0.4752371541501976,
+      "labels": [
+        "EARLY_PHASE1",
+        "PHASE1",
+        "PHASE2",
+        "PHASE3",
+        "PHASE4"
+      ],
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          17,
+          4,
+          0,
+          1
+        ],
+        [
+          0,
+          5,
+          9,
+          1,
+          2
+        ],
+        [
+          0,
+          1,
+          2,
+          1,
+          4
+        ],
+        [
+          0,
+          1,
+          4,
+          1,
+          6
+        ]
+      ],
+      "class_support": {
+        "EARLY_PHASE1": 0,
+        "PHASE1": 22,
+        "PHASE2": 17,
+        "PHASE3": 8,
+        "PHASE4": 12
+      },
+      "macro_f1_labels": [
+        "PHASE1",
+        "PHASE2",
+        "PHASE3",
+        "PHASE4"
+      ],
+      "unseen_training_labels": []
+    }
+  }
+}

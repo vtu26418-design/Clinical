@@ -1,0 +1,1 @@
+Python 3.12.14; pinned requirements.txt; pip check passed. See RELEASE_V5_VERIFICATION.md for limits.

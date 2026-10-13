@@ -1,0 +1,19 @@
+{
+  "status": "available",
+  "task": "phase",
+  "model_name": "phase_logistic",
+  "reported_phase": "PHASE4",
+  "normalized_reported_phase": "PHASE4",
+  "predicted_phase": "PHASE2",
+  "class_probabilities": {
+    "EARLY_PHASE1": 0.0,
+    "PHASE1": 0.10104561746307208,
+    "PHASE2": 0.4531222228474551,
+    "PHASE3": 0.2785160010213246,
+    "PHASE4": 0.16731615866814814
+  },
+  "run_id": "b942bf8d-ca05-40f9-84bc-1e543ebf18e1",
+  "cohort_membership": "test",
+  "prediction_scope": "Held-out test estimate; source-provenance and retrospective snapshot limitations still apply.",
+  "warning": "Educational registry-phase consistency check only; not clinical advice or regulatory phase assignment. Class probabilities are uncalibrated model outputs, not clinical success probabilities. Minimum sample guards do not establish scientific validity. RETROSPECTIVE SNAPSHOT: baseline feature and label availability is unverified; registry updates and indirect narrative cues may cause leakage. Do not claim prospective validation."
+}

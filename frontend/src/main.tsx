@@ -1,0 +1,9 @@
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+import {PlatformGate} from './v5';
+import './styles.css';
+import './v52/workbench.css';
+import './v5202/premium.css';
+import {EmailVerificationLink} from './v52/Verification';
+ReactDOM.createRoot(document.getElementById('root')!).render(<React.StrictMode><EmailVerificationLink><PlatformGate>{context=><App key={context.project.id}/>}</PlatformGate></EmailVerificationLink></React.StrictMode>);

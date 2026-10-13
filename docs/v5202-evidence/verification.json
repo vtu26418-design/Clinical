@@ -1,0 +1,78 @@
+{
+  "version": "5.2.0.2",
+  "verification_date": "2026-10-13",
+  "pytest": {
+    "passed": 433,
+    "skipped": 1,
+    "skip_reason": "Optional external SHAP library; native CatBoost TreeSHAP separately verified"
+  },
+  "frontend": {
+    "typecheck_build": "passed",
+    "animation_tests": 12,
+    "stream_parser_checks": 9,
+    "browser_viewports": [
+      "1440x1000",
+      "1100x850",
+      "390x844"
+    ],
+    "runtime_errors": 0
+  },
+  "container": {
+    "passed": true,
+    "image": "sha256:ab268b3a3a1de9d044eb1d0073458aa651fbb44c409b674762f98e7c1520f6d7",
+    "uid": 10001,
+    "postgresql": true,
+    "starter_rows": 800,
+    "available_predictions": 3,
+    "checks": [
+      "fresh pinned npm ci/typecheck/build",
+      "fresh pinned Python dependencies with TLS verification",
+      "unprivileged startup",
+      "authenticated PostgreSQL account and project",
+      "actual800 starter import",
+      "saved artifact duration inference",
+      "CatBoost and new module imports",
+      "compiled UI served"
+    ],
+    "secrets_packaged": false
+  },
+  "assistant_browser": {
+    "passed": true,
+    "checks": [
+      "completed SSE and PostgreSQL message persistence",
+      "real800 cohort count",
+      "Markdown table rendering",
+      "clipboard copy",
+      "reply export",
+      "attributed feedback",
+      "owner approval",
+      "approved guidance in next prompt"
+    ],
+    "provider": "Local test responder; no commercial provider or accuracy tested",
+    "runtimeErrors": []
+  },
+  "model_evidence": {
+    "baseline_retained": true,
+    "catboost_validation_superiority": false,
+    "bundled_artifact_replay": "passed",
+    "clinical_prediction_accuracy_claim": "No validated clinical-success or causal-effect claim"
+  },
+  "unrun": [
+    "Commercial AI provider calls",
+    "Paid email delivery",
+    "Remote production deployment",
+    "Windows GUI launch on a Windows machine"
+  ],
+  "extracted_zip_startup": {
+    "passed": true,
+    "checks": [
+      "extracted current source imported",
+      "anonymous data denied",
+      "first-owner setup and project",
+      "actual800 cohort",
+      "saved artifact prediction",
+      "compiled frontend",
+      "branch catalog"
+    ]
+  }
+}

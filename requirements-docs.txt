@@ -1,0 +1,2 @@
+# Optional PDF guide build dependency; runtime does not need this.
+reportlab==4.4.9

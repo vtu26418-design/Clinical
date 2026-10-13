@@ -1,0 +1,21 @@
+{
+  "browser": "Chromium via Playwright",
+  "desktop_viewport": [
+    1440,
+    1080
+  ],
+  "mobile_viewport": [
+    390,
+    844
+  ],
+  "mobile_document_width": 390,
+  "page_errors": [],
+  "checks": [
+    "home layout",
+    "pipeline play/pause",
+    "offline search notice",
+    "frozen prediction evidence",
+    "scenario compute/save",
+    "mobile navigation"
+  ]
+}

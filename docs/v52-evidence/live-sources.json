@@ -1,0 +1,32 @@
+[
+  {
+    "source": "clinicaltrials",
+    "status": "passed",
+    "returned": 2,
+    "ids": [
+      "NCT02930031",
+      "NCT03162237"
+    ],
+    "retrieved_at": "2026-10-11T09:23:33.225219+00:00"
+  },
+  {
+    "source": "pubmed",
+    "status": "passed",
+    "returned": 2,
+    "ids": [
+      "32741486",
+      "35771962"
+    ],
+    "retrieved_at": "2026-10-11T09:23:33.219052+00:00"
+  },
+  {
+    "source": "openfda",
+    "status": "passed",
+    "returned": 2,
+    "ids": [
+      "26cca05b-82f8-e191-e063-6394a90a56bd",
+      "c3d96073-8a40-a58c-21f4-2bf4bfad9887"
+    ],
+    "retrieved_at": "2026-10-11T09:23:33.224763+00:00"
+  }
+]

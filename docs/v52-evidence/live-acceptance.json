@@ -1,0 +1,23 @@
+{
+  "checks": [
+    "live health v5.2.0",
+    "first-owner bootstrap",
+    "session login and project creation",
+    "authentic 800-row starter import",
+    "saved model inference and model/source hashes",
+    "persisted prediction batch retrieval",
+    "explicit missing email configuration",
+    "live source search, canonical bookmark save and library retrieval",
+    "browser saved evidence library",
+    "browser SSE/Markdown/table rendering with mocked transport; raw HTML inert",
+    "authenticated browser home, inference, source search state"
+  ],
+  "page_errors": [],
+  "inference_summary": {
+    "requested": 2,
+    "available": 2,
+    "blocked": 0,
+    "unavailable": 0
+  },
+  "version": "5.2.0"
+}

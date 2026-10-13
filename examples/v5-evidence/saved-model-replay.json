@@ -1,0 +1,70 @@
+{
+  "created_at": "2026-10-09T15:28:32.460457+00:00",
+  "procedure": "Checksum validation, source-page identifier reconciliation, saved-artifact prediction replay and point-metric recomputation; no model fitting.",
+  "numerical_tolerance": {
+    "rtol": 1e-10,
+    "atol": 1e-10
+  },
+  "starter_source": {
+    "rows": 800,
+    "unique_identifiers": 800,
+    "raw_pages": 8,
+    "canonical_sha256": "d096795e303b5a103e0aba8bd79ffe7e85609827ea810d1c08e8e0811b5496d2",
+    "canonical_bytes_replayed_from_raw_pages": true,
+    "acquisition_complete": true
+  },
+  "recovered_partial_source": {
+    "rows": 1800,
+    "unique_identifiers": 1800,
+    "raw_pages": 18,
+    "canonical_sha256": "5c963d4b1b4faea165aad57c097b3608304e400673dd41854204740883433148",
+    "canonical_bytes_replayed_from_raw_pages": true,
+    "acquisition_complete": false
+  },
+  "recovered_used_to_fit_bundled_models": false,
+  "models": {
+    "duration": {
+      "run_id": "e608f4ac-bf38-4172-a4b8-aa1be5987501",
+      "artifact_sha256": "22ceddccf48f932cd92780b35a9575e67759c62fb02f0e579a3fdc4c7ae665f5",
+      "manifest_sha256": "72c93ffcb6c43aa9cdbbe6a401957aa2a3177196f08a65a4609a19b6c2ab8bec",
+      "cohort": {
+        "input_rows": 800,
+        "eligible_rows": 312,
+        "excluded_rows": 488,
+        "temporally_purged_rows": 123,
+        "outcomes": "completed actual completion minus start date in days"
+      },
+      "splits": {
+        "train": 105,
+        "validation": 9,
+        "calibration": 11,
+        "test": 64
+      },
+      "branches": 9,
+      "saved_prediction_rows_reproduced": 756,
+      "max_absolute_prediction_error": 4.547473508864641e-13,
+      "all_saved_point_metrics_reproduced": true
+    },
+    "phase": {
+      "run_id": "e49e7317-6752-4f04-a7ad-8ff002ac8d7f",
+      "artifact_sha256": "aedb5f59e159e378acd91aa5a59526b53671f6f6bdf20c8c83ce66760abe1ac9",
+      "manifest_sha256": "06fd5b8d57094811400fe5933943c3128aa2a3ee7ea915c93296e26ce810e8da",
+      "cohort": {
+        "input_rows": 800,
+        "eligible_rows": 291,
+        "excluded_rows": 509,
+        "target": "normalized single registry phase"
+      },
+      "splits": {
+        "train": 175,
+        "validation": 57,
+        "test": 59
+      },
+      "branches": 2,
+      "saved_prediction_rows_reproduced": 232,
+      "max_absolute_prediction_error": 1.1102230246251565e-16,
+      "all_saved_point_metrics_reproduced": true
+    }
+  },
+  "status": "passed"
+}

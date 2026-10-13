@@ -1,0 +1,255 @@
+{
+  "dataset_name": "Recovered partial ClinicalTrials.gov completed drug-trial acquisition",
+  "schema_version": 1,
+  "is_fixture": false,
+  "source": "ClinicalTrials.gov API v2",
+  "endpoint": "https://clinicaltrials.gov/api/v2/studies",
+  "source_documentation": "https://clinicaltrials.gov/data-api/api",
+  "recovered_at": "2026-10-09T05:09:31.087313+00:00",
+  "retrieved_at": null,
+  "acquisition_complete": false,
+  "recovery_source_directory": "clinicaltrials-v5-acquisition",
+  "requested_maximum_per_period": 1000,
+  "requested_maximum_total": 4000,
+  "rows": 1800,
+  "duplicate_ids": 0,
+  "raw_response_pages": [
+    {
+      "file": "raw/2000-2005-page-001.json.gz",
+      "rows": 100,
+      "retrieved_at": null,
+      "http_date": null,
+      "uncompressed_bytes": 1595885,
+      "response_sha256": "22ea88911229874a19a32f594fefb851181bee08b6980817999ebbd9e8ef83cb",
+      "gzip_sha256": "a48caf2821a115aecbf7e81add06ef8e9079312f392d4987510e969237b97577",
+      "provenance_note": "Recovered preserved response; original HTTP headers and retrieval timestamp unavailable."
+    },
+    {
+      "file": "raw/2000-2005-page-002.json.gz",
+      "rows": 100,
+      "retrieved_at": null,
+      "http_date": null,
+      "uncompressed_bytes": 1827260,
+      "response_sha256": "66721662cd5086adb4d037890a7e1ed9c4183e38e688b164c2b5715840a6e8fc",
+      "gzip_sha256": "40f923afeeabbf3874c7841a5a18657562088cc42a0d148aa767afb4e7be0cb2",
+      "provenance_note": "Recovered preserved response; original HTTP headers and retrieval timestamp unavailable."
+    },
+    {
+      "file": "raw/2000-2005-page-003.json.gz",
+      "rows": 100,
+      "retrieved_at": null,
+      "http_date": null,
+      "uncompressed_bytes": 1707797,
+      "response_sha256": "4195fe23a978fe4c5d2b3fd343c203b0687af2d9b18b65bdc0180a68ebdc1af4",
+      "gzip_sha256": "2db506bab2704f82a61115ff336c3686815be6845a4c93f72eff720c399ad92c",
+      "provenance_note": "Recovered preserved response; original HTTP headers and retrieval timestamp unavailable."
+    },
+    {
+      "file": "raw/2000-2005-page-004.json.gz",
+      "rows": 100,
+      "retrieved_at": null,
+      "http_date": null,
+      "uncompressed_bytes": 1870060,
+      "response_sha256": "d572e36cb8cea80e799850a5d679a5eac6e0f4bca0296348634ccc1c52af40a7",
+      "gzip_sha256": "a4fb6fde56dcf4a945c20bd365bf0b70b813eebb6d29e297d5932d0dcc458eab",
+      "provenance_note": "Recovered preserved response; original HTTP headers and retrieval timestamp unavailable."
+    },
+    {
+      "file": "raw/2000-2005-page-005.json.gz",
+      "rows": 100,
+      "retrieved_at": null,
+      "http_date": null,
+      "uncompressed_bytes": 2366685,
+      "response_sha256": "6caf099f1b6e9d2ab13895d24e025fd637f10ed61b6c90e95faa4607d7e748bb",
+      "gzip_sha256": "df082e78e22be49903929c2abc02afd9da66ba229fe0509a7a149f17c8e386b0",
+      "provenance_note": "Recovered preserved response; original HTTP headers and retrieval timestamp unavailable."
+    },
+    {
+      "file": "raw/2000-2005-page-006.json.gz",
+      "rows": 100,
+      "retrieved_at": null,
+      "http_date": null,
+      "uncompressed_bytes": 1542351,
+      "response_sha256": "44fa331ababbe1e5dfa7ca1a40bed59c72ee3dbf342ede7497cd4c03559143b6",
+      "gzip_sha256": "af82964da5901a2f64a29b371d0fc47e6ab7dd855be86eb4db3bf32b3071a4cc",
+      "provenance_note": "Recovered preserved response; original HTTP headers and retrieval timestamp unavailable."
+    },
+    {
+      "file": "raw/2000-2005-page-007.json.gz",
+      "rows": 100,
+      "retrieved_at": null,
+      "http_date": null,
+      "uncompressed_bytes": 1980376,
+      "response_sha256": "b54afcf7a7c7fed6812cff20f87b14cf23cb613d6615c5f7805e51db010cacd2",
+      "gzip_sha256": "3a8e1111bb86b82d52fc2c0c6edc7ba7c0a1dfda8eadad1d81dbea80f6c1cc8f",
+      "provenance_note": "Recovered preserved response; original HTTP headers and retrieval timestamp unavailable."
+    },
+    {
+      "file": "raw/2000-2005-page-008.json.gz",
+      "rows": 100,
+      "retrieved_at": null,
+      "http_date": null,
+      "uncompressed_bytes": 1547013,
+      "response_sha256": "2e4a06504cb2c713def1844f5142f00b0043fca70cbdf1594a58e0da3396603a",
+      "gzip_sha256": "da4437b6faa114ba9b65e4dddf75b5086c6b3f39934658f1f74ce24b1e79bb5c",
+      "provenance_note": "Recovered preserved response; original HTTP headers and retrieval timestamp unavailable."
+    },
+    {
+      "file": "raw/2000-2005-page-009.json.gz",
+      "rows": 100,
+      "retrieved_at": null,
+      "http_date": null,
+      "uncompressed_bytes": 1982962,
+      "response_sha256": "df0ecd4805dc6706e93a6f08fdb31df9f70024b9591468e14b06f18f8d42ece3",
+      "gzip_sha256": "e2eb507e20ccba09e6ce4ad9a62110d99d4e8b35fe2b9adc0c5747431a436a93",
+      "provenance_note": "Recovered preserved response; original HTTP headers and retrieval timestamp unavailable."
+    },
+    {
+      "file": "raw/2000-2005-page-010.json.gz",
+      "rows": 100,
+      "retrieved_at": null,
+      "http_date": null,
+      "uncompressed_bytes": 1580647,
+      "response_sha256": "9727afc8eaa1071569e31ba4efbc98982da367be8317ecfa72b31f1a9fe21cf9",
+      "gzip_sha256": "867d3a0ed99110ebc2879256ae0fde6330892fabb4d00f42b097d1d43f8adcb5",
+      "provenance_note": "Recovered preserved response; original HTTP headers and retrieval timestamp unavailable."
+    },
+    {
+      "file": "raw/2006-2011-page-001.json.gz",
+      "rows": 100,
+      "retrieved_at": null,
+      "http_date": null,
+      "uncompressed_bytes": 2330325,
+      "response_sha256": "7eb50d49d8ef52a56016ced6d898453f4a280b29820e64f1da0703336ebd053e",
+      "gzip_sha256": "e309aafdbb68ca0ab6073f44c91575b79cb95a78c387ec13986c832039b37b0d",
+      "provenance_note": "Recovered preserved response; original HTTP headers and retrieval timestamp unavailable."
+    },
+    {
+      "file": "raw/2006-2011-page-002.json.gz",
+      "rows": 100,
+      "retrieved_at": null,
+      "http_date": null,
+      "uncompressed_bytes": 3195580,
+      "response_sha256": "df5fd0ca506d317526eb503ea9cbe1dbb019889938384090d2f637ee7e08fcd4",
+      "gzip_sha256": "4480de8f4c41500191ea78d96acfae1f049157140e4a193ae38661db4e11f52a",
+      "provenance_note": "Recovered preserved response; original HTTP headers and retrieval timestamp unavailable."
+    },
+    {
+      "file": "raw/2006-2011-page-003.json.gz",
+      "rows": 100,
+      "retrieved_at": null,
+      "http_date": null,
+      "uncompressed_bytes": 2882491,
+      "response_sha256": "0c5b4ce676a5eb0e10b1b129905df6d6eb2d4a736f48aab90fe4ecef4c3409cd",
+      "gzip_sha256": "89f991b3230f31b7b0be036e686b37d4064bfe229333acaf743ec807e5733018",
+      "provenance_note": "Recovered preserved response; original HTTP headers and retrieval timestamp unavailable."
+    },
+    {
+      "file": "raw/2006-2011-page-004.json.gz",
+      "rows": 100,
+      "retrieved_at": null,
+      "http_date": null,
+      "uncompressed_bytes": 4295858,
+      "response_sha256": "264b8909518ac77a75f63d6d106f3b4fa72aadcadd9928687c8a959b3a817567",
+      "gzip_sha256": "697fd271d22103579198c53bce35fec641b07a48554223ab392e532707771579",
+      "provenance_note": "Recovered preserved response; original HTTP headers and retrieval timestamp unavailable."
+    },
+    {
+      "file": "raw/2006-2011-page-005.json.gz",
+      "rows": 100,
+      "retrieved_at": null,
+      "http_date": null,
+      "uncompressed_bytes": 2992674,
+      "response_sha256": "6de164e63666988e1cf894f03d033857b7345ad3b9f443cde51e075b4b6b6f0f",
+      "gzip_sha256": "a3e2f183293e529ba8d0aa69a8d64c0058e0cfd439b182f36f9159162f1caf90",
+      "provenance_note": "Recovered preserved response; original HTTP headers and retrieval timestamp unavailable."
+    },
+    {
+      "file": "raw/2006-2011-page-006.json.gz",
+      "rows": 100,
+      "retrieved_at": null,
+      "http_date": null,
+      "uncompressed_bytes": 3398664,
+      "response_sha256": "986f91535e6a5393c79478ff2bde219503c7df0ddff0b8512943d0352d3fb539",
+      "gzip_sha256": "9321a824fd0562848fd0fff6ea6d8f6554addf46e3d7197922ba6c1b444d6bf8",
+      "provenance_note": "Recovered preserved response; original HTTP headers and retrieval timestamp unavailable."
+    },
+    {
+      "file": "raw/2006-2011-page-007.json.gz",
+      "rows": 100,
+      "retrieved_at": null,
+      "http_date": null,
+      "uncompressed_bytes": 3037175,
+      "response_sha256": "02621f908adffbe9035ab4d4e0cce80befb5c9a9f0f6e732e35ad4bbde8465a6",
+      "gzip_sha256": "03050749786aa4bd5d9d3577b62d3f1bb9b2bd8d2cc883bc1bedfd511a94bd80",
+      "provenance_note": "Recovered preserved response; original HTTP headers and retrieval timestamp unavailable."
+    },
+    {
+      "file": "raw/2006-2011-page-008.json.gz",
+      "rows": 100,
+      "retrieved_at": null,
+      "http_date": null,
+      "uncompressed_bytes": 3448931,
+      "response_sha256": "2aeb46073b472cd8ecc4529cf51b51cd0f7256bade5bb32aac04acdbc458c505",
+      "gzip_sha256": "c02566d92f6f54fc9af2f35481631cea18132e27b18423dc1e73f7504191d6e4",
+      "provenance_note": "Recovered preserved response; original HTTP headers and retrieval timestamp unavailable."
+    }
+  ],
+  "coverage": {
+    "start_period_counts": {
+      "2000-2005": 1000,
+      "2006-2011": 800
+    },
+    "start_year_counts": {
+      "2000": 81,
+      "2001": 99,
+      "2002": 129,
+      "2003": 184,
+      "2004": 233,
+      "2005": 274,
+      "2006": 129,
+      "2007": 124,
+      "2008": 140,
+      "2009": 126,
+      "2010": 143,
+      "2011": 138
+    },
+    "phase_counts": {
+      "PHASE1": 366,
+      "PHASE1|PHASE2": 87,
+      "PHASE2": 525,
+      "PHASE2|PHASE3": 57,
+      "PHASE3": 460,
+      "PHASE4": 305
+    },
+    "status_counts": {
+      "COMPLETED": 1800
+    },
+    "study_type_counts": {
+      "INTERVENTIONAL": 1800
+    },
+    "start_date_min": "2000-01",
+    "start_date_max": "2011-12-28",
+    "completion_date_type_counts": {
+      "ACTUAL": 1538,
+      "Not reported": 262
+    },
+    "exact_start_and_actual_completion_date_rows": 156,
+    "partial_start_date_rows": 1629,
+    "partial_completion_date_rows": 1460
+  },
+  "canonical_file": "trials.csv",
+  "canonical_sha256": "5c963d4b1b4faea165aad57c097b3608304e400673dd41854204740883433148",
+  "canonical_bytes": 6102131,
+  "baseline_provenance": false,
+  "snapshot_type": "latest registry state at original requests",
+  "not_population_representative": true,
+  "sampling_method": "Interrupted convenience acquisition; only available consecutive raw pages are recovered. Missing strata are not filled.",
+  "limitations": [
+    "The original requested acquisition did not complete; this file is a recovered partial dataset.",
+    "Original retrieval times and HTTP headers are not reconstructed or inferred.",
+    "Observed start-period distribution is unbalanced; not population-representative.",
+    "No historical baseline provenance; completed-only selection and retrospective narrative leakage remain.",
+    "Recovery does not certify suitability for training. Raw response hashes enable exact replay."
+  ]
+}

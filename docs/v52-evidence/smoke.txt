@@ -1,0 +1,8 @@
+SOFTWARE FIXTURES ONLY — not scientific validation
+{'path': '/workspace/Clinical-trail-mltimodelv5/data/sample/trials.csv', 'rows': 5, 'columns': ['nct_id', 'title', 'study_type', 'phase', 'enrollment', 'status', 'start_date', 'completion_date', 'number_of_arms', 'primary_outcomes', 'secondary_outcomes', 'criteria_count', 'text_complexity', 'brief_summary'], 'missing_required_columns': [], 'duplicates': 0, 'valid': True}
+NCT-SAMPLE-001: descriptive PCI=25.5 (Low); model prediction unavailable (no trained artifact)
+NCT-SAMPLE-002: descriptive PCI=55.4 (Medium); model prediction unavailable (no trained artifact)
+NCT-SAMPLE-003: descriptive PCI=12.6 (Low); model prediction unavailable (no trained artifact)
+NCT-SAMPLE-004: descriptive PCI=41.05 (Medium); model prediction unavailable (no trained artifact)
+NCT-SAMPLE-005: descriptive PCI=52.9 (Medium); model prediction unavailable (no trained artifact)
+Software smoke test completed.

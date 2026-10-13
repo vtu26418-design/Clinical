@@ -1,0 +1,5 @@
+export type Study = {nct_id:string;title:string;phase:string;status:string;enrollment:number|null;study_type?:string;brief_summary?:string;eligibility_criteria?:string;start_date?:string;completion_date?:string;number_of_arms?:number;primary_outcomes?:number;secondary_outcomes?:number;criteria_count?:number;text_complexity?:number;pci?:number;complexity?:string;prolonged_risk?:number|null;[key:string]:any};
+export type Dataset = {id:string;name:string;row_count:number;source:string;created_at?:string;sha256?:string;is_fixture:boolean;quality?:any};
+export type Overview = {dataset:Dataset;total_studies:number;median_pci:number;phase_counts:Record<string,number>;status_counts:Record<string,number>;enrollment_total:number;quality:any;predictions_available:boolean};
+export type Detail = {study:Study;pci:{score:number;category:string;components:Record<string,number>;methodology:string};prediction:any};
+export type Experiment = {id:string;dataset_id:string;status:string;created_at:string;error?:string;manifest?:any;[key:string]:any};

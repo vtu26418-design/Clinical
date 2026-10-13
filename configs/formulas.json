@@ -1,0 +1,655 @@
+{
+  "schema_version": 1,
+  "fixed_reference_pci": {
+    "id": "fixed_reference_pci_v1",
+    "name": "Fixed-reference descriptive PCI",
+    "score_min": 0,
+    "score_max": 100,
+    "components": [
+      {
+        "key": "criteria_count",
+        "label": "Eligibility burden",
+        "ceiling": 40,
+        "weight": 25
+      },
+      {
+        "key": "primary_outcomes",
+        "label": "Primary outcome burden",
+        "ceiling": 10,
+        "weight": 20
+      },
+      {
+        "key": "secondary_outcomes",
+        "label": "Secondary outcome burden",
+        "ceiling": 20,
+        "weight": 20
+      },
+      {
+        "key": "number_of_arms",
+        "label": "Arm complexity",
+        "ceiling": 8,
+        "weight": 15
+      },
+      {
+        "key": "enrollment",
+        "label": "Enrollment burden",
+        "ceiling": 1000,
+        "weight": 10
+      },
+      {
+        "key": "text_complexity",
+        "label": "Text complexity",
+        "ceiling": 20,
+        "weight": 10
+      }
+    ],
+    "formula": "sum(weight_i * clip(value_i / ceiling_i, 0, 1))",
+    "rounding": {
+      "digits": 2,
+      "mode": "half_up",
+      "arithmetic": "exact_decimal_rational",
+      "category_basis": "rounded_score"
+    },
+    "categories": [
+      {
+        "label": "Low",
+        "upper": 40,
+        "upper_inclusive": false
+      },
+      {
+        "label": "Medium",
+        "upper": 70,
+        "upper_inclusive": true
+      },
+      {
+        "label": "High",
+        "upper": 100,
+        "upper_inclusive": true
+      }
+    ],
+    "input_policy": {
+      "accepted": "finite numeric scalar or trimmed decimal/scientific numeric string",
+      "decimal_pattern": "^[+-]?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$",
+      "invalid": "missing, null, empty, boolean, object, array, malformed or non-finite values contribute zero and are disclosed",
+      "negative": "finite negative values clip to zero; they are not missing",
+      "numeric_semantics": "use decimal text representation of numeric inputs; preserve accepted numeric strings for exact arithmetic",
+      "max_decimal_digits": 340,
+      "max_absolute_decimal_scale": 320,
+      "resource_bounds": "Reject mantissas with more than 340 digits, or abs(scientific exponent minus fractional digit count) > 320, before constructing exact integers."
+    },
+    "custom_weights": {
+      "scope": "Exploratory user assumptions; not fixed-reference PCI",
+      "count": 6,
+      "minimum": 0,
+      "maximum": 100,
+      "sum": 100,
+      "invalid": "reject non-finite, negative, incorrect-count, out-of-bounds, or non-normalized weights",
+      "sum_tolerance": 1e-08
+    },
+    "methodology": "Fixed-reference descriptive PCI (0–100): eligibility 25%, primary outcomes 20%, secondary outcomes 20%, arms 15%, enrollment 10%, text complexity 10%. Fixed component ceilings: 40, 10, 20, 8, 1000, 20 respectively. Missing, invalid and non-finite components contribute zero and are disclosed in missing_fields, so incomplete records may be understated. Clip each normalized component to [0,1]; sum unrounded weighted terms; round the total to two decimals, exact decimal half-up. Categorize the rounded score: Low <40, Medium 40–70 inclusive, High >70. These are explicit research assumptions, not a clinically validated score, clinical thresholds, causal forecasts or duration probabilities. Training-relative research PCI is a separate methodology.",
+    "validated": false
+  },
+  "metrics": {
+    "mae": {
+      "name": "Mean absolute error",
+      "formula": "sum(abs(y_i - estimate_i)) / n",
+      "unit": "same as outcome",
+      "undefined": "empty inputs"
+    },
+    "rmse": {
+      "name": "Root mean squared error",
+      "formula": "sqrt(sum((y_i - estimate_i)^2) / n)",
+      "unit": "same as outcome",
+      "undefined": "empty inputs"
+    },
+    "r2": {
+      "name": "Coefficient of determination",
+      "formula": "1 - sum((y_i - estimate_i)^2) / sum((y_i - mean(y))^2)",
+      "unit": "unitless",
+      "undefined": "n < 2 or zero variation in actual outcomes; return null"
+    },
+    "brier": {
+      "name": "Binary Brier score",
+      "formula": "sum((p_i - binary_y_i)^2) / n",
+      "unit": "unitless",
+      "bounds": [
+        0,
+        1
+      ],
+      "undefined": "empty inputs",
+      "inputs": "labels exactly 0/1; probabilities finite and in [0,1]"
+    },
+    "cosine": {
+      "name": "Cosine similarity",
+      "formula": "dot(a,b) / (sqrt(dot(a,a)) * sqrt(dot(b,b)))",
+      "unit": "unitless",
+      "undefined": "mathematically undefined for a zero vector; retrieval convention returns zero and omits zero-score results",
+      "scope": "TF-IDF descriptive text retrieval, not clinical equivalence"
+    }
+  },
+  "planning": {
+    "id": "deterministic_recruitment_planning_v1",
+    "recruitment_months": "target_enrollment / (sites * monthly_rate_per_site)",
+    "total_months": "startup_months + recruitment_months + followup_months",
+    "inputs": "finite non-negative target/startup/followup; finite positive sites and rate; scenario target overrides source target; missing target refuses calculation",
+    "scope": "Arithmetic under explicit assumptions; no recruitment risk probability or causal forecast"
+  },
+  "metric_known_answer": {
+    "duration": [
+      10,
+      20,
+      30
+    ],
+    "estimate": [
+      12,
+      18,
+      33
+    ],
+    "labels": [
+      0,
+      1,
+      1
+    ],
+    "probability": [
+      0.2,
+      0.8,
+      0.6
+    ],
+    "expected": {
+      "mae": 2.3333333333333335,
+      "rmse": 2.3804761428476167,
+      "r2": 0.915,
+      "brier": 0.08
+    }
+  },
+  "cosine_known_answers": [
+    {
+      "a": [
+        1,
+        1,
+        0
+      ],
+      "b": [
+        1,
+        0,
+        1
+      ],
+      "expected": 0.5
+    },
+    {
+      "a": [
+        1,
+        0
+      ],
+      "b": [
+        0,
+        1
+      ],
+      "expected": 0
+    },
+    {
+      "a": [
+        0,
+        0
+      ],
+      "b": [
+        1,
+        0
+      ],
+      "expected_retrieval_convention": 0
+    }
+  ],
+  "planning_known_answer": {
+    "target_enrollment": 240,
+    "sites": 4,
+    "monthly_rate_per_site": 5,
+    "startup_months": 3,
+    "followup_months": 6,
+    "expected": {
+      "recruitment_months": 12,
+      "total_months": 21
+    }
+  },
+  "parity_cases": [
+    {
+      "id": "empty",
+      "row": {},
+      "expected": {
+        "score": 0,
+        "category": "Low",
+        "missing_fields": [
+          "criteria_count",
+          "primary_outcomes",
+          "secondary_outcomes",
+          "number_of_arms",
+          "enrollment",
+          "text_complexity"
+        ]
+      }
+    },
+    {
+      "id": "zero",
+      "row": {
+        "criteria_count": 0,
+        "primary_outcomes": 0,
+        "secondary_outcomes": 0,
+        "number_of_arms": 0,
+        "enrollment": 0,
+        "text_complexity": 0
+      },
+      "expected": {
+        "score": 0,
+        "category": "Low",
+        "missing_fields": []
+      }
+    },
+    {
+      "id": "all-ceilings",
+      "row": {
+        "criteria_count": 40,
+        "primary_outcomes": 10,
+        "secondary_outcomes": 20,
+        "number_of_arms": 8,
+        "enrollment": 1000,
+        "text_complexity": 20
+      },
+      "expected": {
+        "score": 100,
+        "category": "High",
+        "missing_fields": []
+      }
+    },
+    {
+      "id": "over-ceilings",
+      "row": {
+        "criteria_count": 400,
+        "primary_outcomes": 100,
+        "secondary_outcomes": 200,
+        "number_of_arms": 80,
+        "enrollment": 10000,
+        "text_complexity": 200
+      },
+      "expected": {
+        "score": 100,
+        "category": "High",
+        "missing_fields": []
+      }
+    },
+    {
+      "id": "negative-clipping",
+      "row": {
+        "criteria_count": -1,
+        "primary_outcomes": -1,
+        "secondary_outcomes": -1,
+        "number_of_arms": -1,
+        "enrollment": -1,
+        "text_complexity": -1
+      },
+      "expected": {
+        "score": 0,
+        "category": "Low",
+        "missing_fields": []
+      }
+    },
+    {
+      "id": "half-cent",
+      "row": {
+        "criteria_count": 0.008
+      },
+      "expected": {
+        "score": 0.01,
+        "category": "Low",
+        "missing_fields": [
+          "primary_outcomes",
+          "secondary_outcomes",
+          "number_of_arms",
+          "enrollment",
+          "text_complexity"
+        ]
+      }
+    },
+    {
+      "id": "exact-below-half-string",
+      "row": {
+        "criteria_count": "0.0079999999999999999999999999999999999999"
+      },
+      "expected": {
+        "score": 0,
+        "category": "Low",
+        "missing_fields": [
+          "primary_outcomes",
+          "secondary_outcomes",
+          "number_of_arms",
+          "enrollment",
+          "text_complexity"
+        ]
+      }
+    },
+    {
+      "id": "exact-half-string",
+      "row": {
+        "criteria_count": "0.008"
+      },
+      "expected": {
+        "score": 0.01,
+        "category": "Low",
+        "missing_fields": [
+          "primary_outcomes",
+          "secondary_outcomes",
+          "number_of_arms",
+          "enrollment",
+          "text_complexity"
+        ]
+      }
+    },
+    {
+      "id": "below-low-boundary",
+      "row": {
+        "criteria_count": 40,
+        "primary_outcomes": 5,
+        "enrollment": 499.49
+      },
+      "expected": {
+        "score": 39.99,
+        "category": "Low",
+        "missing_fields": [
+          "secondary_outcomes",
+          "number_of_arms",
+          "text_complexity"
+        ]
+      }
+    },
+    {
+      "id": "round-into-medium",
+      "row": {
+        "criteria_count": 40,
+        "primary_outcomes": 5,
+        "enrollment": 499.5
+      },
+      "expected": {
+        "score": 40,
+        "category": "Medium",
+        "missing_fields": [
+          "secondary_outcomes",
+          "number_of_arms",
+          "text_complexity"
+        ]
+      }
+    },
+    {
+      "id": "medium-upper-boundary",
+      "row": {
+        "criteria_count": 40,
+        "primary_outcomes": 10,
+        "secondary_outcomes": 20,
+        "enrollment": 500
+      },
+      "expected": {
+        "score": 70,
+        "category": "Medium",
+        "missing_fields": [
+          "number_of_arms",
+          "text_complexity"
+        ]
+      }
+    },
+    {
+      "id": "round-within-medium",
+      "row": {
+        "criteria_count": 40,
+        "primary_outcomes": 10,
+        "secondary_outcomes": 20,
+        "enrollment": 500.49
+      },
+      "expected": {
+        "score": 70,
+        "category": "Medium",
+        "missing_fields": [
+          "number_of_arms",
+          "text_complexity"
+        ]
+      }
+    },
+    {
+      "id": "round-into-high",
+      "row": {
+        "criteria_count": 40,
+        "primary_outcomes": 10,
+        "secondary_outcomes": 20,
+        "enrollment": 500.5
+      },
+      "expected": {
+        "score": 70.01,
+        "category": "High",
+        "missing_fields": [
+          "number_of_arms",
+          "text_complexity"
+        ]
+      }
+    },
+    {
+      "id": "invalid-and-nonfinite",
+      "row": {
+        "criteria_count": null,
+        "primary_outcomes": "bad",
+        "secondary_outcomes": "NaN",
+        "number_of_arms": "Infinity",
+        "enrollment": true,
+        "text_complexity": {}
+      },
+      "expected": {
+        "score": 0,
+        "category": "Low",
+        "missing_fields": [
+          "criteria_count",
+          "primary_outcomes",
+          "secondary_outcomes",
+          "number_of_arms",
+          "enrollment",
+          "text_complexity"
+        ]
+      }
+    },
+    {
+      "id": "decimal-scientific-strings",
+      "row": {
+        "criteria_count": "4e1",
+        "primary_outcomes": "10.0",
+        "secondary_outcomes": "+20",
+        "number_of_arms": "8",
+        "enrollment": "1000",
+        "text_complexity": "2e1"
+      },
+      "expected": {
+        "score": 100,
+        "category": "High",
+        "missing_fields": []
+      }
+    },
+    {
+      "id": "v3-sample-001",
+      "row": {
+        "criteria_count": 14.0,
+        "primary_outcomes": 1.0,
+        "secondary_outcomes": 4.0,
+        "number_of_arms": 2.0,
+        "enrollment": 240.0,
+        "text_complexity": 9.2
+      },
+      "expected": {
+        "score": 25.5,
+        "category": "Low",
+        "missing_fields": []
+      }
+    },
+    {
+      "id": "v3-sample-002",
+      "row": {
+        "criteria_count": 32.0,
+        "primary_outcomes": 2.0,
+        "secondary_outcomes": 8.0,
+        "number_of_arms": 4.0,
+        "enrollment": 820.0,
+        "text_complexity": 15.4
+      },
+      "expected": {
+        "score": 55.4,
+        "category": "Medium",
+        "missing_fields": []
+      }
+    },
+    {
+      "id": "v3-sample-003",
+      "row": {
+        "criteria_count": 7.0,
+        "primary_outcomes": 1.0,
+        "secondary_outcomes": 1.0,
+        "number_of_arms": 1.0,
+        "enrollment": 45.0,
+        "text_complexity": 5.8
+      },
+      "expected": {
+        "score": 12.6,
+        "category": "Low",
+        "missing_fields": []
+      }
+    },
+    {
+      "id": "v3-sample-004",
+      "row": {
+        "criteria_count": 25.0,
+        "primary_outcomes": 1.0,
+        "secondary_outcomes": 5.0,
+        "number_of_arms": 1.0,
+        "enrollment": 1200.0,
+        "text_complexity": 13.1
+      },
+      "expected": {
+        "score": 41.05,
+        "category": "Medium",
+        "missing_fields": []
+      }
+    },
+    {
+      "id": "v3-sample-005",
+      "row": {
+        "criteria_count": 29.0,
+        "primary_outcomes": 2.0,
+        "secondary_outcomes": 7.0,
+        "number_of_arms": 5.0,
+        "enrollment": 600.0,
+        "text_complexity": 16.8
+      },
+      "expected": {
+        "score": 52.9,
+        "category": "Medium",
+        "missing_fields": []
+      }
+    },
+    {
+      "id": "trailing-decimal-point",
+      "row": {
+        "criteria_count": "1."
+      },
+      "expected": {
+        "score": 0.63,
+        "category": "Low",
+        "missing_fields": [
+          "primary_outcomes",
+          "secondary_outcomes",
+          "number_of_arms",
+          "enrollment",
+          "text_complexity"
+        ]
+      }
+    },
+    {
+      "id": "minimum-accepted-exponent",
+      "row": {
+        "criteria_count": "1e-320"
+      },
+      "expected": {
+        "score": 0,
+        "category": "Low",
+        "missing_fields": [
+          "primary_outcomes",
+          "secondary_outcomes",
+          "number_of_arms",
+          "enrollment",
+          "text_complexity"
+        ]
+      }
+    },
+    {
+      "id": "out-of-contract-underflow",
+      "row": {
+        "criteria_count": "1e-321"
+      },
+      "expected": {
+        "score": 0,
+        "category": "Low",
+        "missing_fields": [
+          "criteria_count",
+          "primary_outcomes",
+          "secondary_outcomes",
+          "number_of_arms",
+          "enrollment",
+          "text_complexity"
+        ]
+      }
+    },
+    {
+      "id": "extreme-exponent-rejected",
+      "row": {
+        "criteria_count": "1e-99999999"
+      },
+      "expected": {
+        "score": 0,
+        "category": "Low",
+        "missing_fields": [
+          "criteria_count",
+          "primary_outcomes",
+          "secondary_outcomes",
+          "number_of_arms",
+          "enrollment",
+          "text_complexity"
+        ]
+      }
+    },
+    {
+      "id": "oversized-mantissa-rejected",
+      "row": {
+        "criteria_count": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "expected": {
+        "score": 0,
+        "category": "Low",
+        "missing_fields": [
+          "criteria_count",
+          "primary_outcomes",
+          "secondary_outcomes",
+          "number_of_arms",
+          "enrollment",
+          "text_complexity"
+        ]
+      }
+    },
+    {
+      "id": "long-decimal-finite-contribution",
+      "row": {
+        "criteria_count": "0.9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999"
+      },
+      "expected": {
+        "score": 0.62,
+        "category": "Low",
+        "missing_fields": [
+          "primary_outcomes",
+          "secondary_outcomes",
+          "number_of_arms",
+          "enrollment",
+          "text_complexity"
+        ]
+      }
+    }
+  ]
+}

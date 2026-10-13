@@ -1,0 +1,246 @@
+{
+  "dataset_name": "ClinicalTrials.gov completed drug-trial starter cohort",
+  "schema_version": 1,
+  "is_fixture": false,
+  "source": "ClinicalTrials.gov API v2",
+  "endpoint": "https://clinicaltrials.gov/api/v2/studies",
+  "source_documentation": "https://clinicaltrials.gov/data-api/api",
+  "acquisition_started_at": "2026-10-07T15:39:49.122877+00:00",
+  "retrieved_at": "2026-10-07T15:41:09.711500+00:00",
+  "snapshot_type": "latest registry state",
+  "baseline_provenance": false,
+  "sampling_method": "Convenience subset: first API-returned records in each fixed start-date stratum; default API order, no outcome-duration or model-performance selection.",
+  "not_population_representative": true,
+  "requested_maximum_per_period": 200,
+  "rows": 800,
+  "duplicate_ids": 0,
+  "strata": [
+    {
+      "start_year_min": 2000,
+      "start_year_max": 2005,
+      "query": "AREA[StudyType]INTERVENTIONAL AND AREA[OverallStatus]COMPLETED AND AREA[InterventionType]DRUG AND (AREA[Phase]PHASE1 OR AREA[Phase]PHASE2 OR AREA[Phase]PHASE3 OR AREA[Phase]PHASE4) AND AREA[StartDate]RANGE[2000-01-01,2005-12-31]",
+      "requested_maximum": 200,
+      "rows": 200,
+      "last_reported_total_count": null
+    },
+    {
+      "start_year_min": 2006,
+      "start_year_max": 2011,
+      "query": "AREA[StudyType]INTERVENTIONAL AND AREA[OverallStatus]COMPLETED AND AREA[InterventionType]DRUG AND (AREA[Phase]PHASE1 OR AREA[Phase]PHASE2 OR AREA[Phase]PHASE3 OR AREA[Phase]PHASE4) AND AREA[StartDate]RANGE[2006-01-01,2011-12-31]",
+      "requested_maximum": 200,
+      "rows": 200,
+      "last_reported_total_count": null
+    },
+    {
+      "start_year_min": 2012,
+      "start_year_max": 2017,
+      "query": "AREA[StudyType]INTERVENTIONAL AND AREA[OverallStatus]COMPLETED AND AREA[InterventionType]DRUG AND (AREA[Phase]PHASE1 OR AREA[Phase]PHASE2 OR AREA[Phase]PHASE3 OR AREA[Phase]PHASE4) AND AREA[StartDate]RANGE[2012-01-01,2017-12-31]",
+      "requested_maximum": 200,
+      "rows": 200,
+      "last_reported_total_count": null
+    },
+    {
+      "start_year_min": 2018,
+      "start_year_max": 2023,
+      "query": "AREA[StudyType]INTERVENTIONAL AND AREA[OverallStatus]COMPLETED AND AREA[InterventionType]DRUG AND (AREA[Phase]PHASE1 OR AREA[Phase]PHASE2 OR AREA[Phase]PHASE3 OR AREA[Phase]PHASE4) AND AREA[StartDate]RANGE[2018-01-01,2023-12-31]",
+      "requested_maximum": 200,
+      "rows": 200,
+      "last_reported_total_count": null
+    }
+  ],
+  "canonical_file": "trials.csv",
+  "canonical_sha256": "d096795e303b5a103e0aba8bd79ffe7e85609827ea810d1c08e8e0811b5496d2",
+  "canonical_bytes": 2976872,
+  "raw_response_pages": [
+    {
+      "file": "raw/2000-2005-page-001.json.gz",
+      "request_parameters": {
+        "query.term": "AREA[StudyType]INTERVENTIONAL AND AREA[OverallStatus]COMPLETED AND AREA[InterventionType]DRUG AND (AREA[Phase]PHASE1 OR AREA[Phase]PHASE2 OR AREA[Phase]PHASE3 OR AREA[Phase]PHASE4) AND AREA[StartDate]RANGE[2000-01-01,2005-12-31]",
+        "format": "json",
+        "pageSize": 100,
+        "countTotal": "true"
+      },
+      "retrieved_at": "2026-10-07T15:39:59.598377+00:00",
+      "http_date": "Wed, 07 Oct 2026 15:39:59 GMT",
+      "rows": 100,
+      "uncompressed_bytes": 1965643,
+      "response_sha256": "fe3ba8753b07d4e1d119314665b95b1b507dee3030435a45f676e4c250464d81",
+      "gzip_sha256": "41dd46bf5605ce83d898b6c4efe1c0aeff7a48f63117e81cd429452b47b28e65"
+    },
+    {
+      "file": "raw/2000-2005-page-002.json.gz",
+      "request_parameters": {
+        "query.term": "AREA[StudyType]INTERVENTIONAL AND AREA[OverallStatus]COMPLETED AND AREA[InterventionType]DRUG AND (AREA[Phase]PHASE1 OR AREA[Phase]PHASE2 OR AREA[Phase]PHASE3 OR AREA[Phase]PHASE4) AND AREA[StartDate]RANGE[2000-01-01,2005-12-31]",
+        "format": "json",
+        "pageSize": 100,
+        "countTotal": "true",
+        "pageToken": "ZVNj7o2Elu8o3lpwRM-l47L2mpOQJJxtZvin1Pg"
+      },
+      "retrieved_at": "2026-10-07T15:40:07.309037+00:00",
+      "http_date": "Wed, 07 Oct 2026 15:40:07 GMT",
+      "rows": 100,
+      "uncompressed_bytes": 2184693,
+      "response_sha256": "17852d77a04cd7d78e954541c72d2bd00a7b638e3bf4e104dd352ba7e0429b93",
+      "gzip_sha256": "c88856a4f2e53674bd3ef902b8f7d5ff02af91c8b8e2fe9bdb2d4fe89bd04c5a"
+    },
+    {
+      "file": "raw/2006-2011-page-001.json.gz",
+      "request_parameters": {
+        "query.term": "AREA[StudyType]INTERVENTIONAL AND AREA[OverallStatus]COMPLETED AND AREA[InterventionType]DRUG AND (AREA[Phase]PHASE1 OR AREA[Phase]PHASE2 OR AREA[Phase]PHASE3 OR AREA[Phase]PHASE4) AND AREA[StartDate]RANGE[2006-01-01,2011-12-31]",
+        "format": "json",
+        "pageSize": 100,
+        "countTotal": "true"
+      },
+      "retrieved_at": "2026-10-07T15:40:17.250793+00:00",
+      "http_date": "Wed, 07 Oct 2026 15:40:17 GMT",
+      "rows": 100,
+      "uncompressed_bytes": 4057554,
+      "response_sha256": "fe9bce2e0ddcd113c121d9a51b37b3cec83da8b91295f83c800dffc0da7398a3",
+      "gzip_sha256": "5f8a726570378c2b09134a3b19d254fc447fa5cf1ae7cd96ed9faee0c0a3cb54"
+    },
+    {
+      "file": "raw/2006-2011-page-002.json.gz",
+      "request_parameters": {
+        "query.term": "AREA[StudyType]INTERVENTIONAL AND AREA[OverallStatus]COMPLETED AND AREA[InterventionType]DRUG AND (AREA[Phase]PHASE1 OR AREA[Phase]PHASE2 OR AREA[Phase]PHASE3 OR AREA[Phase]PHASE4) AND AREA[StartDate]RANGE[2006-01-01,2011-12-31]",
+        "format": "json",
+        "pageSize": 100,
+        "countTotal": "true",
+        "pageToken": "ZVNj7o2Elu8o3lpwRM-l47L2mpOQJJxuYfel2fg"
+      },
+      "retrieved_at": "2026-10-07T15:40:27.293171+00:00",
+      "http_date": "Wed, 07 Oct 2026 15:40:27 GMT",
+      "rows": 100,
+      "uncompressed_bytes": 2267567,
+      "response_sha256": "d79aa15f4f3c9c1a6ee47201e196256e38af0d68e6f9d8517a88f9d932387de0",
+      "gzip_sha256": "103ef64b5ec6ade6ed428a7e6db4a06306e0fb92f8f88b1a720b1948f77c3f1a"
+    },
+    {
+      "file": "raw/2012-2017-page-001.json.gz",
+      "request_parameters": {
+        "query.term": "AREA[StudyType]INTERVENTIONAL AND AREA[OverallStatus]COMPLETED AND AREA[InterventionType]DRUG AND (AREA[Phase]PHASE1 OR AREA[Phase]PHASE2 OR AREA[Phase]PHASE3 OR AREA[Phase]PHASE4) AND AREA[StartDate]RANGE[2012-01-01,2017-12-31]",
+        "format": "json",
+        "pageSize": 100,
+        "countTotal": "true"
+      },
+      "retrieved_at": "2026-10-07T15:40:38.309090+00:00",
+      "http_date": "Wed, 07 Oct 2026 15:40:38 GMT",
+      "rows": 100,
+      "uncompressed_bytes": 4405387,
+      "response_sha256": "b4a5ee4e1177ca36214d5427dfab56dc633b4e4406dffdee6493034df92758c1",
+      "gzip_sha256": "935c34d4e8e7dc90e647edff7ed9aa3f32ddf3c794709c69fd99df3c2cb5a81b"
+    },
+    {
+      "file": "raw/2012-2017-page-002.json.gz",
+      "request_parameters": {
+        "query.term": "AREA[StudyType]INTERVENTIONAL AND AREA[OverallStatus]COMPLETED AND AREA[InterventionType]DRUG AND (AREA[Phase]PHASE1 OR AREA[Phase]PHASE2 OR AREA[Phase]PHASE3 OR AREA[Phase]PHASE4) AND AREA[StartDate]RANGE[2012-01-01,2017-12-31]",
+        "format": "json",
+        "pageSize": 100,
+        "countTotal": "true",
+        "pageToken": "ZVNj7o2Elu8o3lpwRM-l47L2mpOQJJxuYPGn3Pg"
+      },
+      "retrieved_at": "2026-10-07T15:40:49.661917+00:00",
+      "http_date": "Wed, 07 Oct 2026 15:40:49 GMT",
+      "rows": 100,
+      "uncompressed_bytes": 3760924,
+      "response_sha256": "84c05d69c0f0d306efaf1ccb9b907d299019ab68388362f0baf62b0cda13bc47",
+      "gzip_sha256": "e29bd49a84bff6933b1a235b010f0c91da9a03a0784555b57d21df760a4b479b"
+    },
+    {
+      "file": "raw/2018-2023-page-001.json.gz",
+      "request_parameters": {
+        "query.term": "AREA[StudyType]INTERVENTIONAL AND AREA[OverallStatus]COMPLETED AND AREA[InterventionType]DRUG AND (AREA[Phase]PHASE1 OR AREA[Phase]PHASE2 OR AREA[Phase]PHASE3 OR AREA[Phase]PHASE4) AND AREA[StartDate]RANGE[2018-01-01,2023-12-31]",
+        "format": "json",
+        "pageSize": 100,
+        "countTotal": "true"
+      },
+      "retrieved_at": "2026-10-07T15:41:00.459065+00:00",
+      "http_date": "Wed, 07 Oct 2026 15:41:00 GMT",
+      "rows": 100,
+      "uncompressed_bytes": 2766521,
+      "response_sha256": "a5771a1ec6c2ddd110bb5be2658476a3de916c19133e0422ca890d8e4a3d9bff",
+      "gzip_sha256": "311f6fa070fed0b0a70994b7f817fca897e5cab26201c64a2eaba07dd426ea2b"
+    },
+    {
+      "file": "raw/2018-2023-page-002.json.gz",
+      "request_parameters": {
+        "query.term": "AREA[StudyType]INTERVENTIONAL AND AREA[OverallStatus]COMPLETED AND AREA[InterventionType]DRUG AND (AREA[Phase]PHASE1 OR AREA[Phase]PHASE2 OR AREA[Phase]PHASE3 OR AREA[Phase]PHASE4) AND AREA[StartDate]RANGE[2018-01-01,2023-12-31]",
+        "format": "json",
+        "pageSize": 100,
+        "countTotal": "true",
+        "pageToken": "ZVNj7o2Elu8o3lpwRM-l47L2mpOQJJxuY_Ks3_g"
+      },
+      "retrieved_at": "2026-10-07T15:41:09.552817+00:00",
+      "http_date": "Wed, 07 Oct 2026 15:41:09 GMT",
+      "rows": 100,
+      "uncompressed_bytes": 2693373,
+      "response_sha256": "f31b25f455881c981b0b66162b43d20aafff1f6c35a8b2c3c008be3536116b1d",
+      "gzip_sha256": "88f099360aa85e820dc3665100f7cf096237174e74d6283e8b853f32c7301764"
+    }
+  ],
+  "coverage": {
+    "start_period_counts": {
+      "2000-2005": 200,
+      "2006-2011": 200,
+      "2012-2017": 200,
+      "2018-2023": 200
+    },
+    "start_year_counts": {
+      "2000": 12,
+      "2001": 19,
+      "2002": 33,
+      "2003": 32,
+      "2004": 47,
+      "2005": 57,
+      "2006": 34,
+      "2007": 28,
+      "2008": 36,
+      "2009": 40,
+      "2010": 28,
+      "2011": 34,
+      "2012": 32,
+      "2013": 30,
+      "2014": 42,
+      "2015": 29,
+      "2016": 35,
+      "2017": 32,
+      "2018": 48,
+      "2019": 34,
+      "2020": 35,
+      "2021": 27,
+      "2022": 30,
+      "2023": 26
+    },
+    "phase_counts": {
+      "PHASE1": 197,
+      "PHASE1|PHASE2": 41,
+      "PHASE2": 233,
+      "PHASE2|PHASE3": 21,
+      "PHASE3": 153,
+      "PHASE4": 155
+    },
+    "status_counts": {
+      "COMPLETED": 800
+    },
+    "study_type_counts": {
+      "INTERVENTIONAL": 800
+    },
+    "start_date_min": "2000-01",
+    "start_date_max": "2023-12-23",
+    "completion_date_type_counts": {
+      "ACTUAL": 744,
+      "Not reported": 56
+    },
+    "exact_start_and_actual_completion_date_rows": 312,
+    "partial_start_date_rows": 482,
+    "partial_completion_date_rows": 428
+  },
+  "date_policy": "Preserve original registry date strings and ACTUAL/ESTIMATED labels; no day/month/year imputation. Training excludes partial dates.",
+  "missingness_policy": "Source-missing values remain missing. criteria_count and text_complexity are not invented.",
+  "limitations": [
+    "Not a frozen historical baseline snapshot.",
+    "Not a population-representative or exhaustive registry export.",
+    "Completed-trial restriction creates selection bias; no censored trials are represented.",
+    "Results support a reproducible retrospective workflow demonstration, not validated prospective or clinical claims.",
+    "The live API may change. Exact bundled-data reproduction uses the preserved raw responses and checksums."
+  ]
+}

@@ -1,0 +1,10 @@
+export { AnimatedPipeline } from './AnimatedPipeline';
+export { TrialTimeline } from './TrialTimeline';
+export { XAIAnimations } from './XAIAnimations';
+export { RecruitmentJourney } from './RecruitmentJourney';
+export { WhatIfSimulator } from './WhatIfSimulator';
+export { MultimodalFusion } from './MultimodalFusion';
+export { MolecularAnimation } from './MolecularAnimation';
+export { PredictionJourney } from './PredictionJourney';
+export type { PredictionJourneyProps } from './PredictionJourney';
+export type { AnimationStudyProps } from './shared';

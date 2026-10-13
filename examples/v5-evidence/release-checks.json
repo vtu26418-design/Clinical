@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-09",
+  "python_tests": {
+    "passed": 299,
+    "skipped": 1,
+    "reason": "Optional SHAP dependency unavailable"
+  },
+  "typescript_build": "passed",
+  "vite_production_build": "passed",
+  "vite_preview_build": "passed",
+  "pip_check": "passed",
+  "v4_original_hashes_matching": 261,
+  "pdf_pages": 28,
+  "browser_interaction_qa": "not run: supported capability unavailable",
+  "remote_postgresql_live_test": "not run: no configured account",
+  "paid_ai_live_test": "not run: no credentials",
+  "preview_url": "https://clinical-trial-intelligence-v5.nicespice2.chatgpt.site"
+}

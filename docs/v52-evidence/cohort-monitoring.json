@@ -1,0 +1,136 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-10-11T14:22:25.047715+00:00",
+  "reference_rows": 800,
+  "current_rows": 1800,
+  "numeric": {
+    "enrollment": {
+      "reference_missing_fraction": 0.01375,
+      "current_missing_fraction": 0.03333333333333333,
+      "reference_median": 64.0,
+      "current_median": 66.0,
+      "status": "compared",
+      "psi": 0.033970997934398305,
+      "out_of_reference_range_fraction": 0.0017241379310344827,
+      "review_required": true
+    },
+    "number_of_arms": {
+      "reference_missing_fraction": 0.1275,
+      "current_missing_fraction": 0.2827777777777778,
+      "reference_median": 2.0,
+      "current_median": 2.0,
+      "status": "compared",
+      "psi": 0.0016264088243485022,
+      "out_of_reference_range_fraction": 0.000774593338497289,
+      "review_required": true
+    },
+    "primary_outcomes": {
+      "reference_missing_fraction": 0.03125,
+      "current_missing_fraction": 0.059444444444444446,
+      "reference_median": 1.0,
+      "current_median": 1.0,
+      "status": "compared",
+      "psi": 0.014567244472031456,
+      "out_of_reference_range_fraction": 0.0,
+      "review_required": false
+    },
+    "secondary_outcomes": {
+      "reference_missing_fraction": 0.19375,
+      "current_missing_fraction": 0.22277777777777777,
+      "reference_median": 4.0,
+      "current_median": 3.0,
+      "status": "compared",
+      "psi": 0.08039023996528771,
+      "out_of_reference_range_fraction": 0.0,
+      "review_required": false
+    },
+    "criteria_count": {
+      "reference_missing_fraction": 1.0,
+      "current_missing_fraction": 1.0,
+      "reference_median": null,
+      "current_median": null,
+      "status": "insufficient_values",
+      "psi": null,
+      "out_of_reference_range_fraction": null,
+      "review_required": true
+    },
+    "text_complexity": {
+      "reference_missing_fraction": 1.0,
+      "current_missing_fraction": 1.0,
+      "reference_median": null,
+      "current_median": null,
+      "status": "insufficient_values",
+      "psi": null,
+      "out_of_reference_range_fraction": null,
+      "review_required": true
+    }
+  },
+  "categorical": {
+    "phase": {
+      "status": "compared",
+      "total_variation_distance": 0.07013888888888888,
+      "unseen_categories": [],
+      "reference_distribution": {
+        "PHASE2": 0.29125,
+        "PHASE1": 0.24625,
+        "PHASE4": 0.19375,
+        "PHASE3": 0.19125,
+        "PHASE1|PHASE2": 0.05125,
+        "PHASE2|PHASE3": 0.02625
+      },
+      "current_distribution": {
+        "PHASE2": 0.2916666666666667,
+        "PHASE3": 0.25555555555555554,
+        "PHASE1": 0.20333333333333334,
+        "PHASE4": 0.16944444444444445,
+        "PHASE1|PHASE2": 0.04833333333333333,
+        "PHASE2|PHASE3": 0.03166666666666667
+      },
+      "review_required": false,
+      "reference_missing_fraction": 0.0,
+      "current_missing_fraction": 0.0
+    },
+    "study_type": {
+      "status": "compared",
+      "total_variation_distance": 0.0,
+      "unseen_categories": [],
+      "reference_distribution": {
+        "INTERVENTIONAL": 1.0
+      },
+      "current_distribution": {
+        "INTERVENTIONAL": 1.0
+      },
+      "review_required": false,
+      "reference_missing_fraction": 0.0,
+      "current_missing_fraction": 0.0
+    }
+  },
+  "identity": {
+    "overlapping_ids": 20,
+    "reference_duplicate_ids": 0,
+    "current_duplicate_ids": 0,
+    "reference_missing_ids": 0,
+    "current_missing_ids": 0
+  },
+  "warnings": [
+    "Cohorts share trial identifiers; do not treat these as independent external evaluation sets."
+  ],
+  "candidate_approval": "human_review_required",
+  "limitations": [
+    "Data shift is not measured prediction error or evidence of causality.",
+    "PSI >= 0.2, any out-of-range value, or missingness change >= 0.1 requests review; these are heuristics.",
+    "Labels and prospective/external outcomes are required to assess model performance.",
+    "This command neither trains nor activates a model."
+  ],
+  "review_required": true,
+  "files": {
+    "reference": {
+      "name": "trials.csv",
+      "sha256": "d096795e303b5a103e0aba8bd79ffe7e85609827ea810d1c08e8e0811b5496d2"
+    },
+    "current": {
+      "name": "trials.csv",
+      "sha256": "5c963d4b1b4faea165aad57c097b3608304e400673dd41854204740883433148"
+    }
+  }
+}

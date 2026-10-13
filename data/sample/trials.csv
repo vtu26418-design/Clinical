@@ -1,0 +1,6 @@
+nct_id,title,study_type,phase,enrollment,status,start_date,completion_date,number_of_arms,primary_outcomes,secondary_outcomes,criteria_count,text_complexity,brief_summary
+NCT-SAMPLE-001,Phase 2 study of an investigational therapy,Interventional,PHASE2,240,COMPLETED,2021-01-10,2023-02-15,2,1,4,14,9.2,Randomized study evaluating efficacy and safety.
+NCT-SAMPLE-002,Comparative study with complex eligibility,Interventional,PHASE3,820,COMPLETED,2020-03-01,2024-08-20,4,2,8,32,15.4,Large multicenter study with extensive eligibility criteria.
+NCT-SAMPLE-003,Early feasibility investigation,Interventional,PHASE1,45,COMPLETED,2022-06-10,2023-01-20,1,1,1,7,5.8,Early-stage safety and feasibility assessment.
+NCT-SAMPLE-004,Longitudinal observational registry,Observational,NA,1200,COMPLETED,2019-05-12,2024-11-01,1,1,5,25,13.1,Longitudinal registry with broad eligibility.
+NCT-SAMPLE-005,Adaptive multi-arm trial,Interventional,PHASE2,600,RECRUITING,2023-02-11,,5,2,7,29,16.8,Adaptive design with multiple treatment groups.
