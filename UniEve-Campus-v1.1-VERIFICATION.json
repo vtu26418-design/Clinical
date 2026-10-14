@@ -1,0 +1,34 @@
+{
+  "tests": {
+    "backend": 52,
+    "academic": 30,
+    "frontend": 24
+  },
+  "browserChecks": {
+    "existing campus flows": 13,
+    "connected local services": 7,
+    "new device/settings/social flows": 8,
+    "production PWA": 6,
+    "browser downloads": 3
+  },
+  "cleanSourceSetup": "passed install/build/start/health/stop with alternate ports",
+  "liveSources": {
+    "AMS": "reachable; both manually answered read-only login attempts rejected; authenticated retrieval unverified",
+    "Home attendance": "old endpoint404",
+    "official Parents alternative": "503",
+    "Student ERP": "reachable with browser verification",
+    "university news": "5 official website items fetched"
+  },
+  "privateDataPackaged": false,
+  "delivery": {
+    "repository": "vtu26418-design/Clinical",
+    "releaseTag": "unieve-campus-v1.1-20261014",
+    "deliveryType": "separate downloads branch and release links; Clinical main branch preserved",
+    "downloadBranch": "unieve-campus-v1.1-downloads",
+    "releaseAssetUpload": "remote upload endpoint returned HTTP 401; repository API used for file delivery"
+  },
+  "privacyAudit": {
+    "suppliedAccountPatterns": "absent from final source and mobile ZIPs",
+    "originalExampleStudentIds": "neutralized in delivery copy"
+  }
+}

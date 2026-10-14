@@ -1,0 +1,15 @@
+{
+  "packages": [
+    {
+      "file": "UniEve-Campus-v1.1-source.zip",
+      "bytes": 17492991,
+      "sha256": "1396343853e3e36025b94fec3c7fffdfbfc33784f3e121f325c89b04ae915cb9"
+    },
+    {
+      "file": "UniEve-Campus-v1.1-mobile-web.zip",
+      "bytes": 7351303,
+      "sha256": "9ed2f9aa24f1eceebf56cd945c78c7ccc26e4ebaeaa6f460f8b635c6b9005925"
+    }
+  ],
+  "containsPrivateData": false
+}
