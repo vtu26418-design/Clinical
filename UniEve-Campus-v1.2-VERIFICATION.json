@@ -1,0 +1,92 @@
+{
+  "version": "1.2.0",
+  "verifiedAt": "2026-10-14",
+  "automatedTests": {
+    "node": 55,
+    "python": 63,
+    "web": 26,
+    "failed": 0,
+    "skipped": 0
+  },
+  "browser": {
+    "tool": "Playwright Chromium",
+    "reason": "Browser plugin not available",
+    "viewports": [
+      [
+        1476,
+        1066
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "passed": [
+      "Home student photo and class status colors",
+      "Attendance calculator opens and updates",
+      "Weekly timetable renders all days",
+      "Academic results tab shows sample results",
+      "Free event registration issues a QR ticket",
+      "Off-campus filter and save update state",
+      "Composer preserves keyboard focus and publishes",
+      "Feed like save and comment update real demo state",
+      "Student details page includes photo and mentor",
+      "Demo role preview unlocks management",
+      "Management creates a scoped demo event",
+      "Mobile has no horizontal overflow",
+      "Mobile menu opens and navigates",
+      "Settings category rail and actual AMS CAPTCHA status",
+      "Explicit encrypted snapshot save",
+      "Wrong passphrase rejected and correct passphrase unlocks selected academic data",
+      "Reload relocks stored data and clear removes the snapshot",
+      "Event bookmarks filter the saved event",
+      "Own post editing and feed search",
+      "Own post deletion requires the explicit remove action",
+      "Phone category navigation themes and no horizontal overflow",
+      "Real campus session renders synthetic own profile and correct repeated-period present/absent/OD states",
+      "Course detail uses only its own source period records",
+      "Source-provided course grade and credits render",
+      "Retired portal removed from resource links",
+      "One account: automatic workspace requires no second academic password",
+      "Connected phone navigation and source states fit 390px screen",
+      "Logout clears connected workspace and returns to fictional preview"
+    ],
+    "appRuntimeErrors": []
+  },
+  "docker": {
+    "bothNonRootImagesBuilt": true,
+    "composeDatabaseHealthPassed": true,
+    "isolatedMongoUsedForQA": true,
+    "powerShellConfigurationAndLifecyclePassed": true,
+    "realPowerShellDockerSetupStartStopPassed": true,
+    "powerShellVersion": "7.5 Linux; Windows 5.1-compatible source reviewed, Windows Desktop unrun"
+  },
+  "http": {
+    "passed": [
+      "Docker administrator provision and HttpOnly login",
+      "First-time AMS connection saves locally without contacting the portal",
+      "Concurrent automatic academic workspaces, isolated per student, no fictional university rows",
+      "Real free event registration with QR, event permission checks, own feed edit and persistence",
+      "Retired sync rejected and fixed V1.2 hosted download URLs"
+    ],
+    "database": "isolated Docker Mongo for QA; live Atlas not configured",
+    "privateAMS": "authentication rejected; no private live records fetched"
+  },
+  "dataCoverage": {
+    "officialNewsItems": 5,
+    "amsLoginReachable": true,
+    "authenticatedPrivateAmsRetrieval": false,
+    "genericAttendanceResultsReader": "synthetic fixtures only; live source layout unverified",
+    "homeApp": "com.siva.homeofveltech: student-developed AMS client; no separate documented API found",
+    "retiredParentPortal": "removed from active checks/sync",
+    "liveAtlas": "not configured; cloud URI validation and Mongo drivers tested with isolated database",
+    "feesDocumentsExamsMess": "no verified connected parser",
+    "merchantPayments": "signature/amount/ownership tests passed with mocked provider; real capture/refunds unrun"
+  },
+  "exports": {
+    "oneSourceProject": true,
+    "privateStateAndCredentialsExcluded": true,
+    "requiredStartupFilesPresent": true
+  },
+  "review": "Independent reviewer confirmed all critical/important findings resolved."
+}

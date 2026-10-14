@@ -1,0 +1,21 @@
+{
+  "version": "1.2.0",
+  "project": "UniEve-Campus",
+  "files": [
+    {
+      "name": "UniEve-Campus-v1.2-source.zip",
+      "bytes": 6465767,
+      "sha256": "2c1acde442915ce52831e0abd7f25643463e77fae99b3001393948aa3174f5fa"
+    },
+    {
+      "name": "UniEve-Campus-v1.2-mobile-web.zip",
+      "bytes": 7339106,
+      "sha256": "de16a23ed995e7425e8570d8ac84e071ed872612f0cbad38713ed5f576c1e05b"
+    },
+    {
+      "name": "UniEve-Campus-v1.2-setup.md",
+      "bytes": 9975,
+      "sha256": "6ca8d73a97ccbe5fa6b4e58176ef863ac5e72ec0f3b02cc08266f9d0d741ecc8"
+    }
+  ]
+}
