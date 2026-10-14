@@ -2,16 +2,18 @@
 
 A PostgreSQL-backed research application for trial records, protocol complexity, saved-model prediction, evidence review and grounded conversations. The complete ZIP includes editable source, the prebuilt interface, frozen 800-record public registry cohort, saved models and an end-to-end guide.
 
-## Windows: run without Docker
+## Windows: run with Docker Desktop
 
-1. Install [Python 3.12](https://www.python.org/downloads/windows/) with its Python launcher and [PostgreSQL for Windows](https://www.postgresql.org/download/windows/). Remember the `postgres` administrator password you choose during installation; the usual database port is 5432.
-2. Extract the complete ZIP into a writable folder, such as `C:\CTI`. Run `SETUP_WINDOWS.bat` once.
-3. Run `CONNECT_DATABASE_WINDOWS.bat`. Accept the local defaults, retain the generated application password with Enter, and enter your PostgreSQL administrator password at its hidden prompt. Wait for **Application database login verified.**
-4. Run `START_WINDOWS.bat`, then open http://localhost:8000. Keep the terminal open.
-5. Read `SETUP_TOKEN` from your private local `.env`, create the first owner and a project, then use More tools → Data Manager to load the 800-record starter cohort.
-6. Review Overview and use Prediction Studio. Bundled predictions do not require training.
+1. Open Docker Desktop and wait until its engine is running. Use Linux containers. Install [Python 3.12](https://www.python.org/downloads/windows/) with its Python launcher if it is not already installed.
+2. Extract the full ZIP into a writable folder, such as `C:\CTI`. Open the extracted folder containing `START_DOCKER_WINDOWS.bat`.
+3. Double-click `START_DOCKER_WINDOWS.bat`. It prepares a private `.env`, preserves existing settings, builds the application and starts both PostgreSQL and the web application. The first build can take several minutes.
+4. Wait for **Application ready: http://localhost:8000**, then open that address if the browser does not open automatically.
+5. Open your private `.env`, copy its `SETUP_TOKEN` value and create the first owner. If setup is already complete, sign in with your existing account.
+6. Create/open a project. More tools → Data Manager → load the 800-record starter cohort, select it and use Overview and Prediction Studio.
 
-The connector creates only missing application roles/databases, preserves existing data/passwords and verifies the application login. Docker and Node are optional for the packaged Windows workflow. PostgreSQL is required; there is no SQLite fallback.
+If you already ran `SETUP_WINDOWS.bat`, the next step is `START_DOCKER_WINDOWS.bat`. Docker supplies PostgreSQL; a separate native PostgreSQL installation is unnecessary for this workflow. Docker installs Python/Node application dependencies inside the image. Your host Python launcher is used only to initialize settings and launch Compose.
+
+Later starts: open Docker Desktop, then run `START_DOCKER_WINDOWS.bat`. Stop with `docker compose down` from the project folder. Keep the named volumes to retain projects and data. For optional native operation, use `CONNECT_DATABASE_WINDOWS.bat` then `START_WINDOWS.bat`, as explained in the guide.
 
 [Start here](START-HERE.md) · [Full operating guide](docs/v5.2.0.3-full-guide.md) · [Downloadable guide PDF](docs/Clinical-Trial-Intelligence-v5.2.0.3-Full-Guide.pdf) · [Changes](docs/v5.2.0.3-changelog.md)
 
@@ -33,7 +35,7 @@ For current release-check status, consult `docs/v5.2.0.3-release-verification.md
 
 ## Other installation and development paths
 
-Linux/macOS native: install Python 3.12 and PostgreSQL, run `python3.12 scripts/setup.py`, `.venv/bin/python scripts/configure_postgres.py`, then `.venv/bin/python scripts/start.py`. Docker remains available through `START_DOCKER_WINDOWS.bat` or `python3.12 scripts/initialize_env.py --start`.
+Linux/macOS native: install Python 3.12 and PostgreSQL, run `python3.12 scripts/setup.py`, `.venv/bin/python scripts/configure_postgres.py`, then `.venv/bin/python scripts/start.py`. Docker is the recommended Windows workflow; Linux/macOS can use `python3.12 scripts/initialize_env.py --start`.
 
 Development: `scripts/setup.py --dev` installs test dependencies. Node.js 22 is needed only to modify/rebuild the frontend (`npm ci`, `npm run dev` / `npm run build` in `frontend/`). Automated tests require a separate disposable PostgreSQL database configured as `TEST_DATABASE_URL`; run `.venv/bin/python scripts/run_tests.py`. See the guide for Windows commands and the 37-step acceptance workflow.
 

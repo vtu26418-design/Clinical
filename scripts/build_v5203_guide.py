@@ -57,7 +57,7 @@ class ReleaseCover(Flowable):
         c.setFont("CTISans", 11)
         c.setFillColor(SLATE)
         for y, label in [
-            (342, "Windows with native PostgreSQL — no Docker required"),
+            (342, "Windows with Docker Desktop — PostgreSQL included"),
             (315, "Source data, saved predictions and guided explanations"),
             (288, "All 26 sections · 37 acceptance checks · explicit evidence limits"),
         ]:
@@ -77,7 +77,7 @@ class ReleaseCover(Flowable):
             (115, "Editable Markdown accompanies this PDF. Use the PDF chapter bookmarks."),
             (92, "Historical approved models, raw records and metrics remain preserved."),
             (69, "Not clinical or regulatory advice. Final release evidence has its own report."),
-            (31, "Operating manual edition · 13 October 2026"),
+            (31, "Docker operating manual edition · 14 October 2026"),
         ]:
             c.drawString(0, y, label)
 
@@ -161,7 +161,7 @@ def main():
     contents_style = ParagraphStyle("contents-title", parent=styles["chapter"])
     story = [ReleaseCover(), NextPageTemplate("body"), PageBreak(),
              Paragraph("Contents", contents_style),
-             Paragraph("Begin with native Windows installation in chapter 2. Chapters 6–14 explain data and research use; chapters 15–22 cover testing, every section, files and evidence. Commands are provided in the accompanying Markdown for exact copying.", styles["body"]),
+             Paragraph("Begin with Windows Docker startup in chapter 2. Chapters 6–14 explain data and research use; chapters 15–22 cover testing, every section, files and evidence. Commands are provided in the accompanying Markdown for exact copying.", styles["body"]),
              toc, *markdown_flowables(source, styles, config), *screenshot_gallery(styles)]
 
     def invariant_canvas(*canvas_args, **canvas_kwargs):
