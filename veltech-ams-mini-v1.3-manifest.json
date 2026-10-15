@@ -1,0 +1,26 @@
+{
+  "version": "1.3.0",
+  "project": "veltech-ams-mini",
+  "files": [
+    {
+      "name": "veltech-ams-mini-v1.3-source.zip",
+      "bytes": 6801779,
+      "sha256": "964e194b0cbd7ae02fe85ff669f45ca21fe99edc1ee59f96d1d027c1dc9d5dcc"
+    },
+    {
+      "name": "veltech-ams-mini-v1.3-mobile-web.zip",
+      "bytes": 7628389,
+      "sha256": "7f48e9f14cc8c4c1d4b325f209b28d80970af36b286c338d30652095a48a47a4"
+    },
+    {
+      "name": "veltech-ams-mini-v1.3-setup.md",
+      "bytes": 10196,
+      "sha256": "2697beeef861d9fabbea83179d35807e4bc12e1a4e6412aaaff6744c3106d48a"
+    },
+    {
+      "name": "veltech-ams-mini-v1.3-verification.md",
+      "bytes": 2796,
+      "sha256": "82cabdd2e5bd69d0590baeef9220493a4c7e15c91d4c3b3b72b6f24c8e3c0be2"
+    }
+  ]
+}
