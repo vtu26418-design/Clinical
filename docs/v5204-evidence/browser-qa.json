@@ -1,0 +1,33 @@
+{
+  "passed": true,
+  "checks": [
+    "Actual800 cohort overview",
+    "3D library deferred on initial Overview",
+    "Reload restores workspace, route, dataset and out-of100 source study",
+    "Signed savedmodel XAI and native values with one3D canvas",
+    "Play, pause and2D/3D switching",
+    "Actual savedmodel whatif and separately labelled planning arithmetic",
+    "ai-pipeline guided view renders",
+    "recruitment guided view renders",
+    "fusion guided view renders",
+    "complexity guided view renders",
+    "digital-twin guided view renders",
+    "academy guided view renders",
+    "home guided view renders",
+    "System reducedmotion disables playback and permits manualsteps",
+    "Narration preference gates explicit voice control",
+    "Theme preference changes and persists",
+    "Expanded search available only with CatBoost enabled",
+    "Readable assistant composer permits32768characters",
+    "overview mobile fits390px",
+    "academy mobile fits390px",
+    "workspace mobile fits390px",
+    "what-if mobile fits390px",
+    "home mobile fits390px",
+    "Explicit Projects intent survives reload",
+    "WebGL contextloss switches to2D fallback"
+  ],
+  "errors": [],
+  "serverErrors": [],
+  "video": "/workspace/v5204-work/video/page@c0a8087a92ba979031b2a1348ee4f7ac.webm"
+}

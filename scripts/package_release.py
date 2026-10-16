@@ -10,7 +10,7 @@ ROOT=Path(__file__).resolve().parents[1]
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output',required=True)
-    parser.add_argument('--version',default='5.2.0.3')
+    parser.add_argument('--version',default='5.2.0.4')
     args=parser.parse_args()
     if not re.fullmatch(r"[0-9]+\.[0-9]+\.[0-9]+(?:\.[0-9]+)?",args.version):
         parser.error("Version must use three or four numeric components.")
@@ -23,7 +23,7 @@ def main():
     selected=[]
     for folder, dirs, files in os.walk(ROOT):
         rel=Path(folder).relative_to(ROOT)
-        dirs[:]=[d for d in dirs if not d.startswith('.venv') and d not in ('node_modules','.git','__pycache__','.pytest_cache','.vercel','dist-preview','tmp','.superpowers') and (rel/d).as_posix() not in ('data/workbench','data/processed','results','artifacts')]
+        dirs[:]=[d for d in dirs if not d.startswith('.venv') and d not in ('node_modules','.git','__pycache__','.pytest_cache','.vercel','dist-preview','tmp','.superpowers') and (rel/d).as_posix() not in ('data/workbench','data/processed','results','artifacts','reports')]
         for name in files:
             p=Path(folder)/name; path=p.relative_to(ROOT)
             if name=='SHA256SUMS.txt' or name.startswith('qa-preview') or p.is_symlink() or name=='.env' or (name.startswith('.env.') and name!='.env.example') or name.endswith(('.pyc','.log','.zip','.sqlite','.sqlite3','.sqlite3-shm','.sqlite3-wal')):

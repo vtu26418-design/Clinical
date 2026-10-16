@@ -22,3 +22,6 @@ results/
 .superpowers/
 
 .venv
+
+frontend/node_modules
+reports/

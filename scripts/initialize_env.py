@@ -77,7 +77,16 @@ def main():
     prepare_env()
     print('Private .env prepared. Existing settings preserved; credential values are not displayed.')
     if args.start:
-        subprocess.run(['docker', 'compose', 'up', '-d', '--build', 'workbench'], cwd=ROOT, check=True)
+        try:
+            subprocess.run(['docker', 'compose', 'up', '-d', '--build', 'workbench'], cwd=ROOT, check=True)
+        except FileNotFoundError:
+            print('Docker was not found. Install/start Docker Desktop and retry. Existing .env settings are preserved.')
+            return 1
+        except subprocess.CalledProcessError as error:
+            print('Docker Compose failed. Read the Docker error above; existing .env settings and data are preserved.')
+            print('For lookup auth.docker.io / no such host: fix Internet/DNS/proxy access and confirm docker pull python:3.12-slim works, then retry.')
+            print('See the Docker startup troubleshooting section in the guide.')
+            return error.returncode if 0 < error.returncode < 256 else 1
         port = '8000'  # Docker Compose publishes the application on port 8000.
         address = f'http://localhost:{port}'
         deadline = time.monotonic() + 120

@@ -212,7 +212,7 @@ def test_release_health_reports_version_and_postgresql(client, monkeypatch):
     app = create_research_app(client.app.state.registry.config)
     with TestClient(app) as api:
         value = api.get('/api/v1/health').json()
-    assert value['version'] == '5.2.0.3'
+    assert value['version'] == '5.2.0.4'
     assert value['database'] == 'postgresql'
 
 

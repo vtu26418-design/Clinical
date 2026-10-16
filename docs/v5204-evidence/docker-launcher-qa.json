@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "duration_export": true,
+  "phase_export": true,
+  "real_compose_exec_and_copy": true,
+  "windows_gui_unrun": true
+}

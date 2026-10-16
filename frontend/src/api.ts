@@ -16,6 +16,16 @@ async function request<T>(path:string,options:RequestInit={},timeoutMs=60000):Pr
  const project=sessionStorage.getItem('cti-project-id');if(project)headers.set('X-Project-ID',project);const token=sessionStorage.getItem('cti-api-token');if(token)headers.set('Authorization',`Bearer ${token}`);
  try{const res=await fetch(`${BASE}${path}`,{...options,headers,credentials:'include',signal:controller.signal});if(!res.ok){if(res.status===401)window.dispatchEvent(new Event('cti-session-expired'));const body=await res.json().catch(()=>({detail:`Request failed (${res.status})`}));throw Error(typeof body.detail==='string'?body.detail:JSON.stringify(body.detail||body));}return await res.json()}catch(e){if(e instanceof TypeError)throw Error('Cannot reach the API. Start the backend and retry.');throw e}finally{clearTimeout(timeout)}
 }
+async function downloadAnalysis(path:string,name:string,format:'html'|'json'|'csv'){
+ if(DEMO)throw Error('Model evaluation reports require the full application.');
+ const headers=new Headers(),project=sessionStorage.getItem('cti-project-id'),token=sessionStorage.getItem('cti-api-token');
+ if(project)headers.set('X-Project-ID',project);if(token)headers.set('Authorization',`Bearer ${token}`);
+ const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),60000);
+ try{const response=await fetch(`${BASE}${path}`,{headers,credentials:'include',signal:controller.signal});
+ if(!response.ok){if(response.status===401)window.dispatchEvent(new Event('cti-session-expired'));const body=await response.json().catch(()=>({detail:'Analysis report is unavailable.'}));throw Error(typeof body.detail==='string'?body.detail:'Analysis report is unavailable.')}
+ downloadText(await response.text(),name,format==='html'?'text/html':format==='csv'?'text/csv':'application/json');
+ }finally{clearTimeout(timer)}
+}
 /** Shared project-scoped, cookie-authenticated transport for research evidence. */
 export const researchRequest = request;
 const scope=(id:string)=>`dataset_id=${encodeURIComponent(id)}`;
@@ -27,6 +37,8 @@ async function digest(value:unknown){
  const data=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(JSON.stringify(sort(value))));return [...new Uint8Array(data)].map(b=>b.toString(16).padStart(2,'0')).join('');
 }
 export const api={
+ modelAnalysis:(task:'duration'|'phase',modelId='active',format:'html'|'json'|'csv'='html')=>downloadAnalysis(`/model-analysis?task=${task}&model_id=${encodeURIComponent(modelId)}&format=${format}`,`${task}-model-analysis.${format}`,format),
+ experimentAnalysis:(id:string,format:'html'|'json'|'csv'='html')=>downloadAnalysis(`/experiments/${encodeURIComponent(id)}/analysis?format=${format}`,`experiment-${id}-analysis.${format}`,format),
  graphTypes:()=>DEMO?Promise.reject(Error('Cohort graphs require the local API.')):request<any>('/graph-types'),
  graphs:(id:string,graphs:string[],filters:{phase?:string;status?:string}={})=>DEMO?Promise.reject(Error('Full-cohort graphs are available in the local application.')):request<any>('/overview/graphs',{method:'POST',body:JSON.stringify({dataset_id:id,graphs,...filters})}),
  visualizations:(id:string,nct:string)=>DEMO?Promise.reject(Error('Study visualizations require saved study evidence.')):request<any>(`/visualizations/study?${scope(id)}&nct_id=${encodeURIComponent(nct)}`),
@@ -58,7 +70,7 @@ export const api={
  predict:(id:string,nct_id:string,model_name:string)=>DEMO?Promise.reject(Error('Duration predictions require a trained model in the full local app.')):request<any>('/predictions',{method:'POST',body:JSON.stringify({dataset_id:id,nct_id,model_name})}),
  phaseTrain:(id:string)=>DEMO?Promise.reject(Error('Phase training runs in the full local app. The Academy works in this preview.')):request<Experiment>('/phase-experiments',{method:'POST',body:JSON.stringify({dataset_id:id})}),
  artifact:async(id:string,name:string)=>{const headers=new Headers();const project=sessionStorage.getItem('cti-project-id');if(project)headers.set('X-Project-ID',project);const token=sessionStorage.getItem('cti-api-token');if(token)headers.set('Authorization',`Bearer ${token}`);const res=await fetch(`${BASE}/experiments/${encodeURIComponent(id)}/files/${encodeURIComponent(name)}`,{headers,credentials:'include'});if(!res.ok)throw Error('Report is unavailable.');downloadText(await res.text(),name,name.endsWith('.csv')?'text/csv':'application/json')},
- train:(id:string,enableCatboost=false,catboostSearch:'basic'|'expanded'='basic')=>DEMO?Promise.reject(Error('Training runs in the full local app. This browser preview uses five software-test fixtures.')):request<Experiment>('/experiments',{method:'POST',body:JSON.stringify({dataset_id:id,enable_catboost:enableCatboost,catboost_search:catboostSearch})}),
+ train:(id:string,enableCatboost=false,catboostSearch:'basic'|'expanded'='basic',enableAccuracyModels=false)=>DEMO?Promise.reject(Error('Training runs in the full local app. This browser preview uses five software-test fixtures.')):request<Experiment>('/experiments',{method:'POST',body:JSON.stringify({dataset_id:id,enable_catboost:enableCatboost,catboost_search:catboostSearch,...(enableAccuracyModels?{enable_accuracy_models:true}:{})})}),
  upload:(file:File,name:string)=>{if(DEMO)return Promise.reject(Error('Dataset uploads run in the full local app. No files are sent from this preview.'));const body=new FormData();body.append('file',file);if(name)body.append('name',name);return request<Dataset>('/datasets/upload',{method:'POST',body})},
  importRegistry:(query:string,max_studies:number)=>DEMO?Promise.reject(Error('Connect the local backend to import live ClinicalTrials.gov records.')):request<Dataset>('/datasets/import/clinicaltrials',{method:'POST',body:JSON.stringify({query,max_studies})}),
  chat:(id:string,message:string,nct_id?:string,provider?:string)=>DEMO?Promise.reject(Error('The assistant runs in the local app after you configure an OpenAI, Gemini, Claude or compatible service key.')):request<{reply:string;provider:string;provider_id:string;model:string;fallback_used:boolean}>('/assistant',{method:'POST',body:JSON.stringify({dataset_id:id,message,nct_id,provider})},120000),

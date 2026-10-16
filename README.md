@@ -1,4 +1,4 @@
-# Clinical Trial Intelligence Workbench — v5.2.0.3
+# Clinical Trial Intelligence Workbench — v5.2.0.4
 
 A PostgreSQL-backed research application for trial records, protocol complexity, saved-model prediction, evidence review and grounded conversations. The complete ZIP includes editable source, the prebuilt interface, frozen 800-record public registry cohort, saved models and an end-to-end guide.
 
@@ -15,23 +15,26 @@ If you already ran `SETUP_WINDOWS.bat`, the next step is `START_DOCKER_WINDOWS.b
 
 Later starts: open Docker Desktop, then run `START_DOCKER_WINDOWS.bat`. Stop with `docker compose down` from the project folder. Keep the named volumes to retain projects and data. For optional native operation, use `CONNECT_DATABASE_WINDOWS.bat` then `START_WINDOWS.bat`, as explained in the guide.
 
-[Start here](START-HERE.md) · [Full operating guide](docs/v5.2.0.3-full-guide.md) · [Downloadable guide PDF](docs/Clinical-Trial-Intelligence-v5.2.0.3-Full-Guide.pdf) · [Changes](docs/v5.2.0.3-changelog.md)
+[Start here](START-HERE.md) · [Full operating guide](docs/v5.2.0.4-full-guide.md) · [Downloadable guide PDF](docs/Clinical-Trial-Intelligence-v5.2.0.4-Full-Guide.pdf) · [Changes](docs/v5.2.0.4-changelog.md)
 
 ## Included
 
 - All 26 research routes, 12 configurable full-cohort graphs, study comparison and exports.
-- Guided 3D explanations with exact evidence captions, accessible 2D fallbacks, reduced motion and optional click-to-read browser narration.
+- A rotating DNA hero and animated virtual clinic with articulated people, rooms and medical furniture; eight guided research flows, accessible 2D fallbacks and optional Play Explanation narration.
 - Phase Academy with optional Phase 0 and phases I–IV, source links, quizzes and recorded examples.
 - Project/session restoration after reload; browser appearance, spacing, scene and narration settings with preference import/export/reset.
 - PostgreSQL accounts, memberships, role enforcement, sessions, audit, feedback and chat.
 - Streamed assistant replies for general and evidence-grounded questions, up to 32,768 input characters; new projects have no daily application quota by default. Provider/context/output and abuse limits still apply.
-- Preserved approved models plus optional basic or expanded CatBoost candidate search and genuine native TreeSHAP. Training does not activate a candidate.
+- Preserved approved models, optional CatBoost search, genuine native TreeSHAP, four new comparison candidates and independent tuning selection for duration and risk. Training does not activate a candidate.
+- Downloadable model analysis from Models and completed Experiments: MAE/RMSE, risk/phase metrics, confusion matrices, calibration, plots and source hashes. Double-click `GENERATE_MODEL_REPORT_DOCKER_WINDOWS.bat` to export the bundled duration analysis; add `--task phase` for phase analysis.
 
 ## Evidence and limits
 
 Source records, hashes, historical evidence and approved artifacts remain preserved. Expanded search is an evaluated capability, not a guaranteed accuracy improvement. Unknown recruitment/date values stay unknown; SHAP attribution does not establish causation. Completed-only retrospective cohorts and small retained splits limit interpretation. Bundled models do not validate clinical success, treatment effects, recruitment risk or amendment risk.
 
-For current release-check status, consult `docs/v5.2.0.3-release-verification.md`; the v5.2.0.2 reports describe that historical release.
+The matched 64-trial held-out comparison is mixed: new task-selected duration MAE 345.30 days versus 351.19 for the prior duration baseline; RMSE 428.89 versus 419.23 (worse). The independently selected text risk component is unchanged from the previous risk recommendation. No overall accuracy gain or perfect prediction is claimed; existing approved defaults remain. Full evidence is in `docs/v5204-evidence/`.
+
+For current release-check status, consult `docs/v5.2.0.4-release-verification.md`; the v5.2.0.2 reports describe that historical release.
 
 ## Other installation and development paths
 

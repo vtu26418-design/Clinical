@@ -11,6 +11,7 @@ class ClinicalTrialsImportRequest(BaseModel):
 class ExperimentRequest(BaseModel):
     dataset_id: str = Field(default='sample-fixture', min_length=1, max_length=80)
     enable_catboost: bool = False
+    enable_accuracy_models: bool = False
     catboost_search: Literal['basic', 'expanded'] = 'basic'
 
 
@@ -24,7 +25,7 @@ class AssistantRequest(BaseModel):
 class PredictionRequest(BaseModel):
     nct_id: str = Field(min_length=1, max_length=100)
     dataset_id: str = Field(default='sample-fixture', max_length=80)
-    model_name: Literal['recommended', 'median_baseline', 'multimodal', 'structured', 'text', 'structured_extra_trees', 'structured_random_forest', 'structured_gradient_boosting', 'structured_hist_gradient_boosting', 'multimodal_late_fusion', 'structured_catboost'] = 'recommended'
+    model_name: Literal['recommended', 'median_baseline', 'multimodal', 'structured', 'text', 'structured_extra_trees', 'structured_random_forest', 'structured_gradient_boosting', 'structured_hist_gradient_boosting', 'multimodal_late_fusion', 'structured_catboost', 'accuracy_mean', 'accuracy_phase_shrinkage', 'accuracy_log_structured', 'accuracy_task_selected'] = 'recommended'
 
 
 class PhasePredictionRequest(BaseModel):

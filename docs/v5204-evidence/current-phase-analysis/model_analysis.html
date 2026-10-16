@@ -1,0 +1,1973 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Model accuracy analysis</title><style>body{font:15px/1.5 system-ui,sans-serif;color:#183047;background:#f5f7fa;margin:0}main{max-width:1280px;margin:auto;padding:30px}h1,h2,h3{line-height:1.25}section,.notice,figure{background:white;padding:20px;border:1px solid #d7dfe8;border-radius:8px;margin:18px 0}table{border-collapse:collapse;width:100%;font-size:13px}th,td{padding:9px;text-align:left;border-bottom:1px solid #d7dfe8}th{background:#eef3f8}.table-wrap{overflow:auto}pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}.plots{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px}figure{margin:0}svg{width:100%;height:auto}figcaption{font-weight:600}small{color:#536070}@media print{body{background:white}main{padding:0}.table-wrap{overflow:visible}figure{break-inside:avoid}}</style></head><body><main><h1>Model accuracy analysis</h1><p>Task: <strong>phase</strong> · Run: e49e7317-6752-4f04-a7ad-8ff002ac8d7f</p><div class="notice">Recomputed from stored predictions. Research decision support only; retrospective performance does not establish clinical validation or future accuracy.</div><section><h2>Split roles and counts</h2><p>Tuning supports selection. Calibration fits transforms or uncertainty intervals. Test is the held-out evaluation cohort. Training predictions are excluded.</p><div class="table-wrap"><table><thead><tr><th>split</th><th>role</th><th>n</th><th>prediction_rows</th></tr></thead><tbody><tr><td>test</td><td>test</td><td>59</td><td>118</td></tr><tr><td>train</td><td>train</td><td>175</td><td>0</td></tr><tr><td>validation</td><td>tuning</td><td>57</td><td>114</td></tr></tbody></table></div><small>n counts unique manifest trials; prediction_rows counts all model rows.</small></section><section><h2>Recomputed model metrics</h2><p>Duration MAE and RMSE are in days; R² is unitless and can be negative. Classification values are proportions, with binary threshold ≥ 0.5. Unavailable means undefined or not applicable.</p><div class="table-wrap"><table><thead><tr><th>model_name</th><th>split</th><th>split_role</th><th>n</th><th>classification.accuracy</th><th>classification.balanced_accuracy</th><th>classification.macro_precision</th><th>classification.macro_recall</th><th>classification.macro_f1</th><th>classification.multiclass_brier</th></tr></thead><tbody><tr><td>majority_baseline</td><td>test</td><td>test</td><td>59</td><td>0.372881</td><td>0.25</td><td>0.0932203</td><td>0.25</td><td>0.135802</td><td>1.25424</td></tr><tr><td>majority_baseline</td><td>validation</td><td>tuning</td><td>57</td><td>0.45614</td><td>0.25</td><td>0.114035</td><td>0.25</td><td>0.156627</td><td>1.08772</td></tr><tr><td>phase_logistic</td><td>test</td><td>test</td><td>59</td><td>0.559322</td><td>0.481785</td><td>0.494222</td><td>0.481785</td><td>0.475237</td><td>0.554114</td></tr><tr><td>phase_logistic</td><td>validation</td><td>tuning</td><td>57</td><td>0.596491</td><td>0.538462</td><td>0.569048</td><td>0.538462</td><td>0.536463</td><td>0.508782</td></tr></tbody></table></div></section><section><h3>majority_baseline / test — classification details</h3><h4>classification</h4><p>Confusion matrix: actual rows, predicted columns. Labels: [&#x27;EARLY_PHASE1&#x27;, &#x27;PHASE1&#x27;, &#x27;PHASE2&#x27;, &#x27;PHASE3&#x27;, &#x27;PHASE4&#x27;]</p><pre>{
+  &quot;accuracy&quot;: 0.3728813559322034,
+  &quot;balanced_accuracy&quot;: 0.25,
+  &quot;macro_precision&quot;: 0.09322033898305085,
+  &quot;macro_recall&quot;: 0.25,
+  &quot;macro_f1&quot;: 0.13580246913580246,
+  &quot;labels&quot;: [
+    &quot;EARLY_PHASE1&quot;,
+    &quot;PHASE1&quot;,
+    &quot;PHASE2&quot;,
+    &quot;PHASE3&quot;,
+    &quot;PHASE4&quot;
+  ],
+  &quot;confusion_matrix&quot;: [
+    [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      22,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      17,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      8,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      12,
+      0,
+      0,
+      0
+    ]
+  ],
+  &quot;per_class&quot;: [
+    {
+      &quot;label&quot;: &quot;EARLY_PHASE1&quot;,
+      &quot;support&quot;: 0,
+      &quot;precision&quot;: null,
+      &quot;recall&quot;: null,
+      &quot;f1&quot;: null
+    },
+    {
+      &quot;label&quot;: &quot;PHASE1&quot;,
+      &quot;support&quot;: 22,
+      &quot;precision&quot;: 0.3728813559322034,
+      &quot;recall&quot;: 1.0,
+      &quot;f1&quot;: 0.5432098765432098
+    },
+    {
+      &quot;label&quot;: &quot;PHASE2&quot;,
+      &quot;support&quot;: 17,
+      &quot;precision&quot;: null,
+      &quot;recall&quot;: 0.0,
+      &quot;f1&quot;: 0.0
+    },
+    {
+      &quot;label&quot;: &quot;PHASE3&quot;,
+      &quot;support&quot;: 8,
+      &quot;precision&quot;: null,
+      &quot;recall&quot;: 0.0,
+      &quot;f1&quot;: 0.0
+    },
+    {
+      &quot;label&quot;: &quot;PHASE4&quot;,
+      &quot;support&quot;: 12,
+      &quot;precision&quot;: null,
+      &quot;recall&quot;: 0.0,
+      &quot;f1&quot;: 0.0
+    }
+  ],
+  &quot;macro_convention&quot;: &quot;Union of observed/predicted labels; undefined class precision/recall contributes zero. Balanced accuracy requires at least two supported actual classes.&quot;,
+  &quot;multiclass_brier&quot;: 1.2542372881355932,
+  &quot;one_vs_rest&quot;: {
+    &quot;EARLY_PHASE1&quot;: {
+      &quot;accuracy&quot;: 1.0,
+      &quot;balanced_accuracy&quot;: null,
+      &quot;macro_precision&quot;: 1.0,
+      &quot;macro_recall&quot;: 1.0,
+      &quot;macro_f1&quot;: 1.0,
+      &quot;labels&quot;: [
+        0,
+        1
+      ],
+      &quot;confusion_matrix&quot;: [
+        [
+          59,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      &quot;per_class&quot;: [
+        {
+          &quot;label&quot;: 0,
+          &quot;support&quot;: 59,
+          &quot;precision&quot;: 1.0,
+          &quot;recall&quot;: 1.0,
+          &quot;f1&quot;: 1.0
+        },
+        {
+          &quot;label&quot;: 1,
+          &quot;support&quot;: 0,
+          &quot;precision&quot;: null,
+          &quot;recall&quot;: null,
+          &quot;f1&quot;: null
+        }
+      ],
+      &quot;precision&quot;: null,
+      &quot;recall&quot;: null,
+      &quot;f1&quot;: null,
+      &quot;threshold&quot;: 0.5,
+      &quot;positive_count&quot;: 0,
+      &quot;auroc&quot;: null,
+      &quot;average_precision&quot;: null,
+      &quot;brier&quot;: 0.0,
+      &quot;calibration&quot;: {
+        &quot;method&quot;: &quot;10 equal-width bins; descriptive reliability, not calibration fitting&quot;,
+        &quot;bins&quot;: [
+          {
+            &quot;lower&quot;: 0.0,
+            &quot;upper&quot;: 0.1,
+            &quot;count&quot;: 59,
+            &quot;mean_probability&quot;: 0.0,
+            &quot;observed_fraction&quot;: 0.0
+          }
+        ],
+        &quot;expected_calibration_error&quot;: 0.0
+      },
+      &quot;undefined_reasons&quot;: [
+        &quot;AUROC, average precision and balanced accuracy require both actual classes.&quot;,
+        &quot;Positive precision is undefined because no positive predictions were made.&quot;,
+        &quot;Positive recall is undefined because no positive outcomes were observed.&quot;
+      ]
+    },
+    &quot;PHASE1&quot;: {
+      &quot;accuracy&quot;: 0.3728813559322034,
+      &quot;balanced_accuracy&quot;: 0.5,
+      &quot;macro_precision&quot;: 0.1864406779661017,
+      &quot;macro_recall&quot;: 0.5,
+      &quot;macro_f1&quot;: 0.2716049382716049,
+      &quot;labels&quot;: [
+        0,
+        1
+      ],
+      &quot;confusion_matrix&quot;: [
+        [
+          0,
+          37
+        ],
+        [
+          0,
+          22
+        ]
+      ],
+      &quot;per_class&quot;: [
+        {
+          &quot;label&quot;: 0,
+          &quot;support&quot;: 37,
+          &quot;precision&quot;: null,
+          &quot;recall&quot;: 0.0,
+          &quot;f1&quot;: 0.0
+        },
+        {
+          &quot;label&quot;: 1,
+          &quot;support&quot;: 22,
+          &quot;precision&quot;: 0.3728813559322034,
+          &quot;recall&quot;: 1.0,
+          &quot;f1&quot;: 0.5432098765432098
+        }
+      ],
+      &quot;precision&quot;: 0.3728813559322034,
+      &quot;recall&quot;: 1.0,
+      &quot;f1&quot;: 0.5432098765432098,
+      &quot;threshold&quot;: 0.5,
+      &quot;positive_count&quot;: 22,
+      &quot;auroc&quot;: 0.5,
+      &quot;average_precision&quot;: 0.3728813559322034,
+      &quot;brier&quot;: 0.6271186440677966,
+      &quot;calibration&quot;: {
+        &quot;method&quot;: &quot;10 equal-width bins; descriptive reliability, not calibration fitting&quot;,
+        &quot;bins&quot;: [
+          {
+            &quot;lower&quot;: 0.9,
+            &quot;upper&quot;: 1.0,
+            &quot;count&quot;: 59,
+            &quot;mean_probability&quot;: 1.0,
+            &quot;observed_fraction&quot;: 0.3728813559322034
+          }
+        ],
+        &quot;expected_calibration_error&quot;: 0.6271186440677966
+      },
+      &quot;undefined_reasons&quot;: []
+    },
+    &quot;PHASE2&quot;: {
+      &quot;accuracy&quot;: 0.711864406779661,
+      &quot;balanced_accuracy&quot;: 0.5,
+      &quot;macro_precision&quot;: 0.3559322033898305,
+      &quot;macro_recall&quot;: 0.5,
+      &quot;macro_f1&quot;: 0.4158415841584158,
+      &quot;labels&quot;: [
+        0,
+        1
+      ],
+      &quot;confusion_matrix&quot;: [
+        [
+          42,
+          0
+        ],
+        [
+          17,
+          0
+        ]
+      ],
+      &quot;per_class&quot;: [
+        {
+          &quot;label&quot;: 0,
+          &quot;support&quot;: 42,
+          &quot;precision&quot;: 0.711864406779661,
+          &quot;recall&quot;: 1.0,
+          &quot;f1&quot;: 0.8316831683168316
+        },
+        {
+          &quot;label&quot;: 1,
+          &quot;support&quot;: 17,
+          &quot;precision&quot;: null,
+          &quot;recall&quot;: 0.0,
+          &quot;f1&quot;: 0.0
+        }
+      ],
+      &quot;precision&quot;: null,
+      &quot;recall&quot;: 0.0,
+      &quot;f1&quot;: 0.0,
+      &quot;threshold&quot;: 0.5,
+      &quot;positive_count&quot;: 17,
+      &quot;auroc&quot;: 0.5,
+      &quot;average_precision&quot;: 0.288135593220339,
+      &quot;brier&quot;: 0.288135593220339,
+      &quot;calibration&quot;: {
+        &quot;method&quot;: &quot;10 equal-width bins; descriptive reliability, not calibration fitting&quot;,
+        &quot;bins&quot;: [
+          {
+            &quot;lower&quot;: 0.0,
+            &quot;upper&quot;: 0.1,
+            &quot;count&quot;: 59,
+            &quot;mean_probability&quot;: 0.0,
+            &quot;observed_fraction&quot;: 0.288135593220339
+          }
+        ],
+        &quot;expected_calibration_error&quot;: 0.288135593220339
+      },
+      &quot;undefined_reasons&quot;: [
+        &quot;Positive precision is undefined because no positive predictions were made.&quot;
+      ]
+    },
+    &quot;PHASE3&quot;: {
+      &quot;accuracy&quot;: 0.864406779661017,
+      &quot;balanced_accuracy&quot;: 0.5,
+      &quot;macro_precision&quot;: 0.4322033898305085,
+      &quot;macro_recall&quot;: 0.5,
+      &quot;macro_f1&quot;: 0.4636363636363636,
+      &quot;labels&quot;: [
+        0,
+        1
+      ],
+      &quot;confusion_matrix&quot;: [
+        [
+          51,
+          0
+        ],
+        [
+          8,
+          0
+        ]
+      ],
+      &quot;per_class&quot;: [
+        {
+          &quot;label&quot;: 0,
+          &quot;support&quot;: 51,
+          &quot;precision&quot;: 0.864406779661017,
+          &quot;recall&quot;: 1.0,
+          &quot;f1&quot;: 0.9272727272727272
+        },
+        {
+          &quot;label&quot;: 1,
+          &quot;support&quot;: 8,
+          &quot;precision&quot;: null,
+          &quot;recall&quot;: 0.0,
+          &quot;f1&quot;: 0.0
+        }
+      ],
+      &quot;precision&quot;: null,
+      &quot;recall&quot;: 0.0,
+      &quot;f1&quot;: 0.0,
+      &quot;threshold&quot;: 0.5,
+      &quot;positive_count&quot;: 8,
+      &quot;auroc&quot;: 0.5,
+      &quot;average_precision&quot;: 0.13559322033898305,
+      &quot;brier&quot;: 0.13559322033898305,
+      &quot;calibration&quot;: {
+        &quot;method&quot;: &quot;10 equal-width bins; descriptive reliability, not calibration fitting&quot;,
+        &quot;bins&quot;: [
+          {
+            &quot;lower&quot;: 0.0,
+            &quot;upper&quot;: 0.1,
+            &quot;count&quot;: 59,
+            &quot;mean_probability&quot;: 0.0,
+            &quot;observed_fraction&quot;: 0.13559322033898305
+          }
+        ],
+        &quot;expected_calibration_error&quot;: 0.13559322033898305
+      },
+      &quot;undefined_reasons&quot;: [
+        &quot;Positive precision is undefined because no positive predictions were made.&quot;
+      ]
+    },
+    &quot;PHASE4&quot;: {
+      &quot;accuracy&quot;: 0.7966101694915254,
+      &quot;balanced_accuracy&quot;: 0.5,
+      &quot;macro_precision&quot;: 0.3983050847457627,
+      &quot;macro_recall&quot;: 0.5,
+      &quot;macro_f1&quot;: 0.44339622641509435,
+      &quot;labels&quot;: [
+        0,
+        1
+      ],
+      &quot;confusion_matrix&quot;: [
+        [
+          47,
+          0
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      &quot;per_class&quot;: [
+        {
+          &quot;label&quot;: 0,
+          &quot;support&quot;: 47,
+          &quot;precision&quot;: 0.7966101694915254,
+          &quot;recall&quot;: 1.0,
+          &quot;f1&quot;: 0.8867924528301887
+        },
+        {
+          &quot;label&quot;: 1,
+          &quot;support&quot;: 12,
+          &quot;precision&quot;: null,
+          &quot;recall&quot;: 0.0,
+          &quot;f1&quot;: 0.0
+        }
+      ],
+      &quot;precision&quot;: null,
+      &quot;recall&quot;: 0.0,
+      &quot;f1&quot;: 0.0,
+      &quot;threshold&quot;: 0.5,
+      &quot;positive_count&quot;: 12,
+      &quot;auroc&quot;: 0.5,
+      &quot;average_precision&quot;: 0.2033898305084746,
+      &quot;brier&quot;: 0.2033898305084746,
+      &quot;calibration&quot;: {
+        &quot;method&quot;: &quot;10 equal-width bins; descriptive reliability, not calibration fitting&quot;,
+        &quot;bins&quot;: [
+          {
+            &quot;lower&quot;: 0.0,
+            &quot;upper&quot;: 0.1,
+            &quot;count&quot;: 59,
+            &quot;mean_probability&quot;: 0.0,
+            &quot;observed_fraction&quot;: 0.2033898305084746
+          }
+        ],
+        &quot;expected_calibration_error&quot;: 0.2033898305084746
+      },
+      &quot;undefined_reasons&quot;: [
+        &quot;Positive precision is undefined because no positive predictions were made.&quot;
+      ]
+    }
+  }
+}</pre></section><section><h3>majority_baseline / validation — classification details</h3><h4>classification</h4><p>Confusion matrix: actual rows, predicted columns. Labels: [&#x27;EARLY_PHASE1&#x27;, &#x27;PHASE1&#x27;, &#x27;PHASE2&#x27;, &#x27;PHASE3&#x27;, &#x27;PHASE4&#x27;]</p><pre>{
+  &quot;accuracy&quot;: 0.45614035087719296,
+  &quot;balanced_accuracy&quot;: 0.25,
+  &quot;macro_precision&quot;: 0.11403508771929824,
+  &quot;macro_recall&quot;: 0.25,
+  &quot;macro_f1&quot;: 0.1566265060240964,
+  &quot;labels&quot;: [
+    &quot;EARLY_PHASE1&quot;,
+    &quot;PHASE1&quot;,
+    &quot;PHASE2&quot;,
+    &quot;PHASE3&quot;,
+    &quot;PHASE4&quot;
+  ],
+  &quot;confusion_matrix&quot;: [
+    [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      26,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      12,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      13,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      6,
+      0,
+      0,
+      0
+    ]
+  ],
+  &quot;per_class&quot;: [
+    {
+      &quot;label&quot;: &quot;EARLY_PHASE1&quot;,
+      &quot;support&quot;: 0,
+      &quot;precision&quot;: null,
+      &quot;recall&quot;: null,
+      &quot;f1&quot;: null
+    },
+    {
+      &quot;label&quot;: &quot;PHASE1&quot;,
+      &quot;support&quot;: 26,
+      &quot;precision&quot;: 0.45614035087719296,
+      &quot;recall&quot;: 1.0,
+      &quot;f1&quot;: 0.6265060240963856
+    },
+    {
+      &quot;label&quot;: &quot;PHASE2&quot;,
+      &quot;support&quot;: 12,
+      &quot;precision&quot;: null,
+      &quot;recall&quot;: 0.0,
+      &quot;f1&quot;: 0.0
+    },
+    {
+      &quot;label&quot;: &quot;PHASE3&quot;,
+      &quot;support&quot;: 13,
+      &quot;precision&quot;: null,
+      &quot;recall&quot;: 0.0,
+      &quot;f1&quot;: 0.0
+    },
+    {
+      &quot;label&quot;: &quot;PHASE4&quot;,
+      &quot;support&quot;: 6,
+      &quot;precision&quot;: null,
+      &quot;recall&quot;: 0.0,
+      &quot;f1&quot;: 0.0
+    }
+  ],
+  &quot;macro_convention&quot;: &quot;Union of observed/predicted labels; undefined class precision/recall contributes zero. Balanced accuracy requires at least two supported actual classes.&quot;,
+  &quot;multiclass_brier&quot;: 1.087719298245614,
+  &quot;one_vs_rest&quot;: {
+    &quot;EARLY_PHASE1&quot;: {
+      &quot;accuracy&quot;: 1.0,
+      &quot;balanced_accuracy&quot;: null,
+      &quot;macro_precision&quot;: 1.0,
+      &quot;macro_recall&quot;: 1.0,
+      &quot;macro_f1&quot;: 1.0,
+      &quot;labels&quot;: [
+        0,
+        1
+      ],
+      &quot;confusion_matrix&quot;: [
+        [
+          57,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      &quot;per_class&quot;: [
+        {
+          &quot;label&quot;: 0,
+          &quot;support&quot;: 57,
+          &quot;precision&quot;: 1.0,
+          &quot;recall&quot;: 1.0,
+          &quot;f1&quot;: 1.0
+        },
+        {
+          &quot;label&quot;: 1,
+          &quot;support&quot;: 0,
+          &quot;precision&quot;: null,
+          &quot;recall&quot;: null,
+          &quot;f1&quot;: null
+        }
+      ],
+      &quot;precision&quot;: null,
+      &quot;recall&quot;: null,
+      &quot;f1&quot;: null,
+      &quot;threshold&quot;: 0.5,
+      &quot;positive_count&quot;: 0,
+      &quot;auroc&quot;: null,
+      &quot;average_precision&quot;: null,
+      &quot;brier&quot;: 0.0,
+      &quot;calibration&quot;: {
+        &quot;method&quot;: &quot;10 equal-width bins; descriptive reliability, not calibration fitting&quot;,
+        &quot;bins&quot;: [
+          {
+            &quot;lower&quot;: 0.0,
+            &quot;upper&quot;: 0.1,
+            &quot;count&quot;: 57,
+            &quot;mean_probability&quot;: 0.0,
+            &quot;observed_fraction&quot;: 0.0
+          }
+        ],
+        &quot;expected_calibration_error&quot;: 0.0
+      },
+      &quot;undefined_reasons&quot;: [
+        &quot;AUROC, average precision and balanced accuracy require both actual classes.&quot;,
+        &quot;Positive precision is undefined because no positive predictions were made.&quot;,
+        &quot;Positive recall is undefined because no positive outcomes were observed.&quot;
+      ]
+    },
+    &quot;PHASE1&quot;: {
+      &quot;accuracy&quot;: 0.45614035087719296,
+      &quot;balanced_accuracy&quot;: 0.5,
+      &quot;macro_precision&quot;: 0.22807017543859648,
+      &quot;macro_recall&quot;: 0.5,
+      &quot;macro_f1&quot;: 0.3132530120481928,
+      &quot;labels&quot;: [
+        0,
+        1
+      ],
+      &quot;confusion_matrix&quot;: [
+        [
+          0,
+          31
+        ],
+        [
+          0,
+          26
+        ]
+      ],
+      &quot;per_class&quot;: [
+        {
+          &quot;label&quot;: 0,
+          &quot;support&quot;: 31,
+          &quot;precision&quot;: null,
+          &quot;recall&quot;: 0.0,
+          &quot;f1&quot;: 0.0
+        },
+        {
+          &quot;label&quot;: 1,
+          &quot;support&quot;: 26,
+          &quot;precision&quot;: 0.45614035087719296,
+          &quot;recall&quot;: 1.0,
+          &quot;f1&quot;: 0.6265060240963856
+        }
+      ],
+      &quot;precision&quot;: 0.45614035087719296,
+      &quot;recall&quot;: 1.0,
+      &quot;f1&quot;: 0.6265060240963856,
+      &quot;threshold&quot;: 0.5,
+      &quot;positive_count&quot;: 26,
+      &quot;auroc&quot;: 0.5,
+      &quot;average_precision&quot;: 0.45614035087719296,
+      &quot;brier&quot;: 0.543859649122807,
+      &quot;calibration&quot;: {
+        &quot;method&quot;: &quot;10 equal-width bins; descriptive reliability, not calibration fitting&quot;,
+        &quot;bins&quot;: [
+          {
+            &quot;lower&quot;: 0.9,
+            &quot;upper&quot;: 1.0,
+            &quot;count&quot;: 57,
+            &quot;mean_probability&quot;: 1.0,
+            &quot;observed_fraction&quot;: 0.45614035087719296
+          }
+        ],
+        &quot;expected_calibration_error&quot;: 0.543859649122807
+      },
+      &quot;undefined_reasons&quot;: []
+    },
+    &quot;PHASE2&quot;: {
+      &quot;accuracy&quot;: 0.7894736842105263,
+      &quot;balanced_accuracy&quot;: 0.5,
+      &quot;macro_precision&quot;: 0.39473684210526316,
+      &quot;macro_recall&quot;: 0.5,
+      &quot;macro_f1&quot;: 0.4411764705882353,
+      &quot;labels&quot;: [
+        0,
+        1
+      ],
+      &quot;confusion_matrix&quot;: [
+        [
+          45,
+          0
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      &quot;per_class&quot;: [
+        {
+          &quot;label&quot;: 0,
+          &quot;support&quot;: 45,
+          &quot;precision&quot;: 0.7894736842105263,
+          &quot;recall&quot;: 1.0,
+          &quot;f1&quot;: 0.8823529411764706
+        },
+        {
+          &quot;label&quot;: 1,
+          &quot;support&quot;: 12,
+          &quot;precision&quot;: null,
+          &quot;recall&quot;: 0.0,
+          &quot;f1&quot;: 0.0
+        }
+      ],
+      &quot;precision&quot;: null,
+      &quot;recall&quot;: 0.0,
+      &quot;f1&quot;: 0.0,
+      &quot;threshold&quot;: 0.5,
+      &quot;positive_count&quot;: 12,
+      &quot;auroc&quot;: 0.5,
+      &quot;average_precision&quot;: 0.21052631578947367,
+      &quot;brier&quot;: 0.21052631578947367,
+      &quot;calibration&quot;: {
+        &quot;method&quot;: &quot;10 equal-width bins; descriptive reliability, not calibration fitting&quot;,
+        &quot;bins&quot;: [
+          {
+            &quot;lower&quot;: 0.0,
+            &quot;upper&quot;: 0.1,
+            &quot;count&quot;: 57,
+            &quot;mean_probability&quot;: 0.0,
+            &quot;observed_fraction&quot;: 0.21052631578947367
+          }
+        ],
+        &quot;expected_calibration_error&quot;: 0.21052631578947367
+      },
+      &quot;undefined_reasons&quot;: [
+        &quot;Positive precision is undefined because no positive predictions were made.&quot;
+      ]
+    },
+    &quot;PHASE3&quot;: {
+      &quot;accuracy&quot;: 0.7719298245614035,
+      &quot;balanced_accuracy&quot;: 0.5,
+      &quot;macro_precision&quot;: 0.38596491228070173,
+      &quot;macro_recall&quot;: 0.5,
+      &quot;macro_f1&quot;: 0.43564356435643564,
+      &quot;labels&quot;: [
+        0,
+        1
+      ],
+      &quot;confusion_matrix&quot;: [
+        [
+          44,
+          0
+        ],
+        [
+          13,
+          0
+        ]
+      ],
+      &quot;per_class&quot;: [
+        {
+          &quot;label&quot;: 0,
+          &quot;support&quot;: 44,
+          &quot;precision&quot;: 0.7719298245614035,
+          &quot;recall&quot;: 1.0,
+          &quot;f1&quot;: 0.8712871287128713
+        },
+        {
+          &quot;label&quot;: 1,
+          &quot;support&quot;: 13,
+          &quot;precision&quot;: null,
+          &quot;recall&quot;: 0.0,
+          &quot;f1&quot;: 0.0
+        }
+      ],
+      &quot;precision&quot;: null,
+      &quot;recall&quot;: 0.0,
+      &quot;f1&quot;: 0.0,
+      &quot;threshold&quot;: 0.5,
+      &quot;positive_count&quot;: 13,
+      &quot;auroc&quot;: 0.5,
+      &quot;average_precision&quot;: 0.22807017543859648,
+      &quot;brier&quot;: 0.22807017543859648,
+      &quot;calibration&quot;: {
+        &quot;method&quot;: &quot;10 equal-width bins; descriptive reliability, not calibration fitting&quot;,
+        &quot;bins&quot;: [
+          {
+            &quot;lower&quot;: 0.0,
+            &quot;upper&quot;: 0.1,
+            &quot;count&quot;: 57,
+            &quot;mean_probability&quot;: 0.0,
+            &quot;observed_fraction&quot;: 0.22807017543859648
+          }
+        ],
+        &quot;expected_calibration_error&quot;: 0.22807017543859648
+      },
+      &quot;undefined_reasons&quot;: [
+        &quot;Positive precision is undefined because no positive predictions were made.&quot;
+      ]
+    },
+    &quot;PHASE4&quot;: {
+      &quot;accuracy&quot;: 0.8947368421052632,
+      &quot;balanced_accuracy&quot;: 0.5,
+      &quot;macro_precision&quot;: 0.4473684210526316,
+      &quot;macro_recall&quot;: 0.5,
+      &quot;macro_f1&quot;: 0.4722222222222222,
+      &quot;labels&quot;: [
+        0,
+        1
+      ],
+      &quot;confusion_matrix&quot;: [
+        [
+          51,
+          0
+        ],
+        [
+          6,
+          0
+        ]
+      ],
+      &quot;per_class&quot;: [
+        {
+          &quot;label&quot;: 0,
+          &quot;support&quot;: 51,
+          &quot;precision&quot;: 0.8947368421052632,
+          &quot;recall&quot;: 1.0,
+          &quot;f1&quot;: 0.9444444444444444
+        },
+        {
+          &quot;label&quot;: 1,
+          &quot;support&quot;: 6,
+          &quot;precision&quot;: null,
+          &quot;recall&quot;: 0.0,
+          &quot;f1&quot;: 0.0
+        }
+      ],
+      &quot;precision&quot;: null,
+      &quot;recall&quot;: 0.0,
+      &quot;f1&quot;: 0.0,
+      &quot;threshold&quot;: 0.5,
+      &quot;positive_count&quot;: 6,
+      &quot;auroc&quot;: 0.5,
+      &quot;average_precision&quot;: 0.10526315789473684,
+      &quot;brier&quot;: 0.10526315789473684,
+      &quot;calibration&quot;: {
+        &quot;method&quot;: &quot;10 equal-width bins; descriptive reliability, not calibration fitting&quot;,
+        &quot;bins&quot;: [
+          {
+            &quot;lower&quot;: 0.0,
+            &quot;upper&quot;: 0.1,
+            &quot;count&quot;: 57,
+            &quot;mean_probability&quot;: 0.0,
+            &quot;observed_fraction&quot;: 0.10526315789473684
+          }
+        ],
+        &quot;expected_calibration_error&quot;: 0.10526315789473684
+      },
+      &quot;undefined_reasons&quot;: [
+        &quot;Positive precision is undefined because no positive predictions were made.&quot;
+      ]
+    }
+  }
+}</pre></section><section><h3>phase_logistic / test — classification details</h3><h4>classification</h4><p>Confusion matrix: actual rows, predicted columns. Labels: [&#x27;EARLY_PHASE1&#x27;, &#x27;PHASE1&#x27;, &#x27;PHASE2&#x27;, &#x27;PHASE3&#x27;, &#x27;PHASE4&#x27;]</p><pre>{
+  &quot;accuracy&quot;: 0.559322033898305,
+  &quot;balanced_accuracy&quot;: 0.4817847593582888,
+  &quot;macro_precision&quot;: 0.49422233468286103,
+  &quot;macro_recall&quot;: 0.4817847593582888,
+  &quot;macro_f1&quot;: 0.4752371541501976,
+  &quot;labels&quot;: [
+    &quot;EARLY_PHASE1&quot;,
+    &quot;PHASE1&quot;,
+    &quot;PHASE2&quot;,
+    &quot;PHASE3&quot;,
+    &quot;PHASE4&quot;
+  ],
+  &quot;confusion_matrix&quot;: [
+    [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      17,
+      4,
+      0,
+      1
+    ],
+    [
+      0,
+      5,
+      9,
+      1,
+      2
+    ],
+    [
+      0,
+      1,
+      2,
+      1,
+      4
+    ],
+    [
+      0,
+      1,
+      4,
+      1,
+      6
+    ]
+  ],
+  &quot;per_class&quot;: [
+    {
+      &quot;label&quot;: &quot;EARLY_PHASE1&quot;,
+      &quot;support&quot;: 0,
+      &quot;precision&quot;: null,
+      &quot;recall&quot;: null,
+      &quot;f1&quot;: null
+    },
+    {
+      &quot;label&quot;: &quot;PHASE1&quot;,
+      &quot;support&quot;: 22,
+      &quot;precision&quot;: 0.7083333333333334,
+      &quot;recall&quot;: 0.7727272727272727,
+      &quot;f1&quot;: 0.7391304347826086
+    },
+    {
+      &quot;label&quot;: &quot;PHASE2&quot;,
+      &quot;support&quot;: 17,
+      &quot;precision&quot;: 0.47368421052631576,
+      &quot;recall&quot;: 0.5294117647058824,
+      &quot;f1&quot;: 0.5
+    },
+    {
+      &quot;label&quot;: &quot;PHASE3&quot;,
+      &quot;support&quot;: 8,
+      &quot;precision&quot;: 0.3333333333333333,
+      &quot;recall&quot;: 0.125,
+      &quot;f1&quot;: 0.18181818181818182
+    },
+    {
+      &quot;label&quot;: &quot;PHASE4&quot;,
+      &quot;support&quot;: 12,
+      &quot;precision&quot;: 0.46153846153846156,
+      &quot;recall&quot;: 0.5,
+      &quot;f1&quot;: 0.48
+    }
+  ],
+  &quot;macro_convention&quot;: &quot;Union of observed/predicted labels; undefined class precision/recall contributes zero. Balanced accuracy requires at least two supported actual classes.&quot;,
+  &quot;multiclass_brier&quot;: 0.5541141574305549,
+  &quot;one_vs_rest&quot;: {
+    &quot;EARLY_PHASE1&quot;: {
+      &quot;accuracy&quot;: 1.0,
+      &quot;balanced_accuracy&quot;: null,
+      &quot;macro_precision&quot;: 1.0,
+      &quot;macro_recall&quot;: 1.0,
+      &quot;macro_f1&quot;: 1.0,
+      &quot;labels&quot;: [
+        0,
+        1
+      ],
+      &quot;confusion_matrix&quot;: [
+        [
+          59,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      &quot;per_class&quot;: [
+        {
+          &quot;label&quot;: 0,
+          &quot;support&quot;: 59,
+          &quot;precision&quot;: 1.0,
+          &quot;recall&quot;: 1.0,
+          &quot;f1&quot;: 1.0
+        },
+        {
+          &quot;label&quot;: 1,
+          &quot;support&quot;: 0,
+          &quot;precision&quot;: null,
+          &quot;recall&quot;: null,
+          &quot;f1&quot;: null
+        }
+      ],
+      &quot;precision&quot;: null,
+      &quot;recall&quot;: null,
+      &quot;f1&quot;: null,
+      &quot;threshold&quot;: 0.5,
+      &quot;positive_count&quot;: 0,
+      &quot;auroc&quot;: null,
+      &quot;average_precision&quot;: null,
+      &quot;brier&quot;: 0.0,
+      &quot;calibration&quot;: {
+        &quot;method&quot;: &quot;10 equal-width bins; descriptive reliability, not calibration fitting&quot;,
+        &quot;bins&quot;: [
+          {
+            &quot;lower&quot;: 0.0,
+            &quot;upper&quot;: 0.1,
+            &quot;count&quot;: 59,
+            &quot;mean_probability&quot;: 0.0,
+            &quot;observed_fraction&quot;: 0.0
+          }
+        ],
+        &quot;expected_calibration_error&quot;: 0.0
+      },
+      &quot;undefined_reasons&quot;: [
+        &quot;AUROC, average precision and balanced accuracy require both actual classes.&quot;,
+        &quot;Positive precision is undefined because no positive predictions were made.&quot;,
+        &quot;Positive recall is undefined because no positive outcomes were observed.&quot;
+      ]
+    },
+    &quot;PHASE1&quot;: {
+      &quot;accuracy&quot;: 0.8813559322033898,
+      &quot;balanced_accuracy&quot;: 0.8593366093366093,
+      &quot;macro_precision&quot;: 0.8848684210526316,
+      &quot;macro_recall&quot;: 0.8593366093366093,
+      &quot;macro_f1&quot;: 0.8691796008869179,
+      &quot;labels&quot;: [
+        0,
+        1
+      ],
+      &quot;confusion_matrix&quot;: [
+        [
+          35,
+          2
+        ],
+        [
+          5,
+          17
+        ]
+      ],
+      &quot;per_class&quot;: [
+        {
+          &quot;label&quot;: 0,
+          &quot;support&quot;: 37,
+          &quot;precision&quot;: 0.875,
+          &quot;recall&quot;: 0.9459459459459459,
+          &quot;f1&quot;: 0.9090909090909091
+        },
+        {
+          &quot;label&quot;: 1,
+          &quot;support&quot;: 22,
+          &quot;precision&quot;: 0.8947368421052632,
+          &quot;recall&quot;: 0.7727272727272727,
+          &quot;f1&quot;: 0.8292682926829268
+        }
+      ],
+      &quot;precision&quot;: 0.8947368421052632,
+      &quot;recall&quot;: 0.7727272727272727,
+      &quot;f1&quot;: 0.8292682926829268,
+      &quot;threshold&quot;: 0.5,
+      &quot;positive_count&quot;: 22,
+      &quot;auroc&quot;: 0.8980343980343981,
+      &quot;average_precision&quot;: 0.8984084414037974,
+      &quot;brier&quot;: 0.11988005777242597,
+      &quot;calibration&quot;: {
+        &quot;method&quot;: &quot;10 equal-width bins; descriptive reliability, not calibration fitting&quot;,
+        &quot;bins&quot;: [
+          {
+            &quot;lower&quot;: 0.0,
+            &quot;upper&quot;: 0.1,
+            &quot;count&quot;: 7,
+            &quot;mean_probability&quot;: 0.05286615749610964,
+            &quot;observed_fraction&quot;: 0.0
+          },
+          {
+            &quot;lower&quot;: 0.1,
+            &quot;upper&quot;: 0.2,
+            &quot;count&quot;: 12,
+            &quot;mean_probability&quot;: 0.16154678903779066,
+            &quot;observed_fraction&quot;: 0.08333333333333333
+          },
+          {
+            &quot;lower&quot;: 0.2,
+            &quot;upper&quot;: 0.3,
+            &quot;count&quot;: 11,
+            &quot;mean_probability&quot;: 0.2475383940577952,
+            &quot;observed_fraction&quot;: 0.2727272727272727
+          },
+          {
+            &quot;lower&quot;: 0.3,
+            &quot;upper&quot;: 0.4,
+            &quot;count&quot;: 6,
+            &quot;mean_probability&quot;: 0.34842831915295175,
+            &quot;observed_fraction&quot;: 0.16666666666666666
+          },
+          {
+            &quot;lower&quot;: 0.4,
+            &quot;upper&quot;: 0.5,
+            &quot;count&quot;: 4,
+            &quot;mean_probability&quot;: 0.4652869153698293,
+            &quot;observed_fraction&quot;: 0.0
+          },
+          {
+            &quot;lower&quot;: 0.5,
+            &quot;upper&quot;: 0.6,
+            &quot;count&quot;: 4,
+            &quot;mean_probability&quot;: 0.5591087865431765,
+            &quot;observed_fraction&quot;: 0.5
+          },
+          {
+            &quot;lower&quot;: 0.6,
+            &quot;upper&quot;: 0.7,
+            &quot;count&quot;: 4,
+            &quot;mean_probability&quot;: 0.6584654728551688,
+            &quot;observed_fraction&quot;: 1.0
+          },
+          {
+            &quot;lower&quot;: 0.7,
+            &quot;upper&quot;: 0.8,
+            &quot;count&quot;: 6,
+            &quot;mean_probability&quot;: 0.7524255213171833,
+            &quot;observed_fraction&quot;: 1.0
+          },
+          {
+            &quot;lower&quot;: 0.8,
+            &quot;upper&quot;: 0.9,
+            &quot;count&quot;: 4,
+            &quot;mean_probability&quot;: 0.8436546510801999,
+            &quot;observed_fraction&quot;: 1.0
+          },
+          {
+            &quot;lower&quot;: 0.9,
+            &quot;upper&quot;: 1.0,
+            &quot;count&quot;: 1,
+            &quot;mean_probability&quot;: 0.9019113483034309,
+            &quot;observed_fraction&quot;: 1.0
+          }
+        ],
+        &quot;expected_calibration_error&quot;: 0.14150694893071586
+      },
+      &quot;undefined_reasons&quot;: []
+    },
+    &quot;PHASE2&quot;: {
+      &quot;accuracy&quot;: 0.6949152542372882,
+      &quot;balanced_accuracy&quot;: 0.5056022408963585,
+      &quot;macro_precision&quot;: 0.5238095238095238,
+      &quot;macro_recall&quot;: 0.5056022408963585,
+      &quot;macro_f1&quot;: 0.45816326530612245,
+      &quot;labels&quot;: [
+        0,
+        1
+      ],
+      &quot;confusion_matrix&quot;: [
+        [
+          40,
+          2
+        ],
+        [
+          16,
+          1
+        ]
+      ],
+      &quot;per_class&quot;: [
+        {
+          &quot;label&quot;: 0,
+          &quot;support&quot;: 42,
+          &quot;precision&quot;: 0.7142857142857143,
+          &quot;recall&quot;: 0.9523809523809523,
+          &quot;f1&quot;: 0.8163265306122449
+        },
+        {
+          &quot;label&quot;: 1,
+          &quot;support&quot;: 17,
+          &quot;precision&quot;: 0.3333333333333333,
+          &quot;recall&quot;: 0.058823529411764705,
+          &quot;f1&quot;: 0.1
+        }
+      ],
+      &quot;precision&quot;: 0.3333333333333333,
+      &quot;recall&quot;: 0.058823529411764705,
+      &quot;f1&quot;: 0.1,
+      &quot;threshold&quot;: 0.5,
+      &quot;positive_count&quot;: 17,
+      &quot;auroc&quot;: 0.6946778711484595,
+      &quot;average_precision&quot;: 0.46616529060343903,
+      &quot;brier&quot;: 0.18952648234344796,
+      &quot;calibration&quot;: {
+        &quot;method&quot;: &quot;10 equal-width bins; descriptive reliability, not calibration fitting&quot;,
+        &quot;bins&quot;: [
+          {
+            &quot;lower&quot;: 0.0,
+            &quot;upper&quot;: 0.1,
+            &quot;count&quot;: 4,
+            &quot;mean_probability&quot;: 0.02846976930263831,
+            &quot;observed_fraction&quot;: 0.25
+          },
+          {
+            &quot;lower&quot;: 0.1,
+            &quot;upper&quot;: 0.2,
+            &quot;count&quot;: 20,
+            &quot;mean_probability&quot;: 0.1453977052358264,
+            &quot;observed_fraction&quot;: 0.05
+          },
+          {
+            &quot;lower&quot;: 0.2,
+            &quot;upper&quot;: 0.3,
+            &quot;count&quot;: 13,
+            &quot;mean_probability&quot;: 0.2501095964498611,
+            &quot;observed_fraction&quot;: 0.3076923076923077
+          },
+          {
+            &quot;lower&quot;: 0.3,
+            &quot;upper&quot;: 0.4,
+            &quot;count&quot;: 12,
+            &quot;mean_probability&quot;: 0.3558760679532415,
+            &quot;observed_fraction&quot;: 0.5833333333333334
+          },
+          {
+            &quot;lower&quot;: 0.4,
+            &quot;upper&quot;: 0.5,
+            &quot;count&quot;: 7,
+            &quot;mean_probability&quot;: 0.42542386061943305,
+            &quot;observed_fraction&quot;: 0.42857142857142855
+          },
+          {
+            &quot;lower&quot;: 0.5,
+            &quot;upper&quot;: 0.6,
+            &quot;count&quot;: 1,
+            &quot;mean_probability&quot;: 0.5457031635180767,
+            &quot;observed_fraction&quot;: 0.0
+          },
+          {
+            &quot;lower&quot;: 0.6,
+            &quot;upper&quot;: 0.7,
+            &quot;count&quot;: 1,
+            &quot;mean_probability&quot;: 0.6923158373876314,
+            &quot;observed_fraction&quot;: 0.0
+          },
+          {
+            &quot;lower&quot;: 0.7,
+            &quot;upper&quot;: 0.8,
+            &quot;count&quot;: 1,
+            &quot;mean_probability&quot;: 0.7719132745002749,
+            &quot;observed_fraction&quot;: 1.0
+          }
+        ],
+        &quot;expected_calibration_error&quot;: 0.13153010441166585
+      },
+      &quot;undefined_reasons&quot;: []
+    },
+    &quot;PHASE3&quot;: {
+      &quot;accuracy&quot;: 0.847457627118644,
+      &quot;balanced_accuracy&quot;: 0.49019607843137253,
+      &quot;macro_precision&quot;: 0.43103448275862066,
+      &quot;macro_recall&quot;: 0.49019607843137253,
+      &quot;macro_f1&quot;: 0.45871559633027525,
+      &quot;labels&quot;: [
+        0,
+        1
+      ],
+      &quot;confusion_matrix&quot;: [
+        [
+          50,
+          1
+        ],
+        [
+          8,
+          0
+        ]
+      ],
+      &quot;per_class&quot;: [
+        {
+          &quot;label&quot;: 0,
+          &quot;support&quot;: 51,
+          &quot;precision&quot;: 0.8620689655172413,
+          &quot;recall&quot;: 0.9803921568627451,
+          &quot;f1&quot;: 0.9174311926605505
+        },
+        {
+          &quot;label&quot;: 1,
+          &quot;support&quot;: 8,
+          &quot;precision&quot;: 0.0,
+          &quot;recall&quot;: 0.0,
+          &quot;f1&quot;: 0.0
+        }
+      ],
+      &quot;precision&quot;: 0.0,
+      &quot;recall&quot;: 0.0,
+      &quot;f1&quot;: 0.0,
+      &quot;threshold&quot;: 0.5,
+      &quot;positive_count&quot;: 8,
+      &quot;auroc&quot;: 0.7303921568627452,
+      &quot;average_precision&quot;: 0.3347777972777973,
+      &quot;brier&quot;: 0.10550256523566542,
+      &quot;calibration&quot;: {
+        &quot;method&quot;: &quot;10 equal-width bins; descriptive reliability, not calibration fitting&quot;,
+        &quot;bins&quot;: [
+          {
+            &quot;lower&quot;: 0.0,
+            &quot;upper&quot;: 0.1,
+            &quot;count&quot;: 22,
+            &quot;mean_probability&quot;: 0.05347573353646591,
+            &quot;observed_fraction&quot;: 0.045454545454545456
+          },
+          {
+            &quot;lower&quot;: 0.1,
+            &quot;upper&quot;: 0.2,
+            &quot;count&quot;: 22,
+            &quot;mean_probability&quot;: 0.14837462192906972,
+            &quot;observed_fraction&quot;: 0.13636363636363635
+          },
+          {
+            &quot;lower&quot;: 0.2,
+            &quot;upper&quot;: 0.3,
+            &quot;count&quot;: 9,
+            &quot;mean_probability&quot;: 0.23375833762228762,
+            &quot;observed_fraction&quot;: 0.1111111111111111
+          },
+          {
+            &quot;lower&quot;: 0.3,
+            &quot;upper&quot;: 0.4,
+            &quot;count&quot;: 2,
+            &quot;mean_probability&quot;: 0.3387073605768391,
+            &quot;observed_fraction&quot;: 0.5
+          },
+          {
+            &quot;lower&quot;: 0.4,
+            &quot;upper&quot;: 0.5,
+            &quot;count&quot;: 3,
+            &quot;mean_probability&quot;: 0.45342060287470515,
+            &quot;observed_fraction&quot;: 0.6666666666666666
+          },
+          {
+            &quot;lower&quot;: 0.5,
+            &quot;upper&quot;: 0.6,
+            &quot;count&quot;: 1,
+            &quot;mean_probability&quot;: 0.524852381308396,
+            &quot;observed_fraction&quot;: 0.0
+          }
+        ],
+        &quot;expected_calibration_error&quot;: 0.05138489339615211
+      },
+      &quot;undefined_reasons&quot;: []
+    },
+    &quot;PHASE4&quot;: {
+      &quot;accuracy&quot;: 0.8135593220338984,
+      &quot;balanced_accuracy&quot;: 0.5726950354609929,
+      &quot;macro_precision&quot;: 0.7440476190476191,
+      &quot;macro_recall&quot;: 0.5726950354609929,
+      &quot;macro_f1&quot;: 0.5799352750809061,
+      &quot;labels&quot;: [
+        0,
+        1
+      ],
+      &quot;confusion_matrix&quot;: [
+        [
+          46,
+          1
+        ],
+        [
+          10,
+          2
+        ]
+      ],
+      &quot;per_class&quot;: [
+        {
+          &quot;label&quot;: 0,
+          &quot;support&quot;: 47,
+          &quot;precision&quot;: 0.8214285714285714,
+          &quot;recall&quot;: 0.9787234042553191,
+          &quot;f1&quot;: 0.8932038834951457
+        },
+        {
+          &quot;label&quot;: 1,
+          &quot;support&quot;: 12,
+          &quot;precision&quot;: 0.6666666666666666,
+          &quot;recall&quot;: 0.16666666666666666,
+          &quot;f1&quot;: 0.26666666666666666
+        }
+      ],
+      &quot;precision&quot;: 0.6666666666666666,
+      &quot;recall&quot;: 0.16666666666666666,
+      &quot;f1&quot;: 0.26666666666666666,
+      &quot;threshold&quot;: 0.5,
+      &quot;positive_count&quot;: 12,
+      &quot;auroc&quot;: 0.7464539007092199,
+      &quot;average_precision&quot;: 0.4848211783239673,
+      &quot;brier&quot;: 0.13920505207901568,
+      &quot;calibration&quot;: {
+        &quot;method&quot;: &quot;10 equal-width bins; descriptive reliability, not calibration fitting&quot;,
+        &quot;bins&quot;: [
+          {
+            &quot;lower&quot;: 0.0,
+            &quot;upper&quot;: 0.1,
+            &quot;count&quot;: 26,
+            &quot;mean_probability&quot;: 0.040716046001028294,
+            &quot;observed_fraction&quot;: 0.038461538461538464
+          },
+          {
+            &quot;lower&quot;: 0.1,
+            &quot;upper&quot;: 0.2,
+            &quot;count&quot;: 6,
+            &quot;mean_probability&quot;: 0.14325363450162673,
+            &quot;observed_fraction&quot;: 0.3333333333333333
+          },
+          {
+            &quot;lower&quot;: 0.2,
+            &quot;upper&quot;: 0.3,
+            &quot;count&quot;: 11,
+            &quot;mean_probability&quot;: 0.24000706750713888,
+            &quot;observed_fraction&quot;: 0.18181818181818182
+          },
+          {
+            &quot;lower&quot;: 0.3,
+            &quot;upper&quot;: 0.4,
+            &quot;count&quot;: 6,
+            &quot;mean_probability&quot;: 0.3430463923190383,
+            &quot;observed_fraction&quot;: 0.5
+          },
+          {
+            &quot;lower&quot;: 0.4,
+            &quot;upper&quot;: 0.5,
+            &quot;count&quot;: 7,
+            &quot;mean_probability&quot;: 0.4578306474324353,
+            &quot;observed_fraction&quot;: 0.2857142857142857
+          },
+          {
+            &quot;lower&quot;: 0.6,
+            &quot;upper&quot;: 0.7,
+            &quot;count&quot;: 3,
+            &quot;mean_probability&quot;: 0.6317713158264023,
+            &quot;observed_fraction&quot;: 0.6666666666666666
+          }
+        ],
+        &quot;expected_calibration_error&quot;: 0.06932873495303582
+      },
+      &quot;undefined_reasons&quot;: []
+    }
+  }
+}</pre></section><section><h3>phase_logistic / validation — classification details</h3><h4>classification</h4><p>Confusion matrix: actual rows, predicted columns. Labels: [&#x27;EARLY_PHASE1&#x27;, &#x27;PHASE1&#x27;, &#x27;PHASE2&#x27;, &#x27;PHASE3&#x27;, &#x27;PHASE4&#x27;]</p><pre>{
+  &quot;accuracy&quot;: 0.5964912280701754,
+  &quot;balanced_accuracy&quot;: 0.5384615384615384,
+  &quot;macro_precision&quot;: 0.569047619047619,
+  &quot;macro_recall&quot;: 0.5384615384615384,
+  &quot;macro_f1&quot;: 0.5364630467571644,
+  &quot;labels&quot;: [
+    &quot;EARLY_PHASE1&quot;,
+    &quot;PHASE1&quot;,
+    &quot;PHASE2&quot;,
+    &quot;PHASE3&quot;,
+    &quot;PHASE4&quot;
+  ],
+  &quot;confusion_matrix&quot;: [
+    [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      20,
+      6,
+      0,
+      0
+    ],
+    [
+      0,
+      3,
+      6,
+      2,
+      1
+    ],
+    [
+      0,
+      2,
+      3,
+      5,
+      3
+    ],
+    [
+      0,
+      0,
+      3,
+      0,
+      3
+    ]
+  ],
+  &quot;per_class&quot;: [
+    {
+      &quot;label&quot;: &quot;EARLY_PHASE1&quot;,
+      &quot;support&quot;: 0,
+      &quot;precision&quot;: null,
+      &quot;recall&quot;: null,
+      &quot;f1&quot;: null
+    },
+    {
+      &quot;label&quot;: &quot;PHASE1&quot;,
+      &quot;support&quot;: 26,
+      &quot;precision&quot;: 0.8,
+      &quot;recall&quot;: 0.7692307692307693,
+      &quot;f1&quot;: 0.7843137254901961
+    },
+    {
+      &quot;label&quot;: &quot;PHASE2&quot;,
+      &quot;support&quot;: 12,
+      &quot;precision&quot;: 0.3333333333333333,
+      &quot;recall&quot;: 0.5,
+      &quot;f1&quot;: 0.4
+    },
+    {
+      &quot;label&quot;: &quot;PHASE3&quot;,
+      &quot;support&quot;: 13,
+      &quot;precision&quot;: 0.7142857142857143,
+      &quot;recall&quot;: 0.38461538461538464,
+      &quot;f1&quot;: 0.5
+    },
+    {
+      &quot;label&quot;: &quot;PHASE4&quot;,
+      &quot;support&quot;: 6,
+      &quot;precision&quot;: 0.42857142857142855,
+      &quot;recall&quot;: 0.5,
+      &quot;f1&quot;: 0.46153846153846156
+    }
+  ],
+  &quot;macro_convention&quot;: &quot;Union of observed/predicted labels; undefined class precision/recall contributes zero. Balanced accuracy requires at least two supported actual classes.&quot;,
+  &quot;multiclass_brier&quot;: 0.5087818126677945,
+  &quot;one_vs_rest&quot;: {
+    &quot;EARLY_PHASE1&quot;: {
+      &quot;accuracy&quot;: 1.0,
+      &quot;balanced_accuracy&quot;: null,
+      &quot;macro_precision&quot;: 1.0,
+      &quot;macro_recall&quot;: 1.0,
+      &quot;macro_f1&quot;: 1.0,
+      &quot;labels&quot;: [
+        0,
+        1
+      ],
+      &quot;confusion_matrix&quot;: [
+        [
+          57,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      &quot;per_class&quot;: [
+        {
+          &quot;label&quot;: 0,
+          &quot;support&quot;: 57,
+          &quot;precision&quot;: 1.0,
+          &quot;recall&quot;: 1.0,
+          &quot;f1&quot;: 1.0
+        },
+        {
+          &quot;label&quot;: 1,
+          &quot;support&quot;: 0,
+          &quot;precision&quot;: null,
+          &quot;recall&quot;: null,
+          &quot;f1&quot;: null
+        }
+      ],
+      &quot;precision&quot;: null,
+      &quot;recall&quot;: null,
+      &quot;f1&quot;: null,
+      &quot;threshold&quot;: 0.5,
+      &quot;positive_count&quot;: 0,
+      &quot;auroc&quot;: null,
+      &quot;average_precision&quot;: null,
+      &quot;brier&quot;: 0.0,
+      &quot;calibration&quot;: {
+        &quot;method&quot;: &quot;10 equal-width bins; descriptive reliability, not calibration fitting&quot;,
+        &quot;bins&quot;: [
+          {
+            &quot;lower&quot;: 0.0,
+            &quot;upper&quot;: 0.1,
+            &quot;count&quot;: 57,
+            &quot;mean_probability&quot;: 0.0,
+            &quot;observed_fraction&quot;: 0.0
+          }
+        ],
+        &quot;expected_calibration_error&quot;: 0.0
+      },
+      &quot;undefined_reasons&quot;: [
+        &quot;AUROC, average precision and balanced accuracy require both actual classes.&quot;,
+        &quot;Positive precision is undefined because no positive predictions were made.&quot;,
+        &quot;Positive recall is undefined because no positive outcomes were observed.&quot;
+      ]
+    },
+    &quot;PHASE1&quot;: {
+      &quot;accuracy&quot;: 0.8421052631578947,
+      &quot;balanced_accuracy&quot;: 0.8300248138957816,
+      &quot;macro_precision&quot;: 0.868421052631579,
+      &quot;macro_recall&quot;: 0.8300248138957816,
+      &quot;macro_f1&quot;: 0.8347826086956522,
+      &quot;labels&quot;: [
+        0,
+        1
+      ],
+      &quot;confusion_matrix&quot;: [
+        [
+          30,
+          1
+        ],
+        [
+          8,
+          18
+        ]
+      ],
+      &quot;per_class&quot;: [
+        {
+          &quot;label&quot;: 0,
+          &quot;support&quot;: 31,
+          &quot;precision&quot;: 0.7894736842105263,
+          &quot;recall&quot;: 0.967741935483871,
+          &quot;f1&quot;: 0.8695652173913043
+        },
+        {
+          &quot;label&quot;: 1,
+          &quot;support&quot;: 26,
+          &quot;precision&quot;: 0.9473684210526315,
+          &quot;recall&quot;: 0.6923076923076923,
+          &quot;f1&quot;: 0.8
+        }
+      ],
+      &quot;precision&quot;: 0.9473684210526315,
+      &quot;recall&quot;: 0.6923076923076923,
+      &quot;f1&quot;: 0.8,
+      &quot;threshold&quot;: 0.5,
+      &quot;positive_count&quot;: 26,
+      &quot;auroc&quot;: 0.9379652605459057,
+      &quot;average_precision&quot;: 0.9380871555874215,
+      &quot;brier&quot;: 0.12396179069834765,
+      &quot;calibration&quot;: {
+        &quot;method&quot;: &quot;10 equal-width bins; descriptive reliability, not calibration fitting&quot;,
+        &quot;bins&quot;: [
+          {
+            &quot;lower&quot;: 0.0,
+            &quot;upper&quot;: 0.1,
+            &quot;count&quot;: 4,
+            &quot;mean_probability&quot;: 0.04569198436735718,
+            &quot;observed_fraction&quot;: 0.0
+          },
+          {
+            &quot;lower&quot;: 0.1,
+            &quot;upper&quot;: 0.2,
+            &quot;count&quot;: 12,
+            &quot;mean_probability&quot;: 0.1687204062356021,
+            &quot;observed_fraction&quot;: 0.08333333333333333
+          },
+          {
+            &quot;lower&quot;: 0.2,
+            &quot;upper&quot;: 0.3,
+            &quot;count&quot;: 11,
+            &quot;mean_probability&quot;: 0.25642888041940926,
+            &quot;observed_fraction&quot;: 0.18181818181818182
+          },
+          {
+            &quot;lower&quot;: 0.3,
+            &quot;upper&quot;: 0.4,
+            &quot;count&quot;: 5,
+            &quot;mean_probability&quot;: 0.3407221441909871,
+            &quot;observed_fraction&quot;: 0.2
+          },
+          {
+            &quot;lower&quot;: 0.4,
+            &quot;upper&quot;: 0.5,
+            &quot;count&quot;: 6,
+            &quot;mean_probability&quot;: 0.4300186619316004,
+            &quot;observed_fraction&quot;: 0.6666666666666666
+          },
+          {
+            &quot;lower&quot;: 0.5,
+            &quot;upper&quot;: 0.6,
+            &quot;count&quot;: 4,
+            &quot;mean_probability&quot;: 0.547737920711592,
+            &quot;observed_fraction&quot;: 1.0
+          },
+          {
+            &quot;lower&quot;: 0.6,
+            &quot;upper&quot;: 0.7,
+            &quot;count&quot;: 3,
+            &quot;mean_probability&quot;: 0.6397047034423476,
+            &quot;observed_fraction&quot;: 0.6666666666666666
+          },
+          {
+            &quot;lower&quot;: 0.7,
+            &quot;upper&quot;: 0.8,
+            &quot;count&quot;: 7,
+            &quot;mean_probability&quot;: 0.7576351299163907,
+            &quot;observed_fraction&quot;: 1.0
+          },
+          {
+            &quot;lower&quot;: 0.8,
+            &quot;upper&quot;: 0.9,
+            &quot;count&quot;: 3,
+            &quot;mean_probability&quot;: 0.8708905629593561,
+            &quot;observed_fraction&quot;: 1.0
+          },
+          {
+            &quot;lower&quot;: 0.9,
+            &quot;upper&quot;: 1.0,
+            &quot;count&quot;: 2,
+            &quot;mean_probability&quot;: 0.9163487462316315,
+            &quot;observed_fraction&quot;: 1.0
+          }
+        ],
+        &quot;expected_calibration_error&quot;: 0.14548681337449143
+      },
+      &quot;undefined_reasons&quot;: []
+    },
+    &quot;PHASE2&quot;: {
+      &quot;accuracy&quot;: 0.7368421052631579,
+      &quot;balanced_accuracy&quot;: 0.4666666666666667,
+      &quot;macro_precision&quot;: 0.3888888888888889,
+      &quot;macro_recall&quot;: 0.4666666666666667,
+      &quot;macro_f1&quot;: 0.42424242424242425,
+      &quot;labels&quot;: [
+        0,
+        1
+      ],
+      &quot;confusion_matrix&quot;: [
+        [
+          42,
+          3
+        ],
+        [
+          12,
+          0
+        ]
+      ],
+      &quot;per_class&quot;: [
+        {
+          &quot;label&quot;: 0,
+          &quot;support&quot;: 45,
+          &quot;precision&quot;: 0.7777777777777778,
+          &quot;recall&quot;: 0.9333333333333333,
+          &quot;f1&quot;: 0.8484848484848485
+        },
+        {
+          &quot;label&quot;: 1,
+          &quot;support&quot;: 12,
+          &quot;precision&quot;: 0.0,
+          &quot;recall&quot;: 0.0,
+          &quot;f1&quot;: 0.0
+        }
+      ],
+      &quot;precision&quot;: 0.0,
+      &quot;recall&quot;: 0.0,
+      &quot;f1&quot;: 0.0,
+      &quot;threshold&quot;: 0.5,
+      &quot;positive_count&quot;: 12,
+      &quot;auroc&quot;: 0.6611111111111111,
+      &quot;average_precision&quot;: 0.27914347980924065,
+      &quot;brier&quot;: 0.17219947364316693,
+      &quot;calibration&quot;: {
+        &quot;method&quot;: &quot;10 equal-width bins; descriptive reliability, not calibration fitting&quot;,
+        &quot;bins&quot;: [
+          {
+            &quot;lower&quot;: 0.0,
+            &quot;upper&quot;: 0.1,
+            &quot;count&quot;: 5,
+            &quot;mean_probability&quot;: 0.06365514343255363,
+            &quot;observed_fraction&quot;: 0.0
+          },
+          {
+            &quot;lower&quot;: 0.1,
+            &quot;upper&quot;: 0.2,
+            &quot;count&quot;: 12,
+            &quot;mean_probability&quot;: 0.15634938342549118,
+            &quot;observed_fraction&quot;: 0.0
+          },
+          {
+            &quot;lower&quot;: 0.2,
+            &quot;upper&quot;: 0.3,
+            &quot;count&quot;: 14,
+            &quot;mean_probability&quot;: 0.24851465218191,
+            &quot;observed_fraction&quot;: 0.21428571428571427
+          },
+          {
+            &quot;lower&quot;: 0.3,
+            &quot;upper&quot;: 0.4,
+            &quot;count&quot;: 18,
+            &quot;mean_probability&quot;: 0.33751913731977595,
+            &quot;observed_fraction&quot;: 0.4444444444444444
+          },
+          {
+            &quot;lower&quot;: 0.4,
+            &quot;upper&quot;: 0.5,
+            &quot;count&quot;: 5,
+            &quot;mean_probability&quot;: 0.4347623573222357,
+            &quot;observed_fraction&quot;: 0.2
+          },
+          {
+            &quot;lower&quot;: 0.5,
+            &quot;upper&quot;: 0.6,
+            &quot;count&quot;: 1,
+            &quot;mean_probability&quot;: 0.5468865388524294,
+            &quot;observed_fraction&quot;: 0.0
+          },
+          {
+            &quot;lower&quot;: 0.6,
+            &quot;upper&quot;: 0.7,
+            &quot;count&quot;: 1,
+            &quot;mean_probability&quot;: 0.6167616659113596,
+            &quot;observed_fraction&quot;: 0.0
+          },
+          {
+            &quot;lower&quot;: 0.7,
+            &quot;upper&quot;: 0.8,
+            &quot;count&quot;: 1,
+            &quot;mean_probability&quot;: 0.7135025863616462,
+            &quot;observed_fraction&quot;: 0.0
+          }
+        ],
+        &quot;expected_calibration_error&quot;: 0.13419809745256225
+      },
+      &quot;undefined_reasons&quot;: []
+    },
+    &quot;PHASE3&quot;: {
+      &quot;accuracy&quot;: 0.7894736842105263,
+      &quot;balanced_accuracy&quot;: 0.5384615384615384,
+      &quot;macro_precision&quot;: 0.8928571428571428,
+      &quot;macro_recall&quot;: 0.5384615384615384,
+      &quot;macro_f1&quot;: 0.5114285714285715,
+      &quot;labels&quot;: [
+        0,
+        1
+      ],
+      &quot;confusion_matrix&quot;: [
+        [
+          44,
+          0
+        ],
+        [
+          12,
+          1
+        ]
+      ],
+      &quot;per_class&quot;: [
+        {
+          &quot;label&quot;: 0,
+          &quot;support&quot;: 44,
+          &quot;precision&quot;: 0.7857142857142857,
+          &quot;recall&quot;: 1.0,
+          &quot;f1&quot;: 0.88
+        },
+        {
+          &quot;label&quot;: 1,
+          &quot;support&quot;: 13,
+          &quot;precision&quot;: 1.0,
+          &quot;recall&quot;: 0.07692307692307693,
+          &quot;f1&quot;: 0.14285714285714285
+        }
+      ],
+      &quot;precision&quot;: 1.0,
+      &quot;recall&quot;: 0.07692307692307693,
+      &quot;f1&quot;: 0.14285714285714285,
+      &quot;threshold&quot;: 0.5,
+      &quot;positive_count&quot;: 13,
+      &quot;auroc&quot;: 0.8583916083916083,
+      &quot;average_precision&quot;: 0.6851057933294775,
+      &quot;brier&quot;: 0.13176924711335705,
+      &quot;calibration&quot;: {
+        &quot;method&quot;: &quot;10 equal-width bins; descriptive reliability, not calibration fitting&quot;,
+        &quot;bins&quot;: [
+          {
+            &quot;lower&quot;: 0.0,
+            &quot;upper&quot;: 0.1,
+            &quot;count&quot;: 22,
+            &quot;mean_probability&quot;: 0.04292577232430904,
+            &quot;observed_fraction&quot;: 0.0
+          },
+          {
+            &quot;lower&quot;: 0.1,
+            &quot;upper&quot;: 0.2,
+            &quot;count&quot;: 16,
+            &quot;mean_probability&quot;: 0.14842684091493152,
+            &quot;observed_fraction&quot;: 0.1875
+          },
+          {
+            &quot;lower&quot;: 0.2,
+            &quot;upper&quot;: 0.3,
+            &quot;count&quot;: 10,
+            &quot;mean_probability&quot;: 0.23228829865228717,
+            &quot;observed_fraction&quot;: 0.4
+          },
+          {
+            &quot;lower&quot;: 0.3,
+            &quot;upper&quot;: 0.4,
+            &quot;count&quot;: 3,
+            &quot;mean_probability&quot;: 0.3292701705785619,
+            &quot;observed_fraction&quot;: 0.3333333333333333
+          },
+          {
+            &quot;lower&quot;: 0.4,
+            &quot;upper&quot;: 0.5,
+            &quot;count&quot;: 5,
+            &quot;mean_probability&quot;: 0.44335499343941287,
+            &quot;observed_fraction&quot;: 0.8
+          },
+          {
+            &quot;lower&quot;: 0.6,
+            &quot;upper&quot;: 0.7,
+            &quot;count&quot;: 1,
+            &quot;mean_probability&quot;: 0.6528276001002113,
+            &quot;observed_fraction&quot;: 1.0
+          }
+        ],
+        &quot;expected_calibration_error&quot;: 0.09454809598140458
+      },
+      &quot;undefined_reasons&quot;: []
+    },
+    &quot;PHASE4&quot;: {
+      &quot;accuracy&quot;: 0.9122807017543859,
+      &quot;balanced_accuracy&quot;: 0.5833333333333334,
+      &quot;macro_precision&quot;: 0.9553571428571428,
+      &quot;macro_recall&quot;: 0.5833333333333334,
+      &quot;macro_f1&quot;: 0.6194926568758344,
+      &quot;labels&quot;: [
+        0,
+        1
+      ],
+      &quot;confusion_matrix&quot;: [
+        [
+          51,
+          0
+        ],
+        [
+          5,
+          1
+        ]
+      ],
+      &quot;per_class&quot;: [
+        {
+          &quot;label&quot;: 0,
+          &quot;support&quot;: 51,
+          &quot;precision&quot;: 0.9107142857142857,
+          &quot;recall&quot;: 1.0,
+          &quot;f1&quot;: 0.9532710280373832
+        },
+        {
+          &quot;label&quot;: 1,
+          &quot;support&quot;: 6,
+          &quot;precision&quot;: 1.0,
+          &quot;recall&quot;: 0.16666666666666666,
+          &quot;f1&quot;: 0.2857142857142857
+        }
+      ],
+      &quot;precision&quot;: 1.0,
+      &quot;recall&quot;: 0.16666666666666666,
+      &quot;f1&quot;: 0.2857142857142857,
+      &quot;threshold&quot;: 0.5,
+      &quot;positive_count&quot;: 6,
+      &quot;auroc&quot;: 0.8235294117647058,
+      &quot;average_precision&quot;: 0.49523809523809514,
+      &quot;brier&quot;: 0.080851301212923,
+      &quot;calibration&quot;: {
+        &quot;method&quot;: &quot;10 equal-width bins; descriptive reliability, not calibration fitting&quot;,
+        &quot;bins&quot;: [
+          {
+            &quot;lower&quot;: 0.0,
+            &quot;upper&quot;: 0.1,
+            &quot;count&quot;: 27,
+            &quot;mean_probability&quot;: 0.039114970700435424,
+            &quot;observed_fraction&quot;: 0.0
+          },
+          {
+            &quot;lower&quot;: 0.1,
+            &quot;upper&quot;: 0.2,
+            &quot;count&quot;: 12,
+            &quot;mean_probability&quot;: 0.16165589614876055,
+            &quot;observed_fraction&quot;: 0.16666666666666666
+          },
+          {
+            &quot;lower&quot;: 0.2,
+            &quot;upper&quot;: 0.3,
+            &quot;count&quot;: 9,
+            &quot;mean_probability&quot;: 0.24542144308427,
+            &quot;observed_fraction&quot;: 0.1111111111111111
+          },
+          {
+            &quot;lower&quot;: 0.3,
+            &quot;upper&quot;: 0.4,
+            &quot;count&quot;: 7,
+            &quot;mean_probability&quot;: 0.338147924127924,
+            &quot;observed_fraction&quot;: 0.2857142857142857
+          },
+          {
+            &quot;lower&quot;: 0.4,
+            &quot;upper&quot;: 0.5,
+            &quot;count&quot;: 1,
+            &quot;mean_probability&quot;: 0.4423634841964958,
+            &quot;observed_fraction&quot;: 0.0
+          },
+          {
+            &quot;lower&quot;: 0.5,
+            &quot;upper&quot;: 0.6,
+            &quot;count&quot;: 1,
+            &quot;mean_probability&quot;: 0.5156260134310343,
+            &quot;observed_fraction&quot;: 1.0
+          }
+        ],
+        &quot;expected_calibration_error&quot;: 0.0634877084657191
+      },
+      &quot;undefined_reasons&quot;: []
+    }
+  }
+}</pre></section><h2>Observed predictions and reliability</h2><p>Dashed lines indicate perfect predictions/reliability, or zero residual. Reliability shows occupied bins; metrics use all rows.</p><div class="plots"><figure><figcaption>majority_baseline / test: EARLY_PHASE1 reliability</figcaption><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" role="img" aria-label="majority_baseline / test: EARLY_PHASE1 reliability"><title>majority_baseline / test: EARLY_PHASE1 reliability</title><rect width="600" height="340" fill="white"/><path d="M72 54V278H552" fill="none" stroke="#536070"/><text x="72.00" y="296" text-anchor="middle" font-size="11">0</text><text x="65" y="282.00" text-anchor="end" font-size="11">0</text><text x="168.00" y="296" text-anchor="middle" font-size="11">0.2</text><text x="65" y="237.20" text-anchor="end" font-size="11">0.2</text><text x="264.00" y="296" text-anchor="middle" font-size="11">0.4</text><text x="65" y="192.40" text-anchor="end" font-size="11">0.4</text><text x="360.00" y="296" text-anchor="middle" font-size="11">0.6</text><text x="65" y="147.60" text-anchor="end" font-size="11">0.6</text><text x="456.00" y="296" text-anchor="middle" font-size="11">0.8</text><text x="65" y="102.80" text-anchor="end" font-size="11">0.8</text><text x="552.00" y="296" text-anchor="middle" font-size="11">1</text><text x="65" y="58.00" text-anchor="end" font-size="11">1</text><path d="M72 278L552 54" stroke="#a0a7b3" stroke-dasharray="5 4"/><circle cx="72.00" cy="278.00" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0, 0</title></circle><text x="312" y="326" text-anchor="middle" font-size="13">Mean predicted class probability</text><text transform="translate(18 166) rotate(-90)" text-anchor="middle" font-size="13">Observed class fraction</text></svg></figure><figure><figcaption>majority_baseline / test: PHASE1 reliability</figcaption><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" role="img" aria-label="majority_baseline / test: PHASE1 reliability"><title>majority_baseline / test: PHASE1 reliability</title><rect width="600" height="340" fill="white"/><path d="M72 54V278H552" fill="none" stroke="#536070"/><text x="72.00" y="296" text-anchor="middle" font-size="11">0</text><text x="65" y="282.00" text-anchor="end" font-size="11">0</text><text x="168.00" y="296" text-anchor="middle" font-size="11">0.2</text><text x="65" y="237.20" text-anchor="end" font-size="11">0.2</text><text x="264.00" y="296" text-anchor="middle" font-size="11">0.4</text><text x="65" y="192.40" text-anchor="end" font-size="11">0.4</text><text x="360.00" y="296" text-anchor="middle" font-size="11">0.6</text><text x="65" y="147.60" text-anchor="end" font-size="11">0.6</text><text x="456.00" y="296" text-anchor="middle" font-size="11">0.8</text><text x="65" y="102.80" text-anchor="end" font-size="11">0.8</text><text x="552.00" y="296" text-anchor="middle" font-size="11">1</text><text x="65" y="58.00" text-anchor="end" font-size="11">1</text><path d="M72 278L552 54" stroke="#a0a7b3" stroke-dasharray="5 4"/><circle cx="552.00" cy="194.47" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>1, 0.37288</title></circle><text x="312" y="326" text-anchor="middle" font-size="13">Mean predicted class probability</text><text transform="translate(18 166) rotate(-90)" text-anchor="middle" font-size="13">Observed class fraction</text></svg></figure><figure><figcaption>majority_baseline / test: PHASE2 reliability</figcaption><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" role="img" aria-label="majority_baseline / test: PHASE2 reliability"><title>majority_baseline / test: PHASE2 reliability</title><rect width="600" height="340" fill="white"/><path d="M72 54V278H552" fill="none" stroke="#536070"/><text x="72.00" y="296" text-anchor="middle" font-size="11">0</text><text x="65" y="282.00" text-anchor="end" font-size="11">0</text><text x="168.00" y="296" text-anchor="middle" font-size="11">0.2</text><text x="65" y="237.20" text-anchor="end" font-size="11">0.2</text><text x="264.00" y="296" text-anchor="middle" font-size="11">0.4</text><text x="65" y="192.40" text-anchor="end" font-size="11">0.4</text><text x="360.00" y="296" text-anchor="middle" font-size="11">0.6</text><text x="65" y="147.60" text-anchor="end" font-size="11">0.6</text><text x="456.00" y="296" text-anchor="middle" font-size="11">0.8</text><text x="65" y="102.80" text-anchor="end" font-size="11">0.8</text><text x="552.00" y="296" text-anchor="middle" font-size="11">1</text><text x="65" y="58.00" text-anchor="end" font-size="11">1</text><path d="M72 278L552 54" stroke="#a0a7b3" stroke-dasharray="5 4"/><circle cx="72.00" cy="213.46" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0, 0.28814</title></circle><text x="312" y="326" text-anchor="middle" font-size="13">Mean predicted class probability</text><text transform="translate(18 166) rotate(-90)" text-anchor="middle" font-size="13">Observed class fraction</text></svg></figure><figure><figcaption>majority_baseline / test: PHASE3 reliability</figcaption><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" role="img" aria-label="majority_baseline / test: PHASE3 reliability"><title>majority_baseline / test: PHASE3 reliability</title><rect width="600" height="340" fill="white"/><path d="M72 54V278H552" fill="none" stroke="#536070"/><text x="72.00" y="296" text-anchor="middle" font-size="11">0</text><text x="65" y="282.00" text-anchor="end" font-size="11">0</text><text x="168.00" y="296" text-anchor="middle" font-size="11">0.2</text><text x="65" y="237.20" text-anchor="end" font-size="11">0.2</text><text x="264.00" y="296" text-anchor="middle" font-size="11">0.4</text><text x="65" y="192.40" text-anchor="end" font-size="11">0.4</text><text x="360.00" y="296" text-anchor="middle" font-size="11">0.6</text><text x="65" y="147.60" text-anchor="end" font-size="11">0.6</text><text x="456.00" y="296" text-anchor="middle" font-size="11">0.8</text><text x="65" y="102.80" text-anchor="end" font-size="11">0.8</text><text x="552.00" y="296" text-anchor="middle" font-size="11">1</text><text x="65" y="58.00" text-anchor="end" font-size="11">1</text><path d="M72 278L552 54" stroke="#a0a7b3" stroke-dasharray="5 4"/><circle cx="72.00" cy="247.63" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0, 0.13559</title></circle><text x="312" y="326" text-anchor="middle" font-size="13">Mean predicted class probability</text><text transform="translate(18 166) rotate(-90)" text-anchor="middle" font-size="13">Observed class fraction</text></svg></figure><figure><figcaption>majority_baseline / test: PHASE4 reliability</figcaption><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" role="img" aria-label="majority_baseline / test: PHASE4 reliability"><title>majority_baseline / test: PHASE4 reliability</title><rect width="600" height="340" fill="white"/><path d="M72 54V278H552" fill="none" stroke="#536070"/><text x="72.00" y="296" text-anchor="middle" font-size="11">0</text><text x="65" y="282.00" text-anchor="end" font-size="11">0</text><text x="168.00" y="296" text-anchor="middle" font-size="11">0.2</text><text x="65" y="237.20" text-anchor="end" font-size="11">0.2</text><text x="264.00" y="296" text-anchor="middle" font-size="11">0.4</text><text x="65" y="192.40" text-anchor="end" font-size="11">0.4</text><text x="360.00" y="296" text-anchor="middle" font-size="11">0.6</text><text x="65" y="147.60" text-anchor="end" font-size="11">0.6</text><text x="456.00" y="296" text-anchor="middle" font-size="11">0.8</text><text x="65" y="102.80" text-anchor="end" font-size="11">0.8</text><text x="552.00" y="296" text-anchor="middle" font-size="11">1</text><text x="65" y="58.00" text-anchor="end" font-size="11">1</text><path d="M72 278L552 54" stroke="#a0a7b3" stroke-dasharray="5 4"/><circle cx="72.00" cy="232.44" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0, 0.20339</title></circle><text x="312" y="326" text-anchor="middle" font-size="13">Mean predicted class probability</text><text transform="translate(18 166) rotate(-90)" text-anchor="middle" font-size="13">Observed class fraction</text></svg></figure><figure><figcaption>majority_baseline / validation: EARLY_PHASE1 reliability</figcaption><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" role="img" aria-label="majority_baseline / validation: EARLY_PHASE1 reliability"><title>majority_baseline / validation: EARLY_PHASE1 reliability</title><rect width="600" height="340" fill="white"/><path d="M72 54V278H552" fill="none" stroke="#536070"/><text x="72.00" y="296" text-anchor="middle" font-size="11">0</text><text x="65" y="282.00" text-anchor="end" font-size="11">0</text><text x="168.00" y="296" text-anchor="middle" font-size="11">0.2</text><text x="65" y="237.20" text-anchor="end" font-size="11">0.2</text><text x="264.00" y="296" text-anchor="middle" font-size="11">0.4</text><text x="65" y="192.40" text-anchor="end" font-size="11">0.4</text><text x="360.00" y="296" text-anchor="middle" font-size="11">0.6</text><text x="65" y="147.60" text-anchor="end" font-size="11">0.6</text><text x="456.00" y="296" text-anchor="middle" font-size="11">0.8</text><text x="65" y="102.80" text-anchor="end" font-size="11">0.8</text><text x="552.00" y="296" text-anchor="middle" font-size="11">1</text><text x="65" y="58.00" text-anchor="end" font-size="11">1</text><path d="M72 278L552 54" stroke="#a0a7b3" stroke-dasharray="5 4"/><circle cx="72.00" cy="278.00" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0, 0</title></circle><text x="312" y="326" text-anchor="middle" font-size="13">Mean predicted class probability</text><text transform="translate(18 166) rotate(-90)" text-anchor="middle" font-size="13">Observed class fraction</text></svg></figure><figure><figcaption>majority_baseline / validation: PHASE1 reliability</figcaption><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" role="img" aria-label="majority_baseline / validation: PHASE1 reliability"><title>majority_baseline / validation: PHASE1 reliability</title><rect width="600" height="340" fill="white"/><path d="M72 54V278H552" fill="none" stroke="#536070"/><text x="72.00" y="296" text-anchor="middle" font-size="11">0</text><text x="65" y="282.00" text-anchor="end" font-size="11">0</text><text x="168.00" y="296" text-anchor="middle" font-size="11">0.2</text><text x="65" y="237.20" text-anchor="end" font-size="11">0.2</text><text x="264.00" y="296" text-anchor="middle" font-size="11">0.4</text><text x="65" y="192.40" text-anchor="end" font-size="11">0.4</text><text x="360.00" y="296" text-anchor="middle" font-size="11">0.6</text><text x="65" y="147.60" text-anchor="end" font-size="11">0.6</text><text x="456.00" y="296" text-anchor="middle" font-size="11">0.8</text><text x="65" y="102.80" text-anchor="end" font-size="11">0.8</text><text x="552.00" y="296" text-anchor="middle" font-size="11">1</text><text x="65" y="58.00" text-anchor="end" font-size="11">1</text><path d="M72 278L552 54" stroke="#a0a7b3" stroke-dasharray="5 4"/><circle cx="552.00" cy="175.82" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>1, 0.45614</title></circle><text x="312" y="326" text-anchor="middle" font-size="13">Mean predicted class probability</text><text transform="translate(18 166) rotate(-90)" text-anchor="middle" font-size="13">Observed class fraction</text></svg></figure><figure><figcaption>majority_baseline / validation: PHASE2 reliability</figcaption><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" role="img" aria-label="majority_baseline / validation: PHASE2 reliability"><title>majority_baseline / validation: PHASE2 reliability</title><rect width="600" height="340" fill="white"/><path d="M72 54V278H552" fill="none" stroke="#536070"/><text x="72.00" y="296" text-anchor="middle" font-size="11">0</text><text x="65" y="282.00" text-anchor="end" font-size="11">0</text><text x="168.00" y="296" text-anchor="middle" font-size="11">0.2</text><text x="65" y="237.20" text-anchor="end" font-size="11">0.2</text><text x="264.00" y="296" text-anchor="middle" font-size="11">0.4</text><text x="65" y="192.40" text-anchor="end" font-size="11">0.4</text><text x="360.00" y="296" text-anchor="middle" font-size="11">0.6</text><text x="65" y="147.60" text-anchor="end" font-size="11">0.6</text><text x="456.00" y="296" text-anchor="middle" font-size="11">0.8</text><text x="65" y="102.80" text-anchor="end" font-size="11">0.8</text><text x="552.00" y="296" text-anchor="middle" font-size="11">1</text><text x="65" y="58.00" text-anchor="end" font-size="11">1</text><path d="M72 278L552 54" stroke="#a0a7b3" stroke-dasharray="5 4"/><circle cx="72.00" cy="230.84" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0, 0.21053</title></circle><text x="312" y="326" text-anchor="middle" font-size="13">Mean predicted class probability</text><text transform="translate(18 166) rotate(-90)" text-anchor="middle" font-size="13">Observed class fraction</text></svg></figure><figure><figcaption>majority_baseline / validation: PHASE3 reliability</figcaption><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" role="img" aria-label="majority_baseline / validation: PHASE3 reliability"><title>majority_baseline / validation: PHASE3 reliability</title><rect width="600" height="340" fill="white"/><path d="M72 54V278H552" fill="none" stroke="#536070"/><text x="72.00" y="296" text-anchor="middle" font-size="11">0</text><text x="65" y="282.00" text-anchor="end" font-size="11">0</text><text x="168.00" y="296" text-anchor="middle" font-size="11">0.2</text><text x="65" y="237.20" text-anchor="end" font-size="11">0.2</text><text x="264.00" y="296" text-anchor="middle" font-size="11">0.4</text><text x="65" y="192.40" text-anchor="end" font-size="11">0.4</text><text x="360.00" y="296" text-anchor="middle" font-size="11">0.6</text><text x="65" y="147.60" text-anchor="end" font-size="11">0.6</text><text x="456.00" y="296" text-anchor="middle" font-size="11">0.8</text><text x="65" y="102.80" text-anchor="end" font-size="11">0.8</text><text x="552.00" y="296" text-anchor="middle" font-size="11">1</text><text x="65" y="58.00" text-anchor="end" font-size="11">1</text><path d="M72 278L552 54" stroke="#a0a7b3" stroke-dasharray="5 4"/><circle cx="72.00" cy="226.91" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0, 0.22807</title></circle><text x="312" y="326" text-anchor="middle" font-size="13">Mean predicted class probability</text><text transform="translate(18 166) rotate(-90)" text-anchor="middle" font-size="13">Observed class fraction</text></svg></figure><figure><figcaption>majority_baseline / validation: PHASE4 reliability</figcaption><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" role="img" aria-label="majority_baseline / validation: PHASE4 reliability"><title>majority_baseline / validation: PHASE4 reliability</title><rect width="600" height="340" fill="white"/><path d="M72 54V278H552" fill="none" stroke="#536070"/><text x="72.00" y="296" text-anchor="middle" font-size="11">0</text><text x="65" y="282.00" text-anchor="end" font-size="11">0</text><text x="168.00" y="296" text-anchor="middle" font-size="11">0.2</text><text x="65" y="237.20" text-anchor="end" font-size="11">0.2</text><text x="264.00" y="296" text-anchor="middle" font-size="11">0.4</text><text x="65" y="192.40" text-anchor="end" font-size="11">0.4</text><text x="360.00" y="296" text-anchor="middle" font-size="11">0.6</text><text x="65" y="147.60" text-anchor="end" font-size="11">0.6</text><text x="456.00" y="296" text-anchor="middle" font-size="11">0.8</text><text x="65" y="102.80" text-anchor="end" font-size="11">0.8</text><text x="552.00" y="296" text-anchor="middle" font-size="11">1</text><text x="65" y="58.00" text-anchor="end" font-size="11">1</text><path d="M72 278L552 54" stroke="#a0a7b3" stroke-dasharray="5 4"/><circle cx="72.00" cy="254.42" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0, 0.10526</title></circle><text x="312" y="326" text-anchor="middle" font-size="13">Mean predicted class probability</text><text transform="translate(18 166) rotate(-90)" text-anchor="middle" font-size="13">Observed class fraction</text></svg></figure><figure><figcaption>phase_logistic / test: EARLY_PHASE1 reliability</figcaption><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" role="img" aria-label="phase_logistic / test: EARLY_PHASE1 reliability"><title>phase_logistic / test: EARLY_PHASE1 reliability</title><rect width="600" height="340" fill="white"/><path d="M72 54V278H552" fill="none" stroke="#536070"/><text x="72.00" y="296" text-anchor="middle" font-size="11">0</text><text x="65" y="282.00" text-anchor="end" font-size="11">0</text><text x="168.00" y="296" text-anchor="middle" font-size="11">0.2</text><text x="65" y="237.20" text-anchor="end" font-size="11">0.2</text><text x="264.00" y="296" text-anchor="middle" font-size="11">0.4</text><text x="65" y="192.40" text-anchor="end" font-size="11">0.4</text><text x="360.00" y="296" text-anchor="middle" font-size="11">0.6</text><text x="65" y="147.60" text-anchor="end" font-size="11">0.6</text><text x="456.00" y="296" text-anchor="middle" font-size="11">0.8</text><text x="65" y="102.80" text-anchor="end" font-size="11">0.8</text><text x="552.00" y="296" text-anchor="middle" font-size="11">1</text><text x="65" y="58.00" text-anchor="end" font-size="11">1</text><path d="M72 278L552 54" stroke="#a0a7b3" stroke-dasharray="5 4"/><circle cx="72.00" cy="278.00" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0, 0</title></circle><text x="312" y="326" text-anchor="middle" font-size="13">Mean predicted class probability</text><text transform="translate(18 166) rotate(-90)" text-anchor="middle" font-size="13">Observed class fraction</text></svg></figure><figure><figcaption>phase_logistic / test: PHASE1 reliability</figcaption><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" role="img" aria-label="phase_logistic / test: PHASE1 reliability"><title>phase_logistic / test: PHASE1 reliability</title><rect width="600" height="340" fill="white"/><path d="M72 54V278H552" fill="none" stroke="#536070"/><text x="72.00" y="296" text-anchor="middle" font-size="11">0</text><text x="65" y="282.00" text-anchor="end" font-size="11">0</text><text x="168.00" y="296" text-anchor="middle" font-size="11">0.2</text><text x="65" y="237.20" text-anchor="end" font-size="11">0.2</text><text x="264.00" y="296" text-anchor="middle" font-size="11">0.4</text><text x="65" y="192.40" text-anchor="end" font-size="11">0.4</text><text x="360.00" y="296" text-anchor="middle" font-size="11">0.6</text><text x="65" y="147.60" text-anchor="end" font-size="11">0.6</text><text x="456.00" y="296" text-anchor="middle" font-size="11">0.8</text><text x="65" y="102.80" text-anchor="end" font-size="11">0.8</text><text x="552.00" y="296" text-anchor="middle" font-size="11">1</text><text x="65" y="58.00" text-anchor="end" font-size="11">1</text><path d="M72 278L552 54" stroke="#a0a7b3" stroke-dasharray="5 4"/><circle cx="97.38" cy="278.00" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.052866, 0</title></circle><circle cx="149.54" cy="259.33" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.16155, 0.083333</title></circle><circle cx="190.82" cy="216.91" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.24754, 0.27273</title></circle><circle cx="239.25" cy="240.67" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.34843, 0.16667</title></circle><circle cx="295.34" cy="278.00" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.46529, 0</title></circle><circle cx="340.37" cy="166.00" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.55911, 0.5</title></circle><circle cx="388.06" cy="54.00" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.65847, 1</title></circle><circle cx="433.16" cy="54.00" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.75243, 1</title></circle><circle cx="476.95" cy="54.00" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.84365, 1</title></circle><circle cx="504.92" cy="54.00" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.90191, 1</title></circle><text x="312" y="326" text-anchor="middle" font-size="13">Mean predicted class probability</text><text transform="translate(18 166) rotate(-90)" text-anchor="middle" font-size="13">Observed class fraction</text></svg></figure><figure><figcaption>phase_logistic / test: PHASE2 reliability</figcaption><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" role="img" aria-label="phase_logistic / test: PHASE2 reliability"><title>phase_logistic / test: PHASE2 reliability</title><rect width="600" height="340" fill="white"/><path d="M72 54V278H552" fill="none" stroke="#536070"/><text x="72.00" y="296" text-anchor="middle" font-size="11">0</text><text x="65" y="282.00" text-anchor="end" font-size="11">0</text><text x="168.00" y="296" text-anchor="middle" font-size="11">0.2</text><text x="65" y="237.20" text-anchor="end" font-size="11">0.2</text><text x="264.00" y="296" text-anchor="middle" font-size="11">0.4</text><text x="65" y="192.40" text-anchor="end" font-size="11">0.4</text><text x="360.00" y="296" text-anchor="middle" font-size="11">0.6</text><text x="65" y="147.60" text-anchor="end" font-size="11">0.6</text><text x="456.00" y="296" text-anchor="middle" font-size="11">0.8</text><text x="65" y="102.80" text-anchor="end" font-size="11">0.8</text><text x="552.00" y="296" text-anchor="middle" font-size="11">1</text><text x="65" y="58.00" text-anchor="end" font-size="11">1</text><path d="M72 278L552 54" stroke="#a0a7b3" stroke-dasharray="5 4"/><circle cx="85.67" cy="222.00" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.02847, 0.25</title></circle><circle cx="141.79" cy="266.80" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.1454, 0.05</title></circle><circle cx="192.05" cy="209.08" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.25011, 0.30769</title></circle><circle cx="242.82" cy="147.33" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.35588, 0.58333</title></circle><circle cx="276.20" cy="182.00" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.42542, 0.42857</title></circle><circle cx="333.94" cy="278.00" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.5457, 0</title></circle><circle cx="404.31" cy="278.00" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.69232, 0</title></circle><circle cx="442.52" cy="54.00" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.77191, 1</title></circle><text x="312" y="326" text-anchor="middle" font-size="13">Mean predicted class probability</text><text transform="translate(18 166) rotate(-90)" text-anchor="middle" font-size="13">Observed class fraction</text></svg></figure><figure><figcaption>phase_logistic / test: PHASE3 reliability</figcaption><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" role="img" aria-label="phase_logistic / test: PHASE3 reliability"><title>phase_logistic / test: PHASE3 reliability</title><rect width="600" height="340" fill="white"/><path d="M72 54V278H552" fill="none" stroke="#536070"/><text x="72.00" y="296" text-anchor="middle" font-size="11">0</text><text x="65" y="282.00" text-anchor="end" font-size="11">0</text><text x="168.00" y="296" text-anchor="middle" font-size="11">0.2</text><text x="65" y="237.20" text-anchor="end" font-size="11">0.2</text><text x="264.00" y="296" text-anchor="middle" font-size="11">0.4</text><text x="65" y="192.40" text-anchor="end" font-size="11">0.4</text><text x="360.00" y="296" text-anchor="middle" font-size="11">0.6</text><text x="65" y="147.60" text-anchor="end" font-size="11">0.6</text><text x="456.00" y="296" text-anchor="middle" font-size="11">0.8</text><text x="65" y="102.80" text-anchor="end" font-size="11">0.8</text><text x="552.00" y="296" text-anchor="middle" font-size="11">1</text><text x="65" y="58.00" text-anchor="end" font-size="11">1</text><path d="M72 278L552 54" stroke="#a0a7b3" stroke-dasharray="5 4"/><circle cx="97.67" cy="267.82" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.053476, 0.045455</title></circle><circle cx="143.22" cy="247.45" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.14837, 0.13636</title></circle><circle cx="184.20" cy="253.11" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.23376, 0.11111</title></circle><circle cx="234.58" cy="166.00" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.33871, 0.5</title></circle><circle cx="289.64" cy="128.67" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.45342, 0.66667</title></circle><circle cx="323.93" cy="278.00" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.52485, 0</title></circle><text x="312" y="326" text-anchor="middle" font-size="13">Mean predicted class probability</text><text transform="translate(18 166) rotate(-90)" text-anchor="middle" font-size="13">Observed class fraction</text></svg></figure><figure><figcaption>phase_logistic / test: PHASE4 reliability</figcaption><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" role="img" aria-label="phase_logistic / test: PHASE4 reliability"><title>phase_logistic / test: PHASE4 reliability</title><rect width="600" height="340" fill="white"/><path d="M72 54V278H552" fill="none" stroke="#536070"/><text x="72.00" y="296" text-anchor="middle" font-size="11">0</text><text x="65" y="282.00" text-anchor="end" font-size="11">0</text><text x="168.00" y="296" text-anchor="middle" font-size="11">0.2</text><text x="65" y="237.20" text-anchor="end" font-size="11">0.2</text><text x="264.00" y="296" text-anchor="middle" font-size="11">0.4</text><text x="65" y="192.40" text-anchor="end" font-size="11">0.4</text><text x="360.00" y="296" text-anchor="middle" font-size="11">0.6</text><text x="65" y="147.60" text-anchor="end" font-size="11">0.6</text><text x="456.00" y="296" text-anchor="middle" font-size="11">0.8</text><text x="65" y="102.80" text-anchor="end" font-size="11">0.8</text><text x="552.00" y="296" text-anchor="middle" font-size="11">1</text><text x="65" y="58.00" text-anchor="end" font-size="11">1</text><path d="M72 278L552 54" stroke="#a0a7b3" stroke-dasharray="5 4"/><circle cx="91.54" cy="269.38" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.040716, 0.038462</title></circle><circle cx="140.76" cy="203.33" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.14325, 0.33333</title></circle><circle cx="187.20" cy="237.27" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.24001, 0.18182</title></circle><circle cx="236.66" cy="166.00" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.34305, 0.5</title></circle><circle cx="291.76" cy="214.00" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.45783, 0.28571</title></circle><circle cx="375.25" cy="128.67" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.63177, 0.66667</title></circle><text x="312" y="326" text-anchor="middle" font-size="13">Mean predicted class probability</text><text transform="translate(18 166) rotate(-90)" text-anchor="middle" font-size="13">Observed class fraction</text></svg></figure><figure><figcaption>phase_logistic / validation: EARLY_PHASE1 reliability</figcaption><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" role="img" aria-label="phase_logistic / validation: EARLY_PHASE1 reliability"><title>phase_logistic / validation: EARLY_PHASE1 reliability</title><rect width="600" height="340" fill="white"/><path d="M72 54V278H552" fill="none" stroke="#536070"/><text x="72.00" y="296" text-anchor="middle" font-size="11">0</text><text x="65" y="282.00" text-anchor="end" font-size="11">0</text><text x="168.00" y="296" text-anchor="middle" font-size="11">0.2</text><text x="65" y="237.20" text-anchor="end" font-size="11">0.2</text><text x="264.00" y="296" text-anchor="middle" font-size="11">0.4</text><text x="65" y="192.40" text-anchor="end" font-size="11">0.4</text><text x="360.00" y="296" text-anchor="middle" font-size="11">0.6</text><text x="65" y="147.60" text-anchor="end" font-size="11">0.6</text><text x="456.00" y="296" text-anchor="middle" font-size="11">0.8</text><text x="65" y="102.80" text-anchor="end" font-size="11">0.8</text><text x="552.00" y="296" text-anchor="middle" font-size="11">1</text><text x="65" y="58.00" text-anchor="end" font-size="11">1</text><path d="M72 278L552 54" stroke="#a0a7b3" stroke-dasharray="5 4"/><circle cx="72.00" cy="278.00" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0, 0</title></circle><text x="312" y="326" text-anchor="middle" font-size="13">Mean predicted class probability</text><text transform="translate(18 166) rotate(-90)" text-anchor="middle" font-size="13">Observed class fraction</text></svg></figure><figure><figcaption>phase_logistic / validation: PHASE1 reliability</figcaption><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" role="img" aria-label="phase_logistic / validation: PHASE1 reliability"><title>phase_logistic / validation: PHASE1 reliability</title><rect width="600" height="340" fill="white"/><path d="M72 54V278H552" fill="none" stroke="#536070"/><text x="72.00" y="296" text-anchor="middle" font-size="11">0</text><text x="65" y="282.00" text-anchor="end" font-size="11">0</text><text x="168.00" y="296" text-anchor="middle" font-size="11">0.2</text><text x="65" y="237.20" text-anchor="end" font-size="11">0.2</text><text x="264.00" y="296" text-anchor="middle" font-size="11">0.4</text><text x="65" y="192.40" text-anchor="end" font-size="11">0.4</text><text x="360.00" y="296" text-anchor="middle" font-size="11">0.6</text><text x="65" y="147.60" text-anchor="end" font-size="11">0.6</text><text x="456.00" y="296" text-anchor="middle" font-size="11">0.8</text><text x="65" y="102.80" text-anchor="end" font-size="11">0.8</text><text x="552.00" y="296" text-anchor="middle" font-size="11">1</text><text x="65" y="58.00" text-anchor="end" font-size="11">1</text><path d="M72 278L552 54" stroke="#a0a7b3" stroke-dasharray="5 4"/><circle cx="93.93" cy="278.00" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.045692, 0</title></circle><circle cx="152.99" cy="259.33" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.16872, 0.083333</title></circle><circle cx="195.09" cy="237.27" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.25643, 0.18182</title></circle><circle cx="235.55" cy="233.20" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.34072, 0.2</title></circle><circle cx="278.41" cy="128.67" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.43002, 0.66667</title></circle><circle cx="334.91" cy="54.00" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.54774, 1</title></circle><circle cx="379.06" cy="128.67" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.6397, 0.66667</title></circle><circle cx="435.66" cy="54.00" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.75764, 1</title></circle><circle cx="490.03" cy="54.00" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.87089, 1</title></circle><circle cx="511.85" cy="54.00" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.91635, 1</title></circle><text x="312" y="326" text-anchor="middle" font-size="13">Mean predicted class probability</text><text transform="translate(18 166) rotate(-90)" text-anchor="middle" font-size="13">Observed class fraction</text></svg></figure><figure><figcaption>phase_logistic / validation: PHASE2 reliability</figcaption><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" role="img" aria-label="phase_logistic / validation: PHASE2 reliability"><title>phase_logistic / validation: PHASE2 reliability</title><rect width="600" height="340" fill="white"/><path d="M72 54V278H552" fill="none" stroke="#536070"/><text x="72.00" y="296" text-anchor="middle" font-size="11">0</text><text x="65" y="282.00" text-anchor="end" font-size="11">0</text><text x="168.00" y="296" text-anchor="middle" font-size="11">0.2</text><text x="65" y="237.20" text-anchor="end" font-size="11">0.2</text><text x="264.00" y="296" text-anchor="middle" font-size="11">0.4</text><text x="65" y="192.40" text-anchor="end" font-size="11">0.4</text><text x="360.00" y="296" text-anchor="middle" font-size="11">0.6</text><text x="65" y="147.60" text-anchor="end" font-size="11">0.6</text><text x="456.00" y="296" text-anchor="middle" font-size="11">0.8</text><text x="65" y="102.80" text-anchor="end" font-size="11">0.8</text><text x="552.00" y="296" text-anchor="middle" font-size="11">1</text><text x="65" y="58.00" text-anchor="end" font-size="11">1</text><path d="M72 278L552 54" stroke="#a0a7b3" stroke-dasharray="5 4"/><circle cx="102.55" cy="278.00" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.063655, 0</title></circle><circle cx="147.05" cy="278.00" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.15635, 0</title></circle><circle cx="191.29" cy="230.00" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.24851, 0.21429</title></circle><circle cx="234.01" cy="178.44" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.33752, 0.44444</title></circle><circle cx="280.69" cy="233.20" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.43476, 0.2</title></circle><circle cx="334.51" cy="278.00" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.54689, 0</title></circle><circle cx="368.05" cy="278.00" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.61676, 0</title></circle><circle cx="414.48" cy="278.00" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.7135, 0</title></circle><text x="312" y="326" text-anchor="middle" font-size="13">Mean predicted class probability</text><text transform="translate(18 166) rotate(-90)" text-anchor="middle" font-size="13">Observed class fraction</text></svg></figure><figure><figcaption>phase_logistic / validation: PHASE3 reliability</figcaption><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" role="img" aria-label="phase_logistic / validation: PHASE3 reliability"><title>phase_logistic / validation: PHASE3 reliability</title><rect width="600" height="340" fill="white"/><path d="M72 54V278H552" fill="none" stroke="#536070"/><text x="72.00" y="296" text-anchor="middle" font-size="11">0</text><text x="65" y="282.00" text-anchor="end" font-size="11">0</text><text x="168.00" y="296" text-anchor="middle" font-size="11">0.2</text><text x="65" y="237.20" text-anchor="end" font-size="11">0.2</text><text x="264.00" y="296" text-anchor="middle" font-size="11">0.4</text><text x="65" y="192.40" text-anchor="end" font-size="11">0.4</text><text x="360.00" y="296" text-anchor="middle" font-size="11">0.6</text><text x="65" y="147.60" text-anchor="end" font-size="11">0.6</text><text x="456.00" y="296" text-anchor="middle" font-size="11">0.8</text><text x="65" y="102.80" text-anchor="end" font-size="11">0.8</text><text x="552.00" y="296" text-anchor="middle" font-size="11">1</text><text x="65" y="58.00" text-anchor="end" font-size="11">1</text><path d="M72 278L552 54" stroke="#a0a7b3" stroke-dasharray="5 4"/><circle cx="92.60" cy="278.00" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.042926, 0</title></circle><circle cx="143.24" cy="236.00" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.14843, 0.1875</title></circle><circle cx="183.50" cy="188.40" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.23229, 0.4</title></circle><circle cx="230.05" cy="203.33" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.32927, 0.33333</title></circle><circle cx="284.81" cy="98.80" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.44335, 0.8</title></circle><circle cx="385.36" cy="54.00" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.65283, 1</title></circle><text x="312" y="326" text-anchor="middle" font-size="13">Mean predicted class probability</text><text transform="translate(18 166) rotate(-90)" text-anchor="middle" font-size="13">Observed class fraction</text></svg></figure><figure><figcaption>phase_logistic / validation: PHASE4 reliability</figcaption><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" role="img" aria-label="phase_logistic / validation: PHASE4 reliability"><title>phase_logistic / validation: PHASE4 reliability</title><rect width="600" height="340" fill="white"/><path d="M72 54V278H552" fill="none" stroke="#536070"/><text x="72.00" y="296" text-anchor="middle" font-size="11">0</text><text x="65" y="282.00" text-anchor="end" font-size="11">0</text><text x="168.00" y="296" text-anchor="middle" font-size="11">0.2</text><text x="65" y="237.20" text-anchor="end" font-size="11">0.2</text><text x="264.00" y="296" text-anchor="middle" font-size="11">0.4</text><text x="65" y="192.40" text-anchor="end" font-size="11">0.4</text><text x="360.00" y="296" text-anchor="middle" font-size="11">0.6</text><text x="65" y="147.60" text-anchor="end" font-size="11">0.6</text><text x="456.00" y="296" text-anchor="middle" font-size="11">0.8</text><text x="65" y="102.80" text-anchor="end" font-size="11">0.8</text><text x="552.00" y="296" text-anchor="middle" font-size="11">1</text><text x="65" y="58.00" text-anchor="end" font-size="11">1</text><path d="M72 278L552 54" stroke="#a0a7b3" stroke-dasharray="5 4"/><circle cx="90.78" cy="278.00" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.039115, 0</title></circle><circle cx="149.59" cy="240.67" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.16166, 0.16667</title></circle><circle cx="189.80" cy="253.11" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.24542, 0.11111</title></circle><circle cx="234.31" cy="214.00" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.33815, 0.28571</title></circle><circle cx="284.33" cy="278.00" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.44236, 0</title></circle><circle cx="319.50" cy="54.00" r="3.5" fill="#2563a4" fill-opacity="0.6"><title>0.51563, 1</title></circle><text x="312" y="326" text-anchor="middle" font-size="13">Mean predicted class probability</text><text transform="translate(18 166) rotate(-90)" text-anchor="middle" font-size="13">Observed class fraction</text></svg></figure></div><section><h2>Provenance and reproducibility</h2><p>SHA-256 hashes identify the exact analyzed input files. No model artifact was loaded.</p><pre>{
+  &quot;run&quot;: {
+    &quot;run_id&quot;: &quot;e49e7317-6752-4f04-a7ad-8ff002ac8d7f&quot;,
+    &quot;created_at&quot;: &quot;2026-10-09T00:07:31.498515+00:00&quot;,
+    &quot;artifact_version&quot;: 1,
+    &quot;input_sha256&quot;: &quot;d096795e303b5a103e0aba8bd79ffe7e85609827ea810d1c08e8e0811b5496d2&quot;,
+    &quot;pipeline_source_sha256&quot;: &quot;4556a01347c69f3919d8f4016475a449dedf5459af56fe9fdf1ec4cc9fbce5b5&quot;,
+    &quot;additional_model_source_sha256&quot;: null
+  },
+  &quot;provenance_scope&quot;: &quot;The analyzed model training/evaluation cohort, not the currently selected application dataset.&quot;,
+  &quot;provenance&quot;: {
+    &quot;dataset_name&quot;: &quot;ClinicalTrials.gov completed drug-trial starter cohort&quot;,
+    &quot;source&quot;: &quot;ClinicalTrials.gov API v2&quot;,
+    &quot;retrieved_at&quot;: &quot;2026-10-07T15:41:09.711500+00:00&quot;,
+    &quot;is_fixture&quot;: false,
+    &quot;snapshot_type&quot;: &quot;latest registry state&quot;,
+    &quot;baseline_provenance&quot;: false,
+    &quot;sampling_method&quot;: &quot;Convenience subset: first API-returned records in each fixed start-date stratum; default API order, no outcome-duration or model-performance selection.&quot;,
+    &quot;not_population_representative&quot;: true,
+    &quot;canonical_sha256&quot;: &quot;d096795e303b5a103e0aba8bd79ffe7e85609827ea810d1c08e8e0811b5496d2&quot;
+  },
+  &quot;cohort&quot;: {
+    &quot;input_rows&quot;: 800,
+    &quot;eligible_rows&quot;: 291,
+    &quot;excluded_rows&quot;: 509,
+    &quot;target&quot;: &quot;normalized single registry phase&quot;
+  },
+  &quot;selection&quot;: {
+    &quot;recommended_model&quot;: &quot;phase_logistic&quot;,
+    &quot;task_components&quot;: {}
+  },
+  &quot;hashes&quot;: {
+    &quot;phase_manifest.json&quot;: &quot;06fd5b8d57094811400fe5933943c3128aa2a3ee7ea915c93296e26ce810e8da&quot;,
+    &quot;phase_held_out_predictions.csv&quot;: &quot;3d61be728859c120c470c3f9d5131d0ff6f2c870a35cb3a85026e5f915f704b5&quot;,
+    &quot;phase_metrics.json&quot;: &quot;53384a0bb2efa3240433d61ba9d627579d596f8bd1369702c0e53bbdb72361b4&quot;
+  }
+}</pre></section><section><h2>Limitations</h2><ul><li>Retrospective descriptive research decision support; no clinical validation or guaranteed future accuracy.</li><li>Tuning data support model selection; calibration data fit transforms/intervals; only test data provide the untouched held-out estimate. Test inspection can influence subsequent experiments.</li><li>Metrics are recomputed from every stored prediction. Saved aggregate metrics are parsed and hashed but are not treated as evidence of accuracy.</li><li>Current registry snapshots may contain post-start updates and leakage. Completed-only and convenience samples can create selection bias; chronological splits do not establish prospective validity.</li><li>No regression accuracy percentage is defined. Duration errors use days. Binary decisions use probability &gt;= 0.5; confusion matrices have actual rows and predicted columns.</li><li>Undefined values are null, displayed as unavailable. One-class splits do not identify class discrimination. Small held-out samples and imbalance can make estimates unstable; no uncertainty interval is invented.</li><li>Reliability uses ten equal-width bins. Raw and post-hoc calibrated probabilities are analyzed separately; calibration-cohort diagnostics can be optimistic.</li><li>Duration-by-phase subgroup metrics cannot be recomputed because saved duration prediction rows do not contain verified phase labels; stored subgroup aggregates are not substituted.</li><li>Charts show all stored points (overlapping points can obscure sample counts); metrics and bin counts include every row.</li><li>This task predicts recorded phase from protocol characteristics; it does not predict progression or trial success.</li><li>Combined, NA and unknown phases are excluded. Class support can be small or absent, and classes absent from training have zero predicted probability.</li><li>All held-out records count, including labels absent from training. Confusion matrices use the five canonical labels (rows actual, columns predicted); macro-F1 averages the union of actual/predicted labels; balanced accuracy averages recall for actual supported classes.</li><li>Validation scores are optimistic after hyperparameter selection; untouched test scores are the held-out estimate. No performance improvement is guaranteed.</li><li>Redaction removes explicit phase mentions but cannot eliminate indirect phase cues or post-start updates in current registry snapshots.</li><li>Temporal ordering does not establish that current registry labels or protocol features existed at trial start; baseline provenance must be established separately.</li><li>Educational registry-phase consistency check only; not clinical advice or regulatory phase assignment. Class probabilities are uncalibrated model outputs, not clinical success probabilities. Minimum sample guards do not establish scientific validity. RETROSPECTIVE SNAPSHOT: baseline feature and label availability is unverified; registry updates and indirect narrative cues may cause leakage. Do not claim prospective validation.</li></ul></section></main></body></html>

@@ -1,6 +1,6 @@
-# Start here — Clinical Trial Intelligence v5.2.0.3 Docker edition
+# Start here — Clinical Trial Intelligence v5.2.0.4 Docker edition
 
-**You have Docker: use this startup path.** The application version, features, datasets and approved models stay v5.2.0.3.
+**You have Docker: use this startup path.** The application version, features, datasets and approved models stay v5.2.0.4.
 
 1. Open **Docker Desktop**. Wait for **Engine running**. Use its Linux-container engine and complete any requested WSL2/restart setup.
 2. Confirm Python 3.12 is installed with its launcher: `py -3.12 --version`. Install it from [python.org](https://www.python.org/downloads/windows/) if needed.
@@ -32,4 +32,8 @@ If port 5432 is occupied, set `POSTGRES_PORT=5434` in your private `.env` and re
 
 Assistant replies need your provider key and an account-supported API model ID in the private `.env`. After changing those settings, run `docker compose up -d --force-recreate workbench` from the project folder. Provider keys stay on the server.
 
-[Full operating guide](docs/v5.2.0.3-full-guide.md) · [Illustrated PDF guide](docs/Clinical-Trial-Intelligence-v5.2.0.3-Full-Guide.pdf)
+[Full operating guide](docs/v5.2.0.4-full-guide.md) · [Illustrated PDF guide](docs/Clinical-Trial-Intelligence-v5.2.0.4-Full-Guide.pdf)
+
+## Generate the model accuracy report
+
+With Docker Desktop and the workbench running, double-click `GENERATE_MODEL_REPORT_DOCKER_WINDOWS.bat`. It uses the container dependencies, saves HTML/JSON/CSV under `reports/` on your computer, and opens the HTML report. You can print the HTML report to PDF. In the app, Models → Download analysis uses the approved model; completed Experiments → Analysis report uses that experiment. These reports describe saved evaluation cohorts, not the currently selected upload.

@@ -76,11 +76,33 @@ def _branch(manifest, task):
     models = manifest.get('models', {})
     if task == 'phase':
         return manifest.get('recommended_model')
-    # Deterministic validation-only duration objective. Test metrics never select.
+    if manifest.get('config', {}).get('enable_accuracy_models') and 'accuracy_task_selected' in models:
+        return 'accuracy_task_selected'
+    # Legacy deterministic validation-only duration objective. Test metrics never select.
     candidates = [(name, value.get('metrics', {}).get('validation', {}).get('regression', {}).get('mae'))
                   for name, value in models.items()]
     candidates = [(name, score) for name, score in candidates if _finite(score)]
     return min(candidates, key=lambda pair: pair[1])[0] if candidates else None
+
+
+def _input_mode(manifest, branch, seen=None):
+    """Resolve the actual consumed modalities of independently selected tasks."""
+    seen=set() if seen is None else set(seen)
+    if branch in seen:
+        raise HTTPException(409, 'Saved composite model metadata contains a cycle.')
+    seen.add(branch)
+    meta=manifest.get('models', {}).get(branch)
+    if not isinstance(meta, dict):
+        raise HTTPException(409, 'Saved composite component metadata is missing.')
+    mode=meta.get('input_mode', 'multimodal')
+    if mode!='composite':
+        if mode not in {'baseline','text','structured','multimodal'}:
+            raise HTTPException(409, 'Saved model input mode is unsupported.')
+        return mode
+    selection=meta.get('selection', {})
+    modes={_input_mode(manifest, selection.get(key), seen) for key in ('regressor_component','classifier_component')}
+    if 'multimodal' in modes or {'text','structured'} <= modes:return 'multimodal'
+    return 'text' if 'text' in modes else 'structured' if 'structured' in modes else 'baseline'
 
 
 def _gates(manifest, task, branch):
@@ -198,8 +220,8 @@ class ApprovedModelRegistry:
             'artifact_sha256':artifact_sha, 'manifest_sha256':manifest_sha,
             'training_dataset':_training_source(manifest),
             'validation_metrics':metrics.get('validation', {}), 'test_metrics':metrics.get('test', {}),
-            'selection':{'objective':'phase classification' if task == 'phase' else 'duration MAE', 'data':'validation only',
-                         'rule':'Recorded validation-selected phase classifier' if task == 'phase' else 'Minimum finite validation duration MAE; stable first candidate wins ties'},
+            'selection':{'objective':'phase classification' if task == 'phase' else 'independent duration RMSE / risk Brier' if branch=='accuracy_task_selected' else 'duration MAE', 'data':'validation only',
+                         'rule':'Recorded validation-selected phase classifier' if task == 'phase' else 'Independent minimum tuning RMSE and raw risk Brier; ties use model name' if branch=='accuracy_task_selected' else 'Minimum finite validation duration MAE; stable first candidate wins ties'},
             'features':features, 'approval_scope':'research_only', 'approval':approval,
             'gates':{'passed':not gates,'errors':gates}, 'warnings':warnings,
         }
@@ -270,7 +292,7 @@ class ApprovedModelRegistry:
             raise HTTPException(422, 'Provide between 1 and 1000 rows for saved inference.')
         manifest = selected['manifest']
         branch_meta = manifest.get('models', {}).get(selected['branch'], {})
-        input_mode = branch_meta.get('input_mode', 'multimodal')
+        input_mode = _input_mode(manifest, selected['branch'])
         numeric = manifest.get('features', {}).get('numeric', [])
         text_fields = manifest.get('features', {}).get('text', [])
         # Missing individual values are imputed by the saved training pipeline;

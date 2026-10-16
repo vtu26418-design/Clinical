@@ -34,3 +34,14 @@ def test_initialize_preserves_existing_remote_url_and_credentials(tmp_path):
     assert values['DATABASE_URL'] == 'postgresql+psycopg://operator@example.invalid/research?sslmode=require'
     assert values['OPENAI_API_KEY'] == 'operator-test-value'
     assert values['POSTGRES_PASSWORD'] == 'operator-password-is-also-long-enough'
+
+
+def test_compose_failure_returns_friendly_status_without_traceback(monkeypatch,capsys):
+    import subprocess,sys
+    module=initializer()
+    monkeypatch.setattr(sys,'argv',['initialize_env.py','--start'])
+    monkeypatch.setattr(module,'prepare_env',lambda:None)
+    def failed(*args,**kwargs):raise subprocess.CalledProcessError(1,['docker','compose'])
+    monkeypatch.setattr(module.subprocess,'run',failed)
+    assert module.main()==1
+    assert 'Docker Compose failed' in capsys.readouterr().out

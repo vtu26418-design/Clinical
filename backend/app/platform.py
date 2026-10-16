@@ -165,7 +165,7 @@ def create_app(config: Settings | None = None):
                     subapp.state.registry.engine.dispose()
             store.engine.dispose()
 
-    app = FastAPI(title='Clinical Trial Intelligence v5.2',version='5.2.0.3',lifespan=lifespan)
+    app = FastAPI(title='Clinical Trial Intelligence v5.2',version='5.2.0.4',lifespan=lifespan)
     app.state.settings = config
     app.state.platform_store = store
     origins = {v.strip().rstrip('/') for v in config.cors_origins.split(',') if v.strip()}
@@ -224,7 +224,7 @@ def create_app(config: Settings | None = None):
                 subapp = create_research_app(local_config, training_slot=training_slot)
                 registry = subapp.state.registry
                 if hasattr(app.state,'model_registry'):
-                    registry.approved_model_resolver = lambda task='duration', model_name='recommended': app.state.model_registry.resolve(identifier, registry, task=task, model_id='active')
+                    registry.approved_model_resolver = lambda task='duration', model_name='recommended', model_id='active': app.state.model_registry.resolve(identifier, registry, task=task, model_id=model_id)
                 for record in registry.list_experiments():
                     if record['status'] in {'running','queued'}:
                         record.update(status='failed',completed_at=now(),error='Server restarted before training completed. Start a new experiment to retry.')
@@ -362,7 +362,7 @@ def create_app(config: Settings | None = None):
     @app.get('/api/v1/health')
     def health():
         status = assistant_service.assistant_status(config)
-        return {'status':'ok','version':'5.2.0.3','database':store.kind,'auth_required':config.auth_mode=='session',
+        return {'status':'ok','version':'5.2.0.4','database':store.kind,'auth_required':config.auth_mode=='session',
                 'assistant':status,'assistant_enabled':status['enabled'],'default_dataset_id':SAMPLE_ID,'sample_data':True}
 
     @app.get('/api/v5/bootstrap')

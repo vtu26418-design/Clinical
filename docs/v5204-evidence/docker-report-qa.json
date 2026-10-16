@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "native_docker_files_identical": {
+    "model_analysis.html": true,
+    "model_analysis.json": true,
+    "model_comparison.csv": true
+  }
+}

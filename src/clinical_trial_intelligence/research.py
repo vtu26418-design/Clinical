@@ -52,6 +52,10 @@ MODEL_METADATA = {
     "structured_hist_gradient_boosting": {"family": "hist_gradient_boosting", "input_mode": "structured", "display_name": "Structured Histogram Boosting"},
     "structured_catboost": {"family": "catboost", "input_mode": "structured", "display_name": "Structured CatBoost"},
     "multimodal_late_fusion": {"family": "weighted_late_fusion", "input_mode": "multimodal", "display_name": "Text + Histogram Boosting Fusion"},
+    "accuracy_mean": {"family": "constant_baseline", "input_mode": "baseline", "display_name": "Mean / prevalence baseline"},
+    "accuracy_phase_shrinkage": {"family": "phase_shrinkage", "input_mode": "structured", "display_name": "Phase-shrunk training statistics"},
+    "accuracy_log_structured": {"family": "log_ridge_logistic", "input_mode": "structured", "display_name": "Log-transformed structured linear"},
+    "accuracy_task_selected": {"family": "task_selection", "input_mode": "composite", "display_name": "Tuning-selected duration and risk branches"},
 }
 
 
@@ -67,6 +71,7 @@ class ExperimentConfig:
     enable_catboost: bool = False
     uncertainty_alpha: float = 0.1
     catboost_search: Literal['basic', 'expanded'] = 'basic'
+    enable_accuracy_models: bool = False
 
     def validate(self):
         if not (0 < self.train_fraction < 1 and 0 < self.validation_fraction < 1 and self.train_fraction + self.validation_fraction < 1):
@@ -81,6 +86,8 @@ class ExperimentConfig:
             raise ValueError("enable_advanced_models must be a boolean.")
         if not isinstance(self.enable_catboost, bool):
             raise ValueError("enable_catboost must be a boolean.")
+        if not isinstance(self.enable_accuracy_models, bool):
+            raise ValueError("enable_accuracy_models must be a boolean.")
         if self.catboost_search not in ('basic', 'expanded'):
             raise ValueError("catboost_search must be 'basic' or 'expanded'.")
         if isinstance(self.uncertainty_alpha, bool) or not np.isfinite(self.uncertainty_alpha) or not 0 < self.uncertainty_alpha < 1:
@@ -658,6 +665,13 @@ def train_experiment(df: pd.DataFrame, output_dir: str | Path, source_metadata: 
                 X["validation"], duration["validation"], labels["validation"], config)
             models.update(catboost_models)
             selection.update(catboost_selection)
+        if config.enable_accuracy_models:
+            from .models.accuracy import fit_accuracy_models
+            accuracy_models, accuracy_selection = fit_accuracy_models(
+                X["train"], duration["train"], labels["train"], X["validation"], duration["validation"],
+                labels["validation"], config, models, NUMERIC_FEATURES, CATEGORICAL_FEATURES)
+            models.update(accuracy_models)
+            selection.update(accuracy_selection)
         # Select before any test predictions/metrics exist. Ties use model name.
         validation_brier = {name: float(brier_score_loss(labels["validation"], _positive_probability(model["classifier"], X["validation"])))
                             for name, model in models.items()}
@@ -738,6 +752,7 @@ def train_experiment(df: pd.DataFrame, output_dir: str | Path, source_metadata: 
             "created_at": datetime.now(timezone.utc).isoformat(), "source_metadata": metadata,
             "dataset_id": metadata.get("dataset_id"), "input_sha256": input_digest,
             "config": asdict(config), "pipeline_source_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+            "additional_model_source_sha256": ({"models/accuracy.py": hashlib.sha256((Path(__file__).parent / "models/accuracy.py").read_bytes()).hexdigest()} if config.enable_accuracy_models else {}),
             "environment": {"python": platform.python_version(), "pandas": pd.__version__, "numpy": np.__version__, "scikit_learn": sklearn.__version__, "joblib": joblib.__version__},
             "cohort": {"input_rows": len(df), "eligible_rows": len(cohort), "excluded_rows": len(exclusions), "temporally_purged_rows": len(splits["purged"]), "outcomes": "completed actual completion minus start date in days"},
             "splits": {name: {"rows": len(splits[name]), "role": "tuning" if name == "validation" else name,
@@ -794,6 +809,16 @@ def _linear_explanation(model, X: pd.DataFrame, units: str) -> dict:
 
 
 def _model_explanation(model, X: pd.DataFrame, units: str) -> dict:
+    from sklearn.compose import TransformedTargetRegressor
+    from .models.accuracy import PhaseShrinkage, SelectedTaskModel
+    if isinstance(model, SelectedTaskModel):
+        component = _model_explanation(model.estimator, X, units)
+        return {**component, "selected_component": model.component,
+                "selection_note": "This task uses an independently tuning-selected fitted branch; component attribution limitations still apply."}
+    if isinstance(model, (PhaseShrinkage, TransformedTargetRegressor)):
+        return {"method": "local attribution unavailable", "status": "unavailable", "scope": "model",
+                "units": "probability" if isinstance(model, PhaseShrinkage) and model.task == 'classifier' else "days", "features": [],
+                "note": "No additive feature attribution in output units is implemented for this phase-shrunk or inverse-log transformed predictor. No SHAP or causal evidence is claimed."}
     if isinstance(model, Pipeline) and type(model.named_steps["model"]).__module__ in {"catboost.core", "src.clinical_trial_intelligence.models.catboost_compat"}:
         from catboost import Pool
         transformer, fitted = model.named_steps["preprocess"], model.named_steps["model"]

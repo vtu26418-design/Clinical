@@ -1,0 +1,59 @@
+{
+  "passed": true,
+  "run_id": "165d00654cbf41e2bcb808b7e2d7e2af",
+  "models": 13,
+  "config_forwarded": true,
+  "no_auto_activation": true,
+  "candidate_analysis": true,
+  "owner_approval_activation": true,
+  "composite_inference": true,
+  "real_architecture": {
+    "status": "available",
+    "model_name": "accuracy_task_selected",
+    "input_mode": "composite",
+    "family": "task_selection",
+    "method": "Independent tuning-selected duration and risk branches",
+    "branches": [
+      {
+        "id": "structured",
+        "label": "Structured protocol metadata",
+        "encoder": "Training median imputation, log1p numeric transform, scaling and categorical encoding",
+        "fields": [
+          "enrollment",
+          "number_of_arms",
+          "primary_outcomes",
+          "secondary_outcomes",
+          "criteria_count",
+          "study_type",
+          "phase"
+        ]
+      },
+      {
+        "id": "text",
+        "label": "Protocol narrative",
+        "encoder": "Training-fitted TF-IDF",
+        "fields": [
+          "title",
+          "brief_summary",
+          "detailed_description",
+          "eligibility_criteria"
+        ]
+      }
+    ],
+    "components": [],
+    "task_components": [
+      {
+        "task": "duration",
+        "model_name": "accuracy_log_structured",
+        "input_mode": "structured"
+      },
+      {
+        "task": "risk",
+        "model_name": "text",
+        "input_mode": "text"
+      }
+    ],
+    "reason": null
+  },
+  "original_default_restored": true
+}

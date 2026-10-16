@@ -1,0 +1,701 @@
+{
+  "same_splits_targets_inputs": true,
+  "old_branch_predictions_identical": true,
+  "cohort": {
+    "input_rows": 800,
+    "eligible_rows": 312,
+    "excluded_rows": 488,
+    "temporally_purged_rows": 123,
+    "outcomes": "completed actual completion minus start date in days"
+  },
+  "splits": {
+    "train": {
+      "rows": 105,
+      "role": "train",
+      "start_date_min": "2000-07-14T00:00:00",
+      "start_date_max": "2019-05-25T00:00:00",
+      "positive_count": 26,
+      "nct_ids": [
+        "NCT00006107",
+        "NCT00501020",
+        "NCT00480805",
+        "NCT00043823",
+        "NCT00092937",
+        "NCT00096551",
+        "NCT00398541",
+        "NCT00128102",
+        "NCT00679770",
+        "NCT00436956",
+        "NCT00589420",
+        "NCT00500760",
+        "NCT00541970",
+        "NCT00874874",
+        "NCT00678561",
+        "NCT00765973",
+        "NCT00857883",
+        "NCT00871351",
+        "NCT00976066",
+        "NCT00910624",
+        "NCT01004003",
+        "NCT01220856",
+        "NCT01176461",
+        "NCT01284920",
+        "NCT01351623",
+        "NCT01675297",
+        "NCT01640080",
+        "NCT01682759",
+        "NCT01709305",
+        "NCT01677780",
+        "NCT01755156",
+        "NCT01805453",
+        "NCT01850641",
+        "NCT02058576",
+        "NCT02007629",
+        "NCT02115373",
+        "NCT02224729",
+        "NCT02245256",
+        "NCT02152761",
+        "NCT02100423",
+        "NCT03340870",
+        "NCT02262026",
+        "NCT03462173",
+        "NCT02151682",
+        "NCT02517866",
+        "NCT02654054",
+        "NCT06082596",
+        "NCT04141241",
+        "NCT02603705",
+        "NCT02573012",
+        "NCT02735122",
+        "NCT03743896",
+        "NCT02800642",
+        "NCT02801071",
+        "NCT02671383",
+        "NCT02833545",
+        "NCT02896127",
+        "NCT02959983",
+        "NCT02967159",
+        "NCT02679573",
+        "NCT02982161",
+        "NCT02980042",
+        "NCT03005288",
+        "NCT03050151",
+        "NCT03036605",
+        "NCT04380324",
+        "NCT03127956",
+        "NCT03067727",
+        "NCT03096457",
+        "NCT03523988",
+        "NCT03139279",
+        "NCT03151720",
+        "NCT04089605",
+        "NCT03150082",
+        "NCT03257930",
+        "NCT03272425",
+        "NCT03418727",
+        "NCT03345979",
+        "NCT07223073",
+        "NCT03413020",
+        "NCT03372629",
+        "NCT03833570",
+        "NCT03406702",
+        "NCT03563846",
+        "NCT03070483",
+        "NCT03531229",
+        "NCT03531697",
+        "NCT03051256",
+        "NCT03798899",
+        "NCT03589066",
+        "NCT03551288",
+        "NCT03378323",
+        "NCT03496571",
+        "NCT03583346",
+        "NCT03466073",
+        "NCT03740659",
+        "NCT03664882",
+        "NCT03733561",
+        "NCT03729973",
+        "NCT03990480",
+        "NCT03817346",
+        "NCT05469113",
+        "NCT03910088",
+        "NCT03934203",
+        "NCT03977805"
+      ]
+    },
+    "validation": {
+      "rows": 9,
+      "role": "tuning",
+      "start_date_min": "2019-12-04T00:00:00",
+      "start_date_max": "2020-07-03T00:00:00",
+      "positive_count": 0,
+      "nct_ids": [
+        "NCT04091646",
+        "NCT05132270",
+        "NCT04235270",
+        "NCT05712642",
+        "NCT04282746",
+        "NCT04370262",
+        "NCT04542694",
+        "NCT04400682",
+        "NCT05821543"
+      ]
+    },
+    "calibration": {
+      "rows": 11,
+      "role": "calibration",
+      "start_date_min": "2020-07-12T00:00:00",
+      "start_date_max": "2021-06-24T00:00:00",
+      "positive_count": 0,
+      "nct_ids": [
+        "NCT04733001",
+        "NCT05244759",
+        "NCT04482270",
+        "NCT04745273",
+        "NCT04669262",
+        "NCT04686669",
+        "NCT04667156",
+        "NCT04680273",
+        "NCT05851027",
+        "NCT04712396",
+        "NCT04969497"
+      ]
+    },
+    "test": {
+      "rows": 64,
+      "role": "test",
+      "start_date_min": "2021-09-14T00:00:00",
+      "start_date_max": "2023-12-23T00:00:00",
+      "positive_count": 6,
+      "nct_ids": [
+        "NCT04892342",
+        "NCT04814381",
+        "NCT04922554",
+        "NCT04727970",
+        "NCT07343323",
+        "NCT05123196",
+        "NCT05184062",
+        "NCT04795427",
+        "NCT06232005",
+        "NCT06874140",
+        "NCT04924166",
+        "NCT05206370",
+        "NCT05059327",
+        "NCT05169671",
+        "NCT05299476",
+        "NCT05412446",
+        "NCT05878899",
+        "NCT05389696",
+        "NCT05362110",
+        "NCT05939622",
+        "NCT05335005",
+        "NCT05280496",
+        "NCT05387941",
+        "NCT05404724",
+        "NCT05327296",
+        "NCT06564961",
+        "NCT05448469",
+        "NCT05465460",
+        "NCT05491759",
+        "NCT05516953",
+        "NCT05515796",
+        "NCT05543369",
+        "NCT05546762",
+        "NCT05889351",
+        "NCT05594602",
+        "NCT05523141",
+        "NCT05559554",
+        "NCT07212946",
+        "NCT06494007",
+        "NCT05642923",
+        "NCT07077954",
+        "NCT05680870",
+        "NCT06486623",
+        "NCT07014631",
+        "NCT05905120",
+        "NCT05830799",
+        "NCT05883124",
+        "NCT05812417",
+        "NCT05834023",
+        "NCT05660954",
+        "NCT05901961",
+        "NCT05891262",
+        "NCT05864846",
+        "NCT05506488",
+        "NCT05968482",
+        "NCT05595369",
+        "NCT05891483",
+        "NCT05970354",
+        "NCT06086886",
+        "NCT06181370",
+        "NCT06148272",
+        "NCT06173466",
+        "NCT06218290",
+        "NCT05954962"
+      ]
+    }
+  },
+  "target": {
+    "duration_unit": "days",
+    "prolonged_quantile": 0.75,
+    "prolonged_threshold_days": 1101.0,
+    "positive_rule": "duration_days > training quantile; ties are non-prolonged"
+  },
+  "old_risk_recommendation": {
+    "model_name": "text",
+    "metric": "brier",
+    "split": "validation",
+    "value": 0.019658155296946308,
+    "split_role": "tuning",
+    "probability_semantics": "raw",
+    "reason": "Lowest raw tuning validation Brier score among enabled fitted models; exact ties use model name. Calibration/test data are not used. This risk recommendation does not establish the best duration regressor or prospective clinical validity."
+  },
+  "old_duration_recommendation": {
+    "model_name": "median_baseline",
+    "metric": "rmse",
+    "split": "validation",
+    "split_role": "tuning",
+    "value": 288.7676882509153,
+    "reason": "Lowest tuning validation RMSE; ties use model name. Duration and prolonged-risk recommendations are independent; no calibration or test selection."
+  },
+  "new_risk_recommendation": {
+    "model_name": "accuracy_task_selected",
+    "metric": "brier",
+    "split": "validation",
+    "value": 0.019658155296946308,
+    "split_role": "tuning",
+    "probability_semantics": "raw",
+    "reason": "Lowest raw tuning validation Brier score among enabled fitted models; exact ties use model name. Calibration/test data are not used. This risk recommendation does not establish the best duration regressor or prospective clinical validity."
+  },
+  "new_duration_recommendation": {
+    "model_name": "accuracy_log_structured",
+    "metric": "rmse",
+    "split": "validation",
+    "split_role": "tuning",
+    "value": 256.82937593457524,
+    "reason": "Lowest tuning validation RMSE; ties use model name. Duration and prolonged-risk recommendations are independent; no calibration or test selection."
+  },
+  "new_task_components": {
+    "selection_split": "validation",
+    "selection_rows": 9,
+    "training_rows": 105,
+    "refit_on_validation": false,
+    "test_used_for_selection": false,
+    "native_task": "CPU",
+    "regressor_component": "accuracy_log_structured",
+    "classifier_component": "text",
+    "candidate_components": [
+      "accuracy_log_structured",
+      "accuracy_mean",
+      "accuracy_phase_shrinkage",
+      "median_baseline",
+      "multimodal",
+      "multimodal_late_fusion",
+      "structured",
+      "structured_catboost",
+      "structured_extra_trees",
+      "structured_gradient_boosting",
+      "structured_hist_gradient_boosting",
+      "structured_random_forest",
+      "text"
+    ],
+    "tuning_rmse": {
+      "median_baseline": 288.7676882509153,
+      "structured": 535.1186798422398,
+      "text": 445.8615794187174,
+      "multimodal": 458.5440714951969,
+      "structured_extra_trees": 520.3231700806089,
+      "structured_random_forest": 543.225842916991,
+      "structured_gradient_boosting": 643.2331014121365,
+      "structured_hist_gradient_boosting": 647.5892818425843,
+      "multimodal_late_fusion": 466.31535526556,
+      "structured_catboost": 583.6089521513263,
+      "accuracy_mean": 529.6853377020818,
+      "accuracy_phase_shrinkage": 512.1720351014372,
+      "accuracy_log_structured": 256.82937593457524
+    },
+    "tuning_raw_brier": {
+      "median_baseline": 0.06131519274376418,
+      "structured": 0.07153229591089212,
+      "text": 0.019658155296946308,
+      "multimodal": 0.03192640954768149,
+      "structured_extra_trees": 0.06520219228149712,
+      "structured_random_forest": 0.07426453906495392,
+      "structured_gradient_boosting": 0.12476702435049271,
+      "structured_hist_gradient_boosting": 0.10320084840843363,
+      "multimodal_late_fusion": 0.03020685198031488,
+      "structured_catboost": 0.07927376884169636,
+      "accuracy_mean": 0.06131519274376418,
+      "accuracy_phase_shrinkage": 0.0545039519560235,
+      "accuracy_log_structured": 0.0877974518355357
+    },
+    "tie_breaker": "model name",
+    "method": "Independent minimum tuning RMSE duration and minimum raw tuning Brier risk branches; no additional fitting or ensemble weights."
+  },
+  "metrics": {
+    "median_baseline": {
+      "validation": {
+        "regression": {
+          "mae": 263.22222222222223,
+          "rmse": 288.7676882509153,
+          "r2": -4.913603778078181
+        },
+        "classification": {
+          "auroc": null,
+          "average_precision": null,
+          "brier": 0.06131519274376418
+        }
+      },
+      "test": {
+        "regression": {
+          "mae": 351.1875,
+          "rmse": 419.22938977366556,
+          "r2": -0.0496253725399769
+        },
+        "classification": {
+          "auroc": 0.5,
+          "average_precision": 0.09375,
+          "brier": 0.10863662131519275
+        }
+      }
+    },
+    "structured": {
+      "validation": {
+        "regression": {
+          "mae": 522.136869031925,
+          "rmse": 535.1186798422398,
+          "r2": -19.30744349588171
+        },
+        "classification": {
+          "auroc": null,
+          "average_precision": null,
+          "brier": 0.07153229591089212
+        }
+      },
+      "test": {
+        "regression": {
+          "mae": 372.6767843796466,
+          "rmse": 432.383764137867,
+          "r2": -0.11652804045843546
+        },
+        "classification": {
+          "auroc": 0.6120689655172413,
+          "average_precision": 0.15462962962962962,
+          "brier": 0.11959289940191678
+        }
+      }
+    },
+    "text": {
+      "validation": {
+        "regression": {
+          "mae": 421.0229159338397,
+          "rmse": 445.8615794187174,
+          "r2": -13.097922887125197
+        },
+        "classification": {
+          "auroc": null,
+          "average_precision": null,
+          "brier": 0.019658155296946308
+        }
+      },
+      "test": {
+        "regression": {
+          "mae": 314.70094620585854,
+          "rmse": 366.98233683691484,
+          "r2": 0.19569419710806812
+        },
+        "classification": {
+          "auroc": 0.8074712643678161,
+          "average_precision": 0.3481178908810487,
+          "brier": 0.07756935665479858
+        }
+      }
+    },
+    "multimodal": {
+      "validation": {
+        "regression": {
+          "mae": 426.9858094691361,
+          "rmse": 458.5440714951969,
+          "r2": -13.911357966406666
+        },
+        "classification": {
+          "auroc": null,
+          "average_precision": null,
+          "brier": 0.03192640954768149
+        }
+      },
+      "test": {
+        "regression": {
+          "mae": 332.9980175278577,
+          "rmse": 399.2832425848015,
+          "r2": 0.047877022625842036
+        },
+        "classification": {
+          "auroc": 0.7614942528735632,
+          "average_precision": 0.2877005347593583,
+          "brier": 0.09341359183787988
+        }
+      }
+    },
+    "structured_extra_trees": {
+      "validation": {
+        "regression": {
+          "mae": 501.2644453738502,
+          "rmse": 520.3231700806089,
+          "r2": -18.200005872289776
+        },
+        "classification": {
+          "auroc": null,
+          "average_precision": null,
+          "brier": 0.06520219228149712
+        }
+      },
+      "test": {
+        "regression": {
+          "mae": 354.2182100158666,
+          "rmse": 418.7904041640446,
+          "r2": -0.04742834531272466
+        },
+        "classification": {
+          "auroc": 0.6709770114942528,
+          "average_precision": 0.1949074074074074,
+          "brier": 0.1088172973582664
+        }
+      }
+    },
+    "structured_random_forest": {
+      "validation": {
+        "regression": {
+          "mae": 511.65069330300594,
+          "rmse": 543.225842916991,
+          "r2": -19.92742891539853
+        },
+        "classification": {
+          "auroc": null,
+          "average_precision": null,
+          "brier": 0.07426453906495392
+        }
+      },
+      "test": {
+        "regression": {
+          "mae": 350.5499504960001,
+          "rmse": 428.3732894241274,
+          "r2": -0.0959119053769868
+        },
+        "classification": {
+          "auroc": 0.6724137931034483,
+          "average_precision": 0.1578627178007635,
+          "brier": 0.11278716103738216
+        }
+      }
+    },
+    "structured_gradient_boosting": {
+      "validation": {
+        "regression": {
+          "mae": 526.0186311493176,
+          "rmse": 643.2331014121365,
+          "r2": -28.34214112366513
+        },
+        "classification": {
+          "auroc": null,
+          "average_precision": null,
+          "brier": 0.12476702435049271
+        }
+      },
+      "test": {
+        "regression": {
+          "mae": 372.38879183539444,
+          "rmse": 491.0988379855641,
+          "r2": -0.4403521708191751
+        },
+        "classification": {
+          "auroc": 0.5431034482758621,
+          "average_precision": 0.11953916181857359,
+          "brier": 0.13410585400395342
+        }
+      }
+    },
+    "structured_hist_gradient_boosting": {
+      "validation": {
+        "regression": {
+          "mae": 534.3939537301517,
+          "rmse": 647.5892818425843,
+          "r2": -28.740915622350588
+        },
+        "classification": {
+          "auroc": null,
+          "average_precision": null,
+          "brier": 0.10320084840843363
+        }
+      },
+      "test": {
+        "regression": {
+          "mae": 447.13936989311713,
+          "rmse": 589.9926940584986,
+          "r2": -1.0788547491504592
+        },
+        "classification": {
+          "auroc": 0.5747126436781609,
+          "average_precision": 0.12177525323654592,
+          "brier": 0.16265646247802779
+        }
+      }
+    },
+    "multimodal_late_fusion": {
+      "validation": {
+        "regression": {
+          "mae": 449.3656753829178,
+          "rmse": 466.31535526556,
+          "r2": -14.42106840243474
+        },
+        "classification": {
+          "auroc": null,
+          "average_precision": null,
+          "brier": 0.03020685198031488
+        }
+      },
+      "test": {
+        "regression": {
+          "mae": 317.1300069859773,
+          "rmse": 374.87803223987464,
+          "r2": 0.16071229375094298
+        },
+        "classification": {
+          "auroc": 0.7557471264367817,
+          "average_precision": 0.2624458874458875,
+          "brier": 0.08770574536185494
+        }
+      }
+    },
+    "structured_catboost": {
+      "validation": {
+        "regression": {
+          "mae": 504.61238987723067,
+          "rmse": 583.6089521513263,
+          "r2": -23.15454830771366
+        },
+        "classification": {
+          "auroc": null,
+          "average_precision": null,
+          "brier": 0.07927376884169636
+        }
+      },
+      "test": {
+        "regression": {
+          "mae": 350.23791491627725,
+          "rmse": 454.49926978644356,
+          "r2": -0.23366504094114116
+        },
+        "classification": {
+          "auroc": 0.6982758620689655,
+          "average_precision": 0.15957053371241015,
+          "brier": 0.11806014427359898
+        }
+      }
+    },
+    "accuracy_mean": {
+      "validation": {
+        "regression": {
+          "mae": 516.2031746031747,
+          "rmse": 529.6853377020818,
+          "r2": -18.897152708797694
+        },
+        "classification": {
+          "auroc": null,
+          "average_precision": null,
+          "brier": 0.06131519274376418
+        }
+      },
+      "test": {
+        "regression": {
+          "mae": 385.74464285714294,
+          "rmse": 440.03528680848007,
+          "r2": -0.15639415300331372
+        },
+        "classification": {
+          "auroc": 0.5,
+          "average_precision": 0.09375,
+          "brier": 0.10863662131519275
+        }
+      }
+    },
+    "accuracy_phase_shrinkage": {
+      "validation": {
+        "regression": {
+          "mae": 495.87166319421493,
+          "rmse": 512.1720351014372,
+          "r2": -17.603161423482167
+        },
+        "classification": {
+          "auroc": null,
+          "average_precision": null,
+          "brier": 0.0545039519560235
+        }
+      },
+      "test": {
+        "regression": {
+          "mae": 359.32541622727564,
+          "rmse": 420.2143203912456,
+          "r2": -0.05456311115078605
+        },
+        "classification": {
+          "auroc": 0.6637931034482759,
+          "average_precision": 0.15613302139037433,
+          "brier": 0.104841626958242
+        }
+      }
+    },
+    "accuracy_log_structured": {
+      "validation": {
+        "regression": {
+          "mae": 217.28026907181686,
+          "rmse": 256.82937593457524,
+          "r2": -3.6778298777223775
+        },
+        "classification": {
+          "auroc": null,
+          "average_precision": null,
+          "brier": 0.0877974518355357
+        }
+      },
+      "test": {
+        "regression": {
+          "mae": 345.3045474886678,
+          "rmse": 428.8937058654635,
+          "r2": -0.0985762965783632
+        },
+        "classification": {
+          "auroc": 0.5172413793103448,
+          "average_precision": 0.14258651244347162,
+          "brier": 0.12480625386572297
+        }
+      }
+    },
+    "accuracy_task_selected": {
+      "validation": {
+        "regression": {
+          "mae": 217.28026907181686,
+          "rmse": 256.82937593457524,
+          "r2": -3.6778298777223775
+        },
+        "classification": {
+          "auroc": null,
+          "average_precision": null,
+          "brier": 0.019658155296946308
+        }
+      },
+      "test": {
+        "regression": {
+          "mae": 345.3045474886678,
+          "rmse": 428.8937058654635,
+          "r2": -0.0985762965783632
+        },
+        "classification": {
+          "auroc": 0.8074712643678161,
+          "average_precision": 0.3481178908810487,
+          "brier": 0.07756935665479858
+        }
+      }
+    }
+  }
+}

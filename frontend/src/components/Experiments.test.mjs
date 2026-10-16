@@ -25,10 +25,12 @@ test('training API defaults old callers to basic and sends an explicit expanded 
   await api.train('cohort');
   await api.train('cohort',true);
   await api.train('cohort',true,'expanded');
+  await api.train('cohort',true,'expanded',true);
   assert.deepEqual(requests.map(request=>request.body),[
    {dataset_id:'cohort',enable_catboost:false,catboost_search:'basic'},
    {dataset_id:'cohort',enable_catboost:true,catboost_search:'basic'},
-   {dataset_id:'cohort',enable_catboost:true,catboost_search:'expanded'}]);
+   {dataset_id:'cohort',enable_catboost:true,catboost_search:'expanded'},
+   {dataset_id:'cohort',enable_catboost:true,catboost_search:'expanded',enable_accuracy_models:true}]);
   assert.ok(requests.every(request=>request.url==='/api/v1/experiments'));
  }finally{globalThis.fetch=previousFetch;globalThis.sessionStorage=previousStorage}
 });

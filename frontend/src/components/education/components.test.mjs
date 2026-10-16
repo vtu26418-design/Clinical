@@ -30,7 +30,7 @@ test('Home renders one guided scene, readable workflow actions, original navigat
  for(const action of ['Import','Review','Predict','Interpret','Compare','Find source evidence','Predict trial duration','Compare a scenario'])assert.ok(html.includes(action),action);
  assert.match(html,/0 imported records selected/);
  assert.match(html,/Decorative · no genomic inputs/);
- assert.match(html,/Explore helix in 3D/);
+ assert.match(html,/Explore the virtual clinic/);
  assert.equal((html.match(/class="cti-scene-panel /g)||[]).length,1);
 });
 test('Helix remains decorative with accessible 2D rotation and no automatic generated scientific values',async()=>{

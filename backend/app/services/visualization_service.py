@@ -33,19 +33,35 @@ def study_visualization(workspace):
     model = prediction.get('model_name')
     metadata = MODEL_METADATA.get(model, {}) if prediction.get('status') == 'available' else {}
     mode = metadata.get('input_mode')
-    branches = []
-    if mode in {'structured', 'multimodal'}:
-        branches.append({'id': 'structured', 'label': 'Structured protocol metadata',
-                         'encoder': 'Fitted numeric imputation/scaling and categorical encoding',
-                         'fields': [*NUMERIC_FEATURES, *CATEGORICAL_FEATURES]})
-    if mode in {'text', 'multimodal'}:
-        branches.append({'id': 'text', 'label': 'Protocol narrative', 'encoder': 'Training-fitted TF-IDF', 'fields': list(TEXT_FIELDS)})
+    branches, task_components = [], []
+    def append_branch(name, task=None):
+        component=MODEL_METADATA.get(name, {})
+        component_mode=component.get('input_mode')
+        if component_mode in {'structured','multimodal'}:
+            encoder=('Training phase means shrunk toward global training statistics' if name=='accuracy_phase_shrinkage' else
+                     'Training median imputation, log1p numeric transform, scaling and categorical encoding' if name=='accuracy_log_structured' else
+                     'Fitted numeric imputation/scaling and categorical encoding')
+            fields=['phase'] if name=='accuracy_phase_shrinkage' else [*NUMERIC_FEATURES,*CATEGORICAL_FEATURES]
+            branch={'id':'structured','label':'Structured protocol metadata','encoder':encoder,'fields':fields}
+            if not any(existing['id']==branch['id'] and existing['encoder']==encoder for existing in branches):branches.append(branch)
+        if component_mode in {'text','multimodal'} and not any(existing['id']=='text' for existing in branches):
+            branches.append({'id':'text','label':'Protocol narrative','encoder':'Training-fitted TF-IDF','fields':list(TEXT_FIELDS)})
+        if task:task_components.append({'task':task,'model_name':name,'input_mode':component_mode})
     explanation = explain_prediction(prediction, row)
     components = explanation.get('components', [])
-    fusion = {'status': 'available' if metadata else 'unavailable', 'model_name': model,
-              'input_mode': mode, 'family': metadata.get('family'), 'method': explanation.get('method'),
-              'branches': branches, 'components': components,
-              'reason': None if metadata else prediction.get('reason', 'No compatible saved model is available.')}
+    architecture_method=explanation.get('method')
+    reason=None if metadata else prediction.get('reason','No compatible saved model is available.')
+    if mode=='composite':
+        selected=[('duration',prediction.get('duration_explanation',{}).get('selected_component')),('risk',prediction.get('explanation',{}).get('selected_component'))]
+        if all(name in MODEL_METADATA and MODEL_METADATA[name]['input_mode']!='composite' for _,name in selected):
+            for task,name in selected:append_branch(name,task)
+            architecture_method='Independent tuning-selected duration and risk branches'
+        else:reason='Selected task component metadata is unavailable; architecture cannot be inferred.'
+        components=[] # Independent task choices have no invented ensemble weights.
+    else:append_branch(model)
+    fusion = {'status':'available' if metadata and reason is None else 'unavailable','model_name':model,
+              'input_mode':mode,'family':metadata.get('family'),'method':architecture_method,
+              'branches':branches,'components':components,'task_components':task_components,'reason':reason}
     return {'workspace': workspace, 'timeline': timeline,
             'recruitment': recruitment_summary(pd.DataFrame([row])), 'fusion': fusion,
             'explanation': explanation, 'provenance': {**workspace['provenance'],

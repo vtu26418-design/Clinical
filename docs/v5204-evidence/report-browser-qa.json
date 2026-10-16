@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "checks": [
+    "duration-model-analysis.html",
+    "phase-model-analysis.html",
+    "DNA animates on Play and freezes on Pause",
+    "Home switches from DNA to virtual clinic"
+  ],
+  "errors": []
+}

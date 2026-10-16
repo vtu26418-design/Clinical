@@ -1,0 +1,40 @@
+{
+  "protocol": "Frozen before reading held-out accuracy candidate scores. One matched-cohort experiment; no candidate-grid iteration after benchmark.",
+  "new_models": [
+    "accuracy_mean",
+    "accuracy_phase_shrinkage",
+    "accuracy_log_structured",
+    "accuracy_task_selected"
+  ],
+  "phase_prior_rows": 20,
+  "ridge_alpha_grid": [
+    10,
+    100
+  ],
+  "logistic_C_grid": [
+    0.1,
+    1
+  ],
+  "mean_strategy": "arithmetic training mean",
+  "log_target": "log1p days with expm1 inverse; no smearing or posthoc bias correction",
+  "task_selection": "minimum tuning RMSE and raw Brier independently; exact ties model name",
+  "config": {
+    "train_fraction": 0.6,
+    "validation_fraction": 0.2,
+    "prolonged_quantile": 0.75,
+    "bootstrap_samples": 200,
+    "random_seed": 42,
+    "max_text_features": 20000,
+    "enable_advanced_models": true,
+    "enable_catboost": true,
+    "uncertainty_alpha": 0.1,
+    "catboost_search": "expanded",
+    "enable_accuracy_models": true
+  },
+  "source_hashes": {
+    "src/clinical_trial_intelligence/research.py": "741cd27ebabbd7070799ce25000b0368d35f4a14c7f3bfccc8e1ff29e5edb527",
+    "src/clinical_trial_intelligence/models/accuracy.py": "57f7fa2f945099fdb18c1e84c043c23f6afb4e48131df413e6461c282fbb6911",
+    "data/starter/trials.csv": "d096795e303b5a103e0aba8bd79ffe7e85609827ea810d1c08e8e0811b5496d2",
+    "data/starter/metadata.json": "558c4be24196136df64dd5609df226ef0cca2f43f595d6a048413f53c1c1b49c"
+  }
+}
