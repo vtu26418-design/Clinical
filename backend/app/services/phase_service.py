@@ -2,6 +2,19 @@
 import json
 
 
+def normalize_phase_input(row, manifest):
+    """Honor the approved refinement's empty narrative slots before redaction.
+
+    Legacy artifacts have no such contract and retain their original inputs.
+    This does not fill clinical information: only absent text slots become empty.
+    """
+    from src.clinical_trial_intelligence.phase_model import TEXT_FIELDS
+    fields=manifest.get('features',{}).get('canonical_empty_text_fields',[])
+    if not isinstance(fields,list) or any(field not in TEXT_FIELDS for field in fields):
+        raise ValueError('Invalid phase narrative input contract.')
+    return {**row,**{field:row.get(field,'') for field in fields}}
+
+
 def predict_phase_for_dataset(row, dataset, registry):
     unavailable = {'status': 'unavailable', 'reported_phase': row.get('phase'), 'predicted_phase': None,
                    'class_probabilities': None, 'reason': 'Run a phase experiment on this dataset first.'}
@@ -12,7 +25,7 @@ def predict_phase_for_dataset(row, dataset, registry):
         try:
             from src.clinical_trial_intelligence.phase_model import predict_phase
             approved = resolver(task='phase')
-            result = predict_phase(row, approved['directory'])
+            result = predict_phase(normalize_phase_input(row,approved['manifest']), approved['directory'])
             if result.get('status') == 'available':
                 return {**result, 'approved_model_id': approved['id'],
                         'artifact_sha256': approved['model']['artifact_sha256'],
@@ -35,7 +48,7 @@ def predict_phase_for_dataset(row, dataset, registry):
             if source.get('dataset_id') != dataset['id'] or source.get('sha256') != dataset['sha256']:
                 continue
             from src.clinical_trial_intelligence.phase_model import predict_phase
-            result = predict_phase(row, folder)
+            result = predict_phase(normalize_phase_input(row,manifest), folder)
             if result.get('status') == 'available':
                 return result
         except Exception:

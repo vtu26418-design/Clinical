@@ -1,0 +1,1 @@
+{"max_text_features":20000,"logistic_cs":[0.1,1.0,10.0],"max_iter":2000,"random_seed":42,"enable_design_models":true,"enable_design_catboost":true,"bootstrap_samples":200}

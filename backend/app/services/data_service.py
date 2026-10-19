@@ -1,8 +1,7 @@
-"""Immutable local datasets with a persistent, transaction-backed metadata registry.
+"""Immutable project uploads and a trusted packaged public registry reference.
 
-Raw and canonical files live under STORAGE_DIR. SQLite is the zero-configuration
-metadata store. DATABASE_URL may point at PostgreSQL (including Neon), using the
-SQLAlchemy/psycopg dependencies; bulk files remain local to this server.
+PostgreSQL stores project metadata; private files remain under STORAGE_DIR.
+The public reference uses fixed, checksum-pinned files shared across projects.
 """
 from __future__ import annotations
 
@@ -24,6 +23,7 @@ from typing import Any
 import pandas as pd
 
 from ..config import PROJECT_ROOT, Settings
+from .bundled_reference import REFERENCE, REFERENCE_ID
 
 NUMERIC_FIELDS = ('enrollment', 'number_of_arms', 'primary_outcomes', 'secondary_outcomes', 'criteria_count', 'text_complexity')
 TEXT_DEFAULTS = {'study_type': 'Unknown', 'phase': 'Not reported', 'status': 'Unknown', 'brief_summary': '', 'eligibility_criteria': '', 'completion_date_type': 'Not reported'}
@@ -186,6 +186,11 @@ class DatasetRegistry:
         if self.get_dataset(SAMPLE_ID) is None:
             sample = (PROJECT_ROOT / 'data/sample/trials.csv').read_bytes()
             self.register_bytes(sample, 'bundled-sample.csv', name='Bundled software-test fixtures (5 studies)', source='bundled software-test fixtures', is_fixture=True, dataset_id=SAMPLE_ID)
+        # Only a small metadata payload is registered per project. The public
+        # 100k-record table remains lazy and is never copied into project storage.
+        reference = REFERENCE.metadata()
+        self._execute('INSERT INTO datasets (id,payload) VALUES (:id,:payload) ON CONFLICT(id) DO NOTHING',
+                      {'id': REFERENCE_ID, 'payload': json.dumps(reference, allow_nan=False)})
 
     def _execute(self, sql: str, params: dict | None = None, fetch=False):
         with self.lock:
@@ -198,23 +203,66 @@ class DatasetRegistry:
         return [json.loads(row[0]) for row in self._execute(f'SELECT payload FROM {table}', fetch=True)]
 
     def list_datasets(self) -> list[dict]:
-        return sorted(self._list('datasets'), key=lambda row: (not row['is_fixture'], row['created_at']))
+        rows = [REFERENCE.metadata() if row.get('id') == REFERENCE_ID else row for row in self._list('datasets')]
+        return sorted(rows, key=lambda row: (not row['is_fixture'], row['created_at']))
 
     def get_dataset(self, dataset_id: str) -> dict | None:
         rows = self._execute('SELECT payload FROM datasets WHERE id=:id', {'id': dataset_id}, fetch=True)
+        if rows and dataset_id == REFERENCE_ID:
+            # DB metadata cannot replace the code-pinned reference identity.
+            return REFERENCE.metadata()
         return json.loads(rows[0][0]) if rows else None
+
+    @property
+    def preferred_dataset_id(self) -> str:
+        return REFERENCE_ID
+
+    def reference_overview(self, dataset_id: str) -> dict | None:
+        if dataset_id == REFERENCE_ID and self.get_dataset(dataset_id) is not None:
+            return REFERENCE.overview()
+        return None
 
     def dataset_path(self, dataset_id: str) -> Path:
         # Callers cannot smuggle paths through dataset IDs, even if the DB is edited.
         if not re.fullmatch(r'[a-zA-Z0-9_-]{1,80}', dataset_id) or self.get_dataset(dataset_id) is None:
             raise KeyError(dataset_id)
+        if dataset_id == REFERENCE_ID:
+            REFERENCE.metadata()
+            return REFERENCE.root
         return self.root / 'datasets' / dataset_id
 
     def raw_path(self, dataset_id: str) -> Path:
+        if dataset_id == REFERENCE_ID:
+            self.dataset_path(dataset_id)
+            # The public source is multi-file; this pinned manifest identifies
+            # every preserved raw response instead of inventing a combined file.
+            return REFERENCE.source_manifest_path()
         return self.dataset_path(dataset_id) / 'raw.bin'
 
+    def canonical_fingerprint(self, dataset_id: str) -> str:
+        if dataset_id == REFERENCE_ID:
+            self.dataset_path(dataset_id)
+            return REFERENCE.fingerprint()
+        path = self._private_canonical_path(dataset_id)
+        digest = hashlib.sha256()
+        with path.open('rb') as stream:
+            for block in iter(lambda: stream.read(1024 * 1024), b''):
+                digest.update(block)
+        return digest.hexdigest()
+
+    def _private_canonical_path(self, dataset_id: str) -> Path:
+        folder = self.dataset_path(dataset_id)
+        path = folder / 'canonical.csv'
+        if (folder.parent.is_symlink() or folder.is_symlink() or path.is_symlink()
+                or path.resolve().parent != folder.resolve()):
+            raise OSError('Unsafe dataset path.')
+        return path
+
     def frame(self, dataset_id: str) -> pd.DataFrame:
-        return pd.read_csv(self.dataset_path(dataset_id) / 'canonical.csv', keep_default_na=False, na_values=[''],
+        if dataset_id == REFERENCE_ID:
+            self.dataset_path(dataset_id)
+            return REFERENCE.frame()
+        return pd.read_csv(self._private_canonical_path(dataset_id), keep_default_na=False, na_values=[''],
                            dtype={field: str for field in ('nct_id', 'title', *TEXT_DEFAULTS, *DATE_FIELDS)})
 
     def register_bytes(self, raw: bytes, filename: str, *, name: str | None = None, source: str = 'user upload', is_fixture=False, dataset_id: str | None = None, provenance: dict | None = None, canonical_frame: pd.DataFrame | None = None) -> dict:

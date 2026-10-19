@@ -1,0 +1,22 @@
+{
+  "frozen_before_refinement_audit_scores": true,
+  "rows": 17398,
+  "ids_sha256": "de0386b52827ad9393292d0c991d125ae7282c9f9ef5490f15aa013cc3902a12",
+  "source_sha256": "0426b0bed910599c86d4e851f72c973383a2486aae3493bb0fb0ae8ab7608030",
+  "scope": "ID-disjoint availability-purged completed trials from the unchanged authentic duration cohort, never used in fitting, tuning, calibration or original test. Stress audit, not a temporal/pretrial/future test. Selection of these rows explicitly depends on outcome availability and creates a different outcome distribution.",
+  "endpoint": "Same original training-derived threshold1105days; no threshold refit.",
+  "selection": "Candidate chooses by original tuning raw Brier, then AUROC, then declared order; include existing raw multimodal comparator. Threshold0.5 fixed for reported classification; no audit tuning, row trimming or class regrouping.",
+  "metrics": [
+    "auroc",
+    "average_precision",
+    "brier",
+    "log_loss",
+    "accuracy_at_0.5",
+    "balanced_accuracy_at_0.5",
+    "sensitivity",
+    "specificity",
+    "precision",
+    "confusion_matrix"
+  ],
+  "limitations": "Outcome-dependent subgroup distribution; not evidence that accuracy transports to ordinary unseen trials. Previous test scores remain historical, never reused as an untouched tuning target."
+}

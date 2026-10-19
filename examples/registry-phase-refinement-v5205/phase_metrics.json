@@ -1,0 +1,716 @@
+{
+  "majority_baseline": {
+    "validation": {
+      "n": 14634,
+      "accuracy": 0.2908979089790898,
+      "balanced_accuracy": 0.25,
+      "macro_f1": 0.11267270128632682,
+      "labels": [
+        "EARLY_PHASE1",
+        "PHASE1",
+        "PHASE2",
+        "PHASE3",
+        "PHASE4"
+      ],
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          5004,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          4257,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          2733,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          2640,
+          0,
+          0
+        ]
+      ],
+      "class_support": {
+        "EARLY_PHASE1": 0,
+        "PHASE1": 5004,
+        "PHASE2": 4257,
+        "PHASE3": 2733,
+        "PHASE4": 2640
+      },
+      "macro_f1_labels": [
+        "PHASE1",
+        "PHASE2",
+        "PHASE3",
+        "PHASE4"
+      ],
+      "unseen_training_labels": [],
+      "per_class": {
+        "EARLY_PHASE1": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "PHASE1": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 5004
+        },
+        "PHASE2": {
+          "precision": 0.2908979089790898,
+          "recall": 1.0,
+          "f1": 0.4506908051453073,
+          "support": 4257
+        },
+        "PHASE3": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 2733
+        },
+        "PHASE4": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 2640
+        }
+      },
+      "confidence_intervals": {
+        "method": "conditional fitted-model trial bootstrap percentile",
+        "level": 0.95,
+        "requested_resamples": 200,
+        "random_seed": 42,
+        "accuracy": {
+          "lower": 0.28248940822741564,
+          "upper": 0.2972546808801422,
+          "valid_resamples": 200
+        },
+        "balanced_accuracy": {
+          "lower": 0.25,
+          "upper": 0.25,
+          "valid_resamples": 200
+        },
+        "macro_f1": {
+          "lower": 0.11013323234420525,
+          "upper": 0.1145706718941396,
+          "valid_resamples": 200
+        }
+      },
+      "evaluation_role": "original development tuning"
+    },
+    "test": {
+      "n": 50139,
+      "accuracy": 0.31203254951235565,
+      "balanced_accuracy": 0.25,
+      "macro_f1": 0.11891189346953666,
+      "labels": [
+        "EARLY_PHASE1",
+        "PHASE1",
+        "PHASE2",
+        "PHASE3",
+        "PHASE4"
+      ],
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          12624,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          15645,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          11755,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          10115,
+          0,
+          0
+        ]
+      ],
+      "class_support": {
+        "EARLY_PHASE1": 0,
+        "PHASE1": 12624,
+        "PHASE2": 15645,
+        "PHASE3": 11755,
+        "PHASE4": 10115
+      },
+      "macro_f1_labels": [
+        "PHASE1",
+        "PHASE2",
+        "PHASE3",
+        "PHASE4"
+      ],
+      "unseen_training_labels": [],
+      "per_class": {
+        "EARLY_PHASE1": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "PHASE1": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 12624
+        },
+        "PHASE2": {
+          "precision": 0.31203254951235565,
+          "recall": 1.0,
+          "f1": 0.47564757387814666,
+          "support": 15645
+        },
+        "PHASE3": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 11755
+        },
+        "PHASE4": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 10115
+        }
+      },
+      "confidence_intervals": {
+        "method": "conditional fitted-model trial bootstrap percentile",
+        "level": 0.95,
+        "requested_resamples": 200,
+        "random_seed": 42,
+        "accuracy": {
+          "lower": 0.30802269690261075,
+          "upper": 0.3164417918187439,
+          "valid_resamples": 200
+        },
+        "balanced_accuracy": {
+          "lower": 0.25,
+          "upper": 0.25,
+          "valid_resamples": 200
+        },
+        "macro_f1": {
+          "lower": 0.11774363610407425,
+          "upper": 0.12018829610810547,
+          "valid_resamples": 200
+        }
+      },
+      "evaluation_role": "ID-disjoint partial-start-date subgroup audit; not chronological"
+    }
+  },
+  "phase_logistic": {
+    "validation": {
+      "n": 14634,
+      "accuracy": 0.7052753860871942,
+      "balanced_accuracy": 0.678224519169078,
+      "macro_f1": 0.6813981057708356,
+      "labels": [
+        "EARLY_PHASE1",
+        "PHASE1",
+        "PHASE2",
+        "PHASE3",
+        "PHASE4"
+      ],
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          4099,
+          705,
+          36,
+          164
+        ],
+        [
+          0,
+          285,
+          3079,
+          447,
+          446
+        ],
+        [
+          0,
+          34,
+          643,
+          1556,
+          500
+        ],
+        [
+          0,
+          114,
+          579,
+          360,
+          1587
+        ]
+      ],
+      "class_support": {
+        "EARLY_PHASE1": 0,
+        "PHASE1": 5004,
+        "PHASE2": 4257,
+        "PHASE3": 2733,
+        "PHASE4": 2640
+      },
+      "macro_f1_labels": [
+        "PHASE1",
+        "PHASE2",
+        "PHASE3",
+        "PHASE4"
+      ],
+      "unseen_training_labels": [],
+      "per_class": {
+        "EARLY_PHASE1": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "PHASE1": {
+          "precision": 0.9044571932921448,
+          "recall": 0.8191446842525979,
+          "f1": 0.8596895973154363,
+          "support": 5004
+        },
+        "PHASE2": {
+          "precision": 0.615061925689173,
+          "recall": 0.7232793046746535,
+          "f1": 0.6647954226492497,
+          "support": 4257
+        },
+        "PHASE3": {
+          "precision": 0.6486035848270113,
+          "recall": 0.5693377241126967,
+          "f1": 0.6063912704598597,
+          "support": 2733
+        },
+        "PHASE4": {
+          "precision": 0.5884315906562848,
+          "recall": 0.6011363636363637,
+          "f1": 0.5947161326587971,
+          "support": 2640
+        }
+      },
+      "confidence_intervals": {
+        "method": "conditional fitted-model trial bootstrap percentile",
+        "level": 0.95,
+        "requested_resamples": 200,
+        "random_seed": 42,
+        "accuracy": {
+          "lower": 0.698370233702337,
+          "upper": 0.7122522891895586,
+          "valid_resamples": 200
+        },
+        "balanced_accuracy": {
+          "lower": 0.6706916591016395,
+          "upper": 0.6854057642620486,
+          "valid_resamples": 200
+        },
+        "macro_f1": {
+          "lower": 0.6741706124572,
+          "upper": 0.6884808023003649,
+          "valid_resamples": 200
+        }
+      },
+      "evaluation_role": "original development tuning"
+    },
+    "test": {
+      "n": 50139,
+      "accuracy": 0.6647519894692754,
+      "balanced_accuracy": 0.6524973277940965,
+      "macro_f1": 0.6573972281057331,
+      "labels": [
+        "EARLY_PHASE1",
+        "PHASE1",
+        "PHASE2",
+        "PHASE3",
+        "PHASE4"
+      ],
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          9960,
+          2061,
+          142,
+          461
+        ],
+        [
+          0,
+          1012,
+          11435,
+          1558,
+          1640
+        ],
+        [
+          0,
+          158,
+          2650,
+          6512,
+          2435
+        ],
+        [
+          0,
+          479,
+          2450,
+          1763,
+          5423
+        ]
+      ],
+      "class_support": {
+        "EARLY_PHASE1": 0,
+        "PHASE1": 12624,
+        "PHASE2": 15645,
+        "PHASE3": 11755,
+        "PHASE4": 10115
+      },
+      "macro_f1_labels": [
+        "PHASE1",
+        "PHASE2",
+        "PHASE3",
+        "PHASE4"
+      ],
+      "unseen_training_labels": [],
+      "per_class": {
+        "EARLY_PHASE1": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "PHASE1": {
+          "precision": 0.8579550348867259,
+          "recall": 0.7889733840304183,
+          "f1": 0.8220195601039905,
+          "support": 12624
+        },
+        "PHASE2": {
+          "precision": 0.6149171864917187,
+          "recall": 0.7309044423138383,
+          "f1": 0.6679127361934523,
+          "support": 15645
+        },
+        "PHASE3": {
+          "precision": 0.6528320802005012,
+          "recall": 0.5539770310506168,
+          "f1": 0.5993557294063506,
+          "support": 11755
+        },
+        "PHASE4": {
+          "precision": 0.5445325835927302,
+          "recall": 0.5361344537815126,
+          "f1": 0.5403008867191392,
+          "support": 10115
+        }
+      },
+      "confidence_intervals": {
+        "method": "conditional fitted-model trial bootstrap percentile",
+        "level": 0.95,
+        "requested_resamples": 200,
+        "random_seed": 42,
+        "accuracy": {
+          "lower": 0.6602225812241967,
+          "upper": 0.6689208998982829,
+          "valid_resamples": 200
+        },
+        "balanced_accuracy": {
+          "lower": 0.6479248377644241,
+          "upper": 0.6565763279638662,
+          "valid_resamples": 200
+        },
+        "macro_f1": {
+          "lower": 0.6528468126837115,
+          "upper": 0.661239095299551,
+          "valid_resamples": 200
+        }
+      },
+      "evaluation_role": "ID-disjoint partial-start-date subgroup audit; not chronological"
+    }
+  },
+  "phase_refinement_v1": {
+    "validation": {
+      "n": 14634,
+      "accuracy": 0.7246822468224682,
+      "balanced_accuracy": 0.6997512552080206,
+      "macro_f1": 0.7014902066113442,
+      "labels": [
+        "EARLY_PHASE1",
+        "PHASE1",
+        "PHASE2",
+        "PHASE3",
+        "PHASE4"
+      ],
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          4257,
+          561,
+          27,
+          159
+        ],
+        [
+          0,
+          335,
+          3024,
+          370,
+          528
+        ],
+        [
+          0,
+          37,
+          543,
+          1642,
+          511
+        ],
+        [
+          0,
+          154,
+          479,
+          325,
+          1682
+        ]
+      ],
+      "class_support": {
+        "EARLY_PHASE1": 0,
+        "PHASE1": 5004,
+        "PHASE2": 4257,
+        "PHASE3": 2733,
+        "PHASE4": 2640
+      },
+      "macro_f1_labels": [
+        "PHASE1",
+        "PHASE2",
+        "PHASE3",
+        "PHASE4"
+      ],
+      "unseen_training_labels": [],
+      "per_class": {
+        "EARLY_PHASE1": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "PHASE1": {
+          "precision": 0.8900271795943968,
+          "recall": 0.8507194244604317,
+          "f1": 0.8699294983140902,
+          "support": 5004
+        },
+        "PHASE2": {
+          "precision": 0.6563924462774039,
+          "recall": 0.7103594080338267,
+          "f1": 0.6823104693140795,
+          "support": 4257
+        },
+        "PHASE3": {
+          "precision": 0.694585448392555,
+          "recall": 0.6008049762166118,
+          "f1": 0.6443005689621346,
+          "support": 2733
+        },
+        "PHASE4": {
+          "precision": 0.5840277777777778,
+          "recall": 0.6371212121212121,
+          "f1": 0.6094202898550725,
+          "support": 2640
+        }
+      },
+      "confidence_intervals": {
+        "method": "conditional fitted-model trial bootstrap percentile",
+        "level": 0.95,
+        "requested_resamples": 200,
+        "random_seed": 42,
+        "accuracy": {
+          "lower": 0.7181700150334838,
+          "upper": 0.732474033073664,
+          "valid_resamples": 200
+        },
+        "balanced_accuracy": {
+          "lower": 0.6930763155360713,
+          "upper": 0.7066512501427197,
+          "valid_resamples": 200
+        },
+        "macro_f1": {
+          "lower": 0.6948568424722079,
+          "upper": 0.708675089890715,
+          "valid_resamples": 200
+        }
+      },
+      "evaluation_role": "original development tuning"
+    },
+    "test": {
+      "n": 50139,
+      "accuracy": 0.6793115139911047,
+      "balanced_accuracy": 0.6733689771444817,
+      "macro_f1": 0.6740024147110858,
+      "labels": [
+        "EARLY_PHASE1",
+        "PHASE1",
+        "PHASE2",
+        "PHASE3",
+        "PHASE4"
+      ],
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          10380,
+          1616,
+          123,
+          505
+        ],
+        [
+          0,
+          1442,
+          10577,
+          1935,
+          1691
+        ],
+        [
+          0,
+          242,
+          2009,
+          7267,
+          2237
+        ],
+        [
+          0,
+          550,
+          1912,
+          1817,
+          5836
+        ]
+      ],
+      "class_support": {
+        "EARLY_PHASE1": 0,
+        "PHASE1": 12624,
+        "PHASE2": 15645,
+        "PHASE3": 11755,
+        "PHASE4": 10115
+      },
+      "macro_f1_labels": [
+        "PHASE1",
+        "PHASE2",
+        "PHASE3",
+        "PHASE4"
+      ],
+      "unseen_training_labels": [],
+      "per_class": {
+        "EARLY_PHASE1": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "PHASE1": {
+          "precision": 0.8228951958141747,
+          "recall": 0.8222433460076045,
+          "f1": 0.8225691417703463,
+          "support": 12624
+        },
+        "PHASE2": {
+          "precision": 0.656385751520417,
+          "recall": 0.6760626398210291,
+          "f1": 0.6660789067665859,
+          "support": 15645
+        },
+        "PHASE3": {
+          "precision": 0.6522168371926046,
+          "recall": 0.6182050191407912,
+          "f1": 0.6347556448443028,
+          "support": 11755
+        },
+        "PHASE4": {
+          "precision": 0.5683123965332554,
+          "recall": 0.5769649036085023,
+          "f1": 0.5726059654631083,
+          "support": 10115
+        }
+      },
+      "confidence_intervals": {
+        "method": "conditional fitted-model trial bootstrap percentile",
+        "level": 0.95,
+        "requested_resamples": 200,
+        "random_seed": 42,
+        "accuracy": {
+          "lower": 0.6760206625580885,
+          "upper": 0.6832016992760127,
+          "valid_resamples": 200
+        },
+        "balanced_accuracy": {
+          "lower": 0.669917941641962,
+          "upper": 0.6773662895634439,
+          "valid_resamples": 200
+        },
+        "macro_f1": {
+          "lower": 0.6704892270566855,
+          "upper": 0.6780060645269157,
+          "valid_resamples": 200
+        }
+      },
+      "evaluation_role": "ID-disjoint partial-start-date subgroup audit; not chronological"
+    }
+  }
+}

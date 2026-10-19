@@ -1,6 +1,6 @@
-# Start here — Clinical Trial Intelligence v5.2.0.4 Docker edition
+# Start here — Clinical Trial Intelligence v5.2.0.5 Docker edition
 
-**You have Docker: use this startup path.** The application version, features, datasets and approved models stay v5.2.0.4.
+**You have Docker: use this startup path.** PostgreSQL and the full application start together.
 
 1. Open **Docker Desktop**. Wait for **Engine running**. Use its Linux-container engine and complete any requested WSL2/restart setup.
 2. Confirm Python 3.12 is installed with its launcher: `py -3.12 --version`. Install it from [python.org](https://www.python.org/downloads/windows/) if needed.
@@ -9,7 +9,7 @@
 5. Leave the window open while images download and the application builds. The launcher generates missing credentials in your private `.env`, preserves existing values, and starts both PostgreSQL and the application.
 6. Wait for **Application ready: http://localhost:8000**. The browser opens automatically. If it does not, open that address manually.
 7. Open the extracted folder's `.env` in a text editor. Copy only the value after `SETUP_TOKEN=` into the first-owner form. Enter your name, email and a unique password of at least 12 characters. Keep `.env` private. If an owner already exists, sign in instead.
-8. Create/open a project. More tools → Data Manager → load the **800-record starter cohort** and select it. Review Overview and use Prediction Studio with a bundled approved model. Training is optional.
+8. Create/open a project. A fresh workspace selects the **101,135-record genuine registry reference**. New projects receive the new approved research models; existing model selections are preserved. Review Overview, predict in Prediction Studio, and inspect **Settings → Model quality**. Training is optional.
 
 Docker provides PostgreSQL and installs application dependencies inside the image. You do not need a separate PostgreSQL installation or Node on Windows for this path. `CONNECT_DATABASE_WINDOWS.bat` and `START_WINDOWS.bat` are the optional native path, documented separately in the guide.
 
@@ -32,8 +32,12 @@ If port 5432 is occupied, set `POSTGRES_PORT=5434` in your private `.env` and re
 
 Assistant replies need your provider key and an account-supported API model ID in the private `.env`. After changing those settings, run `docker compose up -d --force-recreate workbench` from the project folder. Provider keys stay on the server.
 
-[Full operating guide](docs/v5.2.0.4-full-guide.md) · [Illustrated PDF guide](docs/Clinical-Trial-Intelligence-v5.2.0.4-Full-Guide.pdf)
+[Full operating guide](docs/v5.2.0.5-full-guide.md) · [Illustrated PDF guide](docs/Clinical-Trial-Intelligence-v5.2.0.5-Full-Guide.pdf)
 
 ## Generate the model accuracy report
 
 With Docker Desktop and the workbench running, double-click `GENERATE_MODEL_REPORT_DOCKER_WINDOWS.bat`. It uses the container dependencies, saves HTML/JSON/CSV under `reports/` on your computer, and opens the HTML report. You can print the HTML report to PDF. In the app, Models → Download analysis uses the approved model; completed Experiments → Analysis report uses that experiment. These reports describe saved evaluation cohorts, not the currently selected upload.
+
+## Scientific explanations
+
+More tools → Science Studio → select a study → Use current research evidence. Edit captions/narration and scene properties, then save or export JSON/PNG. Optional AI drafts need a configured provider key; manual editing does not.

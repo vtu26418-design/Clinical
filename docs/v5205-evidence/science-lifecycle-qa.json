@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "checks": [
+    "Rendered animation frames change while playing",
+    "Paused canvas frames remain identical",
+    "Explicit speech request uses current editable narration",
+    "Editing cancels speech",
+    "Component unmount cancels speech",
+    "Background visibility pauses playback"
+  ],
+  "speech": "Browser speech API mocked; no audible output claim"
+}

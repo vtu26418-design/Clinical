@@ -1,0 +1,105 @@
+{
+  "status": "passed",
+  "created_at": "2026-10-19T00:15:37.567364+00:00",
+  "fitting": false,
+  "source": "Verified acquisition/preparation shard lineage and frozen task file inventories.",
+  "replay_policy": "At most 100 evenly spaced source rows per model and split. All CSV rows are checked separately for metrics/membership.",
+  "tolerance": {
+    "rtol": 1e-08,
+    "atol": 1e-08
+  },
+  "tasks": {
+    "duration": {
+      "run_id": "bdaf8930-e629-4c08-a10b-c9c95ab0afd3",
+      "artifact_sha256": "32a4eadd4efe75caaad773dc475bd9d908962c1068795df0600c800bda10574b",
+      "manifest_sha256": "045d0374e6e3ca49700e46f856b0a335bbd9a1da7684973f9ca3424fa45895f5",
+      "all_original_file_hashes_verified": true,
+      "all_serving_copies_match": true,
+      "prediction_rows_replayed": 5100,
+      "max_absolute_prediction_error": 4.547473508864641e-13,
+      "saved_prediction_rows_validated": 267988,
+      "all_saved_metrics_recomputed": true,
+      "split_counts": {
+        "calibration": {
+          "n": 2841,
+          "role": "calibration",
+          "prediction_rows": 48297
+        },
+        "test": {
+          "n": 8299,
+          "role": "test",
+          "prediction_rows": 141083
+        },
+        "train": {
+          "n": 8806,
+          "role": "train",
+          "prediction_rows": 0
+        },
+        "validation": {
+          "n": 4624,
+          "role": "tuning",
+          "prediction_rows": 78608
+        }
+      },
+      "dataset_sha256": "b264f7bfe3473f66e91786172b58642c3ba2e3e8043c98bbd2bf3e633ec847ef"
+    },
+    "phase": {
+      "run_id": "1ca943fb-daa2-4e4a-a756-5815d9679393",
+      "artifact_sha256": "e41edc30d07990a9459945a7f6e8c9afe5dc8fc5108feca925337b9efbb63f68",
+      "manifest_sha256": "19fbd6542d87b8515f30e830c40b1d41f54f8df7f134f9a7338a3eb6b7b744d0",
+      "all_original_file_hashes_verified": true,
+      "all_serving_copies_match": true,
+      "prediction_rows_replayed": 1000,
+      "max_absolute_prediction_error": 1.1102230246251565e-16,
+      "saved_prediction_rows_validated": 113835,
+      "all_saved_metrics_recomputed": true,
+      "split_counts": {
+        "test": {
+          "n": 8133,
+          "role": "test",
+          "prediction_rows": 40665
+        },
+        "train": {
+          "n": 16932,
+          "role": "train",
+          "prediction_rows": 0
+        },
+        "validation": {
+          "n": 14634,
+          "role": "tuning",
+          "prediction_rows": 73170
+        }
+      },
+      "dataset_sha256": "b264f7bfe3473f66e91786172b58642c3ba2e3e8043c98bbd2bf3e633ec847ef"
+    },
+    "phase_refinement": {
+      "run_id": "fe1c6840-5188-4297-94bc-e34faf7308d6",
+      "artifact_sha256": "dfe2833a0cd729533c9281993e7f76666f02a5842137acbae2ac923cded2abed",
+      "manifest_sha256": "7fecef1463d7e38dfcda6d98e9a08a97d57f7b2fbe335ce22beb92ecff73ffba",
+      "audit_rows": 50139,
+      "audit_excludes_all_original_phase_roles": true,
+      "audit_role": "ID-disjoint partial-start-date subgroup audit; not chronological/prospective",
+      "prediction_rows_replayed": 600,
+      "max_absolute_prediction_error": 1.1102230246251565e-16,
+      "saved_prediction_rows_validated": 194319,
+      "all_saved_metrics_recomputed": true,
+      "split_counts": {
+        "test": {
+          "n": 50139,
+          "role": "ID-disjoint partial-start-date subgroup audit",
+          "prediction_rows": 150417
+        },
+        "train": {
+          "n": 16932,
+          "role": "train",
+          "prediction_rows": 0
+        },
+        "validation": {
+          "n": 14634,
+          "role": "tuning",
+          "prediction_rows": 43902
+        }
+      }
+    }
+  }
+}

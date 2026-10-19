@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-10-18T11:03:22.953047+00:00",
+  "status": "completed",
+  "plan": {
+    "dataset_id": "registry-v5205-b264f7bfe3473f66",
+    "dataset_sha256": "b264f7bfe3473f66e91786172b58642c3ba2e3e8043c98bbd2bf3e633ec847ef",
+    "preparation_manifest_sha256": "5df2283b08ab7398c73e52d20d666e3b88679e197a84e428f40beb628155551a",
+    "protocol_sha256": "9debd5c00029a5cf993bd08bbb57e162d6bba9e5c06ee1a35c476a8f60d5fd15",
+    "code_sha256": {
+      "scripts/train_reference_models.py": "74b44c5348adcb7498b99d166d3216498d43cf253510518458a05ac9e6bb8c64",
+      "scripts/prepare_registry_training.py": "ea67486a77c47afafc0f6c1527dfd165d2e60c62464cd8b67e19e02bcd2a4323",
+      "src/clinical_trial_intelligence/research.py": "1d77f504d4a730638f787c61f51c8f520ee5b5852b4db0c6f222fb2b6884bb1c",
+      "src/clinical_trial_intelligence/phase_model.py": "c4c8e13340a28580fa10aad2f1859ceb5ec052081d313217834e9b67734dd6cd",
+      "src/clinical_trial_intelligence/models/accuracy.py": "57f7fa2f945099fdb18c1e84c043c23f6afb4e48131df413e6461c282fbb6911",
+      "src/clinical_trial_intelligence/models/design.py": "77e05290b4d08f82740ff52166a6880f75bfbd91003d5f3f2c6d62c9a304b8a6",
+      "src/clinical_trial_intelligence/models/catboost_compat.py": "8c0660ade88ae7f789e2d0cbbeaa6144d0c5430c72de90445fd9d4b502f8b00c"
+    },
+    "configs": {
+      "duration": {
+        "train_fraction": 0.6,
+        "validation_fraction": 0.2,
+        "prolonged_quantile": 0.75,
+        "bootstrap_samples": 200,
+        "random_seed": 42,
+        "max_text_features": 20000,
+        "enable_advanced_models": true,
+        "enable_catboost": false,
+        "uncertainty_alpha": 0.1,
+        "catboost_search": "basic",
+        "enable_accuracy_models": true,
+        "enable_design_models": true,
+        "enable_design_catboost": true,
+        "duration_selection_metric": "mae"
+      },
+      "phase": {
+        "max_text_features": 20000,
+        "logistic_cs": [
+          0.1,
+          1.0,
+          10.0
+        ],
+        "max_iter": 2000,
+        "random_seed": 42,
+        "enable_design_models": true,
+        "enable_design_catboost": true,
+        "bootstrap_samples": 200
+      }
+    },
+    "promotion": "No catalog changes or project activation. Selection uses frozen tuning objectives; test is evaluation only.",
+    "resume": "Skip verified completed tasks only. Never overwrite or repeat an incomplete attempted fit."
+  },
+  "tasks": {
+    "duration": {
+      "status": "completed",
+      "run_id": "bdaf8930-e629-4c08-a10b-c9c95ab0afd3",
+      "completed_at": "2026-10-18T11:09:17.439151+00:00",
+      "files_sha256": {
+        "cohort_exclusions.csv": "9aeeae89a05493861172bea446986e8230cb8da69a133761e424e5094732f8ac",
+        "held_out_predictions.csv": "2319dc302f281a609abcdc80a53166a230d217ef81cbd233cc0b94350a0fb43b",
+        "manifest.json": "045d0374e6e3ca49700e46f856b0a335bbd9a1da7684973f9ca3424fa45895f5",
+        "metrics.json": "5a372b03bfc8cdb5bb485b5b189035d964057f7ba1882fef60cbb61321f22ddc",
+        "metrics_summary.csv": "f6907545b0502484374bc14914aa91a436bb4af7d0e0017d53efddee93bc7141",
+        "models.joblib": "32a4eadd4efe75caaad773dc475bd9d908962c1068795df0600c800bda10574b",
+        "temporal_exclusions.csv": "0426b0bed910599c86d4e851f72c973383a2486aae3493bb0fb0ae8ab7608030"
+      }
+    },
+    "phase": {
+      "status": "completed",
+      "run_id": "1ca943fb-daa2-4e4a-a756-5815d9679393",
+      "completed_at": "2026-10-18T11:15:41.856533+00:00",
+      "files_sha256": {
+        "metrics_summary.csv": "7221d3de690e8c9b71bce4a174984d98228792f9e3237b9061c9cc43120bacc8",
+        "phase_cohort_exclusions.csv": "a55095b9bcb2c41482c21f965e10f59baae50905ee41a4c6802e68f9f9c678bd",
+        "phase_held_out_predictions.csv": "3991bddcb7a8a5581ea0beb5c422d8dc9df8135d7a5bd0775822c8f6955b1b58",
+        "phase_manifest.json": "19fbd6542d87b8515f30e830c40b1d41f54f8df7f134f9a7338a3eb6b7b744d0",
+        "phase_metrics.json": "2e9f3c175c8a4c582c8f63f1f19475d81a949164f33235fe6b6cf83978a54120",
+        "phase_models.joblib": "e41edc30d07990a9459945a7f6e8c9afe5dc8fc5108feca925337b9efbb63f68"
+      }
+    }
+  }
+}

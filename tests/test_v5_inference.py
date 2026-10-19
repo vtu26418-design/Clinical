@@ -107,9 +107,12 @@ def test_saved_batch_and_model_activation_survive_restart(client):
         assert repeated['items'] == original['items']
 
 
-def test_invalid_dataset_schema_is_blocked_without_prediction(client):
+def test_constant_accepts_empty_features_but_phase_requires_inputs(client):
     dataset = client.app.state.project_registry('local').register_bytes(b'nct_id,title\nNO-FEATURES,Empty protocol\n','minimal.csv')
     response = client.post('/api/v5/inference/batch',json={'dataset_id':dataset['id']})
+    assert response.status_code == 201
+    assert response.json()['summary']['available'] == 1
+    response = client.post('/api/v5/inference/batch',json={'dataset_id':dataset['id'],'task':'phase'})
     assert response.status_code == 422
     assert 'schema' in response.text.lower() or 'feature' in response.text.lower()
 
@@ -207,21 +210,21 @@ def test_legacy_research_predictions_use_approved_saved_artifact(client, monkeyp
 def test_strict_pretrial_rejects_late_feature_and_accepts_complete_supplied_timestamps(client):
     service = client.app.state.model_registry
     registry = client.app.state.project_registry('local')
-    resolved = service.resolve('local',registry)
+    resolved = service.resolve('local',registry,task='phase')
     row = registry.frame(client.dataset['id']).iloc[0].to_dict()
     row['prediction_as_of'] = '1900-01-01'
     row['start_date'] = '2000-01-01'
     fields = resolved['manifest']['features']
-    for field in fields['numeric']+fields['categorical']+fields['text']:
+    for field in fields.get('numeric',[])+fields.get('categorical',[])+fields.get('text',[]):
         row[field+'_available_at'] = '1899-12-01'
-    good = service.infer_rows('local',registry,[row],client.dataset,mode='pretrial')
+    good = service.infer_rows('local',registry,[row],client.dataset,mode='pretrial',task='phase')
     assert good['summary']['available'] == 1
     row['enrollment_available_at'] = '2050-01-01'
     # Pick an actually consumed, present field for any validation-selected mode.
     mode = resolved['manifest']['models'][resolved['branch']].get('input_mode')
     if mode == 'text':
         row['title_available_at'] = '2050-01-01'
-    blocked = service.infer_rows('local',registry,[row],client.dataset,mode='pretrial')
+    blocked = service.infer_rows('local',registry,[row],client.dataset,mode='pretrial',task='phase')
     assert blocked['summary']['blocked'] == 1
     assert 'later than' in str(blocked['items'][0]['availability_warnings'])
 
@@ -283,8 +286,13 @@ def test_real_v5_release_serves_immediately_without_fitting(tmp_path, monkeypatc
         catalog = client.get('/api/v5/models').json()
         assert set(catalog['active'].values()) == {'bundled-duration-v5','bundled-phase-v5'}
         source_hash = hashlib.sha256((PROJECT_ROOT/'data/starter/trials.csv').read_bytes()).hexdigest()
-        assert all(model['training_dataset']['sha256'] == source_hash for model in catalog['items'])
-        assert all(model['training_dataset']['id'] is None for model in catalog['items'])
+        historical=[model for model in catalog['items'] if model['id'].startswith('bundled-')]
+        assert len(historical)==2
+        assert all(model['training_dataset']['sha256'] == source_hash for model in historical)
+        assert all(model['training_dataset']['id'] is None for model in historical)
+        reference=[model for model in catalog['items'] if model['id'].startswith('registry-')]
+        assert {model['id'] for model in reference}=={'registry-duration-v5205','registry-phase-v5205','registry-phase-refinement-v5205'}
+        assert all(model['training_dataset']['sha256'] != source_hash for model in reference)
         frame = pd.read_csv(PROJECT_ROOT/'data/starter/trials.csv').head(1)
         frame['nct_id'] = 'NEW-V5-UPLOAD'
         dataset = app.state.project_registry('local').register_bytes(frame.to_csv(index=False).encode(),'new.csv')

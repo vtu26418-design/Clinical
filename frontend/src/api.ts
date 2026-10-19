@@ -10,11 +10,20 @@ const dataset:Dataset={id:'sample-fixture',name:'Sample dataset',row_count:demoR
 function count(key:string){return demoRows.reduce((a,r)=>({...a,[r[key]]:(a[r[key]]||0)+1}),{} as Record<string,number>)}
 export function downloadText(content:string,name:string,type='text/plain'){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([content],{type}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
 export function safeCell(value:unknown){let v=String(value??'');if(/^[\s]*[=+@-]/.test(v))v="'"+v;return '"'+v.replaceAll('"','""')+'"'}
+function requestError(detail:any,fallback:string){
+ if(typeof detail==='string')return detail;
+ const errors=Array.isArray(detail)?detail:Array.isArray(detail?.errors)?detail.errors:[];
+ const messages=errors.slice(0,4).map((error:any)=>{
+  const field=error.field||error.loc?.filter((part:unknown)=>part!=='body').join(' · ');
+  return [error.row?`Row ${error.row}`:'',field,error.message||error.msg].filter(Boolean).join(': ');
+ }).filter(Boolean);
+ return [typeof detail?.message==='string'?detail.message:'',...messages].filter(Boolean).join(' ')||fallback;
+}
 async function request<T>(path:string,options:RequestInit={},timeoutMs=60000):Promise<T>{
  const controller=new AbortController();const timeout=setTimeout(()=>controller.abort(),timeoutMs);
  const headers=new Headers(options.headers);if(options.body && !(options.body instanceof FormData))headers.set('Content-Type','application/json');
  const project=sessionStorage.getItem('cti-project-id');if(project)headers.set('X-Project-ID',project);const token=sessionStorage.getItem('cti-api-token');if(token)headers.set('Authorization',`Bearer ${token}`);
- try{const res=await fetch(`${BASE}${path}`,{...options,headers,credentials:'include',signal:controller.signal});if(!res.ok){if(res.status===401)window.dispatchEvent(new Event('cti-session-expired'));const body=await res.json().catch(()=>({detail:`Request failed (${res.status})`}));throw Error(typeof body.detail==='string'?body.detail:JSON.stringify(body.detail||body));}return await res.json()}catch(e){if(e instanceof TypeError)throw Error('Cannot reach the API. Start the backend and retry.');throw e}finally{clearTimeout(timeout)}
+ try{const res=await fetch(`${BASE}${path}`,{...options,headers,credentials:'include',signal:controller.signal});if(!res.ok){if(res.status===401)window.dispatchEvent(new Event('cti-session-expired'));const body=await res.json().catch(()=>({detail:`Request failed (${res.status})`}));throw Error(requestError(body.detail,`Request failed (${res.status}).`));}return await res.json()}catch(e){if(e instanceof DOMException&&e.name==='AbortError')throw Error('This request timed out. Check the service and retry.');if(e instanceof TypeError)throw Error('Cannot reach the API. Start the backend and retry.');throw e}finally{clearTimeout(timeout)}
 }
 async function downloadAnalysis(path:string,name:string,format:'html'|'json'|'csv'){
  if(DEMO)throw Error('Model evaluation reports require the full application.');
@@ -28,6 +37,7 @@ async function downloadAnalysis(path:string,name:string,format:'html'|'json'|'cs
 }
 /** Shared project-scoped, cookie-authenticated transport for research evidence. */
 export const researchRequest = request;
+export type DesignTrainingOptions={enable_design_models?:boolean;enable_design_catboost?:boolean;duration_selection_metric?:'rmse'|'mae'};
 const scope=(id:string)=>`dataset_id=${encodeURIComponent(id)}`;
 const demoScenarios:any[]=[];
 const demoWorkspace=(nct:string):any=>{const item=(researchDemo as Record<string,any>)[nct];if(!item)throw Error('Study not found in preview.');return structuredClone(item)};
@@ -64,13 +74,13 @@ export const api={
  studies:(id:string,params:Record<string,string|number>={})=>{if(DEMO){let rows=demoRows.filter(r=>(!params.q||[r.nct_id,r.title].join(' ').toLowerCase().includes(String(params.q).toLowerCase()))&&(!params.phase||r.phase===params.phase)&&(!params.status||r.status===params.status));const k=String(params.sort_by||'nct_id');rows=rows.sort((a,b)=>{const x=a[k],y=b[k];return (typeof x==='number'?x-y:String(x).localeCompare(String(y)))*(params.sort_dir==='desc'?-1:1)});return Promise.resolve({items:rows.slice(Number(params.offset||0),Number(params.offset||0)+Number(params.limit||25)),total:rows.length})}return request<{items:Study[];total:number}>(`/studies?${scope(id)}&${new URLSearchParams(Object.fromEntries(Object.entries(params).map(([k,v])=>[k,String(v)])))}`)},
  detail:(id:string,nct:string)=>DEMO?Promise.resolve({study:demoRows.find(r=>r.nct_id===nct)!,pci:pci(demoRows.find(r=>r.nct_id===nct)!),prediction:{available:false,reason:'Train a model on a sufficiently large dataset in the full local application.'}} as Detail):request<Detail>(`/studies/${encodeURIComponent(nct)}?${scope(id)}`),
  experiments:()=>DEMO?Promise.resolve({items:[] as Experiment[]}):request<{items:Experiment[]}>('/experiments'),
- readiness:(id:string)=>DEMO?Promise.resolve({duration:{ready:false,reason:'Run the full local app to train on real data.'},phase:{ready:false,reason:'Run the full local app to train on real data.'}}):request<any>(`/readiness?${scope(id)}`),
+ readiness:(id:string,options:DesignTrainingOptions&{enable_catboost?:boolean;enable_accuracy_models?:boolean;catboost_search?:'basic'|'expanded'}={})=>DEMO?Promise.resolve({duration:{ready:false,reason:'Run the full local app to train on real data.'},phase:{ready:false,reason:'Run the full local app to train on real data.'}}):request<any>(`/readiness?${scope(id)}&${new URLSearchParams(Object.entries(options).map(([key,value])=>[key,String(value)]))}`),
  starter:()=>DEMO?Promise.reject(Error('The 800-record starter cohort is included in the full project ZIP. Open the local app to load it.')):request<Dataset>('/datasets/starter',{method:'POST'}),
  phasePredict:(id:string,nct_id:string)=>DEMO?Promise.reject(Error('Phase predictions require a trained model in the full local app.')):request<any>('/phase-predictions',{method:'POST',body:JSON.stringify({dataset_id:id,nct_id})}),
  predict:(id:string,nct_id:string,model_name:string)=>DEMO?Promise.reject(Error('Duration predictions require a trained model in the full local app.')):request<any>('/predictions',{method:'POST',body:JSON.stringify({dataset_id:id,nct_id,model_name})}),
- phaseTrain:(id:string)=>DEMO?Promise.reject(Error('Phase training runs in the full local app. The Academy works in this preview.')):request<Experiment>('/phase-experiments',{method:'POST',body:JSON.stringify({dataset_id:id})}),
+ phaseTrain:(id:string,options:Pick<DesignTrainingOptions,'enable_design_models'|'enable_design_catboost'>={})=>DEMO?Promise.reject(Error('Phase training runs in the full local app. The Academy works in this preview.')):request<Experiment>('/phase-experiments',{method:'POST',body:JSON.stringify({dataset_id:id,...options})}),
  artifact:async(id:string,name:string)=>{const headers=new Headers();const project=sessionStorage.getItem('cti-project-id');if(project)headers.set('X-Project-ID',project);const token=sessionStorage.getItem('cti-api-token');if(token)headers.set('Authorization',`Bearer ${token}`);const res=await fetch(`${BASE}/experiments/${encodeURIComponent(id)}/files/${encodeURIComponent(name)}`,{headers,credentials:'include'});if(!res.ok)throw Error('Report is unavailable.');downloadText(await res.text(),name,name.endsWith('.csv')?'text/csv':'application/json')},
- train:(id:string,enableCatboost=false,catboostSearch:'basic'|'expanded'='basic',enableAccuracyModels=false)=>DEMO?Promise.reject(Error('Training runs in the full local app. This browser preview uses five software-test fixtures.')):request<Experiment>('/experiments',{method:'POST',body:JSON.stringify({dataset_id:id,enable_catboost:enableCatboost,catboost_search:catboostSearch,...(enableAccuracyModels?{enable_accuracy_models:true}:{})})}),
+ train:(id:string,enableCatboost=false,catboostSearch:'basic'|'expanded'='basic',enableAccuracyModels=false,options:DesignTrainingOptions={})=>DEMO?Promise.reject(Error('Training runs in the full local app. This browser preview uses five software-test fixtures.')):request<Experiment>('/experiments',{method:'POST',body:JSON.stringify({dataset_id:id,enable_catboost:enableCatboost,catboost_search:catboostSearch,...(enableAccuracyModels?{enable_accuracy_models:true}:{}),...options})}),
  upload:(file:File,name:string)=>{if(DEMO)return Promise.reject(Error('Dataset uploads run in the full local app. No files are sent from this preview.'));const body=new FormData();body.append('file',file);if(name)body.append('name',name);return request<Dataset>('/datasets/upload',{method:'POST',body})},
  importRegistry:(query:string,max_studies:number)=>DEMO?Promise.reject(Error('Connect the local backend to import live ClinicalTrials.gov records.')):request<Dataset>('/datasets/import/clinicaltrials',{method:'POST',body:JSON.stringify({query,max_studies})}),
  chat:(id:string,message:string,nct_id?:string,provider?:string)=>DEMO?Promise.reject(Error('The assistant runs in the local app after you configure an OpenAI, Gemini, Claude or compatible service key.')):request<{reply:string;provider:string;provider_id:string;model:string;fallback_used:boolean}>('/assistant',{method:'POST',body:JSON.stringify({dataset_id:id,message,nct_id,provider})},120000),

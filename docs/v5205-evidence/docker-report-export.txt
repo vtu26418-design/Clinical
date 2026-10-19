@@ -1,0 +1,14 @@
+HTML: /app/results/model-accuracy-duration-20261019T002112081634Z/model_analysis.html
+JSON: /app/results/model-accuracy-duration-20261019T002112081634Z/model_analysis.json
+CSV: /app/results/model-accuracy-duration-20261019T002112081634Z/model_comparison.csv
+ cti-v5205-qa-workbench-1 copy cti-v5205-qa-workbench-1:/app/results/model-accuracy-duration-20261019T002112081634Z to /workspace/cti-v5204/reports/model-accuracy-duration-20261019T002112081634Z Copying
+ cti-v5205-qa-workbench-1 copy cti-v5205-qa-workbench-1:/app/results/model-accuracy-duration-20261019T002112081634Z to /workspace/cti-v5204/reports/model-accuracy-duration-20261019T002112081634Z Copied
+Bundled research model: registry-duration-v5205; project active models are inspected in Settings > Model quality.
+Report saved to: /workspace/cti-v5204/reports/model-accuracy-duration-20261019T002112081634Z
+HTML: /app/results/model-accuracy-phase-20261019T002125056347Z/model_analysis.html
+JSON: /app/results/model-accuracy-phase-20261019T002125056347Z/model_analysis.json
+CSV: /app/results/model-accuracy-phase-20261019T002125056347Z/model_comparison.csv
+ cti-v5205-qa-workbench-1 copy cti-v5205-qa-workbench-1:/app/results/model-accuracy-phase-20261019T002125056347Z to /workspace/cti-v5204/reports/model-accuracy-phase-20261019T002125056347Z Copying
+ cti-v5205-qa-workbench-1 copy cti-v5205-qa-workbench-1:/app/results/model-accuracy-phase-20261019T002125056347Z to /workspace/cti-v5204/reports/model-accuracy-phase-20261019T002125056347Z Copied
+Bundled research model: registry-phase-refinement-v5205; project active models are inspected in Settings > Model quality.
+Report saved to: /workspace/cti-v5204/reports/model-accuracy-phase-20261019T002125056347Z

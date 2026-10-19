@@ -7,4 +7,5 @@ export interface ScenePanelProps {
  mode:'conceptual'|'evidence'|'planning'; step?:number; onStepChange?:(step:number)=>void;
  playing?:boolean; onPlayingChange?:(playing:boolean)=>void; speed?:number; onSpeedChange?:(speed:number)=>void;
  fallback?:ReactNode; active?:boolean; modelLabel?:string; phaseIndex?:number;
+ scientificScene?:'neurons'|'molecule'|'dna'|'pipeline';
 }

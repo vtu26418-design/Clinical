@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "checks": [
+    "Fresh project uses genuine101135reference and actual complete overview",
+    "Settings quality resolves new approved research models and actual heldout counts",
+    "Selected actual brain-study content selects neurons; real PostgreSQL storyboard save works",
+    "Live integrated 3D PNG export contains real rendered content",
+    "Refresh retains project, dataset, route; PostgreSQL explanation reload survives",
+    "Mobile closed/open navigation geometry correct and no horizontal overflow"
+  ],
+  "errors": [],
+  "browser": "Playwright/Chromium fallback; Browser plugin unavailable",
+  "origin": "http://127.0.0.1:8132",
+  "project_source_rows": 101135
+}

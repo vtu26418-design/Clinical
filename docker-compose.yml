@@ -48,7 +48,6 @@ services:
     volumes:
       - workbench-data:/app/data/workbench
       - ./data/raw:/app/data/raw:ro
-      - ./data/sample:/app/data/sample:ro
       - ./models:/app/models:ro
       - workbench-results:/app/results
     depends_on:

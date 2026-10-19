@@ -1,0 +1,1 @@
+SSE parser: 9 checks passed (byte boundaries, UTF-8, CRLF, truncation, error, HTTP failure, output limit).

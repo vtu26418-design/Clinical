@@ -1,0 +1,1182 @@
+{
+  "majority_baseline": {
+    "validation": {
+      "n": 14634,
+      "accuracy": 0.2908979089790898,
+      "balanced_accuracy": 0.25,
+      "macro_f1": 0.11267270128632682,
+      "labels": [
+        "EARLY_PHASE1",
+        "PHASE1",
+        "PHASE2",
+        "PHASE3",
+        "PHASE4"
+      ],
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          5004,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          4257,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          2733,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          2640,
+          0,
+          0
+        ]
+      ],
+      "class_support": {
+        "EARLY_PHASE1": 0,
+        "PHASE1": 5004,
+        "PHASE2": 4257,
+        "PHASE3": 2733,
+        "PHASE4": 2640
+      },
+      "macro_f1_labels": [
+        "PHASE1",
+        "PHASE2",
+        "PHASE3",
+        "PHASE4"
+      ],
+      "unseen_training_labels": [],
+      "per_class": {
+        "EARLY_PHASE1": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "PHASE1": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 5004
+        },
+        "PHASE2": {
+          "precision": 0.2908979089790898,
+          "recall": 1.0,
+          "f1": 0.4506908051453073,
+          "support": 4257
+        },
+        "PHASE3": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 2733
+        },
+        "PHASE4": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 2640
+        }
+      },
+      "confidence_intervals": {
+        "method": "conditional fitted-model trial bootstrap percentile",
+        "level": 0.95,
+        "requested_resamples": 200,
+        "random_seed": 42,
+        "accuracy": {
+          "lower": 0.28248940822741564,
+          "upper": 0.2972546808801422,
+          "valid_resamples": 200
+        },
+        "balanced_accuracy": {
+          "lower": 0.25,
+          "upper": 0.25,
+          "valid_resamples": 200
+        },
+        "macro_f1": {
+          "lower": 0.11013323234420525,
+          "upper": 0.1145706718941396,
+          "valid_resamples": 200
+        }
+      }
+    },
+    "test": {
+      "n": 8133,
+      "accuracy": 0.22427148653633347,
+      "balanced_accuracy": 0.25,
+      "macro_f1": 0.09159385357035252,
+      "labels": [
+        "EARLY_PHASE1",
+        "PHASE1",
+        "PHASE2",
+        "PHASE3",
+        "PHASE4"
+      ],
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          3682,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1824,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1253,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1374,
+          0,
+          0
+        ]
+      ],
+      "class_support": {
+        "EARLY_PHASE1": 0,
+        "PHASE1": 3682,
+        "PHASE2": 1824,
+        "PHASE3": 1253,
+        "PHASE4": 1374
+      },
+      "macro_f1_labels": [
+        "PHASE1",
+        "PHASE2",
+        "PHASE3",
+        "PHASE4"
+      ],
+      "unseen_training_labels": [],
+      "per_class": {
+        "EARLY_PHASE1": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "PHASE1": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 3682
+        },
+        "PHASE2": {
+          "precision": 0.22427148653633347,
+          "recall": 1.0,
+          "f1": 0.3663754142814101,
+          "support": 1824
+        },
+        "PHASE3": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1253
+        },
+        "PHASE4": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1374
+        }
+      },
+      "confidence_intervals": {
+        "method": "conditional fitted-model trial bootstrap percentile",
+        "level": 0.95,
+        "requested_resamples": 200,
+        "random_seed": 42,
+        "accuracy": {
+          "lower": 0.216765031353744,
+          "upper": 0.23263555883437845,
+          "valid_resamples": 200
+        },
+        "balanced_accuracy": {
+          "lower": 0.25,
+          "upper": 0.25,
+          "valid_resamples": 200
+        },
+        "macro_f1": {
+          "lower": 0.08907431787252067,
+          "upper": 0.09436510123554072,
+          "valid_resamples": 200
+        }
+      }
+    }
+  },
+  "phase_logistic": {
+    "validation": {
+      "n": 14634,
+      "accuracy": 0.7052753860871942,
+      "balanced_accuracy": 0.678224519169078,
+      "macro_f1": 0.6813981057708356,
+      "labels": [
+        "EARLY_PHASE1",
+        "PHASE1",
+        "PHASE2",
+        "PHASE3",
+        "PHASE4"
+      ],
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          4099,
+          705,
+          36,
+          164
+        ],
+        [
+          0,
+          285,
+          3079,
+          447,
+          446
+        ],
+        [
+          0,
+          34,
+          643,
+          1556,
+          500
+        ],
+        [
+          0,
+          114,
+          579,
+          360,
+          1587
+        ]
+      ],
+      "class_support": {
+        "EARLY_PHASE1": 0,
+        "PHASE1": 5004,
+        "PHASE2": 4257,
+        "PHASE3": 2733,
+        "PHASE4": 2640
+      },
+      "macro_f1_labels": [
+        "PHASE1",
+        "PHASE2",
+        "PHASE3",
+        "PHASE4"
+      ],
+      "unseen_training_labels": [],
+      "per_class": {
+        "EARLY_PHASE1": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "PHASE1": {
+          "precision": 0.9044571932921448,
+          "recall": 0.8191446842525979,
+          "f1": 0.8596895973154363,
+          "support": 5004
+        },
+        "PHASE2": {
+          "precision": 0.615061925689173,
+          "recall": 0.7232793046746535,
+          "f1": 0.6647954226492497,
+          "support": 4257
+        },
+        "PHASE3": {
+          "precision": 0.6486035848270113,
+          "recall": 0.5693377241126967,
+          "f1": 0.6063912704598597,
+          "support": 2733
+        },
+        "PHASE4": {
+          "precision": 0.5884315906562848,
+          "recall": 0.6011363636363637,
+          "f1": 0.5947161326587971,
+          "support": 2640
+        }
+      },
+      "confidence_intervals": {
+        "method": "conditional fitted-model trial bootstrap percentile",
+        "level": 0.95,
+        "requested_resamples": 200,
+        "random_seed": 42,
+        "accuracy": {
+          "lower": 0.698370233702337,
+          "upper": 0.7122522891895586,
+          "valid_resamples": 200
+        },
+        "balanced_accuracy": {
+          "lower": 0.6706916591016395,
+          "upper": 0.6854057642620486,
+          "valid_resamples": 200
+        },
+        "macro_f1": {
+          "lower": 0.6741706124572,
+          "upper": 0.6884808023003649,
+          "valid_resamples": 200
+        }
+      }
+    },
+    "test": {
+      "n": 8133,
+      "accuracy": 0.737489241362351,
+      "balanced_accuracy": 0.6800892943320467,
+      "macro_f1": 0.6768329228887624,
+      "labels": [
+        "EARLY_PHASE1",
+        "PHASE1",
+        "PHASE2",
+        "PHASE3",
+        "PHASE4"
+      ],
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          3237,
+          296,
+          25,
+          124
+        ],
+        [
+          0,
+          151,
+          1193,
+          238,
+          242
+        ],
+        [
+          0,
+          25,
+          284,
+          654,
+          290
+        ],
+        [
+          0,
+          51,
+          232,
+          177,
+          914
+        ]
+      ],
+      "class_support": {
+        "EARLY_PHASE1": 0,
+        "PHASE1": 3682,
+        "PHASE2": 1824,
+        "PHASE3": 1253,
+        "PHASE4": 1374
+      },
+      "macro_f1_labels": [
+        "PHASE1",
+        "PHASE2",
+        "PHASE3",
+        "PHASE4"
+      ],
+      "unseen_training_labels": [],
+      "per_class": {
+        "EARLY_PHASE1": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "PHASE1": {
+          "precision": 0.9344688221709007,
+          "recall": 0.8791417707767518,
+          "f1": 0.9059613769941226,
+          "support": 3682
+        },
+        "PHASE2": {
+          "precision": 0.5950124688279301,
+          "recall": 0.6540570175438597,
+          "f1": 0.6231392008357274,
+          "support": 1824
+        },
+        "PHASE3": {
+          "precision": 0.5978062157221207,
+          "recall": 0.5219473264166001,
+          "f1": 0.5573072006817213,
+          "support": 1253
+        },
+        "PHASE4": {
+          "precision": 0.5821656050955414,
+          "recall": 0.6652110625909753,
+          "f1": 0.6209239130434783,
+          "support": 1374
+        }
+      },
+      "confidence_intervals": {
+        "method": "conditional fitted-model trial bootstrap percentile",
+        "level": 0.95,
+        "requested_resamples": 200,
+        "random_seed": 42,
+        "accuracy": {
+          "lower": 0.7276404770687324,
+          "upper": 0.7469599163900159,
+          "valid_resamples": 200
+        },
+        "balanced_accuracy": {
+          "lower": 0.6679409320164579,
+          "upper": 0.6905629754029841,
+          "valid_resamples": 200
+        },
+        "macro_f1": {
+          "lower": 0.66537802115519,
+          "upper": 0.6869868476832078,
+          "valid_resamples": 200
+        }
+      }
+    }
+  },
+  "phase_text": {
+    "validation": {
+      "n": 14634,
+      "accuracy": 0.6733634003006697,
+      "balanced_accuracy": 0.6476961150786591,
+      "macro_f1": 0.6478759188764103,
+      "labels": [
+        "EARLY_PHASE1",
+        "PHASE1",
+        "PHASE2",
+        "PHASE3",
+        "PHASE4"
+      ],
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          4048,
+          677,
+          89,
+          190
+        ],
+        [
+          0,
+          271,
+          2778,
+          695,
+          513
+        ],
+        [
+          0,
+          45,
+          802,
+          1374,
+          512
+        ],
+        [
+          0,
+          110,
+          457,
+          419,
+          1654
+        ]
+      ],
+      "class_support": {
+        "EARLY_PHASE1": 0,
+        "PHASE1": 5004,
+        "PHASE2": 4257,
+        "PHASE3": 2733,
+        "PHASE4": 2640
+      },
+      "macro_f1_labels": [
+        "PHASE1",
+        "PHASE2",
+        "PHASE3",
+        "PHASE4"
+      ],
+      "unseen_training_labels": [],
+      "per_class": {
+        "EARLY_PHASE1": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "PHASE1": {
+          "precision": 0.9047831917746982,
+          "recall": 0.8089528377298162,
+          "f1": 0.8541886473939649,
+          "support": 5004
+        },
+        "PHASE2": {
+          "precision": 0.5893084429359355,
+          "recall": 0.6525722339675828,
+          "f1": 0.6193289488351355,
+          "support": 4257
+        },
+        "PHASE3": {
+          "precision": 0.5331781140861467,
+          "recall": 0.5027442371020856,
+          "f1": 0.5175141242937853,
+          "support": 2733
+        },
+        "PHASE4": {
+          "precision": 0.5765074939003137,
+          "recall": 0.6265151515151515,
+          "f1": 0.6004719549827555,
+          "support": 2640
+        }
+      },
+      "confidence_intervals": {
+        "method": "conditional fitted-model trial bootstrap percentile",
+        "level": 0.95,
+        "requested_resamples": 200,
+        "random_seed": 42,
+        "accuracy": {
+          "lower": 0.6655681973486401,
+          "upper": 0.6808818504851715,
+          "valid_resamples": 200
+        },
+        "balanced_accuracy": {
+          "lower": 0.639878876281747,
+          "upper": 0.6539956919824628,
+          "valid_resamples": 200
+        },
+        "macro_f1": {
+          "lower": 0.6401383026145927,
+          "upper": 0.6537787579430142,
+          "valid_resamples": 200
+        }
+      }
+    },
+    "test": {
+      "n": 8133,
+      "accuracy": 0.7116685110045494,
+      "balanced_accuracy": 0.6499341217694292,
+      "macro_f1": 0.6436131180070629,
+      "labels": [
+        "EARLY_PHASE1",
+        "PHASE1",
+        "PHASE2",
+        "PHASE3",
+        "PHASE4"
+      ],
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          3221,
+          272,
+          57,
+          132
+        ],
+        [
+          0,
+          133,
+          1037,
+          385,
+          269
+        ],
+        [
+          0,
+          29,
+          323,
+          610,
+          291
+        ],
+        [
+          0,
+          46,
+          188,
+          220,
+          920
+        ]
+      ],
+      "class_support": {
+        "EARLY_PHASE1": 0,
+        "PHASE1": 3682,
+        "PHASE2": 1824,
+        "PHASE3": 1253,
+        "PHASE4": 1374
+      },
+      "macro_f1_labels": [
+        "PHASE1",
+        "PHASE2",
+        "PHASE3",
+        "PHASE4"
+      ],
+      "unseen_training_labels": [],
+      "per_class": {
+        "EARLY_PHASE1": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "PHASE1": {
+          "precision": 0.9393409157188685,
+          "recall": 0.8747963063552417,
+          "f1": 0.9059204050063282,
+          "support": 3682
+        },
+        "PHASE2": {
+          "precision": 0.5697802197802198,
+          "recall": 0.5685307017543859,
+          "f1": 0.5691547749725576,
+          "support": 1824
+        },
+        "PHASE3": {
+          "precision": 0.47955974842767296,
+          "recall": 0.4868316041500399,
+          "f1": 0.48316831683168315,
+          "support": 1253
+        },
+        "PHASE4": {
+          "precision": 0.5707196029776674,
+          "recall": 0.6695778748180495,
+          "f1": 0.6162089752176825,
+          "support": 1374
+        }
+      },
+      "confidence_intervals": {
+        "method": "conditional fitted-model trial bootstrap percentile",
+        "level": 0.95,
+        "requested_resamples": 200,
+        "random_seed": 42,
+        "accuracy": {
+          "lower": 0.7004641583671463,
+          "upper": 0.7213820238534366,
+          "valid_resamples": 200
+        },
+        "balanced_accuracy": {
+          "lower": 0.6372931504258063,
+          "upper": 0.6600625918183916,
+          "valid_resamples": 200
+        },
+        "macro_f1": {
+          "lower": 0.6307394080627647,
+          "upper": 0.6539338484453076,
+          "valid_resamples": 200
+        }
+      }
+    }
+  },
+  "phase_design_structured": {
+    "validation": {
+      "n": 14634,
+      "accuracy": 0.5874675413420801,
+      "balanced_accuracy": 0.5553919589582046,
+      "macro_f1": 0.556252525526893,
+      "labels": [
+        "EARLY_PHASE1",
+        "PHASE1",
+        "PHASE2",
+        "PHASE3",
+        "PHASE4"
+      ],
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          3921,
+          703,
+          153,
+          227
+        ],
+        [
+          0,
+          811,
+          2225,
+          615,
+          606
+        ],
+        [
+          0,
+          367,
+          795,
+          1015,
+          556
+        ],
+        [
+          0,
+          316,
+          775,
+          113,
+          1436
+        ]
+      ],
+      "class_support": {
+        "EARLY_PHASE1": 0,
+        "PHASE1": 5004,
+        "PHASE2": 4257,
+        "PHASE3": 2733,
+        "PHASE4": 2640
+      },
+      "macro_f1_labels": [
+        "PHASE1",
+        "PHASE2",
+        "PHASE3",
+        "PHASE4"
+      ],
+      "unseen_training_labels": [],
+      "per_class": {
+        "EARLY_PHASE1": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "PHASE1": {
+          "precision": 0.7240997229916898,
+          "recall": 0.7835731414868106,
+          "f1": 0.7526634033976389,
+          "support": 5004
+        },
+        "PHASE2": {
+          "precision": 0.4946642952423299,
+          "recall": 0.5226685459243599,
+          "f1": 0.508280982295831,
+          "support": 4257
+        },
+        "PHASE3": {
+          "precision": 0.5353375527426161,
+          "recall": 0.37138675448225394,
+          "f1": 0.4385396413912292,
+          "support": 2733
+        },
+        "PHASE4": {
+          "precision": 0.5083185840707964,
+          "recall": 0.543939393939394,
+          "f1": 0.5255260750228729,
+          "support": 2640
+        }
+      },
+      "confidence_intervals": {
+        "method": "conditional fitted-model trial bootstrap percentile",
+        "level": 0.95,
+        "requested_resamples": 200,
+        "random_seed": 42,
+        "accuracy": {
+          "lower": 0.5789206642066421,
+          "upper": 0.596016126827935,
+          "valid_resamples": 200
+        },
+        "balanced_accuracy": {
+          "lower": 0.5475468193097297,
+          "upper": 0.5633779282407826,
+          "valid_resamples": 200
+        },
+        "macro_f1": {
+          "lower": 0.548127387794044,
+          "upper": 0.5639712752528536,
+          "valid_resamples": 200
+        }
+      }
+    },
+    "test": {
+      "n": 8133,
+      "accuracy": 0.6285503504241977,
+      "balanced_accuracy": 0.5476872918064574,
+      "macro_f1": 0.5490268090883093,
+      "labels": [
+        "EARLY_PHASE1",
+        "PHASE1",
+        "PHASE2",
+        "PHASE3",
+        "PHASE4"
+      ],
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          3088,
+          305,
+          146,
+          143
+        ],
+        [
+          0,
+          422,
+          832,
+          302,
+          268
+        ],
+        [
+          0,
+          256,
+          330,
+          404,
+          263
+        ],
+        [
+          0,
+          157,
+          378,
+          51,
+          788
+        ]
+      ],
+      "class_support": {
+        "EARLY_PHASE1": 0,
+        "PHASE1": 3682,
+        "PHASE2": 1824,
+        "PHASE3": 1253,
+        "PHASE4": 1374
+      },
+      "macro_f1_labels": [
+        "PHASE1",
+        "PHASE2",
+        "PHASE3",
+        "PHASE4"
+      ],
+      "unseen_training_labels": [],
+      "per_class": {
+        "EARLY_PHASE1": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "PHASE1": {
+          "precision": 0.7871526892684171,
+          "recall": 0.8386746333514394,
+          "f1": 0.8120973044049967,
+          "support": 3682
+        },
+        "PHASE2": {
+          "precision": 0.45094850948509485,
+          "recall": 0.45614035087719296,
+          "f1": 0.4535295720904879,
+          "support": 1824
+        },
+        "PHASE3": {
+          "precision": 0.44739756367663347,
+          "recall": 0.3224261771747805,
+          "f1": 0.3747680890538033,
+          "support": 1253
+        },
+        "PHASE4": {
+          "precision": 0.5389876880984952,
+          "recall": 0.5735080058224163,
+          "f1": 0.5557122708039492,
+          "support": 1374
+        }
+      },
+      "confidence_intervals": {
+        "method": "conditional fitted-model trial bootstrap percentile",
+        "level": 0.95,
+        "requested_resamples": 200,
+        "random_seed": 42,
+        "accuracy": {
+          "lower": 0.6195745727283906,
+          "upper": 0.6377781876306406,
+          "valid_resamples": 200
+        },
+        "balanced_accuracy": {
+          "lower": 0.536403597451887,
+          "upper": 0.5600248560598811,
+          "valid_resamples": 200
+        },
+        "macro_f1": {
+          "lower": 0.5380023034815046,
+          "upper": 0.5609943085454605,
+          "valid_resamples": 200
+        }
+      }
+    }
+  },
+  "phase_design_catboost": {
+    "validation": {
+      "n": 14634,
+      "accuracy": 0.6168511685116851,
+      "balanced_accuracy": 0.5910270693582682,
+      "macro_f1": 0.5903611222558,
+      "labels": [
+        "EARLY_PHASE1",
+        "PHASE1",
+        "PHASE2",
+        "PHASE3",
+        "PHASE4"
+      ],
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          3953,
+          716,
+          57,
+          278
+        ],
+        [
+          0,
+          738,
+          2315,
+          496,
+          708
+        ],
+        [
+          0,
+          382,
+          632,
+          1144,
+          575
+        ],
+        [
+          0,
+          266,
+          593,
+          166,
+          1615
+        ]
+      ],
+      "class_support": {
+        "EARLY_PHASE1": 0,
+        "PHASE1": 5004,
+        "PHASE2": 4257,
+        "PHASE3": 2733,
+        "PHASE4": 2640
+      },
+      "macro_f1_labels": [
+        "PHASE1",
+        "PHASE2",
+        "PHASE3",
+        "PHASE4"
+      ],
+      "unseen_training_labels": [],
+      "per_class": {
+        "EARLY_PHASE1": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "PHASE1": {
+          "precision": 0.7404008241243678,
+          "recall": 0.7899680255795364,
+          "f1": 0.7643817074349801,
+          "support": 5004
+        },
+        "PHASE2": {
+          "precision": 0.543937969924812,
+          "recall": 0.5438101949729857,
+          "f1": 0.543874074944203,
+          "support": 4257
+        },
+        "PHASE3": {
+          "precision": 0.6140633387010198,
+          "recall": 0.4185876326381266,
+          "f1": 0.4978241949521323,
+          "support": 2733
+        },
+        "PHASE4": {
+          "precision": 0.5085012594458438,
+          "recall": 0.6117424242424242,
+          "f1": 0.5553645116918845,
+          "support": 2640
+        }
+      },
+      "confidence_intervals": {
+        "method": "conditional fitted-model trial bootstrap percentile",
+        "level": 0.95,
+        "requested_resamples": 200,
+        "random_seed": 42,
+        "accuracy": {
+          "lower": 0.6090593822604893,
+          "upper": 0.6238212382123821,
+          "valid_resamples": 200
+        },
+        "balanced_accuracy": {
+          "lower": 0.5833485164003281,
+          "upper": 0.5990369399596118,
+          "valid_resamples": 200
+        },
+        "macro_f1": {
+          "lower": 0.5826326228242547,
+          "upper": 0.5980205588149412,
+          "valid_resamples": 200
+        }
+      }
+    },
+    "test": {
+      "n": 8133,
+      "accuracy": 0.6536333456289192,
+      "balanced_accuracy": 0.5782959820872635,
+      "macro_f1": 0.5760310120047024,
+      "labels": [
+        "EARLY_PHASE1",
+        "PHASE1",
+        "PHASE2",
+        "PHASE3",
+        "PHASE4"
+      ],
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          3134,
+          317,
+          55,
+          176
+        ],
+        [
+          0,
+          408,
+          857,
+          224,
+          335
+        ],
+        [
+          0,
+          283,
+          299,
+          396,
+          275
+        ],
+        [
+          0,
+          131,
+          268,
+          46,
+          929
+        ]
+      ],
+      "class_support": {
+        "EARLY_PHASE1": 0,
+        "PHASE1": 3682,
+        "PHASE2": 1824,
+        "PHASE3": 1253,
+        "PHASE4": 1374
+      },
+      "macro_f1_labels": [
+        "PHASE1",
+        "PHASE2",
+        "PHASE3",
+        "PHASE4"
+      ],
+      "unseen_training_labels": [],
+      "per_class": {
+        "EARLY_PHASE1": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "PHASE1": {
+          "precision": 0.7922143579373104,
+          "recall": 0.8511678435632808,
+          "f1": 0.8206336737365802,
+          "support": 3682
+        },
+        "PHASE2": {
+          "precision": 0.4922458357265939,
+          "recall": 0.46984649122807015,
+          "f1": 0.48078541374474054,
+          "support": 1824
+        },
+        "PHASE3": {
+          "precision": 0.5492371705963939,
+          "recall": 0.3160415003990423,
+          "f1": 0.4012158054711246,
+          "support": 1253
+        },
+        "PHASE4": {
+          "precision": 0.5416909620991254,
+          "recall": 0.6761280931586608,
+          "f1": 0.6014891550663645,
+          "support": 1374
+        }
+      },
+      "confidence_intervals": {
+        "method": "conditional fitted-model trial bootstrap percentile",
+        "level": 0.95,
+        "requested_resamples": 200,
+        "random_seed": 42,
+        "accuracy": {
+          "lower": 0.6441442272224271,
+          "upper": 0.66335608016722,
+          "valid_resamples": 200
+        },
+        "balanced_accuracy": {
+          "lower": 0.5677773514578724,
+          "upper": 0.5899014663664935,
+          "valid_resamples": 200
+        },
+        "macro_f1": {
+          "lower": 0.5644982244898266,
+          "upper": 0.5876110572720731,
+          "valid_resamples": 200
+        }
+      }
+    }
+  }
+}

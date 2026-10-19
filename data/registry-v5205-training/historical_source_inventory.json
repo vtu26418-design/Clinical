@@ -1,0 +1,529 @@
+{
+  "files": [
+    {
+      "file": "data/clinicaltrials-v5-acquisition/raw/2000-2005-page-001.json.gz",
+      "sha256": "a48caf2821a115aecbf7e81add06ef8e9079312f392d4987510e969237b97577",
+      "unique_nct_ids": 105
+    },
+    {
+      "file": "data/clinicaltrials-v5-acquisition/raw/2000-2005-page-002.json.gz",
+      "sha256": "40f923afeeabbf3874c7841a5a18657562088cc42a0d148aa767afb4e7be0cb2",
+      "unique_nct_ids": 103
+    },
+    {
+      "file": "data/clinicaltrials-v5-acquisition/raw/2000-2005-page-003.json.gz",
+      "sha256": "2db506bab2704f82a61115ff336c3686815be6845a4c93f72eff720c399ad92c",
+      "unique_nct_ids": 104
+    },
+    {
+      "file": "data/clinicaltrials-v5-acquisition/raw/2000-2005-page-004.json.gz",
+      "sha256": "a4fb6fde56dcf4a945c20bd365bf0b70b813eebb6d29e297d5932d0dcc458eab",
+      "unique_nct_ids": 105
+    },
+    {
+      "file": "data/clinicaltrials-v5-acquisition/raw/2000-2005-page-005.json.gz",
+      "sha256": "df082e78e22be49903929c2abc02afd9da66ba229fe0509a7a149f17c8e386b0",
+      "unique_nct_ids": 106
+    },
+    {
+      "file": "data/clinicaltrials-v5-acquisition/raw/2000-2005-page-006.json.gz",
+      "sha256": "af82964da5901a2f64a29b371d0fc47e6ab7dd855be86eb4db3bf32b3071a4cc",
+      "unique_nct_ids": 105
+    },
+    {
+      "file": "data/clinicaltrials-v5-acquisition/raw/2000-2005-page-007.json.gz",
+      "sha256": "3a8e1111bb86b82d52fc2c0c6edc7ba7c0a1dfda8eadad1d81dbea80f6c1cc8f",
+      "unique_nct_ids": 105
+    },
+    {
+      "file": "data/clinicaltrials-v5-acquisition/raw/2000-2005-page-008.json.gz",
+      "sha256": "da4437b6faa114ba9b65e4dddf75b5086c6b3f39934658f1f74ce24b1e79bb5c",
+      "unique_nct_ids": 106
+    },
+    {
+      "file": "data/clinicaltrials-v5-acquisition/raw/2000-2005-page-009.json.gz",
+      "sha256": "e2eb507e20ccba09e6ce4ad9a62110d99d4e8b35fe2b9adc0c5747431a436a93",
+      "unique_nct_ids": 102
+    },
+    {
+      "file": "data/clinicaltrials-v5-acquisition/raw/2000-2005-page-010.json.gz",
+      "sha256": "867d3a0ed99110ebc2879256ae0fde6330892fabb4d00f42b097d1d43f8adcb5",
+      "unique_nct_ids": 105
+    },
+    {
+      "file": "data/clinicaltrials-v5-acquisition/raw/2006-2011-page-001.json.gz",
+      "sha256": "e309aafdbb68ca0ab6073f44c91575b79cb95a78c387ec13986c832039b37b0d",
+      "unique_nct_ids": 110
+    },
+    {
+      "file": "data/clinicaltrials-v5-acquisition/raw/2006-2011-page-002.json.gz",
+      "sha256": "4480de8f4c41500191ea78d96acfae1f049157140e4a193ae38661db4e11f52a",
+      "unique_nct_ids": 106
+    },
+    {
+      "file": "data/clinicaltrials-v5-acquisition/raw/2006-2011-page-003.json.gz",
+      "sha256": "89f991b3230f31b7b0be036e686b37d4064bfe229333acaf743ec807e5733018",
+      "unique_nct_ids": 104
+    },
+    {
+      "file": "data/clinicaltrials-v5-acquisition/raw/2006-2011-page-004.json.gz",
+      "sha256": "697fd271d22103579198c53bce35fec641b07a48554223ab392e532707771579",
+      "unique_nct_ids": 108
+    },
+    {
+      "file": "data/clinicaltrials-v5-acquisition/raw/2006-2011-page-005.json.gz",
+      "sha256": "a3e2f183293e529ba8d0aa69a8d64c0058e0cfd439b182f36f9159162f1caf90",
+      "unique_nct_ids": 101
+    },
+    {
+      "file": "data/clinicaltrials-v5-acquisition/raw/2006-2011-page-006.json.gz",
+      "sha256": "9321a824fd0562848fd0fff6ea6d8f6554addf46e3d7197922ba6c1b444d6bf8",
+      "unique_nct_ids": 106
+    },
+    {
+      "file": "data/clinicaltrials-v5-acquisition/raw/2006-2011-page-007.json.gz",
+      "sha256": "03050749786aa4bd5d9d3577b62d3f1bb9b2bd8d2cc883bc1bedfd511a94bd80",
+      "unique_nct_ids": 105
+    },
+    {
+      "file": "data/clinicaltrials-v5-acquisition/raw/2006-2011-page-008.json.gz",
+      "sha256": "c02566d92f6f54fc9af2f35481631cea18132e27b18423dc1e73f7504191d6e4",
+      "unique_nct_ids": 100
+    },
+    {
+      "file": "data/clinicaltrials-v5-expanded/raw/2000-2005-page-001.json.gz",
+      "sha256": "a48caf2821a115aecbf7e81add06ef8e9079312f392d4987510e969237b97577",
+      "unique_nct_ids": 105
+    },
+    {
+      "file": "data/clinicaltrials-v5-expanded/raw/2000-2005-page-002.json.gz",
+      "sha256": "40f923afeeabbf3874c7841a5a18657562088cc42a0d148aa767afb4e7be0cb2",
+      "unique_nct_ids": 103
+    },
+    {
+      "file": "data/clinicaltrials-v5-expanded/raw/2000-2005-page-003.json.gz",
+      "sha256": "2db506bab2704f82a61115ff336c3686815be6845a4c93f72eff720c399ad92c",
+      "unique_nct_ids": 104
+    },
+    {
+      "file": "data/clinicaltrials-v5-expanded/raw/2000-2005-page-004.json.gz",
+      "sha256": "a4fb6fde56dcf4a945c20bd365bf0b70b813eebb6d29e297d5932d0dcc458eab",
+      "unique_nct_ids": 105
+    },
+    {
+      "file": "data/clinicaltrials-v5-expanded/raw/2000-2005-page-005.json.gz",
+      "sha256": "df082e78e22be49903929c2abc02afd9da66ba229fe0509a7a149f17c8e386b0",
+      "unique_nct_ids": 106
+    },
+    {
+      "file": "data/clinicaltrials-v5-expanded/raw/2000-2005-page-006.json.gz",
+      "sha256": "af82964da5901a2f64a29b371d0fc47e6ab7dd855be86eb4db3bf32b3071a4cc",
+      "unique_nct_ids": 105
+    },
+    {
+      "file": "data/clinicaltrials-v5-expanded/raw/2000-2005-page-007.json.gz",
+      "sha256": "3a8e1111bb86b82d52fc2c0c6edc7ba7c0a1dfda8eadad1d81dbea80f6c1cc8f",
+      "unique_nct_ids": 105
+    },
+    {
+      "file": "data/clinicaltrials-v5-expanded/raw/2000-2005-page-008.json.gz",
+      "sha256": "da4437b6faa114ba9b65e4dddf75b5086c6b3f39934658f1f74ce24b1e79bb5c",
+      "unique_nct_ids": 106
+    },
+    {
+      "file": "data/clinicaltrials-v5-expanded/raw/2000-2005-page-009.json.gz",
+      "sha256": "e2eb507e20ccba09e6ce4ad9a62110d99d4e8b35fe2b9adc0c5747431a436a93",
+      "unique_nct_ids": 102
+    },
+    {
+      "file": "data/clinicaltrials-v5-expanded/raw/2000-2005-page-010.json.gz",
+      "sha256": "867d3a0ed99110ebc2879256ae0fde6330892fabb4d00f42b097d1d43f8adcb5",
+      "unique_nct_ids": 105
+    },
+    {
+      "file": "data/clinicaltrials-v5-expanded/raw/2006-2011-page-001.json.gz",
+      "sha256": "e309aafdbb68ca0ab6073f44c91575b79cb95a78c387ec13986c832039b37b0d",
+      "unique_nct_ids": 110
+    },
+    {
+      "file": "data/clinicaltrials-v5-expanded/raw/2006-2011-page-002.json.gz",
+      "sha256": "4480de8f4c41500191ea78d96acfae1f049157140e4a193ae38661db4e11f52a",
+      "unique_nct_ids": 106
+    },
+    {
+      "file": "data/clinicaltrials-v5-expanded/raw/2006-2011-page-003.json.gz",
+      "sha256": "89f991b3230f31b7b0be036e686b37d4064bfe229333acaf743ec807e5733018",
+      "unique_nct_ids": 104
+    },
+    {
+      "file": "data/clinicaltrials-v5-expanded/raw/2006-2011-page-004.json.gz",
+      "sha256": "697fd271d22103579198c53bce35fec641b07a48554223ab392e532707771579",
+      "unique_nct_ids": 108
+    },
+    {
+      "file": "data/clinicaltrials-v5-expanded/raw/2006-2011-page-005.json.gz",
+      "sha256": "a3e2f183293e529ba8d0aa69a8d64c0058e0cfd439b182f36f9159162f1caf90",
+      "unique_nct_ids": 101
+    },
+    {
+      "file": "data/clinicaltrials-v5-recovered/raw/2000-2005-page-001.json.gz",
+      "sha256": "a48caf2821a115aecbf7e81add06ef8e9079312f392d4987510e969237b97577",
+      "unique_nct_ids": 105
+    },
+    {
+      "file": "data/clinicaltrials-v5-recovered/raw/2000-2005-page-002.json.gz",
+      "sha256": "40f923afeeabbf3874c7841a5a18657562088cc42a0d148aa767afb4e7be0cb2",
+      "unique_nct_ids": 103
+    },
+    {
+      "file": "data/clinicaltrials-v5-recovered/raw/2000-2005-page-003.json.gz",
+      "sha256": "2db506bab2704f82a61115ff336c3686815be6845a4c93f72eff720c399ad92c",
+      "unique_nct_ids": 104
+    },
+    {
+      "file": "data/clinicaltrials-v5-recovered/raw/2000-2005-page-004.json.gz",
+      "sha256": "a4fb6fde56dcf4a945c20bd365bf0b70b813eebb6d29e297d5932d0dcc458eab",
+      "unique_nct_ids": 105
+    },
+    {
+      "file": "data/clinicaltrials-v5-recovered/raw/2000-2005-page-005.json.gz",
+      "sha256": "df082e78e22be49903929c2abc02afd9da66ba229fe0509a7a149f17c8e386b0",
+      "unique_nct_ids": 106
+    },
+    {
+      "file": "data/clinicaltrials-v5-recovered/raw/2000-2005-page-006.json.gz",
+      "sha256": "af82964da5901a2f64a29b371d0fc47e6ab7dd855be86eb4db3bf32b3071a4cc",
+      "unique_nct_ids": 105
+    },
+    {
+      "file": "data/clinicaltrials-v5-recovered/raw/2000-2005-page-007.json.gz",
+      "sha256": "3a8e1111bb86b82d52fc2c0c6edc7ba7c0a1dfda8eadad1d81dbea80f6c1cc8f",
+      "unique_nct_ids": 105
+    },
+    {
+      "file": "data/clinicaltrials-v5-recovered/raw/2000-2005-page-008.json.gz",
+      "sha256": "da4437b6faa114ba9b65e4dddf75b5086c6b3f39934658f1f74ce24b1e79bb5c",
+      "unique_nct_ids": 106
+    },
+    {
+      "file": "data/clinicaltrials-v5-recovered/raw/2000-2005-page-009.json.gz",
+      "sha256": "e2eb507e20ccba09e6ce4ad9a62110d99d4e8b35fe2b9adc0c5747431a436a93",
+      "unique_nct_ids": 102
+    },
+    {
+      "file": "data/clinicaltrials-v5-recovered/raw/2000-2005-page-010.json.gz",
+      "sha256": "867d3a0ed99110ebc2879256ae0fde6330892fabb4d00f42b097d1d43f8adcb5",
+      "unique_nct_ids": 105
+    },
+    {
+      "file": "data/clinicaltrials-v5-recovered/raw/2006-2011-page-001.json.gz",
+      "sha256": "e309aafdbb68ca0ab6073f44c91575b79cb95a78c387ec13986c832039b37b0d",
+      "unique_nct_ids": 110
+    },
+    {
+      "file": "data/clinicaltrials-v5-recovered/raw/2006-2011-page-002.json.gz",
+      "sha256": "4480de8f4c41500191ea78d96acfae1f049157140e4a193ae38661db4e11f52a",
+      "unique_nct_ids": 106
+    },
+    {
+      "file": "data/clinicaltrials-v5-recovered/raw/2006-2011-page-003.json.gz",
+      "sha256": "89f991b3230f31b7b0be036e686b37d4064bfe229333acaf743ec807e5733018",
+      "unique_nct_ids": 104
+    },
+    {
+      "file": "data/clinicaltrials-v5-recovered/raw/2006-2011-page-004.json.gz",
+      "sha256": "697fd271d22103579198c53bce35fec641b07a48554223ab392e532707771579",
+      "unique_nct_ids": 108
+    },
+    {
+      "file": "data/clinicaltrials-v5-recovered/raw/2006-2011-page-005.json.gz",
+      "sha256": "a3e2f183293e529ba8d0aa69a8d64c0058e0cfd439b182f36f9159162f1caf90",
+      "unique_nct_ids": 101
+    },
+    {
+      "file": "data/clinicaltrials-v5-recovered/raw/2006-2011-page-006.json.gz",
+      "sha256": "9321a824fd0562848fd0fff6ea6d8f6554addf46e3d7197922ba6c1b444d6bf8",
+      "unique_nct_ids": 106
+    },
+    {
+      "file": "data/clinicaltrials-v5-recovered/raw/2006-2011-page-007.json.gz",
+      "sha256": "03050749786aa4bd5d9d3577b62d3f1bb9b2bd8d2cc883bc1bedfd511a94bd80",
+      "unique_nct_ids": 105
+    },
+    {
+      "file": "data/clinicaltrials-v5-recovered/raw/2006-2011-page-008.json.gz",
+      "sha256": "c02566d92f6f54fc9af2f35481631cea18132e27b18423dc1e73f7504191d6e4",
+      "unique_nct_ids": 100
+    },
+    {
+      "file": "data/clinicaltrials-v5-recovered/trials.csv",
+      "sha256": "5c963d4b1b4faea165aad57c097b3608304e400673dd41854204740883433148",
+      "unique_nct_ids": 1821
+    },
+    {
+      "file": "data/starter/raw/2000-2005-page-001.json.gz",
+      "sha256": "41dd46bf5605ce83d898b6c4efe1c0aeff7a48f63117e81cd429452b47b28e65",
+      "unique_nct_ids": 109
+    },
+    {
+      "file": "data/starter/raw/2000-2005-page-002.json.gz",
+      "sha256": "c88856a4f2e53674bd3ef902b8f7d5ff02af91c8b8e2fe9bdb2d4fe89bd04c5a",
+      "unique_nct_ids": 111
+    },
+    {
+      "file": "data/starter/raw/2006-2011-page-001.json.gz",
+      "sha256": "5f8a726570378c2b09134a3b19d254fc447fa5cf1ae7cd96ed9faee0c0a3cb54",
+      "unique_nct_ids": 100
+    },
+    {
+      "file": "data/starter/raw/2006-2011-page-002.json.gz",
+      "sha256": "103ef64b5ec6ade6ed428a7e6db4a06306e0fb92f8f88b1a720b1948f77c3f1a",
+      "unique_nct_ids": 101
+    },
+    {
+      "file": "data/starter/raw/2012-2017-page-001.json.gz",
+      "sha256": "935c34d4e8e7dc90e647edff7ed9aa3f32ddf3c794709c69fd99df3c2cb5a81b",
+      "unique_nct_ids": 102
+    },
+    {
+      "file": "data/starter/raw/2012-2017-page-002.json.gz",
+      "sha256": "e29bd49a84bff6933b1a235b010f0c91da9a03a0784555b57d21df760a4b479b",
+      "unique_nct_ids": 108
+    },
+    {
+      "file": "data/starter/raw/2018-2023-page-001.json.gz",
+      "sha256": "311f6fa070fed0b0a70994b7f817fca897e5cab26201c64a2eaba07dd426ea2b",
+      "unique_nct_ids": 103
+    },
+    {
+      "file": "data/starter/raw/2018-2023-page-002.json.gz",
+      "sha256": "88f099360aa85e820dc3665100f7cf096237174e74d6283e8b853f32c7301764",
+      "unique_nct_ids": 101
+    },
+    {
+      "file": "data/starter/trials.csv",
+      "sha256": "d096795e303b5a103e0aba8bd79ffe7e85609827ea810d1c08e8e0811b5496d2",
+      "unique_nct_ids": 809
+    },
+    {
+      "file": "docs/v52-evidence/live-sources.json",
+      "sha256": "2e0cecbed78e57dbf6e93cd6dc2dfd25e2f311df2cb2d39a813d87fa9500eca4",
+      "unique_nct_ids": 2
+    },
+    {
+      "file": "docs/v5202-evidence/catboost-cohort_exclusions.csv",
+      "sha256": "19febfb2eeaf9083ead9868fe2e3f5306237a7c6f31777d14a9aee0f7e6251c7",
+      "unique_nct_ids": 488
+    },
+    {
+      "file": "docs/v5202-evidence/catboost-held_out_predictions.csv",
+      "sha256": "910c368a2473e0e5cd40d65dd0572d2d8961b54c1975a3e6245e139799f80060",
+      "unique_nct_ids": 84
+    },
+    {
+      "file": "docs/v5202-evidence/catboost-manifest.json",
+      "sha256": "b7b56d2fc7772faa3105f8058eff34631cd46d7b778fc9c4d4ebb13f65a72bd2",
+      "unique_nct_ids": 189
+    },
+    {
+      "file": "docs/v5202-evidence/catboost-temporal_exclusions.csv",
+      "sha256": "8b87563884e7798a84655e1f0a146213c890323dc898a04d41c450dda7e301ae",
+      "unique_nct_ids": 123
+    },
+    {
+      "file": "docs/v5203-evidence/expanded-catboost-manifest.json",
+      "sha256": "cb446d4a26570e28550db10279e06da02c71f724ee420a492ece051985e95462",
+      "unique_nct_ids": 189
+    },
+    {
+      "file": "docs/v5204-evidence/accuracy-baseline/cohort_exclusions.csv",
+      "sha256": "19febfb2eeaf9083ead9868fe2e3f5306237a7c6f31777d14a9aee0f7e6251c7",
+      "unique_nct_ids": 488
+    },
+    {
+      "file": "docs/v5204-evidence/accuracy-baseline/held_out_predictions.csv",
+      "sha256": "90199bc8ce6f1726ebb0a60594d3c0c1d65f49f84ef7ddb76f83dad3f29ad2fc",
+      "unique_nct_ids": 84
+    },
+    {
+      "file": "docs/v5204-evidence/accuracy-baseline/manifest.json",
+      "sha256": "f346c31fd3d1f3743d4ac942029a9c2c3c27a87ab4c88b5d8cb6bef6e3c41dd4",
+      "unique_nct_ids": 189
+    },
+    {
+      "file": "docs/v5204-evidence/accuracy-baseline/temporal_exclusions.csv",
+      "sha256": "8b87563884e7798a84655e1f0a146213c890323dc898a04d41c450dda7e301ae",
+      "unique_nct_ids": 123
+    },
+    {
+      "file": "docs/v5204-evidence/accuracy-benchmark/cohort_exclusions.csv",
+      "sha256": "19febfb2eeaf9083ead9868fe2e3f5306237a7c6f31777d14a9aee0f7e6251c7",
+      "unique_nct_ids": 488
+    },
+    {
+      "file": "docs/v5204-evidence/accuracy-benchmark/held_out_predictions.csv",
+      "sha256": "9e8b97dd4860f76f07ecc121ec9346e554bbca7cc447915304ee867d8e74e326",
+      "unique_nct_ids": 84
+    },
+    {
+      "file": "docs/v5204-evidence/accuracy-benchmark/manifest.json",
+      "sha256": "f2a881fd4d3e7e20c6da7dc41b4426f599db18afc80809c78722b96166dd4541",
+      "unique_nct_ids": 189
+    },
+    {
+      "file": "docs/v5204-evidence/accuracy-benchmark/temporal_exclusions.csv",
+      "sha256": "8b87563884e7798a84655e1f0a146213c890323dc898a04d41c450dda7e301ae",
+      "unique_nct_ids": 123
+    },
+    {
+      "file": "docs/v5204-evidence/accuracy-benchmark-summary.json",
+      "sha256": "893efad2c061e4d3e8f73a9f49ea6768f9c74c28f45dbf7d151b2ce87c9d2e2d",
+      "unique_nct_ids": 189
+    },
+    {
+      "file": "docs/v5204-evidence/recovered-cohort-feasibility.json",
+      "sha256": "0f7d379e8fb64bb09addbf5624381f79f78253dcc73b6fc6438dfc5b97e797fc",
+      "unique_nct_ids": 139
+    },
+    {
+      "file": "examples/starter-duration/cohort_exclusions.csv",
+      "sha256": "19febfb2eeaf9083ead9868fe2e3f5306237a7c6f31777d14a9aee0f7e6251c7",
+      "unique_nct_ids": 488
+    },
+    {
+      "file": "examples/starter-duration/example_prediction.json",
+      "sha256": "e71e703eb19ccee26c3e0c73e975b3434fa64c7041dfc81499f2919733e9e2c3",
+      "unique_nct_ids": 1
+    },
+    {
+      "file": "examples/starter-duration/held_out_predictions.csv",
+      "sha256": "ede9973ca204a30fb9ff23a6fff33a5f09d7f8591fbe79f798394a89915c3d34",
+      "unique_nct_ids": 84
+    },
+    {
+      "file": "examples/starter-duration/manifest.json",
+      "sha256": "28a40614f7003b98c681b4e83576d379ff3b2c725811c7787690135e4044d07a",
+      "unique_nct_ids": 189
+    },
+    {
+      "file": "examples/starter-duration/server_run.json",
+      "sha256": "5af8583c5b55a0cce8b87abf9c6e36d5507730d8366af30bbc23e808e1bafc09",
+      "unique_nct_ids": 189
+    },
+    {
+      "file": "examples/starter-duration/temporal_exclusions.csv",
+      "sha256": "8b87563884e7798a84655e1f0a146213c890323dc898a04d41c450dda7e301ae",
+      "unique_nct_ids": 123
+    },
+    {
+      "file": "examples/starter-duration-v4/cohort_exclusions.csv",
+      "sha256": "19febfb2eeaf9083ead9868fe2e3f5306237a7c6f31777d14a9aee0f7e6251c7",
+      "unique_nct_ids": 488
+    },
+    {
+      "file": "examples/starter-duration-v4/example_prediction.json",
+      "sha256": "9f79d03a904cfc543b770eda06eaeea350edae070128f4be40af9dee7d14ef45",
+      "unique_nct_ids": 1
+    },
+    {
+      "file": "examples/starter-duration-v4/held_out_predictions.csv",
+      "sha256": "2d75c56347398949354ffb835da24861ee286bff8913ee3d410e87a1617bf37c",
+      "unique_nct_ids": 84
+    },
+    {
+      "file": "examples/starter-duration-v4/manifest.json",
+      "sha256": "f2d88272124c1cdb3124f7ef2e16999e7d8d9c63ebcadf1071661aabc9973beb",
+      "unique_nct_ids": 189
+    },
+    {
+      "file": "examples/starter-duration-v4/server_run.json",
+      "sha256": "02cfcd56df9c33b99f0858d298235dac59d7a0a3c2fa2b471144cc5a97547aac",
+      "unique_nct_ids": 189
+    },
+    {
+      "file": "examples/starter-duration-v4/temporal_exclusions.csv",
+      "sha256": "8b87563884e7798a84655e1f0a146213c890323dc898a04d41c450dda7e301ae",
+      "unique_nct_ids": 123
+    },
+    {
+      "file": "examples/starter-duration-v5/cohort_exclusions.csv",
+      "sha256": "19febfb2eeaf9083ead9868fe2e3f5306237a7c6f31777d14a9aee0f7e6251c7",
+      "unique_nct_ids": 488
+    },
+    {
+      "file": "examples/starter-duration-v5/held_out_predictions.csv",
+      "sha256": "6a80e9b77f28fa3aaa47017995f377a9eb2c5f8349abbadfea7724317288f39b",
+      "unique_nct_ids": 84
+    },
+    {
+      "file": "examples/starter-duration-v5/manifest.json",
+      "sha256": "72c93ffcb6c43aa9cdbbe6a401957aa2a3177196f08a65a4609a19b6c2ab8bec",
+      "unique_nct_ids": 189
+    },
+    {
+      "file": "examples/starter-duration-v5/temporal_exclusions.csv",
+      "sha256": "8b87563884e7798a84655e1f0a146213c890323dc898a04d41c450dda7e301ae",
+      "unique_nct_ids": 123
+    },
+    {
+      "file": "examples/starter-phase/phase_cohort_exclusions.csv",
+      "sha256": "e2a9ef8881e2d2a0148233f31496ffc80c3e3fca3d56adb919c427b229d65d02",
+      "unique_nct_ids": 509
+    },
+    {
+      "file": "examples/starter-phase/phase_held_out_predictions.csv",
+      "sha256": "3d61be728859c120c470c3f9d5131d0ff6f2c870a35cb3a85026e5f915f704b5",
+      "unique_nct_ids": 116
+    },
+    {
+      "file": "examples/starter-phase/phase_manifest.json",
+      "sha256": "ae793feee75c807cf1e9690044413bd95d41800a9269583a3b379d0d93720556",
+      "unique_nct_ids": 291
+    },
+    {
+      "file": "examples/starter-phase/server_run.json",
+      "sha256": "8aba72c54abd0ecbc2851172678372ff78e83879bee862e3daa7c4086d1764ac",
+      "unique_nct_ids": 291
+    },
+    {
+      "file": "examples/starter-phase-v4/phase_cohort_exclusions.csv",
+      "sha256": "e2a9ef8881e2d2a0148233f31496ffc80c3e3fca3d56adb919c427b229d65d02",
+      "unique_nct_ids": 509
+    },
+    {
+      "file": "examples/starter-phase-v4/phase_held_out_predictions.csv",
+      "sha256": "3d61be728859c120c470c3f9d5131d0ff6f2c870a35cb3a85026e5f915f704b5",
+      "unique_nct_ids": 116
+    },
+    {
+      "file": "examples/starter-phase-v4/phase_manifest.json",
+      "sha256": "13e8304769418f45bf878143cd72e6de0b195648c8cf569b84c21765beaeeda4",
+      "unique_nct_ids": 291
+    },
+    {
+      "file": "examples/starter-phase-v4/server_run.json",
+      "sha256": "b596d9ffd7110f6f902e3af68c08ea181bee117e0597aeaf3ad2c1b359120a50",
+      "unique_nct_ids": 291
+    },
+    {
+      "file": "examples/starter-phase-v5/phase_cohort_exclusions.csv",
+      "sha256": "e2a9ef8881e2d2a0148233f31496ffc80c3e3fca3d56adb919c427b229d65d02",
+      "unique_nct_ids": 509
+    },
+    {
+      "file": "examples/starter-phase-v5/phase_held_out_predictions.csv",
+      "sha256": "3d61be728859c120c470c3f9d5131d0ff6f2c870a35cb3a85026e5f915f704b5",
+      "unique_nct_ids": 116
+    },
+    {
+      "file": "examples/starter-phase-v5/phase_manifest.json",
+      "sha256": "06fd5b8d57094811400fe5933943c3128aa2a3ee7ea915c93296e26ce810e8da",
+      "unique_nct_ids": 291
+    },
+    {
+      "file": "examples/v4-workflow-verification.json",
+      "sha256": "5c6c0406e3b7087787a4f7c7a550660a5926c95de00e5bae2026cb4ab1d2afdb",
+      "unique_nct_ids": 1
+    }
+  ]
+}

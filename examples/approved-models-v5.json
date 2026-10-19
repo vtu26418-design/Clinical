@@ -28,6 +28,54 @@
         "approved_at": "2026-10-09T05:08:50.334244+00:00",
         "notes": "Authentic 800-record ClinicalTrials.gov starter; completed-only retrospective registry snapshot, not prospective or clinical validation. Software release approval only."
       }
+    },
+    {
+      "id": "registry-duration-v5205",
+      "name": "Registry duration research model",
+      "task": "duration",
+      "directory": "examples/registry-duration-v5205",
+      "manifest_sha256": "045d0374e6e3ca49700e46f856b0a335bbd9a1da7684973f9ca3424fa45895f5",
+      "artifact_sha256": "32a4eadd4efe75caaad773dc475bd9d908962c1068795df0600c800bda10574b",
+      "release_default": true,
+      "default_for_new_projects": true,
+      "approval": {
+        "scope": "research_only",
+        "approved_by": "v5.2.0.5 software release validation",
+        "approved_at": "2026-10-18T16:00:00+00:00",
+        "notes": "Manual release review of frozen tuning-selected candidates on an independent larger registry cohort; completed-only latest snapshots, not pretrial or prospective validation. Historical IDs excluded. Existing project activations are preserved."
+      }
+    },
+    {
+      "id": "registry-phase-v5205",
+      "name": "Registry phase research model",
+      "task": "phase",
+      "directory": "examples/registry-phase-v5205",
+      "manifest_sha256": "19fbd6542d87b8515f30e830c40b1d41f54f8df7f134f9a7338a3eb6b7b744d0",
+      "artifact_sha256": "e41edc30d07990a9459945a7f6e8c9afe5dc8fc5108feca925337b9efbb63f68",
+      "release_default": false,
+      "default_for_new_projects": false,
+      "approval": {
+        "scope": "research_only",
+        "approved_by": "v5.2.0.5 software release validation",
+        "approved_at": "2026-10-18T16:00:00+00:00",
+        "notes": "Manual release review of frozen tuning-selected candidates on an independent larger registry cohort; completed-only latest snapshots, not pretrial or prospective validation. Historical IDs excluded. Existing project activations are preserved."
+      }
+    },
+    {
+      "id": "registry-phase-refinement-v5205",
+      "name": "Refined phase consistency model",
+      "task": "phase",
+      "directory": "examples/registry-phase-refinement-v5205",
+      "manifest_sha256": "7fecef1463d7e38dfcda6d98e9a08a97d57f7b2fbe335ce22beb92ecff73ffba",
+      "artifact_sha256": "dfe2833a0cd729533c9281993e7f76666f02a5842137acbae2ac923cded2abed",
+      "release_default": true,
+      "default_for_new_projects": true,
+      "approval": {
+        "scope": "research_only",
+        "approved_by": "v5.2.0.5 software release validation",
+        "approved_at": "2026-10-19T00:05:51.379104+00:00",
+        "notes": "Tuning-selected word/character text and retrospective protocol descriptors; confirmation on50139ID-disjoint partial-start-date trials. Matched accuracy67.9312%versus66.4752% and macroF1.6740versus.6574; not a chronological/prospective test. Original exact-date model remains selectable. Existing project activations preserved."
+      }
     }
   ]
 }

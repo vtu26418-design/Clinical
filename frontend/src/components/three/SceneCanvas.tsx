@@ -1,17 +1,14 @@
-import {useEffect,useMemo} from 'react';
-import {Canvas,useThree} from '@react-three/fiber';
-import {OrbitControls} from '@react-three/drei';
-import {OrthographicCamera} from 'three';
+import {Canvas} from '@react-three/fiber';
 import type {ScenePanelProps} from './types';
-import {resolveClinicStage} from './VirtualClinicMotion';
-import {VirtualClinicPerson} from './VirtualClinicPeople';
-import {VirtualClinicRoom} from './VirtualClinicRoom';
-import {VirtualClinicDNA} from './VirtualClinicDNA';
+import {ScientificWorld} from '../../v5205/science/ScientificWorld';
+import {defaultSettings} from '../../v5205/science/templates';
+import type {ScienceScene,ScienceFocus} from '../../v5205/science/types';
+import '../../v5205/science/science.css';
 interface CanvasProps extends ScenePanelProps {step:number;running:boolean;speed:number;quality:'low'|'standard';reduced:boolean;onFailure:()=>void}
-function World(props:CanvasProps){
- const helix=props.kind==='helix',stage=useMemo(()=>resolveClinicStage(props.kind,props.step,props.phaseIndex),[props.kind,props.step,props.phaseIndex]),stageKey=`${props.kind}-${props.phaseIndex??'unknown'}-${props.step}`;
- return <><ambientLight intensity={1.25}/><hemisphereLight args={['#fffaf0','#8caa9c',1.3]}/><directionalLight castShadow position={[-3,8,6]} intensity={2.4} color="#fff8e8" shadow-mapSize-width={props.quality==='low'?512:1024} shadow-mapSize-height={props.quality==='low'?512:1024} shadow-camera-left={-7} shadow-camera-right={7} shadow-camera-top={7} shadow-camera-bottom={-7} shadow-normalBias={0.035}/><directionalLight position={[5,4,-3]} intensity={0.85} color="#c9dfd9"/>{helix?<VirtualClinicDNA running={props.running} speed={props.speed} reduced={props.reduced}/>:<group position={[0,-0.7,0]}><VirtualClinicRoom comparison={props.kind==='scenario'||stage.zone==='comparison'} stage={stage}/><group key={stageKey}>{(['patient','doctor','researcher'] as const).map(role=><VirtualClinicPerson key={role} role={role} stage={stage} running={props.running} speed={props.speed}/>)}</group></group>}<OrbitControls makeDefault target={helix?[0,0,0]:[0,0.6,0]} enablePan={false} enableZoom={false} enableRotate={!props.reduced} enableDamping={false} minPolarAngle={0.55} maxPolarAngle={1.28} minAzimuthAngle={helix?-Math.PI:-0.3} maxAzimuthAngle={helix?Math.PI:1.25}/><ContextGuard onFailure={props.onFailure}/><CameraFit helix={helix}/></>
+/** Analytical pages show processing. DNA is reserved for the explicitly conceptual helix. */
+export function analyticalScene(kind:ScenePanelProps['kind']):ScienceScene{return kind==='helix'?'dna':'pipeline'}
+export default function SceneCanvas(props:CanvasProps){
+ const scene=props.scientificScene??analyticalScene(props.kind),focus:ScienceFocus=props.step===0?'input':props.step===props.steps.length-1?'output':'processing';
+ const labels=scene==='pipeline'?[props.steps[0]?.title||'Source',props.steps[Math.floor(props.steps.length/2)]?.title||'Processing',props.steps.at(-1)?.title||'Output']:[];
+ return <div className="cti-scene-canvas" style={{background:'#071320'}} aria-hidden="true"><Canvas orthographic camera={{position:[0,0,15],zoom:50,near:0.1,far:60}} frameloop={props.running?'always':'demand'} dpr={props.quality==='low'?1:[1,1.5]} gl={{antialias:props.quality!=='low',powerPreference:'low-power'}}><ScientificWorld scene={scene} focus={focus} settings={{...defaultSettings,detail:props.quality,speed:props.speed===0.5||props.speed===1.5||props.speed===2?props.speed:1}} running={props.running} reduced={props.reduced} onFailure={props.onFailure} labels={labels}/></Canvas><div className="cti-scene-canvas-note" style={{color:'#c2d3e1',background:'#071320d9',padding:'6px 8px',borderRadius:5}}>{scene==='dna'?'Conceptual DNA · no genomic inputs':`Illustrative ${scene==='pipeline'?'processing flow':scene} · ${props.steps[props.step]?.title||'source evidence below'}`}{!props.reduced&&<span>Actual values in evidence details</span>}</div></div>
 }
-function CameraFit({helix}:{helix:boolean}){const camera=useThree(state=>state.camera),size=useThree(state=>state.size),invalidate=useThree(state=>state.invalidate);useEffect(()=>{if(camera instanceof OrthographicCamera){camera.zoom=Math.min(size.width/(helix?8.7:12.8),size.height/(helix?6.5:8.5));camera.updateProjectionMatrix();invalidate()}},[camera,size.width,size.height,helix,invalidate]);return null}
-function ContextGuard({onFailure}:{onFailure:()=>void}){const canvas=useThree(state=>state.gl.domElement);useEffect(()=>{const lost=(event:Event)=>{event.preventDefault();onFailure()};canvas.addEventListener('webglcontextlost',lost);return()=>canvas.removeEventListener('webglcontextlost',lost)},[canvas,onFailure]);return null}
-export default function SceneCanvas(props:CanvasProps){return <div className="cti-scene-canvas" aria-hidden="true"><Canvas shadows orthographic camera={{position:props.kind==='helix'?[0,0.5,10]:[10,8,12],zoom:50,near:0.1,far:60}} frameloop={props.running?'always':'demand'} dpr={props.quality==='low'?1:[1,1.5]} gl={{antialias:props.quality!=='low',alpha:true,powerPreference:'low-power'}} onCreated={({gl})=>{if(!gl.capabilities.isWebGL2)props.onFailure()}}><World {...props}/></Canvas><div className="cti-scene-canvas-note">{props.kind==='helix'?'Decorative molecular illustration · no genomic inputs':'Virtual clinic · illustrative workflow'}{!props.reduced&&<span>Drag to explore</span>}</div></div>}

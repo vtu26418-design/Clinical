@@ -1,45 +1,37 @@
-# Clinical Trial Intelligence Workbench — v5.2.0.4
+# Clinical Trial Intelligence Workbench — v5.2.0.5
 
-A PostgreSQL-backed research application for trial records, protocol complexity, saved-model prediction, evidence review and grounded conversations. The complete ZIP includes editable source, the prebuilt interface, frozen 800-record public registry cohort, saved models and an end-to-end guide.
+Research software for protocol complexity, total-duration risk, phase consistency and source-grounded scientific explanations.
 
-## Windows: run with Docker Desktop
+[Start here](START-HERE.md) · [Full guide](docs/v5.2.0.5-full-guide.md) · [PDF guide](docs/Clinical-Trial-Intelligence-v5.2.0.5-Full-Guide.pdf) · [Verification](docs/v5.2.0.5-release-verification.md)
 
-1. Open Docker Desktop and wait until its engine is running. Use Linux containers. Install [Python 3.12](https://www.python.org/downloads/windows/) with its Python launcher if it is not already installed.
-2. Extract the full ZIP into a writable folder, such as `C:\CTI`. Open the extracted folder containing `START_DOCKER_WINDOWS.bat`.
-3. Double-click `START_DOCKER_WINDOWS.bat`. It prepares a private `.env`, preserves existing settings, builds the application and starts both PostgreSQL and the web application. The first build can take several minutes.
-4. Wait for **Application ready: http://localhost:8000**, then open that address if the browser does not open automatically.
-5. Open your private `.env`, copy its `SETUP_TOKEN` value and create the first owner. If setup is already complete, sign in with your existing account.
-6. Create/open a project. More tools → Data Manager → load the 800-record starter cohort, select it and use Overview and Prediction Studio.
+## Run on Windows with Docker
 
-If you already ran `SETUP_WINDOWS.bat`, the next step is `START_DOCKER_WINDOWS.bat`. Docker supplies PostgreSQL; a separate native PostgreSQL installation is unnecessary for this workflow. Docker installs Python/Node application dependencies inside the image. Your host Python launcher is used only to initialize settings and launch Compose.
+Open Docker Desktop, extract the complete ZIP and run:
 
-Later starts: open Docker Desktop, then run `START_DOCKER_WINDOWS.bat`. Stop with `docker compose down` from the project folder. Keep the named volumes to retain projects and data. For optional native operation, use `CONNECT_DATABASE_WINDOWS.bat` then `START_WINDOWS.bat`, as explained in the guide.
+```powershell
+.\START_DOCKER_WINDOWS.bat
+```
 
-[Start here](START-HERE.md) · [Full operating guide](docs/v5.2.0.4-full-guide.md) · [Downloadable guide PDF](docs/Clinical-Trial-Intelligence-v5.2.0.4-Full-Guide.pdf) · [Changes](docs/v5.2.0.4-changelog.md)
+Open http://localhost:8000. Read SETUP_TOKEN from your private .env for the first-owner form, then create a project. PostgreSQL is included. Existing credentials are preserved; never publish .env.
 
-## Included
+## Included improvements
 
-- All 26 research routes, 12 configurable full-cohort graphs, study comparison and exports.
-- A rotating DNA hero and animated virtual clinic with articulated people, rooms and medical furniture; eight guided research flows, accessible 2D fallbacks and optional Play Explanation narration.
-- Phase Academy with optional Phase 0 and phases I–IV, source links, quizzes and recorded examples.
-- Project/session restoration after reload; browser appearance, spacing, scene and narration settings with preference import/export/reset.
-- PostgreSQL accounts, memberships, role enforcement, sessions, audit, feedback and chat.
-- Streamed assistant replies for general and evidence-grounded questions, up to 32,768 input characters; new projects have no daily application quota by default. Provider/context/output and abuse limits still apply.
-- Preserved approved models, optional CatBoost search, genuine native TreeSHAP, four new comparison candidates and independent tuning selection for duration and risk. Training does not activate a candidate.
-- Downloadable model analysis from Models and completed Experiments: MAE/RMSE, risk/phase metrics, confusion matrices, calibration, plots and source hashes. Double-click `GENERATE_MODEL_REPORT_DOCKER_WINDOWS.bat` to export the bundled duration analysis; add `--task phase` for phase analysis.
+- Genuine 101,135-record frozen registry source with preserved responses, hashes and derived shards; no duplicated or invented records.
+- Larger chronological research experiments, exact source/input contracts and saved approved models usable without startup training.
+- Fixed import-to-prediction race, requested-config readiness checks and immutable saved-result visualizations.
+- Settings → Model quality and Validation Lab: recomputed saved-row metrics, comparisons, plots, confusion matrices, provenance and report downloads.
+- Science Studio: topic-appropriate interactive neurons, DNA, molecular or processing illustrations; editable source captions/narration, camera/style controls, PostgreSQL save/reload and JSON/PNG export.
+- Optional configured-provider drafts retain AI origin through edits/transfer; manual explanations work without a key.
+- Project roles, private uploads, account/session security and existing activation choices are preserved. New project defaults are manually reviewed research bundles.
 
-## Evidence and limits
+## Measured primary results
 
-Source records, hashes, historical evidence and approved artifacts remain preserved. Expanded search is an evaluated capability, not a guaranteed accuracy improvement. Unknown recruitment/date values stay unknown; SHAP attribution does not establish causation. Completed-only retrospective cohorts and small retained splits limit interpretation. Bundled models do not validate clinical success, treatment effects, recruitment risk or amendment risk.
+On 8,299 held-out duration trials, tuning-selected MAE is 244.26 days versus 285.51 for the matched median baseline; RMSE is 313.71 versus 331.78 days. Risk AUROC is 0.8151 and Brier is 0.05257. Phase accuracy is 73.75% on 8,133 held-out trials, with macro-F1 of 0.6768. These larger-cohort results cannot be directly compared with historical 64/59-record test scores.
 
-The matched 64-trial held-out comparison is mixed: new task-selected duration MAE 345.30 days versus 351.19 for the prior duration baseline; RMSE 428.89 versus 419.23 (worse). The independently selected text risk component is unchanged from the previous risk recommendation. No overall accuracy gain or perfect prediction is claimed; existing approved defaults remain. Full evidence is in `docs/v5204-evidence/`.
+Risk accuracy at threshold 0.5 is 94.37%, but the always-negative baseline is 96.79%; sensitivity of 20.68%, precision of 17.68% and balanced accuracy of 58.74% expose the imbalance. No 90% discrimination, perfect prediction or prospective clinical validation is claimed. The separately evaluated refinement is described below.
 
-For current release-check status, consult `docs/v5.2.0.4-release-verification.md`; the v5.2.0.2 reports describe that historical release.
+The new default phase refinement achieved 67.93% accuracy versus 66.48% for the original classifier on the same 50,139-record, ID-disjoint partial-start-date subgroup (macro-F1 0.6740 versus 0.6574). This is a different group from the original 8,133-record test and is not chronological/prospective validation. Original models remain selectable; existing project activations are preserved. The extra risk candidates did not improve tuning Brier score, so the original selected risk model stays active. Full frozen evidence and portable dry-run/refit commands are included in the guide.
 
-## Other installation and development paths
+The acquired count is not the fitted count: duration train/tuning/calibration/test = 8,806/4,624/2,841/8,299; phase = 16,932/14,634/8,133. Current registry snapshots and completed-only selection remain material limitations.
 
-Linux/macOS native: install Python 3.12 and PostgreSQL, run `python3.12 scripts/setup.py`, `.venv/bin/python scripts/configure_postgres.py`, then `.venv/bin/python scripts/start.py`. Docker is the recommended Windows workflow; Linux/macOS can use `python3.12 scripts/initialize_env.py --start`.
-
-Development: `scripts/setup.py --dev` installs test dependencies. Node.js 22 is needed only to modify/rebuild the frontend (`npm ci`, `npm run dev` / `npm run build` in `frontend/`). Automated tests require a separate disposable PostgreSQL database configured as `TEST_DATABASE_URL`; run `.venv/bin/python scripts/run_tests.py`. See the guide for Windows commands and the 37-step acceptance workflow.
-
-Provider keys and account-supported API model IDs belong in the private server `.env`. Never include `.env`, credentials, logs or runtime databases in shared ZIPs. Back up PostgreSQL and research files together. This application is research decision support, not clinical or regulatory advice.
+Use GENERATE_MODEL_REPORT_DOCKER_WINDOWS.bat to save real HTML/JSON/CSV analysis under reports/. The full guide explains environment values, every section, training, approval, predictions, tests, backups and Docker DNS troubleshooting. This is research decision support, not clinical or regulatory advice.

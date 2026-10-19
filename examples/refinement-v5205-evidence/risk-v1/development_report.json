@@ -1,0 +1,236 @@
+{
+  "status": "completed_development_only",
+  "plan": {
+    "protocol_id": "risk-refinement-development-v1",
+    "seed": 42,
+    "threads": 1,
+    "candidates": {
+      "word_char_risk_logistic": {
+        "C": 1.0,
+        "max_iter": 1000,
+        "class_weight": null
+      },
+      "word_char_balanced_risk_logistic": {
+        "C": 1.0,
+        "max_iter": 1000,
+        "class_weight": "balanced"
+      }
+    },
+    "numeric": [
+      "enrollment",
+      "number_of_arms",
+      "primary_outcomes",
+      "secondary_outcomes",
+      "criteria_count",
+      "planned_enrollment",
+      "intervention_count",
+      "eligibility_line_count",
+      "eligibility_word_count",
+      "eligibility_char_count",
+      "reported_sites",
+      "reported_countries"
+    ],
+    "categorical": [
+      "study_type",
+      "design_allocation",
+      "design_masking",
+      "primary_purpose",
+      "sponsor_class",
+      "intervention_types",
+      "phase"
+    ],
+    "preprocessing": "Phase probe word+char TFIDF; training log1p numeric/median/missing indicators/scaling; train one-hot categories. Current enrollment is retrospective.",
+    "selection": "Minimum raw tuning Brier, then maximum AUROC, then candidate name; includes frozen original multimodal comparator; threshold fixed0.5. No calibration/test use.",
+    "script_sha256": "2b9173965b0eccf39da1cc7fa3bb8086764c4338888879907b7acd47ff9a33f3",
+    "feature_helper_sha256": "13c660b3826c2e632c358595d96a8bdda50112792d8ce67cb34c09c06384e4e1",
+    "limitations": [
+      "Original final test is already exposed. Development evidence only; no independent final risk cohort is currently available.",
+      "High negative prevalence makes90%accuracy achievable by a trivial all-negative decision; report sensitivity,AUROC,AP,Brier/logloss.",
+      "Current snapshots/enrollment may be post-start; completed-only outcomes and outcome purging cause temporal prevalence shift.",
+      "No automatic promotion or probability recalibration. Preserve verified production absent independent evidence."
+    ]
+  },
+  "created_at": "2026-10-18T16:15:16.754338+00:00",
+  "dataset_sha256": "b264f7bfe3473f66e91786172b58642c3ba2e3e8043c98bbd2bf3e633ec847ef",
+  "development_identity": {
+    "duration_partitions_sha256": "ddeaa7fcef9c015ee8ee8897b78402cd58f4fb04de430616c89f5ad5870880e6",
+    "calibration_and_test_ids_forbidden": 11140,
+    "calibration_and_test_rows_materialized": 0
+  },
+  "threshold_days": 1105.0,
+  "results": {
+    "original_multimodal": {
+      "metrics": {
+        "n": 4624,
+        "positive_count": 173,
+        "negative_count": 4451,
+        "threshold": 0.5,
+        "accuracy": 0.9288494809688581,
+        "balanced_accuracy": 0.61303428598886,
+        "sensitivity": 0.27167630057803466,
+        "specificity": 0.9543922713996854,
+        "auroc": 0.8022656466105559,
+        "average_precision": 0.15468018494443306,
+        "brier": 0.061892667772834926,
+        "log_loss": 0.22764949050632324,
+        "confusion_matrix": [
+          [
+            4248,
+            203
+          ],
+          [
+            126,
+            47
+          ]
+        ],
+        "confusion_order": "rows actual0/1,columns predicted0/1",
+        "probability_semantics": "raw; uncalibrated"
+      },
+      "fit_seconds": 0.0,
+      "fitted_in_this_probe": false
+    },
+    "word_char_risk_logistic": {
+      "metrics": {
+        "n": 4624,
+        "positive_count": 173,
+        "negative_count": 4451,
+        "threshold": 0.5,
+        "accuracy": 0.9199826989619377,
+        "balanced_accuracy": 0.6223177749236062,
+        "sensitivity": 0.30057803468208094,
+        "specificity": 0.9440575151651315,
+        "auroc": 0.8123367743560908,
+        "average_precision": 0.15880551719078592,
+        "brier": 0.0626309476374674,
+        "log_loss": 0.21866577144883365,
+        "confusion_matrix": [
+          [
+            4202,
+            249
+          ],
+          [
+            121,
+            52
+          ]
+        ],
+        "confusion_order": "rows actual0/1,columns predicted0/1",
+        "probability_semantics": "raw; uncalibrated"
+      },
+      "fit_seconds": 8.338142210966907,
+      "converged": true
+    },
+    "word_char_balanced_risk_logistic": {
+      "metrics": {
+        "n": 4624,
+        "positive_count": 173,
+        "negative_count": 4451,
+        "threshold": 0.5,
+        "accuracy": 0.8475346020761245,
+        "balanced_accuracy": 0.6902436680462791,
+        "sensitivity": 0.5202312138728323,
+        "specificity": 0.8602561222197259,
+        "auroc": 0.8119354876412783,
+        "average_precision": 0.15700594407230326,
+        "brier": 0.11085067294097582,
+        "log_loss": 0.3476252529685171,
+        "confusion_matrix": [
+          [
+            3829,
+            622
+          ],
+          [
+            83,
+            90
+          ]
+        ],
+        "confusion_order": "rows actual0/1,columns predicted0/1",
+        "probability_semantics": "raw; uncalibrated"
+      },
+      "fit_seconds": 8.811961650964804,
+      "converged": true
+    }
+  },
+  "support": {
+    "train": {
+      "rows": 8806,
+      "positive": 2200,
+      "negative": 6606
+    },
+    "validation": {
+      "rows": 4624,
+      "positive": 173,
+      "negative": 4451
+    }
+  },
+  "baselines": {
+    "always_negative": {
+      "n": 4624,
+      "positive_count": 173,
+      "negative_count": 4451,
+      "threshold": 0.5,
+      "accuracy": 0.9625865051903114,
+      "balanced_accuracy": 0.5,
+      "sensitivity": 0.0,
+      "specificity": 1.0,
+      "auroc": 0.5,
+      "average_precision": 0.03741349480968858,
+      "brier": 0.03741349480968858,
+      "log_loss": 1.348519038995949,
+      "confusion_matrix": [
+        [
+          4451,
+          0
+        ],
+        [
+          173,
+          0
+        ]
+      ],
+      "confusion_order": "rows actual0/1,columns predicted0/1",
+      "probability_semantics": "raw; uncalibrated"
+    },
+    "training_prevalence": {
+      "n": 4624,
+      "positive_count": 173,
+      "negative_count": 4451,
+      "threshold": 0.5,
+      "accuracy": 0.9625865051903114,
+      "balanced_accuracy": 0.5,
+      "sensitivity": 0.0,
+      "specificity": 1.0,
+      "auroc": 0.5,
+      "average_precision": 0.03741349480968858,
+      "brier": 0.08113435312731052,
+      "log_loss": 0.328591902342159,
+      "confusion_matrix": [
+        [
+          4451,
+          0
+        ],
+        [
+          173,
+          0
+        ]
+      ],
+      "confusion_order": "rows actual0/1,columns predicted0/1",
+      "probability_semantics": "raw; uncalibrated"
+    }
+  },
+  "previous_tuning_champion": {
+    "model": "accuracy_task_selected",
+    "classification": {
+      "auroc": 0.8022656466105559,
+      "average_precision": 0.15468018494443306,
+      "brier": 0.061892667772834926,
+      "log_loss": 0.22764949050632324
+    }
+  },
+  "transformed_shape": [
+    8806,
+    50103
+  ],
+  "selected_development_candidate": "original_multimodal",
+  "artifact_sha256": "5e70a87d5402b1610f79a4c3bd0f8130da192f923025492d6c26e52bd8ad0186",
+  "save_reload_verified": true,
+  "completed_at": "2026-10-18T16:16:27.802009+00:00"
+}

@@ -39,7 +39,7 @@ def test_sample_is_labeled_and_predictions_are_unavailable(client):
 def test_atomic_upload_and_persistent_provenance(client):
     invalid = upload(client, b'nct_id,title,enrollment\nNCT1,Test,-2\n')
     assert invalid.status_code == 422
-    assert len(client.get('/api/v1/datasets').json()['items']) == 1
+    assert {row['id'] for row in client.get('/api/v1/datasets').json()['items']} == {'sample-fixture', 'registry-v5205'}
     raw = b'nct_id,title,enrollment,start_date\nNCT1,Good trial,12,2024-01-01\n'
     response = upload(client, raw)
     assert response.status_code == 201
@@ -49,13 +49,13 @@ def test_atomic_upload_and_persistent_provenance(client):
     registry = DatasetRegistry(client.app.state.settings)
     assert registry.get_dataset(dataset['id'])['sha256'] == dataset['sha256']
     assert registry.raw_path(dataset['id']).read_bytes() == raw
-    assert len(client.get('/api/v1/datasets').json()['items']) == 2
+    assert {row['id'] for row in client.get('/api/v1/datasets').json()['items']} == {'sample-fixture', 'registry-v5205', dataset['id']}
 
 
 def test_validation_rejects_duplicates_invalid_dates_and_nonfinite(client):
     for payload in [b'nct_id,title\nA,One\nA,Two\n', b'nct_id,title,start_date\nA,One,2024-02-31\n', b'nct_id,title,enrollment\nA,One,inf\n']:
         assert upload(client, payload).status_code == 422
-    assert len(client.get('/api/v1/datasets').json()['items']) == 1
+    assert {row['id'] for row in client.get('/api/v1/datasets').json()['items']} == {'sample-fixture', 'registry-v5205'}
 
 
 def test_literal_search_filters_pagination_and_dataset_isolation(client):
@@ -99,13 +99,13 @@ def test_configured_bearer_token_protects_nonhealth_routes(tmp_path):
 def test_duplicate_csv_headers_rejected_before_pandas_renaming(client):
     response = upload(client, b'nct_id,title,enrollment,enrollment\nA,One,10,20\n')
     assert response.status_code == 422
-    assert len(client.get('/api/v1/datasets').json()['items']) == 1
+    assert {row['id'] for row in client.get('/api/v1/datasets').json()['items']} == {'sample-fixture', 'registry-v5205'}
 
 
 def test_csv_rows_cannot_silently_shift_into_an_implicit_index(client):
     response = upload(client, b'nct_id,title\nA,One,Unexpected third field\n')
     assert response.status_code == 422
-    assert len(client.get('/api/v1/datasets').json()['items']) == 1
+    assert {row['id'] for row in client.get('/api/v1/datasets').json()['items']} == {'sample-fixture', 'registry-v5205'}
 
 
 def test_canonical_text_and_partial_dates_survive_reload(client):
@@ -221,7 +221,7 @@ def test_upload_size_and_storage_failure_are_atomic(tmp_path, monkeypatch):
     response = upload(limited, b'nct_id,title\nA,Atomic upload test\n')
     assert response.status_code == 503
     assert [p.name for p in (tmp_path/'datasets').iterdir()] == ['sample-fixture']
-    assert len(registry.list_datasets()) == 1
+    assert {row['id'] for row in registry.list_datasets()} == {'sample-fixture', 'registry-v5205'}
 
 
 def mock_registry_http(monkeypatch, handler):
@@ -279,7 +279,7 @@ def test_registry_errors_never_publish_partial_dataset(client, monkeypatch, mode
     mock_registry_http(monkeypatch, handle)
     result = client.post('/api/v1/datasets/import/clinicaltrials', json={'query':'software fixture','max_studies':3})
     assert result.status_code == 502
-    assert len(client.get('/api/v1/datasets').json()['items']) == 1
+    assert {row['id'] for row in client.get('/api/v1/datasets').json()['items']} == {'sample-fixture', 'registry-v5205'}
 
 
 def test_assistant_uses_responses_with_bounded_context_and_redacts_provider_errors(client, monkeypatch):
@@ -453,4 +453,4 @@ def test_v3_starter_load_is_idempotent_and_eligible(client):
     assert data['id'] == again['id'] and data['sha256'] == again['sha256']
     checks = client.get('/api/v1/readiness', params={'dataset_id':data['id']}).json()
     assert checks['duration']['ready'] is True and checks['phase']['ready'] is True
-    assert checks['duration']['splits'] == {'train':105,'validation':20,'test':64}
+    assert checks['duration']['splits'] == {'train':105,'validation':9,'calibration':11,'test':64}

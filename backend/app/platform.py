@@ -36,7 +36,7 @@ from .services.pci_service import METHODOLOGY, calculate_pci_details
 Role = Literal['owner', 'researcher', 'reviewer', 'viewer']
 Provider = Literal['auto', 'openai', 'anthropic', 'gemini', 'compatible']
 Profile = Literal['fast', 'balanced', 'deep']
-DEFAULT_SETTINGS = {'default_provider':'auto', 'default_profile':'balanced', 'chat_daily_limit':0, 'chat_retention_days':90,
+DEFAULT_SETTINGS = {'allow_ai':True, 'default_provider':'auto', 'default_profile':'balanced', 'chat_daily_limit':0, 'chat_retention_days':90,
                     'chat_max_output_tokens':16000,'chat_context_chars':120000}
 # Older projects with omitted fields keep the previous quota; no storage migration.
 EXISTING_SETTINGS = {**DEFAULT_SETTINGS, 'chat_daily_limit':50}
@@ -91,6 +91,7 @@ class ProjectInput(Input):
 
 
 class ProjectSettings(Input):
+    allow_ai: bool = Field(default=True, strict=True)
     default_provider: Provider = 'auto'
     default_profile: Profile = 'balanced'
     chat_daily_limit: int = Field(default=50,ge=0,le=500)
@@ -165,7 +166,7 @@ def create_app(config: Settings | None = None):
                     subapp.state.registry.engine.dispose()
             store.engine.dispose()
 
-    app = FastAPI(title='Clinical Trial Intelligence v5.2',version='5.2.0.4',lifespan=lifespan)
+    app = FastAPI(title='Clinical Trial Intelligence v5.2',version='5.2.0.5',lifespan=lifespan)
     app.state.settings = config
     app.state.platform_store = store
     origins = {v.strip().rstrip('/') for v in config.cors_origins.split(',') if v.strip()}
@@ -296,6 +297,8 @@ def create_app(config: Settings | None = None):
                     # Forbid role bypass before body parsing on all v5 import writes.
                     if path.startswith('/api/v5/import/'):
                         require_project(request,roles=WRITE_ROLES)
+                    if path.startswith('/api/v5/science/'):
+                        require_project(request,roles=WRITE_ROLES)
                     if path.startswith('/api/v5/conversations'):
                         require_project(request,roles=CHAT_ROLES)
                     if path.startswith('/api/v5.2/bookmarks'):
@@ -362,8 +365,14 @@ def create_app(config: Settings | None = None):
     @app.get('/api/v1/health')
     def health():
         status = assistant_service.assistant_status(config)
-        return {'status':'ok','version':'5.2.0.4','database':store.kind,'auth_required':config.auth_mode=='session',
-                'assistant':status,'assistant_enabled':status['enabled'],'default_dataset_id':SAMPLE_ID,'sample_data':True}
+        from .services.bundled_reference import REFERENCE, REFERENCE_ID
+        try:
+            REFERENCE.metadata()
+            default_dataset=REFERENCE_ID
+        except (OSError,ValueError,KeyError):
+            default_dataset=SAMPLE_ID
+        return {'status':'ok','version':'5.2.0.5','database':store.kind,'auth_required':config.auth_mode=='session',
+                'assistant':status,'assistant_enabled':status['enabled'],'default_dataset_id':default_dataset,'sample_data':default_dataset==SAMPLE_ID}
 
     @app.get('/api/v5/bootstrap')
     def bootstrap(request:Request,response:Response):
@@ -459,6 +468,8 @@ def create_app(config: Settings | None = None):
             conn.execute(text('INSERT INTO v5_projects(id,name,description,settings,created_at) VALUES(:id,:name,:description,:settings,:created)'),{'id':identifier,'name':req.name,'description':req.description,'settings':json.dumps(DEFAULT_SETTINGS),'created':created})
             conn.execute(text("INSERT INTO v5_members(project_id,user_id,role) VALUES(:project,:user,'owner')"),{'project':identifier,'user':user['id']})
         audit(identifier,user['id'],'project.created')
+        if hasattr(app.state,'model_registry'):
+            app.state.model_registry.initialize_project_defaults(identifier,app.state.project_registry(identifier))
         return {'id':identifier,'name':req.name,'description':req.description,'settings':DEFAULT_SETTINGS.copy(),'role':'owner',
                 'capabilities':role_capabilities('owner'),'created_at':created}
 
@@ -628,6 +639,8 @@ def create_app(config: Settings | None = None):
 
     def prepare_message(identifier,req,request,streaming=False):
         row,project,user=conversation_for(identifier,request)
+        if not project['settings'].get('allow_ai',True):
+            raise HTTPException(403,'AI provider requests are disabled for this project. Ask its owner to enable the assistant in Settings.')
         if project['role'] not in CHAT_ROLES:
             raise HTTPException(403,'Your project role cannot invoke paid AI providers.')
         selected_provider=None
@@ -816,6 +829,8 @@ def create_app(config: Settings | None = None):
     attach_v52_routes(app)
     from .assistant_v5202 import attach_assistant_v5202
     attach_assistant_v5202(app,store,config)
+    from .science_studio import attach_science_studio
+    attach_science_studio(app,store,config)
     dist=config.path(config.frontend_dist)
     if dist.is_dir() and (dist/'index.html').is_file():
         app.mount('/',StaticFiles(directory=dist,html=True),name='frontend')

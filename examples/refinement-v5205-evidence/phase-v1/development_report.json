@@ -1,0 +1,709 @@
+{
+  "status": "completed_development_only",
+  "created_at": "2026-10-18T16:04:40.349115+00:00",
+  "plan": {
+    "protocol_id": "phase-refinement-development-v1",
+    "random_seed": 42,
+    "thread_count": 1,
+    "roles": "Fit frozen train only; compare existing tuning only. Original test is exposed and excluded.",
+    "candidates": {
+      "word_char_logistic": {
+        "family": "logistic",
+        "C": 1.0,
+        "class_weight": null,
+        "max_iter": 1000
+      },
+      "word_char_balanced_logistic": {
+        "family": "logistic",
+        "C": 1.0,
+        "class_weight": "balanced",
+        "max_iter": 1000
+      },
+      "svd128_design_catboost": {
+        "family": "catboost",
+        "svd_components": 128,
+        "iterations": 300,
+        "depth": 6,
+        "learning_rate": 0.05,
+        "l2_leaf_reg": 5
+      }
+    },
+    "numeric": [
+      "enrollment",
+      "number_of_arms",
+      "primary_outcomes",
+      "secondary_outcomes",
+      "criteria_count",
+      "planned_enrollment",
+      "intervention_count",
+      "eligibility_line_count",
+      "eligibility_word_count",
+      "eligibility_char_count",
+      "reported_sites",
+      "reported_countries"
+    ],
+    "categorical": [
+      "study_type",
+      "design_allocation",
+      "design_masking",
+      "primary_purpose",
+      "sponsor_class",
+      "intervention_types"
+    ],
+    "text": [
+      "title",
+      "brief_summary",
+      "detailed_description",
+      "eligibility_criteria"
+    ],
+    "text_preprocessing": "Existing explicit phase redaction; remove NCT identifiers/calendar years/dates; cap concatenated text at12000characters.",
+    "tfidf": {
+      "word_features": 20000,
+      "word_ngrams": [
+        1,
+        2
+      ],
+      "character_features": 30000,
+      "character_ngrams": [
+        3,
+        5
+      ],
+      "character_analyzer": "char_wb",
+      "min_df": 3
+    },
+    "numeric_preprocessing": "Train median imputation with missing indicators, log1p nonnegative values, train scaling.",
+    "selection": "Maximum tuning macro-F1 then balanced accuracy then model name; accuracy reported separately.",
+    "limitations": [
+      "Development-only results after earlier model exploration; no independent confirmation.",
+      "Current reported enrollment and source snapshots are retrospective; no baseline/pretrial claim.",
+      "Completed-only source may not transfer to ongoing or noncompleted trials.",
+      "EARLY_PHASE1 has no source support; this probe cannot establish performance for it.",
+      "No automatic promotion or90% guarantee; fresh holdout needed for any final claim."
+    ],
+    "script_sha256": "13c660b3826c2e632c358595d96a8bdda50112792d8ce67cb34c09c06384e4e1",
+    "source_sha256": {
+      "src/clinical_trial_intelligence/phase_model.py": "c4c8e13340a28580fa10aad2f1859ceb5ec052081d313217834e9b67734dd6cd",
+      "src/clinical_trial_intelligence/models/design.py": "77e05290b4d08f82740ff52166a6880f75bfbd91003d5f3f2c6d62c9a304b8a6",
+      "src/clinical_trial_intelligence/models/catboost_compat.py": "8c0660ade88ae7f789e2d0cbbeaa6144d0c5430c72de90445fd9d4b502f8b00c"
+    }
+  },
+  "development_identity": {
+    "train": 16932,
+    "validation": 14634,
+    "test_ids_forbidden": 8133,
+    "test_rows_materialized": 0,
+    "phase_partitions_sha256": "9fa867ac9c1229d1f5ead33ea3de03fdd99d3279eb812f3e0acdd4206fcb386a"
+  },
+  "dataset_sha256": "b264f7bfe3473f66e91786172b58642c3ba2e3e8043c98bbd2bf3e633ec847ef",
+  "results": {
+    "word_char_logistic": {
+      "metrics": {
+        "n": 14634,
+        "accuracy": 0.7246822468224682,
+        "balanced_accuracy": 0.6997512552080206,
+        "macro_f1": 0.7014902066113442,
+        "labels": [
+          "EARLY_PHASE1",
+          "PHASE1",
+          "PHASE2",
+          "PHASE3",
+          "PHASE4"
+        ],
+        "confusion_matrix": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            4257,
+            561,
+            27,
+            159
+          ],
+          [
+            0,
+            335,
+            3024,
+            370,
+            528
+          ],
+          [
+            0,
+            37,
+            543,
+            1642,
+            511
+          ],
+          [
+            0,
+            154,
+            479,
+            325,
+            1682
+          ]
+        ],
+        "class_support": {
+          "EARLY_PHASE1": 0,
+          "PHASE1": 5004,
+          "PHASE2": 4257,
+          "PHASE3": 2733,
+          "PHASE4": 2640
+        },
+        "macro_f1_labels": [
+          "PHASE1",
+          "PHASE2",
+          "PHASE3",
+          "PHASE4"
+        ],
+        "unseen_training_labels": [],
+        "per_class": {
+          "EARLY_PHASE1": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          },
+          "PHASE1": {
+            "precision": 0.8900271795943968,
+            "recall": 0.8507194244604317,
+            "f1": 0.8699294983140902,
+            "support": 5004
+          },
+          "PHASE2": {
+            "precision": 0.6563924462774039,
+            "recall": 0.7103594080338267,
+            "f1": 0.6823104693140795,
+            "support": 4257
+          },
+          "PHASE3": {
+            "precision": 0.694585448392555,
+            "recall": 0.6008049762166118,
+            "f1": 0.6443005689621346,
+            "support": 2733
+          },
+          "PHASE4": {
+            "precision": 0.5840277777777778,
+            "recall": 0.6371212121212121,
+            "f1": 0.6094202898550725,
+            "support": 2640
+          }
+        },
+        "confidence_intervals": {
+          "method": "conditional fitted-model trial bootstrap percentile",
+          "level": 0.95,
+          "requested_resamples": 200,
+          "random_seed": 42,
+          "accuracy": {
+            "lower": 0.7181700150334838,
+            "upper": 0.732474033073664,
+            "valid_resamples": 200
+          },
+          "balanced_accuracy": {
+            "lower": 0.6930763155360713,
+            "upper": 0.7066512501427197,
+            "valid_resamples": 200
+          },
+          "macro_f1": {
+            "lower": 0.6948568424722079,
+            "upper": 0.708675089890715,
+            "valid_resamples": 200
+          }
+        }
+      },
+      "fit_and_evaluate_seconds": 116.77158122393303,
+      "converged": true
+    },
+    "word_char_balanced_logistic": {
+      "metrics": {
+        "n": 14634,
+        "accuracy": 0.7209922099220992,
+        "balanced_accuracy": 0.7054014389329097,
+        "macro_f1": 0.7003266937128496,
+        "labels": [
+          "EARLY_PHASE1",
+          "PHASE1",
+          "PHASE2",
+          "PHASE3",
+          "PHASE4"
+        ],
+        "confusion_matrix": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            4226,
+            517,
+            30,
+            231
+          ],
+          [
+            0,
+            333,
+            2766,
+            450,
+            708
+          ],
+          [
+            0,
+            36,
+            405,
+            1612,
+            680
+          ],
+          [
+            0,
+            132,
+            310,
+            251,
+            1947
+          ]
+        ],
+        "class_support": {
+          "EARLY_PHASE1": 0,
+          "PHASE1": 5004,
+          "PHASE2": 4257,
+          "PHASE3": 2733,
+          "PHASE4": 2640
+        },
+        "macro_f1_labels": [
+          "PHASE1",
+          "PHASE2",
+          "PHASE3",
+          "PHASE4"
+        ],
+        "unseen_training_labels": [],
+        "per_class": {
+          "EARLY_PHASE1": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          },
+          "PHASE1": {
+            "precision": 0.8940131161413158,
+            "recall": 0.8445243804956035,
+            "f1": 0.8685643818723666,
+            "support": 5004
+          },
+          "PHASE2": {
+            "precision": 0.6918459229614807,
+            "recall": 0.649753347427766,
+            "f1": 0.6701393095093883,
+            "support": 4257
+          },
+          "PHASE3": {
+            "precision": 0.6880068288518992,
+            "recall": 0.5898280278082693,
+            "f1": 0.6351457840819543,
+            "support": 2733
+          },
+          "PHASE4": {
+            "precision": 0.5459899046550757,
+            "recall": 0.7375,
+            "f1": 0.6274572993876893,
+            "support": 2640
+          }
+        },
+        "confidence_intervals": {
+          "method": "conditional fitted-model trial bootstrap percentile",
+          "level": 0.95,
+          "requested_resamples": 200,
+          "random_seed": 42,
+          "accuracy": {
+            "lower": 0.7145585622522892,
+            "upper": 0.7289240809074757,
+            "valid_resamples": 200
+          },
+          "balanced_accuracy": {
+            "lower": 0.6993548363391624,
+            "upper": 0.7129190808949727,
+            "valid_resamples": 200
+          },
+          "macro_f1": {
+            "lower": 0.6939008679392754,
+            "upper": 0.7084242544438746,
+            "valid_resamples": 200
+          }
+        }
+      },
+      "fit_and_evaluate_seconds": 122.11186554899905,
+      "converged": true
+    },
+    "svd128_design_catboost": {
+      "metrics": {
+        "n": 14634,
+        "accuracy": 0.7126554598879322,
+        "balanced_accuracy": 0.6928500941226072,
+        "macro_f1": 0.6923823947097436,
+        "labels": [
+          "EARLY_PHASE1",
+          "PHASE1",
+          "PHASE2",
+          "PHASE3",
+          "PHASE4"
+        ],
+        "confusion_matrix": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            4152,
+            624,
+            16,
+            212
+          ],
+          [
+            0,
+            344,
+            2890,
+            328,
+            695
+          ],
+          [
+            0,
+            31,
+            529,
+            1565,
+            608
+          ],
+          [
+            0,
+            134,
+            417,
+            267,
+            1822
+          ]
+        ],
+        "class_support": {
+          "EARLY_PHASE1": 0,
+          "PHASE1": 5004,
+          "PHASE2": 4257,
+          "PHASE3": 2733,
+          "PHASE4": 2640
+        },
+        "macro_f1_labels": [
+          "PHASE1",
+          "PHASE2",
+          "PHASE3",
+          "PHASE4"
+        ],
+        "unseen_training_labels": [],
+        "per_class": {
+          "EARLY_PHASE1": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 0
+          },
+          "PHASE1": {
+            "precision": 0.8907959665307874,
+            "recall": 0.829736211031175,
+            "f1": 0.8591826176927057,
+            "support": 5004
+          },
+          "PHASE2": {
+            "precision": 0.647982062780269,
+            "recall": 0.6788818416725394,
+            "f1": 0.6630721578524722,
+            "support": 4257
+          },
+          "PHASE3": {
+            "precision": 0.7192095588235294,
+            "recall": 0.5726308086351994,
+            "f1": 0.637604400081483,
+            "support": 2733
+          },
+          "PHASE4": {
+            "precision": 0.5459994006592748,
+            "recall": 0.6901515151515152,
+            "f1": 0.6096704032123139,
+            "support": 2640
+          }
+        },
+        "confidence_intervals": {
+          "method": "conditional fitted-model trial bootstrap percentile",
+          "level": 0.95,
+          "requested_resamples": 200,
+          "random_seed": 42,
+          "accuracy": {
+            "lower": 0.7052719693863605,
+            "upper": 0.7207906245729124,
+            "valid_resamples": 200
+          },
+          "balanced_accuracy": {
+            "lower": 0.6851132236970874,
+            "upper": 0.7011336792610933,
+            "valid_resamples": 200
+          },
+          "macro_f1": {
+            "lower": 0.6843811608025178,
+            "upper": 0.7010197371685195,
+            "valid_resamples": 200
+          }
+        }
+      },
+      "fit_and_evaluate_seconds": 121.13197095901705,
+      "converged": null
+    }
+  },
+  "baseline": {
+    "majority_baseline": {
+      "n": 14634,
+      "accuracy": 0.2908979089790898,
+      "balanced_accuracy": 0.25,
+      "macro_f1": 0.11267270128632682,
+      "labels": [
+        "EARLY_PHASE1",
+        "PHASE1",
+        "PHASE2",
+        "PHASE3",
+        "PHASE4"
+      ],
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          5004,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          4257,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          2733,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          2640,
+          0,
+          0
+        ]
+      ],
+      "class_support": {
+        "EARLY_PHASE1": 0,
+        "PHASE1": 5004,
+        "PHASE2": 4257,
+        "PHASE3": 2733,
+        "PHASE4": 2640
+      },
+      "macro_f1_labels": [
+        "PHASE1",
+        "PHASE2",
+        "PHASE3",
+        "PHASE4"
+      ],
+      "unseen_training_labels": [],
+      "per_class": {
+        "EARLY_PHASE1": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "PHASE1": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 5004
+        },
+        "PHASE2": {
+          "precision": 0.2908979089790898,
+          "recall": 1.0,
+          "f1": 0.4506908051453073,
+          "support": 4257
+        },
+        "PHASE3": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 2733
+        },
+        "PHASE4": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 2640
+        }
+      },
+      "confidence_intervals": {
+        "method": "conditional fitted-model trial bootstrap percentile",
+        "level": 0.95,
+        "requested_resamples": 200,
+        "random_seed": 42,
+        "accuracy": {
+          "lower": 0.28248940822741564,
+          "upper": 0.2972546808801422,
+          "valid_resamples": 200
+        },
+        "balanced_accuracy": {
+          "lower": 0.25,
+          "upper": 0.25,
+          "valid_resamples": 200
+        },
+        "macro_f1": {
+          "lower": 0.11013323234420525,
+          "upper": 0.1145706718941396,
+          "valid_resamples": 200
+        }
+      }
+    },
+    "phase_logistic": {
+      "n": 14634,
+      "accuracy": 0.7052753860871942,
+      "balanced_accuracy": 0.678224519169078,
+      "macro_f1": 0.6813981057708356,
+      "labels": [
+        "EARLY_PHASE1",
+        "PHASE1",
+        "PHASE2",
+        "PHASE3",
+        "PHASE4"
+      ],
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          4099,
+          705,
+          36,
+          164
+        ],
+        [
+          0,
+          285,
+          3079,
+          447,
+          446
+        ],
+        [
+          0,
+          34,
+          643,
+          1556,
+          500
+        ],
+        [
+          0,
+          114,
+          579,
+          360,
+          1587
+        ]
+      ],
+      "class_support": {
+        "EARLY_PHASE1": 0,
+        "PHASE1": 5004,
+        "PHASE2": 4257,
+        "PHASE3": 2733,
+        "PHASE4": 2640
+      },
+      "macro_f1_labels": [
+        "PHASE1",
+        "PHASE2",
+        "PHASE3",
+        "PHASE4"
+      ],
+      "unseen_training_labels": [],
+      "per_class": {
+        "EARLY_PHASE1": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "PHASE1": {
+          "precision": 0.9044571932921448,
+          "recall": 0.8191446842525979,
+          "f1": 0.8596895973154363,
+          "support": 5004
+        },
+        "PHASE2": {
+          "precision": 0.615061925689173,
+          "recall": 0.7232793046746535,
+          "f1": 0.6647954226492497,
+          "support": 4257
+        },
+        "PHASE3": {
+          "precision": 0.6486035848270113,
+          "recall": 0.5693377241126967,
+          "f1": 0.6063912704598597,
+          "support": 2733
+        },
+        "PHASE4": {
+          "precision": 0.5884315906562848,
+          "recall": 0.6011363636363637,
+          "f1": 0.5947161326587971,
+          "support": 2640
+        }
+      },
+      "confidence_intervals": {
+        "method": "conditional fitted-model trial bootstrap percentile",
+        "level": 0.95,
+        "requested_resamples": 200,
+        "random_seed": 42,
+        "accuracy": {
+          "lower": 0.698370233702337,
+          "upper": 0.7122522891895586,
+          "valid_resamples": 200
+        },
+        "balanced_accuracy": {
+          "lower": 0.6706916591016395,
+          "upper": 0.6854057642620486,
+          "valid_resamples": 200
+        },
+        "macro_f1": {
+          "lower": 0.6741706124572,
+          "upper": 0.6884808023003649,
+          "valid_resamples": 200
+        }
+      }
+    }
+  },
+  "transform_seconds": 125.32784100901335,
+  "transformed_shape": [
+    16932,
+    50118
+  ],
+  "text_columns": 50000,
+  "selected_development_candidate": "word_char_logistic",
+  "artifact_sha256": "f344397849e45a46819a5bbaae3c2c3bbdcef71c0dd219fef885787c0eb6bf79",
+  "save_reload_verified": true,
+  "completed_at": "2026-10-18T16:13:00.750892+00:00"
+}

@@ -1,0 +1,671 @@
+{
+  "schema_version": 1,
+  "source_manifest_sha256": "4cd8882422c04f8dff13f836940693224edd1b409c8a68da95d9f7279a36f1c6",
+  "canonical_sha256": "9f0ec8d49192a79ed2e9a341a57e93abc07304f92709451a4673976d26fffcc4",
+  "dataset": {
+    "id": "registry-v5205",
+    "name": "ClinicalTrials.gov completed drug trials · 101,135 source records",
+    "row_count": 101135,
+    "source": "ClinicalTrials.gov API v2 · complete frozen completed interventional DRUG / Phase I–IV scope",
+    "created_at": "2026-10-18T10:55:58.940254+00:00",
+    "sha256": "4cd8882422c04f8dff13f836940693224edd1b409c8a68da95d9f7279a36f1c6",
+    "is_fixture": false,
+    "quality": {
+      "missingness": {
+        "nct_id": 0,
+        "title": 0,
+        "study_type": 0,
+        "phase": 0,
+        "enrollment": 1831,
+        "enrollment_type": 6230,
+        "status": 0,
+        "start_date": 1130,
+        "start_date_type": 53993,
+        "completion_date": 4378,
+        "completion_date_type": 0,
+        "number_of_arms": 11027,
+        "primary_outcomes": 3960,
+        "secondary_outcomes": 20285,
+        "criteria_count": 101135,
+        "text_complexity": 101135,
+        "brief_summary": 0,
+        "eligibility_criteria": 18,
+        "source_url": 0,
+        "last_update_posted_date": 0,
+        "reported_enrollment": 1831,
+        "planned_enrollment": 97722,
+        "design_allocation": 3030,
+        "design_masking": 2707,
+        "primary_purpose": 2161,
+        "sponsor_class": 0,
+        "condition_text": 0,
+        "intervention_types": 0,
+        "intervention_count": 0,
+        "eligibility_line_count": 18,
+        "eligibility_word_count": 18,
+        "eligibility_char_count": 18,
+        "study_first_posted_date": 0,
+        "study_first_submitted_date": 0,
+        "primary_completion_date": 6546,
+        "primary_completion_date_type": 6552,
+        "reported_sites": 7347,
+        "reported_countries": 7361,
+        "country_names": 7361
+      },
+      "duplicate_ids": 0,
+      "validation_errors": [],
+      "partial_date_values": 106709,
+      "warnings": [
+        "Registry snapshots are retrospective unless baseline feature provenance is established.",
+        "106709 date values have month/year precision; preserve that uncertainty when interpreting durations.",
+        "Records without exact day-precision ACTUAL start/completion dates, valid ordering, and required outcomes are not duration-training labels.",
+        "PCI displays missing components as zero burden; inspect missingness before comparing scores.",
+        "Acquired record counts are not model training or evaluation counts; use each model report for eligible records and split support."
+      ]
+    },
+    "columns": [
+      "nct_id",
+      "title",
+      "study_type",
+      "phase",
+      "enrollment",
+      "enrollment_type",
+      "status",
+      "start_date",
+      "start_date_type",
+      "completion_date",
+      "completion_date_type",
+      "number_of_arms",
+      "primary_outcomes",
+      "secondary_outcomes",
+      "criteria_count",
+      "text_complexity",
+      "brief_summary",
+      "eligibility_criteria",
+      "source_url",
+      "last_update_posted_date",
+      "reported_enrollment",
+      "planned_enrollment",
+      "design_allocation",
+      "design_masking",
+      "primary_purpose",
+      "sponsor_class",
+      "condition_text",
+      "intervention_types",
+      "intervention_count",
+      "eligibility_line_count",
+      "eligibility_word_count",
+      "eligibility_char_count",
+      "study_first_posted_date",
+      "study_first_submitted_date",
+      "primary_completion_date",
+      "primary_completion_date_type",
+      "reported_sites",
+      "reported_countries",
+      "country_names"
+    ],
+    "original_filename": "metadata.json",
+    "provenance": {
+      "dataset_name": "ClinicalTrials.gov completed interventional drug-trial registry cohort",
+      "schema_version": 1,
+      "source": "ClinicalTrials.gov API v2",
+      "endpoint": "https://clinicaltrials.gov/api/v2/studies",
+      "query": "AREA[StudyType]INTERVENTIONAL AND AREA[OverallStatus]COMPLETED AND AREA[InterventionType]DRUG AND (AREA[Phase]PHASE1 OR AREA[Phase]PHASE2 OR AREA[Phase]PHASE3 OR AREA[Phase]PHASE4)",
+      "fields": "NCTId,BriefTitle,OfficialTitle,StudyType,Phase,OverallStatus,StartDate,StartDateType,CompletionDate,CompletionDateType,PrimaryCompletionDate,PrimaryCompletionDateType,EnrollmentCount,EnrollmentType,ArmGroupLabel,InterventionType,PrimaryOutcomeMeasure,SecondaryOutcomeMeasure,BriefSummary,EligibilityCriteria,StudyFirstSubmitDate,StudyFirstPostDate,LastUpdatePostDate,DesignAllocation,DesignMasking,DesignPrimaryPurpose,LeadSponsorClass,Condition,LocationFacility,LocationCountry",
+      "sort": "StartDate:asc",
+      "maximum": 120000,
+      "page_size": 1000,
+      "acquisition_started_at": "2026-10-18T10:53:19.901225+00:00",
+      "baseline_provenance": false,
+      "is_fixture": false,
+      "snapshot_type": "latest registry state",
+      "acquisition_complete": true,
+      "rows": 101135,
+      "raw_rows": 101135,
+      "duplicate_ids": 0,
+      "uncompressed_bytes": 569549670,
+      "last_reported_total_count": 101135,
+      "updated_at": "2026-10-18T10:55:58.937278+00:00",
+      "retrieved_at": "2026-10-18T10:55:58.940254+00:00",
+      "sampling_method": "All returned records in the frozen official query, ordered by source start date, until pagination ends or declared maximum. Source availability/changes may affect coverage.",
+      "date_policy": "Preserve exact/year/month source strings and ACTUAL/ESTIMATED types; no date imputation.",
+      "enrollment_policy": "planned_enrollment uses only explicitly ESTIMATED enrollment; reported/current enrollment is not an original plan.",
+      "eligibility_feature_method": "Lexical nonempty-line, Unicode-word and character counts from eligibility text; not counts of clinical conditions.",
+      "site_policy": "Counts refer to locations/countries present in this current source projection; not planned sites or recruitment performance.",
+      "data_use": "Public ClinicalTrials.gov registry records; cite the source and review its terms. No blanket third-party text license is asserted.",
+      "source_documentation": "https://clinicaltrials.gov/data-api/api",
+      "terms_url": "https://clinicaltrials.gov/about-site/terms-conditions",
+      "limitations": [
+        "Current snapshots do not prove trial-start feature availability.",
+        "Completed-only drug-trial scope omits censored outcomes and does not represent all trials.",
+        "No patient-level data, original planned completion, treatment benefit or clinical validation is inferred.",
+        "First-registered date is not a timestamp for every current feature.",
+        "Counts are an acquisition inventory; training eligibility and temporal purging must be reported separately."
+      ],
+      "source_manifest_sha256": "4cd8882422c04f8dff13f836940693224edd1b409c8a68da95d9f7279a36f1c6",
+      "canonical_sha256": "9f0ec8d49192a79ed2e9a341a57e93abc07304f92709451a4673976d26fffcc4",
+      "source_identity_method": "SHA-256 of the immutable acquisition metadata, which contains raw response and canonical shard checksums.",
+      "canonical_identity_method": "SHA-256 of ordered canonical shard file/hash/row-count descriptors in sorted-key compact JSON."
+    },
+    "storage_kind": "bundled-public-reference",
+    "canonical_sha256": "9f0ec8d49192a79ed2e9a341a57e93abc07304f92709451a4673976d26fffcc4"
+  },
+  "overview": {
+    "total_studies": 101135,
+    "median_pci": 11.25,
+    "phase_counts": {
+      "PHASE2": 28221,
+      "PHASE1": 27191,
+      "PHASE3": 20730,
+      "PHASE4": 17193,
+      "PHASE1|PHASE2": 5112,
+      "PHASE2|PHASE3": 2688
+    },
+    "status_counts": {
+      "COMPLETED": 101135
+    },
+    "enrollment_total": 24784818.0,
+    "pci_distribution": [
+      {
+        "nct_id": "NCT00257140",
+        "title": "A Study of the Safety and Effectiveness of Levofloxacin Compared With Cefaclor in the Treatment of Adults With Chronic Bronchitis Experiencing Rapid Onset of Worsening of Symptoms Caused by Bacteria",
+        "pci": 6.67
+      },
+      {
+        "nct_id": "NCT00000482",
+        "title": "Coronary Drug Project",
+        "pci": 0.0
+      },
+      {
+        "nct_id": "NCT00000484",
+        "title": "Treatment of Hypertension",
+        "pci": 0.0
+      },
+      {
+        "nct_id": "NCT00000485",
+        "title": "Hypertension Detection and Follow-up Program (HDFP)",
+        "pci": 0.0
+      },
+      {
+        "nct_id": "NCT00000594",
+        "title": "NHLBI Type II Coronary Intervention Study",
+        "pci": 0.0
+      },
+      {
+        "nct_id": "NCT00000487",
+        "title": "Multiple Risk Factor Intervention Trial for the Prevention of Coronary Heart Disease (MRFIT)",
+        "pci": 0.0
+      },
+      {
+        "nct_id": "NCT00000488",
+        "title": "Lipid Research Clinics Coronary Primary Prevention Trial (CPPT)",
+        "pci": 0.0
+      },
+      {
+        "nct_id": "NCT00000491",
+        "title": "Aspirin-Myocardial Infarction Study (AMIS)",
+        "pci": 0.0
+      },
+      {
+        "nct_id": "NCT00000580",
+        "title": "Interruption of Maternal-to-Infant Transmission of Hepatitis B by Means of Hepatitis B Immune Globulin",
+        "pci": 0.0
+      },
+      {
+        "nct_id": "NCT00001155",
+        "title": "Treatment of Wegener's Granulomatosis With Cyclophosphamide",
+        "pci": 2.0
+      },
+      {
+        "nct_id": "NCT00000563",
+        "title": "Prevention of Neonatal Respiratory Distress Syndrome With Antenatal Steroid Administration",
+        "pci": 0.0
+      },
+      {
+        "nct_id": "NCT00427570",
+        "title": "Fluorouracil, Semustine, and Vincristine Compared With BCG in Treating Patients With Dukes' B or Dukes' C Colon Cancer That Has Been Removed By Surgery",
+        "pci": 0.0
+      },
+      {
+        "nct_id": "NCT00000493",
+        "title": "Multicenter Investigation of Limitation of Infarct Size (MILIS)",
+        "pci": 0.0
+      },
+      {
+        "nct_id": "NCT00000492",
+        "title": "Beta-Blocker Heart Attack Trial (BHAT)",
+        "pci": 0.0
+      },
+      {
+        "nct_id": "NCT00000595",
+        "title": "Evaluation of Subcutaneous Desferrioxamine as Treatment for Transfusional Hemochromatosis",
+        "pci": 0.0
+      },
+      {
+        "nct_id": "NCT00000596",
+        "title": "Diffuse Fibrotic Lung Disease",
+        "pci": 0.0
+      },
+      {
+        "nct_id": "NCT00000582",
+        "title": "Cooperative Study of Factor VIII Inhibitors",
+        "pci": 0.0
+      },
+      {
+        "nct_id": "NCT00803803",
+        "title": "Dose, Effects and Characteristics of Pilocarpine",
+        "pci": 6.12
+      },
+      {
+        "nct_id": "NCT00000494",
+        "title": "Management of Patent Ductus in Premature Infants",
+        "pci": 0.0
+      },
+      {
+        "nct_id": "NCT00001165",
+        "title": "Combination Chemotherapy in Patients With Zollinger-Ellison Syndrome and Tumors of the Pancreas",
+        "pci": 9.99
+      },
+      {
+        "nct_id": "NCT00000151",
+        "title": "Early Treatment Diabetic Retinopathy Study (ETDRS)",
+        "pci": 0.0
+      },
+      {
+        "nct_id": "NCT00000496",
+        "title": "Platelet Drug Trial in Coronary Disease Progression",
+        "pci": 0.0
+      },
+      {
+        "nct_id": "NCT00000498",
+        "title": "Control of Hypertension by Non-Pharmacologic Means",
+        "pci": 0.0
+      },
+      {
+        "nct_id": "NCT00000599",
+        "title": "Cholesterol-Lowering Atherosclerosis Study (CLAS)",
+        "pci": 0.0
+      },
+      {
+        "nct_id": "NCT00000499",
+        "title": "Systolic Hypertension in the Elderly Program (SHEP) (Pilot Study)",
+        "pci": 0.0
+      },
+      {
+        "nct_id": "NCT00000500",
+        "title": "Physicians' Health Study",
+        "pci": 0.0
+      },
+      {
+        "nct_id": "NCT00000501",
+        "title": "Hypertension Prevention Trial (HPT) Feasibility Study",
+        "pci": 0.0
+      },
+      {
+        "nct_id": "NCT00000597",
+        "title": "Multi-Center Trial of Anti-Thymocyte Globulin in Treatment of Aplastic Anemia and Other Hematologic Disorders",
+        "pci": 0.0
+      },
+      {
+        "nct_id": "NCT00294580",
+        "title": "Early Childhood Malaria Prevention With Maloprim in The Gambia",
+        "pci": 18.0
+      },
+      {
+        "nct_id": "NCT00000503",
+        "title": "Randomized Clinical Trial of Non-Surgical Reperfusion of the Coronary Arteries",
+        "pci": 0.0
+      },
+      {
+        "nct_id": "NCT00000504",
+        "title": "Cardiac Arrhythmia Pilot Study (CAPS)",
+        "pci": 0.0
+      },
+      {
+        "nct_id": "NCT00001181",
+        "title": "Testolactone for the Treatment of Girls With LHRH Resistant Precocious Puberty",
+        "pci": 1.0
+      },
+      {
+        "nct_id": "NCT00001191",
+        "title": "The Use of Oral Omeprazole and Intravenous Pantoprazole in Patients With Hypersecretion of Gastric Acid",
+        "pci": 0.0
+      },
+      {
+        "nct_id": "NCT00000505",
+        "title": "Thrombolysis in Myocardial Infarction (TIMI)",
+        "pci": 0.0
+      },
+      {
+        "nct_id": "NCT00000506",
+        "title": "Cardiovascular System in Obesity: Effect of Treatment",
+        "pci": 0.0
+      },
+      {
+        "nct_id": "NCT00000584",
+        "title": "Transfusion-Transmitted Cytomegalovirus Prevention in Neonates",
+        "pci": 0.0
+      },
+      {
+        "nct_id": "NCT00000585",
+        "title": "Penicillin Prophylaxis in Sickle Cell Disease (PROPS)",
+        "pci": 0.0
+      },
+      {
+        "nct_id": "NCT00000159",
+        "title": "Sorbinil Retinopathy Trial (SRT)",
+        "pci": 0.0
+      },
+      {
+        "nct_id": "NCT00000507",
+        "title": "Intravenous Streptokinase in Acute Myocardial Infarction",
+        "pci": 0.0
+      },
+      {
+        "nct_id": "NCT00000510",
+        "title": "Platelet-Inhibitor Drug Trial in Coronary Angioplasty",
+        "pci": 0.0
+      },
+      {
+        "nct_id": "NCT00001190",
+        "title": "Study of Luteinizing Hormone-Releasing Hormone Analog (LHRHa) in Pubertal Patients With Extreme Short Stature",
+        "pci": 0.5
+      },
+      {
+        "nct_id": "NCT00000512",
+        "title": "Familial Atherosclerosis Treatment Study",
+        "pci": 9.09
+      },
+      {
+        "nct_id": "NCT00257049",
+        "title": "A Study of the Safety and Effectiveness of Levofloxacin Compared With Ceftriaxone Sodium or Cefuroxime Axetil in the Treatment of Adults With Pneumonia",
+        "pci": 9.04
+      },
+      {
+        "nct_id": "NCT00001197",
+        "title": "Hydroxyurea for the Treatment of Patients With Sickle Cell Anemia",
+        "pci": 2.41
+      },
+      {
+        "nct_id": "NCT00427310",
+        "title": "Liver Infusions of Fluorouracil in Treating Patients With Dukes' A, Dukes' B, or Dukes' C Colon Cancer Undergoing Surgery",
+        "pci": 17.75
+      },
+      {
+        "nct_id": "NCT00000513",
+        "title": "Trial of Antihypertensive Intervention Management",
+        "pci": 0.0
+      },
+      {
+        "nct_id": "NCT00000114",
+        "title": "Randomized Trial of Vitamin A and Vitamin E Supplementation for Retinitis Pigmentosa",
+        "pci": 0.0
+      },
+      {
+        "nct_id": "NCT00000514",
+        "title": "Systolic Hypertension in the Elderly Program (SHEP)",
+        "pci": 0.0
+      },
+      {
+        "nct_id": "NCT03164291",
+        "title": "Effectiveness of Rifabutin in the Treatment of Mycobacterium Avium Complex",
+        "pci": 6.58
+      },
+      {
+        "nct_id": "NCT00000568",
+        "title": "Lung Health Study (LHS) I and III",
+        "pci": 0.0
+      },
+      {
+        "nct_id": "NCT00001202",
+        "title": "Treatment of Boys With Precocious Puberty",
+        "pci": 0.8
+      },
+      {
+        "nct_id": "NCT00589706",
+        "title": "A Phase II Study of Adjuvant Use of Anti-Epidermal Growth Factor Receptor EGFR-425 in High Grade Gliomas",
+        "pci": 3.99
+      },
+      {
+        "nct_id": "NCT00004767",
+        "title": "Phase II Study of Sodium Phenylbutyrate, Sodium Benzoate, Sodium Phenylacetate, and Dietary Intervention for Urea Cycle Disorders",
+        "pci": 0.2
+      },
+      {
+        "nct_id": "NCT00000120",
+        "title": "Clinical Trial of Eye Prophylaxis in the Newborn",
+        "pci": 0.0
+      },
+      {
+        "nct_id": "NCT00004811",
+        "title": "Phase I/II Study of Itraconazole for Blastomycosis, Histoplasmosis, and Sporotrichosis",
+        "pci": 0.07
+      },
+      {
+        "nct_id": "NCT00712647",
+        "title": "Carotene and Retinol Efficacy Trial",
+        "pci": 16.75
+      },
+      {
+        "nct_id": "NCT00116870",
+        "title": "MARS - Monitored Atherosclerosis Regression Study",
+        "pci": 7.7
+      },
+      {
+        "nct_id": "NCT00209352",
+        "title": "Long-Term Oral Acyclovir Usage to Prevent Herpes Zoster Virus Infection After Bone Marrow Transplant",
+        "pci": 4.2
+      },
+      {
+        "nct_id": "NCT00000516",
+        "title": "Studies of Left Ventricular Dysfunction (SOLVD)",
+        "pci": 0.0
+      },
+      {
+        "nct_id": "NCT00000517",
+        "title": "Boston Area Anticoagulation Trial for Atrial Fibrillation (BAATAF)",
+        "pci": 0.0
+      },
+      {
+        "nct_id": "NCT00000518",
+        "title": "Electrophysiologic Study Versus Electrocardiographic Monitoring (ESVEM)",
+        "pci": 0.0
+      },
+      {
+        "nct_id": "NCT00000520",
+        "title": "Prevention of Coronary Aneurysms in Kawasaki Syndrome",
+        "pci": 0.0
+      },
+      {
+        "nct_id": "NCT00000522",
+        "title": "Treatment of Mild Hypertension Study (TOMHS)",
+        "pci": 0.0
+      },
+      {
+        "nct_id": "NCT00000122",
+        "title": "Fluorouracil Filtering Surgery Study (FFSS)",
+        "pci": 0.0
+      },
+      {
+        "nct_id": "NCT00000140",
+        "title": "The Silicone Study",
+        "pci": 0.0
+      },
+      {
+        "nct_id": "NCT00000570",
+        "title": "Human Surfactant Treatment of Respiratory Distress Syndrome Bicenter Trial",
+        "pci": 0.0
+      },
+      {
+        "nct_id": "NCT00693212",
+        "title": "Further Studies of Attention Deficit Disorder - Residual Type (RT)",
+        "pci": 11.79
+      },
+      {
+        "nct_id": "NCT00001213",
+        "title": "Cysteamine Eye Drops to Treat Corneal Crystals in Cystinosis",
+        "pci": 9.16
+      },
+      {
+        "nct_id": "NCT00269737",
+        "title": "Efficacy of the Fentanyl Transdermal Therapeutic System (TTS) in the Management of Pain in Patients With Cancer",
+        "pci": 3.07
+      },
+      {
+        "nct_id": "NCT00002456",
+        "title": "Graft-Versus-Host Disease Prevention in Treating Patients Who Are Undergoing Bone Marrow Transplantation",
+        "pci": 0.0
+      },
+      {
+        "nct_id": "NCT00000524",
+        "title": "Myocarditis Treatment Trial",
+        "pci": 0.0
+      },
+      {
+        "nct_id": "NCT00000525",
+        "title": "Diuretics, Hypertension, and Arrhythmias Clinical Trial",
+        "pci": 2.33
+      },
+      {
+        "nct_id": "NCT00000527",
+        "title": "Recurrent Carotid Stenosis",
+        "pci": 0.0
+      },
+      {
+        "nct_id": "NCT00000526",
+        "title": "Cardiac Arrhythmia Suppression Trial (CAST)",
+        "pci": 0.0
+      },
+      {
+        "nct_id": "NCT00001209",
+        "title": "A Pilot Study for the Treatment of Patients With Metastatic and High Risk Sarcomas and Primitive Neuroectodermal Tumors",
+        "pci": 1.2
+      },
+      {
+        "nct_id": "NCT01324063",
+        "title": "A Randomized Phase III Study of Intensive Consolidation With High Dose Cytosine Arabinoside in Acute Myelogenous Leukemia (AML-8B)",
+        "pci": 11.6
+      },
+      {
+        "nct_id": "NCT00001212",
+        "title": "Drug Therapy in Lupus Nephropathy",
+        "pci": 5.45
+      },
+      {
+        "nct_id": "NCT00000461",
+        "title": "Harvard Atherosclerosis Reversibility Project (HARP)",
+        "pci": 0.0
+      },
+      {
+        "nct_id": "NCT00000197",
+        "title": "Propranolol for Treatment of Cocaine Addiction - 2",
+        "pci": 12.0
+      },
+      {
+        "nct_id": "NCT00000464",
+        "title": "Cardiac Arrest in Seattle: Conventional Versus Amiodarone Drug Evaluation (CASCADE)",
+        "pci": 0.0
+      },
+      {
+        "nct_id": "NCT00946491",
+        "title": "To Demonstrate the Relative Bioequivalency of Generic Haloperidol Tablets Versus Haldol in Normal Volunteers",
+        "pci": 6.05
+      },
+      {
+        "nct_id": "NCT00000463",
+        "title": "Post Coronary Artery Bypass Graft (CABG) Study",
+        "pci": 0.0
+      },
+      {
+        "nct_id": "NCT00849082",
+        "title": "Radiation Therapy With or Without Goserelin and Cyproterone in Treating Patients With Prostate Cancer",
+        "pci": 10.0
+      },
+      {
+        "nct_id": "NCT00001217",
+        "title": "Osteosarcoma Study #2: A Randomized Trial of Pre-Surgical Chemotherapy vs. Immediate Surgery and Adjuvant Chemotherapy in the Treatment of Non-Metastatic Osteosarcoma. A Pediatric Oncology Group Phase III Study",
+        "pci": 2.6
+      },
+      {
+        "nct_id": "NCT00000212",
+        "title": "IV Cocaine Abuse: A Laboratory Model - 1",
+        "pci": 12.0
+      },
+      {
+        "nct_id": "NCT00913237",
+        "title": "To Demonstrate the Relative Bioavailability of Desipramine Hydrochloride 50 mg Tablets",
+        "pci": 6.11
+      },
+      {
+        "nct_id": "NCT00002547",
+        "title": "Chemotherapy and Bone Marrow Transplantation in Treating Patients Acute Myeloid With Leukemia or Myelodysplastic Syndrome",
+        "pci": 2.8
+      },
+      {
+        "nct_id": "NCT00005006",
+        "title": "Parathyroid Hormone (PTH) With Alendronate for Osteoporosis",
+        "pci": 7.03
+      },
+      {
+        "nct_id": "NCT00001221",
+        "title": "Effect of Biosynthetic Growth Hormone and/or Ethinyl Estradiol on Adult Height in Patients With Turner Syndrome",
+        "pci": 1.6
+      },
+      {
+        "nct_id": "NCT00000466",
+        "title": "Postmenopausal Estrogen/Progestin Interventions (PEPI)",
+        "pci": 0.0
+      },
+      {
+        "nct_id": "NCT01518036",
+        "title": "Use of Somatropin in Turner Syndrome",
+        "pci": 9.32
+      },
+      {
+        "nct_id": "NCT00269763",
+        "title": "Clinical Use and Safety of the Fentanyl Transdermal Therapeutic System (TTS) in the Management of Pain in Patients With Cancer",
+        "pci": 3.32
+      },
+      {
+        "nct_id": "NCT00227955",
+        "title": "Comparing Various Treatments for Achieving and Maintaining Remission of Depression",
+        "pci": 5.0
+      },
+      {
+        "nct_id": "NCT00913822",
+        "title": "To Demonstrate the Relative Bioavailability of Desipramine Hydrochloride Tablets",
+        "pci": 6.11
+      },
+      {
+        "nct_id": "NCT00913809",
+        "title": "To Demonstrate the Relative Bioequivalency of Cord's 100 mg Desipramine HCL Tablets To Merrell Dow's 100 mg Norpramin Tablets",
+        "pci": 6.11
+      },
+      {
+        "nct_id": "NCT00000393",
+        "title": "A Phase I Trial of Peptide T: Efficacy for the Neuropsychiatric Complications of Acquired Immunodeficiency Syndrome (AIDS).",
+        "pci": 2.06
+      },
+      {
+        "nct_id": "NCT00000391",
+        "title": "A Phase I Trial of Intranasal Peptide T: Safety, Toxicity, and Pharmacokinetics in Human Immunodeficiency Virus-1 (HIV-1) Infected Patients.",
+        "pci": 2.3
+      },
+      {
+        "nct_id": "NCT01203345",
+        "title": "Intravenous Immune Globulin (IVIG) to Prevent Neonatal Infection",
+        "pci": 20.75
+      },
+      {
+        "nct_id": "NCT01177371",
+        "title": "High-Dose Busulfan and High-Dose Cyclophosphamide Followed By Donor Bone Marrow Transplant in Treating Patients With Leukemia, Myelodysplastic Syndrome, Multiple Myeloma, or Recurrent Hodgkin or Non-Hodgkin Lymphoma",
+        "pci": 6.01
+      },
+      {
+        "nct_id": "NCT00003093",
+        "title": "Combination Chemotherapy in Treating Children With Neuroblastoma",
+        "pci": 9.61
+      }
+    ]
+  }
+}

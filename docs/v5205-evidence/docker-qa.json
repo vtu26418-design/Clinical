@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "checks": [
+    "Nonroot Docker application, PostgreSQL and genuine reference healthy",
+    "duration approved artifact loads, predicts and recomputes saved quality inside image",
+    "phase approved artifact loads, predicts and recomputes saved quality inside image",
+    "PostgreSQL science storyboard persists and reloads in Docker",
+    "Built Docker frontend serves actual cohort, refresh restores project and no page exception"
+  ],
+  "errors": []
+}

@@ -76,8 +76,17 @@ def _branch(manifest, task):
     models = manifest.get('models', {})
     if task == 'phase':
         return manifest.get('recommended_model')
-    if manifest.get('config', {}).get('enable_accuracy_models') and 'accuracy_task_selected' in models:
+    config = manifest.get('config', {})
+    if config.get('enable_design_models'):
+        # The frozen MAE protocol selects duration and risk independently. A
+        # tie-winning regression component must not replace its risk component.
+        if config.get('duration_selection_metric') == 'mae' and 'design_task_selected' in models:
+            return 'design_task_selected'
+        return manifest.get('recommended_duration_model')
+    if config.get('enable_accuracy_models') and 'accuracy_task_selected' in models:
         return 'accuracy_task_selected'
+    if 'duration_selection_metric' in config:
+        return manifest.get('recommended_duration_model')
     # Legacy deterministic validation-only duration objective. Test metrics never select.
     candidates = [(name, value.get('metrics', {}).get('validation', {}).get('regression', {}).get('mae'))
                   for name, value in models.items()]
@@ -103,6 +112,63 @@ def _input_mode(manifest, branch, seen=None):
     modes={_input_mode(manifest, selection.get(key), seen) for key in ('regressor_component','classifier_component')}
     if 'multimodal' in modes or {'text','structured'} <= modes:return 'multimodal'
     return 'text' if 'text' in modes else 'structured' if 'structured' in modes else 'baseline'
+
+
+def _explicit_input_requirement(features):
+    if not isinstance(features, dict):
+        raise HTTPException(409, 'Saved model input feature metadata is invalid.')
+    fields = {}
+    for kind in ('numeric', 'categorical', 'text'):
+        values = features.get(kind, [])
+        if not isinstance(values, (list, tuple)) or any(not isinstance(name, str) or not name for name in values):
+            raise HTTPException(409, 'Saved model input feature metadata is invalid.')
+        fields[kind] = list(values)
+    structured, narrative = bool(fields['numeric'] or fields['categorical']), bool(fields['text'])
+    mode = 'multimodal' if structured and narrative else 'structured' if structured else 'text' if narrative else 'baseline'
+    return {'mode': mode, 'fields': fields, 'explicit': True}
+
+
+def _input_requirements(manifest, branch, seen=None):
+    """Return each selected task's actual schema, without broadening it."""
+    seen = set() if seen is None else set(seen)
+    if branch in seen:
+        raise HTTPException(409, 'Saved composite model metadata contains a cycle.')
+    seen.add(branch)
+    meta = manifest.get('models', {}).get(branch)
+    if not isinstance(meta, dict):
+        raise HTTPException(409, 'Saved model component metadata is missing.')
+    tasks = meta.get('task_input_features')
+    if tasks is not None:
+        if not isinstance(tasks, dict) or not all(task in tasks for task in ('regressor', 'classifier')):
+            raise HTTPException(409, 'Saved model task input feature metadata is invalid.')
+        return [_explicit_input_requirement(tasks[task]) for task in ('regressor', 'classifier')]
+    mode = meta.get('input_mode', 'multimodal')
+    if mode == 'composite':
+        selection = meta.get('selection', {})
+        return [requirement for key in ('regressor_component', 'classifier_component')
+                for requirement in _input_requirements(manifest, selection.get(key), seen)]
+    if mode not in {'baseline', 'structured', 'text', 'multimodal'}:
+        raise HTTPException(409, 'Saved model input mode is unsupported.')
+    if meta.get('input_features') is not None:
+        return [_explicit_input_requirement(meta['input_features'])]
+    if mode == 'baseline':
+        features = {}
+    elif branch == 'accuracy_phase_shrinkage':
+        features = {'categorical': ['phase']}
+    else:
+        features = manifest.get('features', {})
+    requirement = _explicit_input_requirement(features)
+    requirement['explicit'] = False
+    requirement['mode'] = mode
+    for kind in ('numeric', 'categorical', 'text'):
+        if not ((kind == 'text' and mode in {'text', 'multimodal'}) or (kind != 'text' and mode in {'structured', 'multimodal'})):
+            requirement['fields'][kind] = []
+    return [requirement]
+
+
+def _consumed_features(requirements):
+    return list(dict.fromkeys(name for requirement in requirements
+                             for fields in requirement['fields'].values() for name in fields))
 
 
 def _gates(manifest, task, branch):
@@ -220,7 +286,7 @@ class ApprovedModelRegistry:
             'artifact_sha256':artifact_sha, 'manifest_sha256':manifest_sha,
             'training_dataset':_training_source(manifest),
             'validation_metrics':metrics.get('validation', {}), 'test_metrics':metrics.get('test', {}),
-            'selection':{'objective':'phase classification' if task == 'phase' else 'independent duration RMSE / risk Brier' if branch=='accuracy_task_selected' else 'duration MAE', 'data':'validation only',
+            'selection':manifest['duration_recommendation'] if task == 'duration' and (manifest.get('config', {}).get('enable_design_models') or 'duration_selection_metric' in manifest.get('config', {})) and branch != 'accuracy_task_selected' and manifest.get('duration_recommendation') else {'objective':'phase classification' if task == 'phase' else 'independent duration RMSE / risk Brier' if branch=='accuracy_task_selected' else 'duration MAE', 'data':'validation only',
                          'rule':'Recorded validation-selected phase classifier' if task == 'phase' else 'Independent minimum tuning RMSE and raw risk Brier; ties use model name' if branch=='accuracy_task_selected' else 'Minimum finite validation duration MAE; stable first candidate wins ties'},
             'features':features, 'approval_scope':'research_only', 'approval':approval,
             'gates':{'passed':not gates,'errors':gates}, 'warnings':warnings,
@@ -238,19 +304,26 @@ class ApprovedModelRegistry:
                 items.append({'id':model_id, 'name':name, 'task':task, 'status':'unavailable','active':False,
                               'approval_scope':'research_only','warnings':[exc.detail], 'gates':{'passed':False,'errors':[exc.detail]}})
         active = {}
+        configured = {}
         for task in ('duration','phase'):
             rows = self.store.execute('SELECT model_id FROM v5_active_models WHERE project_id=:project AND task=:task',{'project':project_id,'task':task},True)
-            active[task] = rows[0]['model_id'] if rows else next((m['id'] for m in items if m['task']==task and m['status']=='approved' and not m['id'].startswith('project-')), None)
+            configured[task] = rows[0]['model_id'] if rows else None
+            requested = configured[task] or next((m['id'] for m in items if m['task']==task and m['status']=='approved' and not m['id'].startswith('project-')), None)
+            active[task] = next((m['id'] for m in items if m['id']==requested and m['status']=='approved'), None)
         for model in items:
             model['active'] = active.get(model['task']) == model['id']
-        return {'items':items, 'active':active, 'warnings':[] if identifiers else ['No trusted bundled release catalog is installed; inference remains unavailable until an owner approves a compatible local model.']}
+            model['configured_active'] = configured.get(model['task']) == model['id']
+        warnings = [f'The configured {task} model is unavailable. An owner must review its saved artifacts and approval.' for task in configured if configured[task] and not active[task]]
+        if not identifiers:
+            warnings.append('No trusted bundled release catalog is installed; inference remains unavailable until an owner approves a compatible local model.')
+        return {'items':items, 'active':active, 'configured_active':configured, 'warnings':warnings}
 
     def resolve(self, project_id, registry, task='duration', model_id='active'):
         if task not in {'duration','phase'}:
             raise HTTPException(422, 'Unsupported model objective.')
         if model_id == 'active':
             rows = self.store.execute('SELECT model_id FROM v5_active_models WHERE project_id=:project AND task=:task',{'project':project_id,'task':task},True)
-            model_id = rows[0]['model_id'] if rows else next((e['id'] for e in self._bundle_entries() if e.get('task')==task), None)
+            model_id = rows[0]['model_id'] if rows else self.list_models(project_id, registry)['active'].get(task)
             if model_id is None:
                 raise HTTPException(409, 'No approved saved model is active for this task. Owners may train and approve a research candidate separately.')
         result = self._inspect(project_id, registry, model_id)
@@ -281,6 +354,17 @@ class ApprovedModelRegistry:
                            {'project':project_id,'task':selected['task'],'model':model_id,'stamp':now()})
         return {**selected['model'], 'active':True}
 
+    def initialize_project_defaults(self, project_id, registry):
+        """Release defaults apply only at creation, preserving existing projects."""
+        for entry in self._bundle_entries():
+            if not entry.get('default_for_new_projects'):
+                continue
+            selected=self._inspect(project_id,registry,entry['id'])
+            if selected['model']['status']!='approved':
+                raise HTTPException(409,'The release research model failed verification. Existing project data is preserved.')
+            self.store.execute('INSERT INTO v5_active_models(project_id,task,model_id,updated_at) VALUES (:project,:task,:model,:stamp) ON CONFLICT(project_id,task) DO NOTHING',
+                {'project':project_id,'task':selected['task'],'model':selected['id'],'stamp':now()})
+
     def infer_rows(self, project_id, dataset_registry, rows, dataset, *, task='duration', model_id='active', mode='retrospective'):
         if dataset.get('is_fixture'):
             raise HTTPException(422, 'Software-test fixtures cannot support scientific inference.')
@@ -291,33 +375,35 @@ class ApprovedModelRegistry:
         if not rows or len(rows)>1000:
             raise HTTPException(422, 'Provide between 1 and 1000 rows for saved inference.')
         manifest = selected['manifest']
-        branch_meta = manifest.get('models', {}).get(selected['branch'], {})
         input_mode = _input_mode(manifest, selected['branch'])
-        numeric = manifest.get('features', {}).get('numeric', [])
-        text_fields = manifest.get('features', {}).get('text', [])
+        requirements = _input_requirements(manifest, selected['branch'])
+        consumed = _consumed_features(requirements)
         # Missing individual values are imputed by the saved training pipeline;
         # absence of the entire modality is an incompatible input schema.
         for row in rows:
-            structured = any(_present(row.get(name)) for name in numeric)
-            narrative = any(_present(row.get(name)) for name in text_fields if name != 'title')
             if not _present(row.get('nct_id')) or not _present(row.get('title')):
                 raise HTTPException(422, 'Inference schema requires nonempty nct_id and title.')
-            if (input_mode == 'structured' and not structured) or (input_mode == 'text' and not narrative) or (input_mode in {'multimodal','baseline'} and not (structured or narrative)):
-                raise HTTPException(422, 'Input feature schema has no observed values for the selected model modality. Supply protocol text or structured model features.')
+            for requirement in requirements:
+                fields, component_mode = requirement['fields'], requirement['mode']
+                structured = any(_present(row.get(name)) for name in fields['numeric'] + fields['categorical'])
+                narrative = any(_present(row.get(name)) for name in fields['text'] if requirement['explicit'] or name != 'title')
+                if (component_mode == 'structured' and not structured) or (component_mode == 'text' and not narrative) or (component_mode == 'multimodal' and not (structured or narrative)):
+                    raise HTTPException(422, 'Input feature schema has no observed values for a selected model component. Supply its required protocol text or structured model features.')
         model = selected['model']
         result = {'id':uuid.uuid4().hex, 'created_at':now(),'mode':mode,'model':model,
                   'dataset':{key:dataset.get(key) for key in ('id','name','sha256','row_count')},
                   'items':[], 'warnings':[RESEARCH_WARNING, RETROSPECTIVE_WARNING if mode=='retrospective' else 'Pretrial availability checks use supplied timestamps; supplied provenance is not independent prospective validation.']}
         for raw in rows:
             row = json_clean(raw)
-            warnings = self.availability_warnings(row, manifest, input_mode, mode)
+            warnings = self.availability_warnings(row, manifest, input_mode, mode, consumed=consumed)
             if mode == 'pretrial' and warnings:
                 result['items'].append({'nct_id':row['nct_id'],'status':'blocked','prediction':None,'availability_warnings':warnings})
                 continue
             try:
                 if task == 'phase':
                     from src.clinical_trial_intelligence.phase_model import predict_phase
-                    prediction = predict_phase(row, selected['directory'])
+                    from .services.phase_service import normalize_phase_input
+                    prediction = predict_phase(normalize_phase_input(row,manifest), selected['directory'])
                 else:
                     from src.clinical_trial_intelligence.research import predict_trial
                     prediction = predict_trial(row, selected['directory'], model_name=selected['branch'])
@@ -330,11 +416,12 @@ class ApprovedModelRegistry:
         return json_clean(result)
 
     @staticmethod
-    def availability_warnings(row, manifest, input_mode, mode):
+    def availability_warnings(row, manifest, input_mode, mode, *, consumed=None):
         features = manifest.get('features', {})
-        consumed = list(features.get('numeric', []))+list(features.get('categorical', [])) if input_mode != 'text' else []
-        if input_mode != 'structured':
-            consumed += list(features.get('text', []))
+        if consumed is None:
+            consumed = list(features.get('numeric', []))+list(features.get('categorical', [])) if input_mode in {'structured', 'multimodal'} else []
+            if input_mode in {'text', 'multimodal'}:
+                consumed += list(features.get('text', []))
         missing = [name for name in consumed if not _present(row.get(name))]
         if mode == 'retrospective':
             return [RETROSPECTIVE_WARNING] + (['Missing feature values use saved training imputers: '+', '.join(missing)+'.'] if missing else [])

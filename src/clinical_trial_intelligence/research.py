@@ -10,6 +10,7 @@ from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
 from fractions import Fraction
 import hashlib
+from importlib.metadata import version as package_version
 import json
 import math
 from pathlib import Path
@@ -31,7 +32,7 @@ from sklearn.ensemble import (ExtraTreesClassifier, ExtraTreesRegressor, Gradien
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.impute import SimpleImputer
 from sklearn.linear_model import LogisticRegression, Ridge
-from sklearn.metrics import average_precision_score, brier_score_loss, mean_absolute_error, mean_squared_error, r2_score, roc_auc_score
+from sklearn.metrics import average_precision_score, brier_score_loss, mean_absolute_error, mean_squared_error, median_absolute_error, log_loss, r2_score, roc_auc_score
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from threadpoolctl import threadpool_limits
@@ -52,6 +53,10 @@ MODEL_METADATA = {
     "structured_hist_gradient_boosting": {"family": "hist_gradient_boosting", "input_mode": "structured", "display_name": "Structured Histogram Boosting"},
     "structured_catboost": {"family": "catboost", "input_mode": "structured", "display_name": "Structured CatBoost"},
     "multimodal_late_fusion": {"family": "weighted_late_fusion", "input_mode": "multimodal", "display_name": "Text + Histogram Boosting Fusion"},
+    "design_linear": {"family": "design_ridge_logistic", "input_mode": "structured", "display_name": "Protocol design linear"},
+    "design_log_linear": {"family": "design_log_ridge_logistic", "input_mode": "structured", "display_name": "Protocol design log-duration linear"},
+    "design_catboost": {"family": "catboost", "input_mode": "structured", "display_name": "Protocol design CatBoost"},
+    "design_task_selected": {"family": "task_selection", "input_mode": "composite", "display_name": "Design study tuning-selected tasks"},
     "accuracy_mean": {"family": "constant_baseline", "input_mode": "baseline", "display_name": "Mean / prevalence baseline"},
     "accuracy_phase_shrinkage": {"family": "phase_shrinkage", "input_mode": "structured", "display_name": "Phase-shrunk training statistics"},
     "accuracy_log_structured": {"family": "log_ridge_logistic", "input_mode": "structured", "display_name": "Log-transformed structured linear"},
@@ -72,6 +77,9 @@ class ExperimentConfig:
     uncertainty_alpha: float = 0.1
     catboost_search: Literal['basic', 'expanded'] = 'basic'
     enable_accuracy_models: bool = False
+    enable_design_models: bool = False
+    enable_design_catboost: bool = False
+    duration_selection_metric: Literal["rmse", "mae"] = "rmse"
 
     def validate(self):
         if not (0 < self.train_fraction < 1 and 0 < self.validation_fraction < 1 and self.train_fraction + self.validation_fraction < 1):
@@ -88,6 +96,13 @@ class ExperimentConfig:
             raise ValueError("enable_catboost must be a boolean.")
         if not isinstance(self.enable_accuracy_models, bool):
             raise ValueError("enable_accuracy_models must be a boolean.")
+        for name in ('enable_design_models', 'enable_design_catboost'):
+            if not isinstance(getattr(self, name), bool):
+                raise ValueError(name + ' must be a boolean.')
+        if self.enable_design_catboost and not self.enable_design_models:
+            raise ValueError('enable_design_catboost requires enable_design_models.')
+        if self.duration_selection_metric not in ('rmse', 'mae'):
+            raise ValueError('duration_selection_metric must be rmse or mae.')
         if self.catboost_search not in ('basic', 'expanded'):
             raise ValueError("catboost_search must be 'basic' or 'expanded'.")
         if isinstance(self.uncertainty_alpha, bool) or not np.isfinite(self.uncertainty_alpha) or not 0 < self.uncertainty_alpha < 1:
@@ -286,7 +301,7 @@ def normalize_design_phase(value) -> str:
     return text
 
 
-def _features(df: pd.DataFrame) -> pd.DataFrame:
+def _features(df: pd.DataFrame, *, include_design=False) -> pd.DataFrame:
     """Whitelist baseline-like inputs; never retain IDs, statuses, dates or targets."""
     output = pd.DataFrame(index=df.index)
     for name in NUMERIC_FEATURES:
@@ -299,7 +314,40 @@ def _features(df: pd.DataFrame) -> pd.DataFrame:
     output["protocol_text"] = pd.concat(texts, axis=1).agg(" ".join, axis=1) if texts and len(df) else ""
     output["protocol_text"] = output["protocol_text"].str.strip()
     output.loc[~output["protocol_text"].str.contains(r"\w", regex=True), "protocol_text"] = "missingprotocol"
+    if include_design:
+        from .models.design import design_features
+        extra = design_features(df)
+        for field in extra:
+            output[field] = extra[field]
     return output
+
+
+def model_task_input_features(name, selections, task):
+    """Raw fields consumed by one fitted task, including nested selections."""
+    if task not in ('regressor', 'classifier'):
+        raise ValueError('task must be regressor or classifier.')
+    if name in ('median_baseline', 'accuracy_mean'):
+        return {'numeric': [], 'categorical': [], 'text': []}
+    if name in ('accuracy_task_selected', 'design_task_selected'):
+        return model_task_input_features(selections[name][task + '_component'], selections, task)
+    if task == 'classifier' and selections.get(name, {}).get('one_class_fallback'):
+        return {'numeric': [], 'categorical': [], 'text': []}
+    if name == 'accuracy_phase_shrinkage':
+        return {'numeric': [], 'categorical': ['phase'], 'text': []}
+    if name.startswith('design_'):
+        from .models.design import input_features
+        return input_features()
+    mode = MODEL_METADATA[name]['input_mode']
+    return {'numeric': list(NUMERIC_FEATURES) if mode != 'text' else [],
+            'categorical': list(CATEGORICAL_FEATURES) if mode != 'text' else [],
+            'text': list(TEXT_FIELDS) if mode in ('text', 'multimodal') else []}
+
+
+def model_input_features(name, selections):
+    """Exact branch contract: union only the tasks that branch actually uses."""
+    contracts = [model_task_input_features(name, selections, task) for task in ('regressor', 'classifier')]
+    return {kind: list(dict.fromkeys(field for contract in contracts for field in contract[kind]))
+            for kind in ('numeric', 'categorical', 'text')}
 
 
 def _preprocessor(kind: str, config: ExperimentConfig, *, dense=False) -> ColumnTransformer:
@@ -325,6 +373,7 @@ def _point_metrics(duration, estimate, labels, probability):
     return {
         "regression": {
             "mae": float(mean_absolute_error(duration, estimate)),
+            "median_absolute_error": float(median_absolute_error(duration, estimate)),
             "rmse": float(np.sqrt(mean_squared_error(duration, estimate))),
             "r2": float(r2_score(duration, estimate)) if len(duration) > 1 and np.ptp(duration) > 0 else None,
         },
@@ -332,6 +381,7 @@ def _point_metrics(duration, estimate, labels, probability):
             "auroc": float(roc_auc_score(labels, probability)) if both_classes else None,
             "average_precision": float(average_precision_score(labels, probability)) if both_classes else None,
             "brier": float(brier_score_loss(labels, probability)),
+            "log_loss": float(log_loss(labels, np.column_stack([1 - probability, probability]), labels=[0, 1])),
         },
     }
 
@@ -624,7 +674,7 @@ def train_experiment(df: pd.DataFrame, output_dir: str | Path, source_metadata: 
             raise ValueError("Temporal splitting and outcome-availability purging require at least 12 training and 3 validation/test trials; use a larger cohort with sufficient follow-up.")
         splits["validation"], splits["calibration"], validation_partition = partition_validation(splits["validation"])
         threshold = float(splits["train"]["duration_days"].quantile(config.prolonged_quantile))
-        X = {name: _features(splits[name]) for name in ("train", "validation", "calibration", "test")}
+        X = {name: _features(splits[name], include_design=config.enable_design_models) for name in ("train", "validation", "calibration", "test")}
         duration = {name: splits[name].duration_days.to_numpy(float) for name in X}
         labels = {name: (values > threshold).astype(int) for name, values in duration.items()}
         models, selection = {}, {}
@@ -672,6 +722,15 @@ def train_experiment(df: pd.DataFrame, output_dir: str | Path, source_metadata: 
                 labels["validation"], config, models, NUMERIC_FEATURES, CATEGORICAL_FEATURES)
             models.update(accuracy_models)
             selection.update(accuracy_selection)
+        if config.enable_design_models:
+            from .models.design import fit_design_models, selected_tasks
+            design_models, design_selection = fit_design_models(
+                X['train'], duration['train'], labels['train'], X['validation'],
+                duration['validation'], labels['validation'], config)
+            models.update(design_models)
+            selection.update(design_selection)
+            models['design_task_selected'], selection['design_task_selected'] = selected_tasks(
+                models, X['validation'], duration['validation'], labels['validation'])
         # Select before any test predictions/metrics exist. Ties use model name.
         validation_brier = {name: float(brier_score_loss(labels["validation"], _positive_probability(model["classifier"], X["validation"])))
                             for name, model in models.items()}
@@ -681,10 +740,13 @@ def train_experiment(df: pd.DataFrame, output_dir: str | Path, source_metadata: 
                           "reason": "Lowest raw tuning validation Brier score among enabled fitted models; exact ties use model name. Calibration/test data are not used. This risk recommendation does not establish the best duration regressor or prospective clinical validity."}
         validation_rmse = {name: float(np.sqrt(mean_squared_error(duration["validation"], np.maximum(0, model["regressor"].predict(X["validation"])))))
                            for name, model in models.items()}
-        duration_model = min(validation_rmse, key=lambda name: (validation_rmse[name], name))
-        duration_recommendation = {"model_name": duration_model, "metric": "rmse", "split": "validation", "split_role": "tuning",
-                                   "value": validation_rmse[duration_model],
-                                   "reason": "Lowest tuning validation RMSE; ties use model name. Duration and prolonged-risk recommendations are independent; no calibration or test selection."}
+        validation_mae = {name: float(mean_absolute_error(duration['validation'], np.maximum(0, model['regressor'].predict(X['validation'])))) for name, model in models.items()}
+        duration_model = (min(validation_mae, key=lambda name: (validation_mae[name], validation_rmse[name], name))
+                          if config.duration_selection_metric == 'mae' else
+                          min(validation_rmse, key=lambda name: (validation_rmse[name], name)))
+        duration_recommendation = {"model_name": duration_model, "metric": config.duration_selection_metric, "split": "validation", "split_role": "tuning",
+                                   "value": (validation_mae if config.duration_selection_metric == "mae" else validation_rmse)[duration_model],
+                                   "reason": ("Lowest tuning validation MAE; ties use RMSE then model name." if config.duration_selection_metric == "mae" else "Lowest tuning validation RMSE; ties use model name.") + " Duration and risk recommendations are independent; no calibration or test selection."}
         pci = _fit_pci(X["train"])
         training_support = _fit_training_support(X["train"])
         uncertainty, calibration = {}, {}
@@ -752,8 +814,12 @@ def train_experiment(df: pd.DataFrame, output_dir: str | Path, source_metadata: 
             "created_at": datetime.now(timezone.utc).isoformat(), "source_metadata": metadata,
             "dataset_id": metadata.get("dataset_id"), "input_sha256": input_digest,
             "config": asdict(config), "pipeline_source_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
-            "additional_model_source_sha256": ({"models/accuracy.py": hashlib.sha256((Path(__file__).parent / "models/accuracy.py").read_bytes()).hexdigest()} if config.enable_accuracy_models else {}),
-            "environment": {"python": platform.python_version(), "pandas": pd.__version__, "numpy": np.__version__, "scikit_learn": sklearn.__version__, "joblib": joblib.__version__},
+            "additional_model_source_sha256": {name: hashlib.sha256((Path(__file__).parent / name).read_bytes()).hexdigest() for name in
+                (["models/accuracy.py"] if config.enable_accuracy_models or config.enable_design_models else [])
+                + (["models/design.py"] if config.enable_design_models else [])
+                + (["models/catboost_compat.py"] if config.enable_catboost or config.enable_design_catboost else [])},
+            "environment": {"python": platform.python_version(), "pandas": pd.__version__, "numpy": np.__version__, "scikit_learn": sklearn.__version__, "joblib": joblib.__version__,
+                            **({'catboost': package_version('catboost')} if config.enable_catboost or config.enable_design_catboost else {})},
             "cohort": {"input_rows": len(df), "eligible_rows": len(cohort), "excluded_rows": len(exclusions), "temporally_purged_rows": len(splits["purged"]), "outcomes": "completed actual completion minus start date in days"},
             "splits": {name: {"rows": len(splits[name]), "role": "tuning" if name == "validation" else name,
                 "start_date_min": splits[name].start_date.min().isoformat() if len(splits[name]) else None,
@@ -763,8 +829,12 @@ def train_experiment(df: pd.DataFrame, output_dir: str | Path, source_metadata: 
             "temporal_cutoffs": {"validation": splits["validation_cutoff"].isoformat(), "calibration": validation_partition["calibration_cutoff"],
                 "test": splits["test_cutoff"].isoformat(), "policy": "Whole start-date groups. Training outcomes precede original validation cutoff; all original validation outcomes precede test cutoff. Earlier retained validation tunes; later groups calibrate when sufficient. No refit on validation or calibration. Tuning outcomes are available at the test cutoff, not necessarily the calibration start date."},
             "target": {"duration_unit": "days", "prolonged_quantile": config.prolonged_quantile, "prolonged_threshold_days": threshold, "positive_rule": "duration_days > training quantile; ties are non-prolonged"},
-            "features": {"numeric": NUMERIC_FEATURES, "categorical": CATEGORICAL_FEATURES, "text": TEXT_FIELDS, "excluded": ["nct_id", "status", "start_date", "completion_date", "duration_days", "prolonged"]},
-            "models": {name: {**MODEL_METADATA[name], "selection": selection[name], "metrics": metrics[name], "diagnostics": diagnostics[name],
+            "features": {**{kind: list(dict.fromkeys(field for name in models for field in model_input_features(name, selection)[kind]))
+                             for kind in ('numeric', 'categorical', 'text')},
+                         "excluded": ["nct_id", "status", "start_date", "completion_date", "duration_days", "prolonged"]},
+            "models": {name: {**MODEL_METADATA[name], "input_features": model_input_features(name, selection),
+                "task_input_features": {task: model_task_input_features(name, selection, task) for task in ('regressor', 'classifier')},
+                "selection": selection[name], "metrics": metrics[name], "diagnostics": diagnostics[name],
                 "uncertainty": uncertainty[name], "calibration": calibration[name]["metadata"]} for name in models},
             "uncertainty": {"method": "split conformal absolute duration residuals", "alpha": config.uncertainty_alpha,
                 "nominal_coverage": 1 - config.uncertainty_alpha, "minimum_calibration_rows": MIN_CALIBRATION_ROWS,
@@ -875,7 +945,7 @@ def predict_trial(row: dict, artifact_dir: str | Path, model_name: str = "multim
                 or manifest.get("input_sha256") != artifact.get("input_sha256")
                 or manifest.get("pipeline_source_sha256") != artifact.get("pipeline_source_sha256")):
             return {**unavailable, "reason": "Artifact and manifest do not match; rerun the experiment."}
-        X = _features(pd.DataFrame([row]))
+        X = _features(pd.DataFrame([row]), include_design=manifest.get("config", {}).get("enable_design_models", False))
         model = artifact["models"][model_name]
         duration = max(0.0, float(model["regressor"].predict(X)[0]))
         probability = float(_positive_probability(model["classifier"], X)[0])

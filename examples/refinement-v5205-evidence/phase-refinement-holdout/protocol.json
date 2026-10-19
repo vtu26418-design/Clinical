@@ -1,0 +1,18 @@
+{
+  "frozen_before_refinement_holdout_scores": true,
+  "purpose": "Independent ID-disjoint partial-start-date registry subgroup audit of development-selected phase refinement; not chronological or prospective validation.",
+  "source_file": "data/registry-v5205-training/preparation_manifest.json",
+  "source_manifest_sha256": "5df2283b08ab7398c73e52d20d666e3b88679e197a84e428f40beb628155551a",
+  "ids_sha256": "2d0520fb281abfd245fa2c5e73952364852d0c53af1fe4ebbb90492383a12af7",
+  "rows": 50139,
+  "eligibility": "Pure phase label in canonical PHASE_LABELS; excluded from all original phase splits solely due to unavailable exact start-day precision (missing/invalid start date may also be listed). Historical union already excluded. All selected IDs remain unchanged and never enter fitting/tuning.",
+  "selection": "Refinement candidate chosen only on original tuning macro-F1 then balanced accuracy then accuracy then frozen model order; original phase_logistic comparator scored identically on this subgroup. No threshold, class regrouping, cohort trimming or model selection by audit scores.",
+  "metrics": [
+    "accuracy",
+    "balanced_accuracy",
+    "macro_f1",
+    "per_class",
+    "confusion_matrix"
+  ],
+  "caveat": "Different calendar-date reporting subgroup; may differ in era and registry practices. Not evidence of future or pretrial accuracy. Previous exact-date test has already been inspected; no repeated untouched-test claim."
+}

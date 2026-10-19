@@ -1,0 +1,34 @@
+{
+  "passed": true,
+  "new_project_defaults": {
+    "duration": "registry-duration-v5205",
+    "phase": "registry-phase-refinement-v5205"
+  },
+  "checks": [
+    "duration default serves real predictions and saves immutable batch",
+    "duration actual saved-row quality and HTML report download",
+    "phase default serves real predictions and saves immutable batch",
+    "phase actual saved-row quality and HTML report download",
+    "Refined phase UI labels the audit group and its real sample count"
+  ],
+  "duration": {
+    "model": "registry-duration-v5205",
+    "batch_id": "c4f16d54700246bfa3ec20afd658310a",
+    "summary": {
+      "requested": 3,
+      "available": 3,
+      "blocked": 0,
+      "unavailable": 0
+    }
+  },
+  "phase": {
+    "model": "registry-phase-refinement-v5205",
+    "batch_id": "b6e0ace7f0e846ce8978d591e3e1236b",
+    "summary": {
+      "requested": 3,
+      "available": 3,
+      "blocked": 0,
+      "unavailable": 0
+    }
+  }
+}

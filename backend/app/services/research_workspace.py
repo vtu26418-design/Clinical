@@ -98,14 +98,6 @@ def _finite_number(value):
         return None
 
 
-def _file_sha256(path):
-    digest = hashlib.sha256()
-    with path.open('rb') as stream:
-        for block in iter(lambda: stream.read(1024 * 1024), b''):
-            digest.update(block)
-    return digest.hexdigest()
-
-
 @dataclass
 class SourceSnapshot:
     dataset: dict
@@ -140,13 +132,9 @@ class ResearchWorkspace:
         if dataset is None:
             raise ResearchWorkspaceError(404, 'Dataset not found.')
         try:
-            folder = self.registry.dataset_path(dataset_id)
-            path = folder / 'canonical.csv'
-            if folder.is_symlink() or path.is_symlink() or path.resolve().parent != folder.resolve():
-                raise OSError('Unsafe dataset path.')
-            before = _file_sha256(path)
+            before = self.registry.canonical_fingerprint(dataset_id)
             frame = self.registry.frame(dataset_id)
-            after = _file_sha256(path)
+            after = self.registry.canonical_fingerprint(dataset_id)
             if before != after:
                 raise OSError('Source changed during reading.')
             selected = frame[frame['nct_id'].astype(str).eq(nct_id)]

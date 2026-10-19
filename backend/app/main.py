@@ -48,7 +48,7 @@ def create_research_app(config: Settings | None = None, *, training_slot=None) -
             if registry.engine is not None:
                 registry.engine.dispose()
 
-    app = FastAPI(title='Clinical Trial Intelligence API', version='5.2.0.4', description='Research decision support; not clinical or regulatory advice.', lifespan=lifespan)
+    app = FastAPI(title='Clinical Trial Intelligence API', version='5.2.0.5', description='Research decision support; not clinical or regulatory advice.', lifespan=lifespan)
     app.state.settings = config
     app.state.registry = registry
     training_slot = training_slot or threading.BoundedSemaphore(1)
@@ -94,15 +94,21 @@ def create_research_app(config: Settings | None = None, *, training_slot=None) -
     def health():
         key_configured = bool(config.openai_api_key.strip())
         routing = assistant_status(config)
-        return {'status': 'ok', 'version': '5.2.0.4', 'ai_provider': routing['selected_label'] if routing['enabled'] else 'disabled', 'openai_configured': key_configured, 'assistant_enabled': routing['enabled'], 'assistant': routing, 'sample_data': True, 'default_dataset_id': SAMPLE_ID, 'auth_required': bool(config.api_bearer_token), 'database': 'postgresql', 'configuration': {'storage_ready': registry.root.is_dir(), 'openai_key_present': key_configured, 'openai_model': config.openai_model, 'remote_auth_configured': bool(config.api_bearer_token)}}
+        return {'status': 'ok', 'version': '5.2.0.5', 'ai_provider': routing['selected_label'] if routing['enabled'] else 'disabled', 'openai_configured': key_configured, 'assistant_enabled': routing['enabled'], 'assistant': routing, 'sample_data': getattr(registry, 'preferred_dataset_id', SAMPLE_ID) == SAMPLE_ID, 'default_dataset_id': getattr(registry, 'preferred_dataset_id', SAMPLE_ID), 'auth_required': bool(config.api_bearer_token), 'database': 'postgresql', 'configuration': {'storage_ready': registry.root.is_dir(), 'openai_key_present': key_configured, 'openai_model': config.openai_model, 'remote_auth_configured': bool(config.api_bearer_token)}}
 
     @api.get('/readiness')
-    def readiness(dataset_id: str = SAMPLE_ID):
+    def readiness(dataset_id: str = SAMPLE_ID, enable_catboost: bool = False,
+                  enable_accuracy_models: bool = False, catboost_search: Literal['basic', 'expanded'] = 'basic',
+                  enable_design_models: bool = False, enable_design_catboost: bool = False,
+                  duration_selection_metric: Literal['rmse', 'mae'] = 'rmse'):
         value = dataset(dataset_id)
         df = frame(dataset_id)
         metadata = source_metadata(value)
-        return {'duration': preflight(df, metadata, 'duration', config.max_training_rows),
-                'phase': preflight(df, metadata, 'phase', config.max_training_rows),
+        options = dict(enable_catboost=enable_catboost, enable_accuracy_models=enable_accuracy_models, catboost_search=catboost_search,
+                       enable_design_models=enable_design_models, enable_design_catboost=enable_design_catboost, duration_selection_metric=duration_selection_metric)
+        requested = duration_config(options)
+        return {'duration': preflight(df, metadata, 'duration', config.max_training_rows, config=requested),
+                'phase': preflight(df, metadata, 'phase', config.max_training_rows, config=phase_config(options)),
                 'starter_available': (PROJECT_ROOT / 'data/starter/trials.csv').is_file(),
                 'openai_configured': bool(config.openai_api_key.strip()),
                 'assistant_enabled': assistant_status(config)['enabled'],
@@ -125,7 +131,7 @@ def create_research_app(config: Settings | None = None, *, training_slot=None) -
 
     @api.get('/datasets')
     def datasets():
-        return {'items': registry.list_datasets(), 'active_default': SAMPLE_ID}
+        return {'items': registry.list_datasets(), 'active_default': getattr(registry, 'preferred_dataset_id', SAMPLE_ID)}
 
     @api.post('/datasets/upload', status_code=201)
     async def upload_dataset(file: UploadFile = File(...), name: str | None = Form(default=None, max_length=120)):
@@ -197,11 +203,28 @@ def create_research_app(config: Settings | None = None, *, training_slot=None) -
     def overview(dataset_id: str = SAMPLE_ID):
         value = dataset(dataset_id)
         df = frame(dataset_id)
-        scores = df.apply(lambda row: calculate_pci(row.to_dict())[0], axis=1)
+        reference_summary = registry.reference_overview(dataset_id)
+        if reference_summary is None:
+            scores = df.apply(lambda row: calculate_pci(row.to_dict())[0], axis=1)
+            reference_summary = {'total_studies': len(df), 'median_pci': round(float(scores.median()), 2), 'phase_counts': df['phase'].fillna('Not reported').value_counts().to_dict(), 'status_counts': df['status'].fillna('Unknown').value_counts().to_dict(), 'enrollment_total': float(pd.to_numeric(df['enrollment'], errors='coerce').sum()), 'pci_distribution': [{'nct_id': row['nct_id'], 'title': row['title'], 'pci': score} for row, score in zip(json_clean(df[['nct_id','title']].head(100).to_dict(orient='records')), scores.head(100).tolist())]}
         # Confirm a usable prediction through the same compatibility/fallback
         # path as study detail; mere artifact file presence is insufficient.
         available = predict(df.iloc[0].to_dict(), value, registry).get('status') == 'available'
-        return json_clean({'dataset': value, 'total_studies': len(df), 'median_pci': round(float(scores.median()), 2), 'phase_counts': df['phase'].fillna('Not reported').value_counts().to_dict(), 'status_counts': df['status'].fillna('Unknown').value_counts().to_dict(), 'enrollment_total': float(pd.to_numeric(df['enrollment'], errors='coerce').sum()), 'quality': value['quality'], 'predictions_available': available, 'pci_distribution': [{'nct_id': row['nct_id'], 'title': row['title'], 'pci': score} for row, score in zip(json_clean(df[['nct_id','title']].head(100).to_dict(orient='records')), scores.head(100).tolist())], 'methodology': METHODOLOGY})
+        return json_clean({'dataset': value, **reference_summary, 'quality': value['quality'], 'predictions_available': available, 'methodology': METHODOLOGY})
+
+    def duration_config(record):
+        from src.clinical_trial_intelligence.research import ExperimentConfig
+        return ExperimentConfig(enable_catboost=bool(record.get('enable_catboost', False)),
+                                catboost_search=record.get('catboost_search', 'basic'),
+                                enable_accuracy_models=bool(record.get('enable_accuracy_models', False)),
+                                enable_design_models=bool(record.get('enable_design_models', False)),
+                                enable_design_catboost=bool(record.get('enable_design_catboost', False)),
+                                duration_selection_metric=record.get('duration_selection_metric', 'rmse'))
+
+    def phase_config(record):
+        from src.clinical_trial_intelligence.phase_model import PhaseConfig
+        return PhaseConfig(enable_design_models=bool(record.get('enable_design_models', False)),
+                           enable_design_catboost=bool(record.get('enable_design_catboost', False)))
 
     def run_training(record: dict, df: pd.DataFrame, metadata: dict):
         record.update(status='running', started_at=now())
@@ -213,13 +236,11 @@ def create_research_app(config: Settings | None = None, *, training_slot=None) -
             with threadpool_limits(limits=1):
                 if record.get('task') == 'phase':
                     from src.clinical_trial_intelligence.phase_model import train_phase_experiment
-                    manifest = train_phase_experiment(df, output, source_metadata=metadata)
+                    manifest = train_phase_experiment(df, output, source_metadata=metadata, config=phase_config(record))
                 else:
-                    from src.clinical_trial_intelligence.research import ExperimentConfig, train_experiment
+                    from src.clinical_trial_intelligence.research import train_experiment
                     manifest = train_experiment(df, output, source_metadata=metadata,
-                                                config=ExperimentConfig(enable_catboost=bool(record.get('enable_catboost', False)),
-                                                                        catboost_search=record.get('catboost_search', 'basic'),
-                                                                        enable_accuracy_models=bool(record.get('enable_accuracy_models', False))))
+                                                config=duration_config(record))
             metrics_path = output / ('phase_metrics.json' if record.get('task') == 'phase' else 'metrics.json')
             metrics = json.loads(metrics_path.read_text(encoding='utf-8')) if metrics_path.exists() else manifest.get('metrics', {})
             record.update(status='completed', completed_at=now(), manifest=manifest, metrics=metrics, error=None)
@@ -245,7 +266,8 @@ def create_research_app(config: Settings | None = None, *, training_slot=None) -
         value = dataset(req.dataset_id)
         df = frame(req.dataset_id)
         metadata = source_metadata(value)
-        check = preflight(df, metadata, task, config.max_training_rows)
+        requested = (duration_config if task == 'duration' else phase_config)(req.model_dump())
+        check = preflight(df, metadata, task, config.max_training_rows, config=requested)
         if not check['ready']:
             raise HTTPException(422, check['reason'])
         if not training_slot.acquire(blocking=False):
@@ -253,7 +275,9 @@ def create_research_app(config: Settings | None = None, *, training_slot=None) -
         record = {'id': uuid.uuid4().hex, 'task': task, 'dataset_id': value['id'], 'dataset_sha256': value['sha256'], 'status': 'queued', 'created_at': now(), 'error': None, 'metrics': None, 'manifest': None,
                   'enable_catboost': bool(getattr(req, 'enable_catboost', False)) if task == 'duration' else False,
                   'catboost_search': getattr(req, 'catboost_search', 'basic') if task == 'duration' else 'basic',
-                  'enable_accuracy_models': bool(getattr(req, 'enable_accuracy_models', False)) if task == 'duration' else False}
+                  'enable_accuracy_models': bool(getattr(req, 'enable_accuracy_models', False)) if task == 'duration' else False,
+                  'enable_design_models': req.enable_design_models, 'enable_design_catboost': req.enable_design_catboost,
+                  'duration_selection_metric': req.duration_selection_metric}
         try:
             registry.save_experiment(record)
             background.add_task(run_training, record.copy(), df, metadata)
@@ -340,6 +364,8 @@ def create_research_app(config: Settings | None = None, *, training_slot=None) -
     app.include_router(api)
     from .model_analysis_routes import attach_model_analysis
     attach_model_analysis(app, registry, require_token)
+    from .model_quality_routes import attach_model_quality
+    attach_model_quality(app, registry, require_token)
     from .v4_routes import attach_v4_routes
     attach_v4_routes(app, registry, config)
     from .v521_routes import attach_v521_routes

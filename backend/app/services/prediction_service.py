@@ -4,7 +4,7 @@ import json
 from .data_service import DatasetRegistry
 
 
-def unavailable(reason='Train an eligible dataset to make model predictions available.') -> dict:
+def unavailable(reason='Select a genuine dataset and an approved saved model. An owner can review model availability in Model Registry.') -> dict:
     return {'status': 'unavailable', 'probability': None, 'duration_days': None, 'model_name': None, 'explanation': None, 'reason': reason}
 
 
@@ -57,7 +57,7 @@ def predict(row: dict, dataset: dict, registry: DatasetRegistry, model_name='rec
                         'approval_scope': 'research_only'}
         except Exception:
             pass
-        return unavailable('No compatible approved saved research model is available. An owner must review the model registry.')
+        return unavailable('The saved research model could not serve this prediction. Open Model Registry to review artifact compatibility, approval and the selected branch; importing data does not require retraining.')
     attempted = False
     for directory in compatible_artifacts(dataset, registry):
         attempted = True

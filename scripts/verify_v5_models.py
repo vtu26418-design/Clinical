@@ -76,6 +76,8 @@ def verify() -> dict:
               'starter_source': source, 'recovered_partial_source': recovered,
               'recovered_used_to_fit_bundled_models': False, 'models': {}}
     for entry in json.loads((ROOT / 'examples/approved-models-v5.json').read_text())['models']:
+        if entry['id'] not in {'bundled-duration-v5','bundled-phase-v5'}:
+            continue  # New-cohort artifacts have their own source replay verifier.
         task = entry['task']
         folder = ROOT / entry['directory']
         prefix = '' if task == 'duration' else 'phase_'
@@ -111,8 +113,8 @@ def verify() -> dict:
                 assert_numeric(actual > artifact['threshold_days'], predictions.actual_prolonged)
                 computed = research.evaluate_predictions(actual, estimate, predictions.actual_prolonged, probability, 0)
                 for category in ('regression', 'classification'):
-                    for metric, value in computed[category].items():
-                        expected = metrics[name][split][category][metric]
+                    for metric, expected in metrics[name][split][category].items():
+                        value = computed[category][metric]
                         assert value is None if expected is None else np.isclose(value, expected, rtol=1e-10, atol=1e-10)
                 max_prediction_error = max(max_prediction_error, float(np.abs(estimate - predictions.predicted_duration_days).max()),
                                            float(np.abs(probability - predictions.prolonged_probability).max()))
@@ -130,7 +132,7 @@ def verify() -> dict:
                 saved_probability = predictions[['probability_' + label for label in phase_model.PHASE_LABELS]].to_numpy()
                 assert_numeric(probability, saved_probability)
                 computed = phase_model.evaluate_phase_predictions(predictions.actual_phase, estimate, manifest['training_classes'])
-                assert computed == metrics[name][split]
+                assert {key:computed[key] for key in metrics[name][split]} == metrics[name][split]
                 max_prediction_error = max(max_prediction_error, float(np.abs(probability - saved_probability).max()))
             comparison_count += len(predictions)
         report['models'][task] = {'run_id': manifest['run_id'], 'artifact_sha256': entry['artifact_sha256'],

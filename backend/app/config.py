@@ -50,7 +50,7 @@ class Settings(BaseSettings):
     api_bearer_token: str = Field(default='', repr=False)
     max_upload_bytes: int = Field(25 * 1024 * 1024, ge=1024, le=100 * 1024 * 1024)
     max_dataset_rows: int = Field(100_000, ge=30, le=1_000_000)
-    max_training_rows: int = Field(20_000, ge=30, le=100_000)
+    max_training_rows: int = Field(120_000, ge=30, le=1_000_000)
     frontend_dist: str = './frontend/dist'
     model_config = SettingsConfigDict(env_file=str(PROJECT_ROOT / '.env'), extra='ignore')
 

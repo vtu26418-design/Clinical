@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "checks": [
+    "Source-topic neuron context and literal section steps",
+    "Edit title/caption/narration and save exact document",
+    "Settings and play/pause respond",
+    "Actual PNG export downloads nonempty image",
+    "Duplicate and reload restore saved settings",
+    "All scene choices render and explicit override is labelled",
+    "Reduced motion preserves manual step navigation",
+    "390px mobile has no horizontal overflow",
+    "Context loss preserves accessible static diagram and caption"
+  ],
+  "errors": []
+}

@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "checks": [
+    "Strict envelope import discloses unverified imported AI origin",
+    "Caption edits retain generated provenance and mark edited",
+    "Save includes original origin",
+    "JSON export includes origin and edited document",
+    "Saved explanation reload preserves AI disclosure"
+  ]
+}

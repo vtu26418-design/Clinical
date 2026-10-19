@@ -19,9 +19,9 @@ RUN --mount=type=bind,source=.,target=/source \
     --mount=type=bind,from=ui,source=/build/frontend/dist,target=/built-ui \
     cp -a /source/backend /source/src /source/scripts /source/configs /source/examples /app/ && \
     mkdir -p /app/data /app/frontend/dist && \
-    cp -a /source/data/sample /source/data/starter /app/data/ && \
+    cp -a /source/data/sample /source/data/starter /source/data/registry-v5205 /app/data/ && \
     cp -a /built-ui/. /app/frontend/dist/ && \
-    chmod -R a+rX /app/backend /app/src /app/scripts /app/configs /app/examples /app/data/sample /app/data/starter /app/frontend && \
+    chmod -R a+rX /app/backend /app/src /app/scripts /app/configs /app/examples /app/data/sample /app/data/starter /app/data/registry-v5205 /app/frontend && \
     useradd --create-home --uid 10001 cti && \
     mkdir -p /app/data/workbench /app/results && \
     chown -R cti:cti /app/data/workbench /app/results

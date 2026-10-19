@@ -1,7 +1,7 @@
 {
   "name": "cti-workbench",
   "private": true,
-  "version": "5.2.0.4",
+  "version": "5.2.0.5",
   "type": "module",
   "scripts": {
     "dev": "vite",

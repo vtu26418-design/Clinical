@@ -218,7 +218,9 @@ def _binary(actual, probabilities) -> dict:
     result.update(precision=positive["precision"], recall=positive["recall"], f1=positive["f1"], threshold=0.5,
                   positive_count=sum(actual), auroc=float(roc_auc_score(actual, probabilities)) if len(set(actual)) == 2 else None,
                   average_precision=float(average_precision_score(actual, probabilities)) if len(set(actual)) == 2 else None,
-                  brier=float(np.mean([(p - a) ** 2 for a, p in zip(actual, probabilities)])), calibration=_reliability(actual, probabilities))
+                  brier=float(np.mean([(p - a) ** 2 for a, p in zip(actual, probabilities)])),
+                  log_loss=float(np.mean([-math.log(max(np.finfo(float).eps, min(1 - np.finfo(float).eps, p if a else 1 - p))) for a, p in zip(actual, probabilities)])),
+                  calibration=_reliability(actual, probabilities))
     result["undefined_reasons"] = (["AUROC, average precision and balanced accuracy require both actual classes."] if len(set(actual)) < 2 else [])
     if positive["precision"] is None:
         result["undefined_reasons"].append("Positive precision is undefined because no positive predictions were made.")
@@ -227,7 +229,7 @@ def _binary(actual, probabilities) -> dict:
     return result
 
 
-def _summarize(manifest: dict, rows: list[dict]) -> tuple[list[dict], list[dict]]:
+def _summarize(manifest: dict, rows: list[dict], chart_point_limit=None) -> tuple[list[dict], list[dict]]:
     groups = defaultdict(list)
     for row in rows:
         groups[(row["model_name"], row["split"])].append(row)
@@ -240,6 +242,7 @@ def _summarize(manifest: dict, rows: list[dict]) -> tuple[list[dict], list[dict]
             residual = predicted - actual
             variance = float(np.sum((actual - actual.mean()) ** 2))
             result["regression"] = {"mae_days": float(np.mean(abs(residual))), "rmse_days": float(np.sqrt(np.mean(residual ** 2))),
+                                    "median_absolute_error_days": float(np.median(abs(residual))),
                                     "r2": 1 - float(np.sum(residual ** 2)) / variance if len(values) > 1 and variance else None,
                                     "mean_error_days": float(residual.mean()), "residual_definition": "predicted minus observed days"}
             result["classification"] = _binary([row["actual_prolonged"] for row in values], [row["prolonged_probability"] for row in values])
@@ -248,9 +251,10 @@ def _summarize(manifest: dict, rows: list[dict]) -> tuple[list[dict], list[dict]
                 if not all(value is not None for value in calibrated):
                     raise ValueError("Incomplete calibrated probabilities within model/split")
                 result["calibrated_classification"] = _binary([row["actual_prolonged"] for row in values], calibrated)
+            indexes = np.linspace(0, len(values) - 1, min(len(values), chart_point_limit), dtype=int) if chart_point_limit else np.arange(len(values))
             charts.extend([
-                {"kind": "scatter", "title": f"{model} / {split}: observed vs predicted duration", "x_label": "Observed duration (days)", "y_label": "Predicted duration (days)", "points": list(map(list, zip(actual.tolist(), predicted.tolist())))},
-                {"kind": "residual", "title": f"{model} / {split}: duration residuals", "x_label": "Predicted duration (days)", "y_label": "Predicted − observed (days)", "points": list(map(list, zip(predicted.tolist(), residual.tolist())))},
+                {"kind": "scatter", "title": f"{model} / {split}: observed vs predicted duration", "x_label": "Observed duration (days)", "y_label": "Predicted duration (days)", "points": list(map(list, zip(actual[indexes].tolist(), predicted[indexes].tolist())))},
+                {"kind": "residual", "title": f"{model} / {split}: duration residuals", "x_label": "Predicted duration (days)", "y_label": "Predicted − observed (days)", "points": list(map(list, zip(predicted[indexes].tolist(), residual[indexes].tolist())))},
             ])
             for key, name in [("classification", "raw"), ("calibrated_classification", "calibrated")]:
                 if key in result:
@@ -263,24 +267,37 @@ def _summarize(manifest: dict, rows: list[dict]) -> tuple[list[dict], list[dict]
             class_metrics = result["classification"]
             class_metrics["macro_convention"] = "Union of observed/predicted labels; undefined class precision/recall contributes zero. Balanced accuracy requires at least two supported actual classes."
             class_metrics["multiclass_brier"] = float(np.mean([sum((p - int(label == row["actual_phase"])) ** 2 for label, p in zip(labels, row["probabilities"])) for row in values]))
+            class_metrics["log_loss"] = float(np.mean([-math.log(max(np.finfo(float).eps, row["probabilities"][labels.index(row["actual_phase"])])) for row in values]))
             class_metrics["one_vs_rest"] = {}
             for i, label in enumerate(labels):
                 binary = _binary([int(row["actual_phase"] == label) for row in values], [row["probabilities"][i] for row in values])
                 class_metrics["one_vs_rest"][label] = binary
                 bins = binary["calibration"]["bins"]
                 charts.append({"kind": "reliability", "title": f"{model} / {split}: {label} reliability", "x_label": "Mean predicted class probability", "y_label": "Observed class fraction", "points": [[b["mean_probability"], b["observed_fraction"]] for b in bins]})
+        for chart in charts:
+            if 'model_name' not in chart:
+                chart.update(model_name=model, split=split, population_n=len(values))
         summaries.append(result)
     return summaries, charts
 
 
-def analyze_experiment(path, baseline_dir=None) -> dict:
+def analyze_experiment(path, baseline_dir=None, *, model_names=None, split=None, chart_point_limit=None) -> dict:
     """Return deterministic JSON-safe analysis of a trusted completed experiment.
 
     Raises ValueError for invalid/incomplete rows, overlapping membership, or an
     unpaired baseline. Absolute filesystem paths and model artifacts are omitted.
     """
     manifest, rows, hashes = _load(path)
-    models, charts = _summarize(manifest, rows)
+    if chart_point_limit is not None and (type(chart_point_limit) is not int or chart_point_limit < 1 or chart_point_limit > 10000):
+        raise ValueError('Chart point limit must be an integer from 1 to 10000')
+    if model_names is not None and not set(model_names).issubset({row['model_name'] for row in rows}):
+        raise ValueError('Selected model has no saved prediction evidence')
+    if split is not None and split not in manifest['splits']:
+        raise ValueError('Selected split is not declared in the manifest')
+    selected_rows = [row for row in rows if (model_names is None or row['model_name'] in model_names) and (split is None or row['split'] == split)]
+    if not selected_rows:
+        raise ValueError('No held-out prediction rows for selected model/split')
+    models, charts = _summarize(manifest, selected_rows, chart_point_limit)
     source = manifest.get("source_metadata", {})
     report = {
         "schema_version": 1, "task": manifest.get("task", "duration"),
@@ -292,6 +309,7 @@ def analyze_experiment(path, baseline_dir=None) -> dict:
         "models": models, "charts": charts,
         "selection": {**{key: manifest.get(key) for key in ("recommended_model", "recommended_duration_model") if key in manifest},
                       "task_components": {name: {key: value.get("selection", {}).get(key) for key in ("regressor_component", "classifier_component", "method") if key in value.get("selection", {})} for name, value in manifest.get("models", {}).items() if name=="accuracy_task_selected"}},
+        "chart_sampling": ('Deterministic evenly spaced sample in trial-ID order, bounded per chart; metrics and reliability bins include every selected prediction row.' if chart_point_limit else 'Charts show every stored prediction row.'),
         "limitations": [
             "Retrospective descriptive research decision support; no clinical validation or guaranteed future accuracy.",
             "Tuning data support model selection; calibration data fit transforms/intervals; only test data provide the untouched held-out estimate. Test inspection can influence subsequent experiments.",
@@ -301,7 +319,7 @@ def analyze_experiment(path, baseline_dir=None) -> dict:
             "Undefined values are null, displayed as unavailable. One-class splits do not identify class discrimination. Small held-out samples and imbalance can make estimates unstable; no uncertainty interval is invented.",
             "Reliability uses ten equal-width bins. Raw and post-hoc calibrated probabilities are analyzed separately; calibration-cohort diagnostics can be optimistic.",
             "Duration-by-phase subgroup metrics cannot be recomputed because saved duration prediction rows do not contain verified phase labels; stored subgroup aggregates are not substituted.",
-            "Charts show all stored points (overlapping points can obscure sample counts); metrics and bin counts include every row.",
+            (f"Scatter and residual charts show at most {chart_point_limit} deterministic points each; metrics and bin counts include every selected row." if chart_point_limit else "Charts show all stored points (overlapping points can obscure sample counts); metrics and bin counts include every row."),
         ] + [str(value) for value in manifest.get("limitations", [])],
     }
     if manifest.get("warning"):
@@ -412,6 +430,8 @@ def render_analysis_html(report: dict) -> str:
               _table([{"split": name, **value} for name, value in report["split_counts"].items()], ["split", "role", "n", "prediction_rows"]),
               '<small>n counts unique manifest trials; prediction_rows counts all model rows.</small></section>',
               '<section><h2>Recomputed model metrics</h2><p>Duration MAE and RMSE are in days; R² is unitless and can be negative. Classification values are proportions, with binary threshold ≥ 0.5. Unavailable means undefined or not applicable.</p>']
+    if 'quality_context' in report:
+        output.append('<details><summary>Approved model identity, integrity, endpoint and uncertainty</summary><pre>' + esc(json.dumps(report['quality_context'], indent=2, ensure_ascii=False, allow_nan=False)) + '</pre></details>')
     flattened = [_flatten(row) for row in report["models"]]
     columns = list(dict.fromkeys(key for row in flattened for key in row))
     output.extend([_table(flattened, columns), '</section>'])
