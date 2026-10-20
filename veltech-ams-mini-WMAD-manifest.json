@@ -1,0 +1,40 @@
+{
+  "project": "veltech-ams-mini",
+  "version": "1.8.0",
+  "reportDate": "2026-10-20",
+  "pages": 43,
+  "chapters": 9,
+  "figures": 10,
+  "tables": 10,
+  "manualMetadata": "Edit project-info.tex",
+  "template": "WMAD-SS2627-REPORT-LATEX.docx",
+  "verification": {
+    "pdfLaTeXCompile": "passed",
+    "freshZipExtractThreePassCompile": "passed",
+    "freshPdfTextEqualsOriginal": true,
+    "zipCRC": "passed",
+    "unresolvedReferences": 0,
+    "overfullBoxes": 0,
+    "textOutsidePage": 0,
+    "visibleScreenshotImages": "checked",
+    "privateRecords": "none included"
+  },
+  "sourceFiles": 35,
+  "files": [
+    {
+      "name": "veltech-ams-mini-WMAD-LaTeX.zip",
+      "bytes": 2923154,
+      "sha256": "590c34b752cda36e62dc86faa649e01a9c1413647f441f91b42968ffdb1b9e7b"
+    },
+    {
+      "name": "veltech-ams-mini-WMAD-guide.md",
+      "bytes": 4043,
+      "sha256": "eabbc2a14e903cc34e68bf6d21adb3c0ea348f4fc18a0fbb55574b58f18a7e36"
+    },
+    {
+      "name": "veltech-ams-mini-WMAD-report.pdf",
+      "bytes": 2903328,
+      "sha256": "852ae876a0d37ab086b08f29fecf15c9e6468f8f377d52315a0241afd84530de"
+    }
+  ]
+}
