@@ -1,0 +1,46 @@
+{
+  "version": "1.8.0",
+  "project": "veltech-ams-mini",
+  "files": [
+    {
+      "name": "veltech-ams-mini-source.zip",
+      "bytes": 7490569,
+      "sha256": "2ab0ef33ee48e0a9e02f16e3df776a1334b6356d02202fb50cbaa388b9bdf66f"
+    },
+    {
+      "name": "veltech-ams-mini-web.zip",
+      "bytes": 7935158,
+      "sha256": "2f13d18fdb3e2f2c9b1cbaa2ecf1f836cee8aa464aa513c4da456e18a552764c"
+    },
+    {
+      "name": "setup-guide.md",
+      "bytes": 20344,
+      "sha256": "0ef96e3e7aa61919f55567060aa400f5bf07a7f2760faf5e5e8a0d5bc7878699"
+    },
+    {
+      "name": "verification.md",
+      "bytes": 18838,
+      "sha256": "bde162f503121e9ff1581ddd73b7a8b9cf9afcc5163eed927ccf5d907a597236"
+    },
+    {
+      "name": "semester-pdf-example.pdf",
+      "bytes": 214420,
+      "sha256": "48aeffc2eb615c5086bd1cf23dc6dc41dbd6e84e4042138521edae110a991852"
+    },
+    {
+      "name": "preview.html",
+      "bytes": 1479001,
+      "sha256": "321c1911807bfad992223420962dc036b81f0e53b363d8b94ca3227304462ecc"
+    },
+    {
+      "name": "events-mobile.png",
+      "bytes": 191343,
+      "sha256": "3b9e6b96f9e07732c9d0fb93affa23253fd0bd905af88bdad8011aa893c6572c"
+    },
+    {
+      "name": "admin-access-guide.md",
+      "bytes": 4837,
+      "sha256": "b34eef6cb5bdf37d6cfc10a0a96c9484cfd32421ff3763598cded1a866a6104b"
+    }
+  ]
+}
