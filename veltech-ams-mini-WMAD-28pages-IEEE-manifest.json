@@ -1,0 +1,39 @@
+{
+  "project": "veltech-ams-mini",
+  "appVersion": "1.8.0",
+  "reportRevisionDate": "2026-10-21",
+  "projectEvidenceDate": "2026-10-20",
+  "pagesIncludingCoverAndFrontmatter": 28,
+  "imagesTotalIncludingCoverEmblem": 5,
+  "numberedFigures": 4,
+  "chapters": 9,
+  "citationStyle": "IEEEtran.bst 1.14 / BibTeX",
+  "editableMetadata": "project-info.tex",
+  "sourceFiles": 25,
+  "verification": {
+    "freshZipCompile": "passed",
+    "freshPdfTextEqualsOriginal": true,
+    "zipCRC": "passed",
+    "overfullBoxes": 0,
+    "unresolvedCitationsOrReferences": 0,
+    "textOutsidePage": 0,
+    "referenceStyleLicensePreserved": true
+  },
+  "files": [
+    {
+      "name": "veltech-ams-mini-WMAD-28pages-IEEE-LaTeX.zip",
+      "bytes": 611421,
+      "sha256": "ca2480f76d4a97983cfe61133e94b33d201195ddd5ce896021b337a9b2e896d3"
+    },
+    {
+      "name": "veltech-ams-mini-WMAD-28pages-IEEE-guide.md",
+      "bytes": 3332,
+      "sha256": "bd07cf1938a2e91047a40f86d00238c5db11a09b35bc314121977948ebfd260a"
+    },
+    {
+      "name": "veltech-ams-mini-WMAD-28pages-IEEE.pdf",
+      "bytes": 758038,
+      "sha256": "32909580de31514ac57e3f6c27bb477f15adfd44d3db2770278930f84b92891d"
+    }
+  ]
+}
