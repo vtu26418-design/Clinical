@@ -1,0 +1,38 @@
+{
+  "project": "veltech-ams-mini",
+  "projectEvidenceDate": "2026-10-20",
+  "pagesIncludingCoverAndFrontmatter": 28,
+  "imagesTotalIncludingCoverEmblem": 5,
+  "numberedFigures": 4,
+  "chapters": 9,
+  "citationStyle": "IEEE / BibTeX",
+  "editableMetadata": "project-info.tex",
+  "sourceFiles": 25,
+  "verification": {
+    "freshZipCompile": "passed",
+    "freshPdfTextEqualsOriginal": true,
+    "zipCRC": "passed",
+    "overfullBoxes": 0,
+    "unresolvedCitationsOrReferences": 0,
+    "textOutsidePage": 0,
+    "referenceStyleLicensePreserved": true,
+    "projectAndSoftwareVersionLabels": "none in PDF"
+  },
+  "files": [
+    {
+      "name": "veltech-ams-mini-report-LaTeX.zip",
+      "bytes": 611254,
+      "sha256": "1dc65fce00ce186932f3a37f0ff4e7b61bf193399c0ebc72a222678c7ef24680"
+    },
+    {
+      "name": "veltech-ams-mini-report-guide.md",
+      "bytes": 3321,
+      "sha256": "92742e2fad4d9cf91b772ab8315b8ad32672c77ce188710f4dd50484a386951b"
+    },
+    {
+      "name": "veltech-ams-mini-report.pdf",
+      "bytes": 757271,
+      "sha256": "718785d450836097cd66149cb40d18dfc034153597f38d539d41431f6b1ff18a"
+    }
+  ]
+}
