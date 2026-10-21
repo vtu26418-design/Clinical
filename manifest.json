@@ -1,0 +1,70 @@
+{
+  "project": "veltech-ams-mini",
+  "files": [
+    {
+      "name": "veltech-ams-mini-source.zip",
+      "bytes": 7527240,
+      "sha256": "7e576eab89c0c724be3484cce24183f69a064f63116315af4d75f6002107ecbd"
+    },
+    {
+      "name": "veltech-ams-mini-web.zip",
+      "bytes": 7938280,
+      "sha256": "71d4bd3f204deea20782a677777d67979a84505a06007b724a66298fe35023bb"
+    },
+    {
+      "name": "setup-guide.md",
+      "bytes": 20741,
+      "sha256": "5536a611074b403138e5574a91f815d38e7c1947b3be0442341ebd3bc7db2b50"
+    },
+    {
+      "name": "welcome-guide.md",
+      "bytes": 3079,
+      "sha256": "7966f226e511a4e5180f3f73df256be5046b0e07354b9c0d0c56ec0facc2c55e"
+    },
+    {
+      "name": "verification.md",
+      "bytes": 1791,
+      "sha256": "7cab952474f2f60831d8de2932a3d09c72bd73a2388d71a1d0414959b3b84f15"
+    },
+    {
+      "name": "checks.json",
+      "bytes": 871,
+      "sha256": "3e55a2e291616f8f112273cdb0aa1967371d3d40dd35b05cdf3f54a98790576d"
+    },
+    {
+      "name": "browser-checks.json",
+      "bytes": 2563,
+      "sha256": "d45da209bc696a3f744305be70e7d7962c51171ecc2d372145ed3cbb86cddbc5"
+    },
+    {
+      "name": "edge-checks.json",
+      "bytes": 333,
+      "sha256": "098f5dd7f773f0a992ba608b6a9f4a41b2b65373cf48d8c4aed9b9d1a7862e21"
+    },
+    {
+      "name": "preview-checks.json",
+      "bytes": 118,
+      "sha256": "20af52a56d4f20e90f8737bc9244d00f687f8aedc2343ab9098ab7238879c704"
+    },
+    {
+      "name": "preview.html",
+      "bytes": 530020,
+      "sha256": "edfc656789cd379defea452dcb4429560ba74f4bf82daac9168bd93568c67f6b"
+    },
+    {
+      "name": "welcome-preview.mp4",
+      "bytes": 192389,
+      "sha256": "818627f1179065eda0833a555a9cc3db0732a747dc5ae821bc02426b72edf693"
+    },
+    {
+      "name": "welcome-logo.png",
+      "bytes": 203929,
+      "sha256": "b5cf155c0f698f606bc200a3379234be84cc50165722a7dd81ca5134074cb6cd"
+    },
+    {
+      "name": "welcome-student.png",
+      "bytes": 218376,
+      "sha256": "36d87bb9da6fa3c99916f23b332c95a1415a5f50227f0c3855109c149f7f2b74"
+    }
+  ]
+}

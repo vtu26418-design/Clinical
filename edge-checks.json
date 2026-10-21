@@ -1,0 +1,9 @@
+{
+  "checks": [
+    "A long name wraps on a 320\u00d7568 phone; all content remains scrollable without horizontal overflow.",
+    "Faculty welcome keeps the assigned Forms destination and makes no student academic requests."
+  ],
+  "relevantConsoleErrorsOrWarnings": [],
+  "pageErrors": [],
+  "expectedAnonymousSession401Count": 3
+}

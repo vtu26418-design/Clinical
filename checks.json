@@ -1,0 +1,33 @@
+{
+  "project": "veltech-ams-mini",
+  "frontendTests": 178,
+  "frontendFailed": 0,
+  "frontendSkipped": 0,
+  "browserScenarios": 11,
+  "browserPageErrors": 0,
+  "relevantConsoleErrorsOrWarnings": 0,
+  "phoneWidths": [
+    320,
+    390
+  ],
+  "shortPhoneViewport": [
+    320,
+    568
+  ],
+  "desktopViewport": [
+    1440,
+    1000
+  ],
+  "productionPwaBuild": true,
+  "cleanExtractedSourceBuild": true,
+  "cleanBuildDependencies": "Existing locked dependencies reused; no fresh dependency installation claimed.",
+  "sourceZipCRC": true,
+  "previousBackendSharedAndroidFilesUnchanged": 283,
+  "privateConfigurationExcluded": true,
+  "newLiveAmsSignIn": false,
+  "newBackendSuiteRun": false,
+  "newDockerBuild": false,
+  "physicalPhoneTested": false,
+  "newSignedApk": false,
+  "preview": "Recorded actual React UI using a fictional account and intercepted API responses."
+}

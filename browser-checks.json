@@ -1,0 +1,85 @@
+{
+  "browser": "Chromium through Python Playwright",
+  "browserPlugin": "Browser plugin not available",
+  "baseUrl": "http://127.0.0.1:5184",
+  "viewports": [
+    [
+      320,
+      740
+    ],
+    [
+      390,
+      844
+    ],
+    [
+      1440,
+      1000
+    ]
+  ],
+  "checks": [
+    {
+      "case": "welcome-320",
+      "result": "passed",
+      "behaviour": "logo before authentication, real fixture profile after authentication, photo/name/source ID, workspace opens, logout clears identity",
+      "signInRequests": 1
+    },
+    {
+      "case": "welcome-390",
+      "result": "passed",
+      "behaviour": "logo before authentication, real fixture profile after authentication, photo/name/source ID, workspace opens, logout clears identity",
+      "signInRequests": 1
+    },
+    {
+      "case": "welcome-1440",
+      "result": "passed",
+      "behaviour": "logo before authentication, real fixture profile after authentication, photo/name/source ID, workspace opens, logout clears identity",
+      "signInRequests": 1
+    },
+    {
+      "case": "captcha",
+      "result": "passed",
+      "behaviour": "pending animation releases to actionable login feedback without showing demo/student data"
+    },
+    {
+      "case": "error",
+      "result": "passed",
+      "behaviour": "pending animation releases to actionable login feedback without showing demo/student data"
+    },
+    {
+      "case": "reduced-motion",
+      "result": "passed",
+      "behaviour": "system and stored reduced-motion preference stops all welcome animations; absent photo uses initials; dark screen readable"
+    },
+    {
+      "case": "slow-sync-continue",
+      "result": "passed",
+      "behaviour": "student can enter workspace while existing source request continues; no fabricated percentage"
+    },
+    {
+      "case": "automatic-release",
+      "result": "passed",
+      "behaviour": "eight-second post-auth bound prevents indefinite blocking on slow academic data"
+    },
+    {
+      "case": "saved-session",
+      "result": "passed",
+      "behaviour": "restored session follows logo/profile flow without another sign-in request"
+    }
+  ],
+  "screenshots": [
+    "welcome-320-logo",
+    "welcome-320-student",
+    "welcome-390-logo",
+    "welcome-390-student",
+    "welcome-1440-logo",
+    "welcome-1440-student",
+    "captcha-returns-to-form",
+    "error-returns-to-form",
+    "reduced-motion-dark",
+    "slow-sync-continue",
+    "saved-session-student"
+  ],
+  "pageErrors": [],
+  "liveAmsRequests": 0,
+  "identity": "Fictional account and intercepted API responses only."
+}

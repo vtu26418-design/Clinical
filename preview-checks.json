@@ -1,0 +1,7 @@
+{
+  "videoDecodes": true,
+  "videoPlays": true,
+  "phoneOverflow": false,
+  "pageErrors": [],
+  "previewOnly": true
+}
