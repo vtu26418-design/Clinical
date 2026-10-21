@@ -1,0 +1,20 @@
+{
+  "frontendTests": 178,
+  "campusApiTests": 285,
+  "totalTests": 463,
+  "failed": 0,
+  "skipped": 0,
+  "productionWebBuild": true,
+  "fullCampusDockerBuild": true,
+  "dockerImageFinalMailSourcesMatch": true,
+  "localSmtpMultipartReceived": true,
+  "emailViewportChecks": 15,
+  "emailPageErrors": 0,
+  "tunnelComposeConfigChecked": true,
+  "freshSourceZipInstallBuild": true,
+  "realInternetSmtpTested": false,
+  "cloudflareTunnelConnected": false,
+  "newLiveAmsLogin": false,
+  "realPaymentTested": false,
+  "windowsHostExecutionTested": false
+}

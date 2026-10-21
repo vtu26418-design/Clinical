@@ -1,0 +1,55 @@
+{
+  "project": "veltech-ams-mini",
+  "files": [
+    {
+      "name": "veltech-ams-mini-source.zip",
+      "bytes": 7519338,
+      "sha256": "f0a2f6ba2acb997f2c9fe9b54769b0462457effb9b9db23bc1f274448d246c13"
+    },
+    {
+      "name": "veltech-ams-mini-web.zip",
+      "bytes": 7935158,
+      "sha256": "c66ee15892317704083e1d45d3654c45177906e66ec632a171580da20606222c"
+    },
+    {
+      "name": "setup-guide.md",
+      "bytes": 20549,
+      "sha256": "77dd71268f6029ed850310a33b8b8f9196d87beb72226cf6a97d97024227027e"
+    },
+    {
+      "name": "smtp-setup-guide.md",
+      "bytes": 7291,
+      "sha256": "78d9bba6efcc87fbd260063e2ea0475feb14d38009c726ea082d98273240cbc2"
+    },
+    {
+      "name": "hosting-guide.md",
+      "bytes": 8068,
+      "sha256": "03ba4f0320943a50f01ca6a5bef0a6be2ab267e1ad853801058a7fc506a25a78"
+    },
+    {
+      "name": "verification.md",
+      "bytes": 20960,
+      "sha256": "f5d2dbe9e2b1107e2e15ee09bbfa630375b32d2cdd1c3a2b1f97d8c185e175b1"
+    },
+    {
+      "name": "checks.json",
+      "bytes": 548,
+      "sha256": "cd86fdadd7f84c4d21fdf5c89d6ddaea8bf3bec9bb40e75134a8d6778c0c6319"
+    },
+    {
+      "name": "preview.html",
+      "bytes": 1479001,
+      "sha256": "321c1911807bfad992223420962dc036b81f0e53b363d8b94ca3227304462ecc"
+    },
+    {
+      "name": "email-preview.html",
+      "bytes": 2330,
+      "sha256": "061090054e6185ebccd79fbfa9428e2cc9524f684a8737ec785122e7e7e80045"
+    },
+    {
+      "name": "email-preview.png",
+      "bytes": 48926,
+      "sha256": "7ffcebb2dbbeb541c7671af002fed4d1e41d174f35c34d49a9161d06232c96e5"
+    }
+  ]
+}
