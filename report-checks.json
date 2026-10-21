@@ -1,0 +1,34 @@
+{
+  "title": "Smart College Management Platform",
+  "implementation": "veltech-ams-mini",
+  "template": "User-uploaded Pasted text.txt",
+  "format_retained": [
+    "report 10pt",
+    "Times family",
+    "A4",
+    "20mm side/top margins",
+    "250mm text height",
+    "blue cover",
+    "centred chapter headings",
+    "front-matter sequence",
+    "Roman/Arabic numbering",
+    "nine-chapter order"
+  ],
+  "physical_pages": 32,
+  "chapters": 9,
+  "numbered_figures": 16,
+  "chapter_3_figures": 12,
+  "tables": 3,
+  "external_references": 12,
+  "repository_or_self_references": 0,
+  "missing_references_or_citations": 0,
+  "overfull_or_underfull_boxes": 0,
+  "out_of_page_text_spans": 0,
+  "compiler": "pdfLaTeX; shell escape disabled; no bibliography backend required",
+  "clean_zip_rebuild": "passed",
+  "warnings": [
+    "Package epstopdf Warning: Shell escape feature is not enabled."
+  ],
+  "screenshots": "Actual project UI with labelled fictional demonstration records.",
+  "evidence": "Historical application checks retained as recorded evidence; no new AMS authentication."
+}

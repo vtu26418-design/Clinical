@@ -1,0 +1,36 @@
+{
+  "report_pages": 32,
+  "source_archive_files": 23,
+  "files": [
+    {
+      "name": "README.md",
+      "bytes": 3223,
+      "sha256": "39deedd597532a113f5081a4f126ccf92d863f9a541688defe1b240e514035a0"
+    },
+    {
+      "name": "references-only.tex",
+      "bytes": 2417,
+      "sha256": "fac09208612ef2ac4b89244f1828c70ed5f9fd889e8cc4796ba79db30dd0cab3"
+    },
+    {
+      "name": "report-checks.json",
+      "bytes": 1082,
+      "sha256": "53ae40c06329ce6469531dabc15b7983af733993331fa3eb5a57761a21892f3e"
+    },
+    {
+      "name": "veltech-ams-mini-complete-LaTeX.zip",
+      "bytes": 4517258,
+      "sha256": "593382ec8781f8eb6bc195a193e0405ddfbf1306773dfa8cc7453f43662fd243"
+    },
+    {
+      "name": "veltech-ams-mini-report.pdf",
+      "bytes": 2380024,
+      "sha256": "f5cb743960192585741906783d636da2e5dc3d0f36ebea215792cc766eee80df"
+    },
+    {
+      "name": "veltech-ams-mini-report.tex",
+      "bytes": 38574,
+      "sha256": "18e445f8066faad73e946acad1278cdea772b8f8aa779eea4683715570196d26"
+    }
+  ]
+}

@@ -1,0 +1,655 @@
+% !TeX program = pdflatex
+% Completed from the user-supplied college template.
+\documentclass[10pt]{report}
+\usepackage[T1]{fontenc}
+
+\usepackage{times}
+\usepackage{graphicx}
+
+
+\usepackage{float}
+\usepackage{array}
+
+
+\usepackage{enumitem}
+
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{ragged2e}
+\usepackage{setspace}
+\usepackage[headheight=0pt,headsep=0pt]{geometry}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\makeatletter
+\def\@makechapterhead#1{%
+  %%%%\vspace*{50\p@}% %%% removed!
+  {\parindent \z@ \centering\normalfont
+    \ifnum \c@secnumdepth >\m@ne
+        \huge\bfseries \@chapapp\space \thechapter
+        \par\nobreak
+        \vskip 20\p@
+    \fi
+    \interlinepenalty\@M
+    \Huge \bfseries #1\par\nobreak
+    \vskip 40\p@
+  }}
+\def\@makeschapterhead#1{%
+  %%%%%\vspace*{50\p@}% %%% removed!
+  {\parindent \z@ \centering
+    \normalfont
+    \interlinepenalty\@M
+    \Huge \bfseries  #1\par\nobreak
+    \vskip 40\p@
+  }}
+\makeatother
+
+
+ 
+\lstset{ %
+  language=Java,                % the language of the code
+  basicstyle=\footnotesize,           % the size of the fonts that are used for the code
+  numbers=left,                   % where to put the line-numbers
+  numberstyle=\tiny\color{gray},  % the style that is used for the line-numbers
+  stepnumber=1,                   % each line is numbered
+  numbersep=5pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{white},      % choose the background color. You must add \usepackage{xcolor}
+  showspaces=false,               % show spaces adding particular underscores
+  showstringspaces=false,         % underline spaces within strings
+  showtabs=false,                 % show tabs within strings adding particular underscores
+  frame=single,                   % adds a frame around the code
+  rulecolor=\color{black},        % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. commens (green here))
+  tabsize=2,                      % sets default tabsize to 2 spaces
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+  caption={},                   % show the filename of files included with \lstinputlisting;
+                                  % also try caption instead of title
+  keywordstyle=\color{blue},          % keyword style
+  commentstyle=\color{dkgreen},       % comment style
+  stringstyle=\color{mauve},         % string literal style
+  escapeinside={\%*}{*)},            % if you want to add a comment within your code
+  morekeywords={*,...}               % if you want to add more keywords to the set
+}
+\geometry{a4paper,left=20mm,right=20mm,top=20mm,textheight=250mm}
+
+
+\usepackage{amsmath}
+\usepackage{tabularx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,fit,backgrounds}
+\usepackage{xurl}
+\usepackage{cite}
+\usepackage{microtype}
+\usepackage[hidelinks,hypertexnames=false]{hyperref}
+\usepackage{bookmark}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcommand{\project}{\textit{\ProjectName}}
+\newcommand{\sourcefile}[1]{\path{#1}}
+\setlength{\emergencystretch}{2em}
+\setcounter{tocdepth}{2}
+\setcounter{secnumdepth}{2}
+\raggedbottom
+\lstdefinelanguage{JavaScript}{keywords={const,let,var,function,return,if,else,export,import,from,new,throw,true,false,null,async,await,try,catch},sensitive=true,comment=[l]{//},morecomment=[s]{/*}{*/},morestring=[b]',morestring=[b]"}
+\newcommand{\ReportScreen}[3]{%
+\begin{figure}[H]\centering
+\begin{minipage}[c][100mm][c]{150mm}\centering
+\includegraphics[width=\linewidth,height=98mm,keepaspectratio]{images/#1}
+\end{minipage}
+\caption{#2}\label{#3}
+\end{figure}}
+
+% EDIT STUDENT AND FACULTY DETAILS HERE
+% Edit values in braces. Escape an ampersand as \&.
+\newcommand{\ProjectTitle}{Smart College Management Platform}
+\newcommand{\ProjectName}{Smart College Management Platform}
+\newcommand{\StudentOne}{MALEPATI PREM KUMAR REDDY}
+\newcommand{\RegisterOne}{23UECS1122}
+\newcommand{\StudentTwo}{CHERUKULA LOKESHWAR REDDY}
+\newcommand{\RegisterTwo}{23UECS1039}
+\newcommand{\StudentThree}{CH.VAMSI KRISHNA REDDY}
+\newcommand{\RegisterThree}{23UECS0127}
+\newcommand{\GuideName}{Dr. Manikandan N K}
+\newcommand{\GuideDegree}{M.E., Ph.D}
+\newcommand{\GuideDesignation}{Assistant Professor - Senior}
+\newcommand{\AcademicSession}{SUMMER 2026-2027}
+\newcommand{\SubmissionDate}{October, 2026}
+% Names below are retained from the college template. Confirm before submission.
+\newcommand{\HeadName}{Dr. M. Kavitha / Dr. T. Kujani}
+\newcommand{\HeadDesignation}{Professor \& Head / Associate Professor \& Assistant Head}
+\newcommand{\DeanName}{Dr. S. P. Chokkalingam}
+\newcommand{\TeamNames}{\StudentOne\ (\RegisterOne), \StudentTwo\ (\RegisterTwo), \StudentThree\ (\RegisterThree)}
+
+\hypersetup{pdftitle={\ProjectTitle},pdfauthor={VEL STUDENTS}}
+
+\begin{document}
+
+\newpage
+\begin{center}
+\thispagestyle{empty}
+\LARGE{\textsc {\textbf{\textcolor{blue}{\ProjectTitle}}}}\\[0.2cm]
+\vspace{0.2cm}
+\Large{\textit{\textcolor{blue}{\\Project report submitted \\in partial fulfillment of the requirement
+for award of the degree of}}}\\[0.3cm]
+\Large{\textbf{\textcolor{blue}{\\Bachelor of Technology\\in \\Computer Science \& Engineering}}}
+\vspace{0.5cm}
+\Large{\textbf{\textcolor{blue}{\\By}}}\\[0.5cm]
+\begin{table}[h]
+\centering
+\Large{\textcolor{blue}{
+\begin{tabular}{>{\bfseries}lc>{\bfseries}r}
+\StudentOne & & (\RegisterOne)\\\StudentTwo & & (\RegisterTwo)\\\StudentThree & & (\RegisterThree)\\
+\end{tabular}}}
+\end{table}
+\begin{table}[h]
+\centering
+\large{\textcolor{blue}{
+\begin{tabular}{>{\bfseries}lc>{\bfseries}r}
+10211CS212 - WEB AND MOBILE APPLICATION DEVELOPMENT\\
+\end{tabular}}}
+\end{table}
+\begin{table}[h]
+\centering
+\large{\textcolor{blue}{
+\begin{tabular}{>{\bfseries}lc>{\bfseries}r}
+SUMMER 2026-2027\\
+\end{tabular}}}
+\end{table}
+
+
+\vspace{0.5cm}
+\large{\textit{\textcolor{blue}{Under the guidance of}}}\\
+\large{\textit{\textcolor{blue}{\GuideName, \GuideDegree\\
+\GuideDesignation}
+}}\\
+\vspace{0.5cm}
+\includegraphics[scale=0.2]{images/veltech-seal.png}\\
+\large{\textbf{\textcolor{blue}{DEPARTMENT OF COMPUTER SCIENCE \& ENGINEERING}}}\\
+
+\large{\textbf{\textcolor{blue}{SCHOOL OF COMPUTING}}}\\
+\vspace{0.5cm}
+\Large{\textbf{\textcolor{blue}{VEL TECH RANGARAJAN DR. SAGUNTHALA R\&D INSTITUTE OF
+SCIENCE AND TECHNOLOGY\\
+\vspace{0.5cm}
+(Deemed to be University Estd u/s 3 of UGC Act,
+1956)}}}\\\Large{\textbf{\textcolor{blue}{Accredited by NAAC with A++ Grade}}}\\
+\large{\textbf{\textcolor{blue}{CHENNAI 600 062, TAMILNADU, INDIA}}}
+\large{\textbf{\textcolor{blue}{\\\SubmissionDate}}}\\
+\end{center}
+
+%CERTIFICATE
+\newpage
+\pagenumbering{roman}
+\begin{center}
+{\Huge \textbf{CERTIFICATE}}\\[1cm]
+\end{center}
+\linespread{1.5}
+\large{It is certified that the work contained in the project report titled "\ProjectTitle" by \TeamNames\ has been carried out under my supervision and that this work has not
+been submitted elsewhere for a degree.}
+\vspace{1.5cm}
+\begin{flushright}
+\textbf{Signature of Supervisor\\\GuideName, \GuideDegree\\\GuideDesignation\\Computer Science \&
+Engineering\\School of Computing\\Vel Tech Rangarajan Dr.Sagunthala R\&D\\Institute of Science \&
+Technology\\\SubmissionDate}\\[2.0cm]
+
+
+\end{flushright}
+
+\noindent\begin{minipage}[t]{0.53\linewidth}
+\raggedright\fontsize{11}{15.5}\selectfont\bfseries
+Signature of Head/Assistant Head\\of the Department\\[4mm]
+\HeadName\\\HeadDesignation\\
+Computer Science \& Engineering\\School of Computing\\
+Vel Tech Rangarajan Dr. Sagunthala R\&D\\
+Institute of Science and Technology\\\SubmissionDate
+\end{minipage}\hfill
+\begin{minipage}[t]{0.43\linewidth}
+\raggedright\fontsize{11}{15.5}\selectfont\bfseries
+Signature of the Dean\\[4mm]
+\DeanName\\Professor \& Dean\\School of Computing\\
+Vel Tech Rangarajan Dr. Sagunthala R\&D\\
+Institute of Science and Technology\\\SubmissionDate
+\end{minipage}
+
+%declaration
+\newpage
+\begin{center}
+\Huge \textbf{DECLARATION}
+\end{center}
+\linespread{1.5}
+\large{
+ We declare that this written submission represents our ideas in our own words and where others' ideas or words have been included, we have adequately cited and referenced the original sources. We also declare that we have adhered to all principles of academic honesty and integrity and have not misrepresented or fabricated or falsified any idea/data/fact/source in our submission. We understand that any violation of the above will be cause for disciplinary action by the Institute and can also evoke penal action from the sources which have thus not been properly cited or from whom proper permission has not been taken when needed.}
+\vspace{2.0cm}
+\begin{flushright}
+(Signature)\\
+\large{\StudentOne}\\
+\large{Date:\hspace*{1.0cm}/\hspace*{1.0cm}/}\\[2.0cm]
+(Signature)\\
+\large{\StudentTwo}\\
+\large{Date:\hspace*{1.0cm}/\hspace*{1.0cm}/}\\[2.0cm]
+(Signature)\\
+\large{\StudentThree}\\
+\large{Date:\hspace*{1.0cm}/\hspace*{1.0cm}/}\\[2.0cm]
+\end{flushright}
+\newpage
+
+%approval sheet
+\newpage
+\begin{center}
+\Huge\textbf{APPROVAL SHEET}\\
+\vspace{1.0cm}
+\end{center}
+\linespread{1.5}
+\justifying{
+\large{This project report entitled ``\ProjectTitle'' by \TeamNames\ is approved for the degree of B.Tech in Computer Science \& Engineering.}}
+
+\vspace{4.0cm}
+
+\begin{flushleft}
+\Large \textbf{Examiners} \hfill \Large \textbf{Handling faculty}\\
+\end{flushleft}
+\begin{flushright}
+\GuideName, \GuideDegree
+\end{flushright}
+\vspace{4.0cm}
+\begin{flushleft}
+\large{\textbf{Date:\hspace*{1.0cm}/\hspace*{2.0cm}/}}\\
+\large{\textbf{Place:}}
+\end{flushleft}
+
+%ABSTRACT
+\newpage
+\vspace{0.5mm}
+\begin{center}
+\Large{\textbf{ABSTRACT}}
+\end{center}
+
+\begin{center}
+
+\addtocontents{toc}{~\hfill\textbf{Page.No}\par}
+\addcontentsline{toc}{chapter}{ABSTRACT}
+\addtocontents{toc}{\protect\thispagestyle{empty}}
+\end{center}
+
+\large
+\project, implemented as \textit{veltech-ams-mini}, is a unified student web application for academic attendance and campus engagement. It combines the attendance functions of Unieve-Attandance-AI with the events and community functions of Unieven-AI. A responsive workspace presents student identity, current and upcoming classes, subject attendance, registered courses, results and earned credits alongside campus events, posts, reels, connections and faculty-created forms.
+
+The system uses a React/Vite interface, a Node.js/Express campus service and a private Python/FastAPI academic service. Its academic adapter reads supported authenticated AMS pages while preserving report headings, semester divisions and source timestamps. University records remain separate from editable social profiles. Results include a cumulative CGPA line graph, labelled published or calculated values, and semester-level PDF and Excel exports. Persistent campus sessions, incremental synchronization and bounded background work support continuity while limiting unnecessary requests.
+
+The supplied project record reports automated regression, browser and Docker integration checks, together with earlier authorized read-only observations of AMS profile, course, attendance, timetable, results and credit structures for one account. Missing sections are identified explicitly. The application provides a unified campus workspace with a clear boundary between university-owned academic records and campus-managed activities.
+
+\noindent\textbf{Keywords:} Academic Management System, attendance, campus events, student community, source-aware synchronization, progressive web application.
+
+
+%list of figure
+\newpage
+
+\renewcommand*\listfigurename{LIST OF FIGURES}
+\addcontentsline{toc}{chapter}{LIST OF FIGURES}
+\listoffigures
+\newpage
+\renewcommand{\listtablename}{LIST OF TABLES}
+\addcontentsline{toc}{chapter}{LIST OF TABLES}
+\listoftables
+
+%list of abbreviation
+\newpage
+\newlist{abbrv}{itemize}{1}
+\setlist[abbrv,1]{label=,labelwidth=1in,align=parleft,itemsep=0.1\baselineskip,leftmargin=!}
+ 
+\chapter*{LIST OF ACRONYMS AND ABBREVIATIONS}
+\chaptermark{LIST OF ACRONYMS AND ABBREVIATIONS}
+\addcontentsline{toc}{chapter}{LIST OF ACRONYMS AND ABBREVIATIONS}
+\begin{abbrv}
+ 
+
+\item[AMS] Academic Management System
+\item[API] Application Programming Interface
+\item[CGPA] Cumulative Grade Point Average
+\item[CSRF] Cross-Site Request Forgery
+\item[DOM] Document Object Model
+\item[GPA] Grade Point Average
+\item[HTTPS] Hypertext Transfer Protocol Secure
+\item[JWT] JSON Web Token
+\item[OTP] One-Time Password
+\item[PDF] Portable Document Format
+\item[PWA] Progressive Web Application
+\item[QR] Quick Response code
+\item[REST] Representational State Transfer
+\item[TLS] Transport Layer Security
+\item[UI] User Interface
+\item[XLSX] Office Open XML spreadsheet format
+
+\end{abbrv}
+\newpage
+\renewcommand\contentsname{TABLE OF CONTENTS}
+%\addtocontents{toc}{\textbf{CONTENT} \hfill \textbf{PAGE NO.}}
+\tableofcontents
+\addtocontents{toc}{\protect\pagestyle{empty}}
+\thispagestyle{empty}
+
+% 01-introduction.tex
+\chapter{INTRODUCTION}
+\pagestyle{plain}
+\pagenumbering{arabic}
+\large\linespread{1.5}\selectfont
+\section{Introduction}
+\project, implemented as \textit{veltech-ams-mini}, combines the Unieven-AI event/community project and the Unieve-Attandance-AI attendance project into one student web application. It is an independent student project for Vel Tech Rangarajan Dr. Sagunthala R\&D Institute of Science and Technology, Chennai\cite{veltech}. The combined application presents supported university AMS records\cite{ams}, daily classes, campus activities and student interaction through a common responsive interface.
+
+Students can review attendance and academic progress without leaving the campus workspace. Events, posts, reels, connections and faculty forms complement the academic functions. Official college identity remains separate from editable social profiles. Source timestamps and unavailable states help distinguish current, retained and missing information.
+
+\section{Aim of the project}
+The aim is to provide a clear, unified student workspace with the following objectives:
+\begin{enumerate}[itemsep=1pt]
+\item Present supported AMS student details, class timing, attendance, results and credits.
+\item Combine event registration and community participation with scoped staff management.
+\item Improve session continuity, synchronization feedback and phone navigation.
+\item Provide repeatable Windows/Docker setup and permitted PDF/Excel exports.
+\end{enumerate}
+
+\section{Project Domain}
+The project belongs to educational information systems\cite{education}, campus event management and student community applications. React/Vite provides the interface, Node.js/Express manages campus workflows, and a private Python/FastAPI service reads supported AMS reports. MongoDB stores campus records and academic snapshots.
+
+\section{Scope of the Project}
+The academic scope includes source student facts, subject attendance and calendars, Day/Week/Full timetable, registered courses, results, assessments and earned credits. Fees, receipts, documents and examinations depend on supported source records. Campus functions include free/paid event workflows, tickets, posts/reels, comments, saves, connections, faculty forms, notifications and settings.
+
+Official course submission remains an AMS portal handoff. Paid tickets require configured, server-verified payment confirmation. Missing placement or university data remains developing/unavailable. No supported independent Home of VelTech private API is configured; the retired parent portal is unused.
+
+\section{Methodology}
+Development consolidates the two repositories, separates campus and academic services, maps inspected source tables, and builds reusable responsive views. Validation combines automated tests, fictional API/browser workflows and earlier authorized read-only AMS observations. Successful sections appear incrementally; failed sections retain accepted records with their original timestamps. Bounded work queues and visibility-aware polling reduce redundant requests.
+
+% 02-requirements.tex
+\chapter{REQUIREMENT SPECIFICATION}
+\section{User characteristics}
+Students view their own academic records and join campus activities. Faculty create scoped forms; organizers manage assigned club or department events. Administrators manage permitted roles, notices, calendar policies and app feedback. Social-profile edits do not grant staff permissions.
+
+\section{Dependencies}
+Academic retrieval requires reachable AMS pages and a valid university session. Atlas needs database permissions and network access\cite{mongo}. Email, payments, camera, location and notifications require their configured providers or browser permissions.
+
+\section{Hardware specification}
+Development uses a Windows computer supporting Docker Desktop and Node.js. Hosting requires persistent storage, network access and HTTPS. Students use a current phone or desktop browser; server capacity requires deployment-specific testing.
+
+\section{Software specification}
+\begin{table}[H]\centering\normalsize\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\linewidth}{|P{4.4cm}|Y|}\hline
+\textbf{Technology}&\textbf{Project use}\\\hline
+HTML, CSS, JavaScript&Page structure, styling and interaction.\\\hline
+React, Vite&Component interface and PWA build\cite{react,vite}.\\\hline
+Tailwind, Bootstrap, React Router&Responsive layout and navigation.\\\hline
+Axios, Node.js, Express&HTTP requests and campus REST API.\\\hline
+Python, FastAPI, HTTPX&Private academic integration\cite{fastapi}.\\\hline
+APScheduler, PyMongo, Mongoose&Background tasks and MongoDB access.\\\hline
+JWT, HttpOnly cookies&Private authentication and browser sessions.\\\hline
+Docker Compose, PowerShell&Isolated services and Windows setup\cite{docker}.\\\hline
+\end{tabularx}
+\caption{Software specification}\label{tab:software}
+\end{table}
+
+% 03-design.tex
+\chapter{WEBSITE DESIGN}
+\linespread{1.5}\selectfont
+\section{Sitemap}
+\begin{figure}[H]\centering
+\begin{minipage}[c][70mm][c]{150mm}\centering
+\resizebox{\linewidth}{!}{\input{images/sitemap}}
+\end{minipage}
+\caption{Architecture and sitemap of the project}\label{fig:sitemap}
+\end{figure}
+Figure~\ref{fig:sitemap} shows the navigation structure of \project. The shared Home workspace leads to academic records, campus events, student community and account settings. Attendance, timetable, registered courses, results, earned credits, fees and documents belong to the academic area. Events lead to registration and private tickets; community links posts, reels and connections. Faculty, organizer and administrator tools appear only within their assigned permissions. Official student details remain separate from editable social profiles. The screen captures in this chapter use the implemented project with fictional demonstration records.
+\clearpage
+
+\section{Design Phase}
+\subsection{Data Flow Diagram}
+\begin{figure}[H]\centering
+\begin{minipage}[c][100mm][c]{150mm}\centering
+\resizebox{\linewidth}{!}{\input{images/data-flow}}
+\end{minipage}
+\caption{Data Flow Diagram}\label{fig:dfd}
+\end{figure}
+Figure~\ref{fig:dfd} shows the flow of academic and campus information. Authentication establishes account ownership before protected requests are accepted. The academic adapter reads supported AMS reports and retains accepted snapshots with source timestamps. Campus services manage events, social interactions and faculty forms under role and scope checks. Uploaded media and private evidence have separate visibility rules. The browser receives the records and their synchronization status; a failed source section retains its last accepted data rather than creating missing university records.
+\clearpage
+
+\section{Front End and Back End Design}
+\noindent\textbf{Front End}\\
+React interface: academic dashboard, events and community.\\
+\textbf{Back End}\\
+Node.js campus API, Python academic service and MongoDB.
+\subsection{Home Page}
+\ReportScreen{home-desktop.png}{Home page of the project}{fig:home}
+Figure~\ref{fig:home} shows the student Home workspace. The current or next class uses India time and the available source timetable. A compact identity panel presents available student facts and a portrait. Overall and subject attendance, academic shortcuts and notices follow. Present or absent colours use supplied attendance marks; missing information remains distinct. The demonstration screenshot illustrates the interface and does not represent an author's university record.
+\clearpage
+
+\subsection{Campus Login and Session Restoration}
+\ReportScreen{login-desktop.png}{Campus login page}{fig:login}
+Figure~\ref{fig:login} shows the common sign-in page. Students, faculty and administrators enter their username or email and password in the same interface; persisted account permissions determine the destination. Staff credentials remain separate from a student's AMS connection. The client restores a valid campus session before showing login and offers retry for temporary connection failures. University verification appears only when required by AMS. The forgot-password flow uses a verified address and a browser-bound, single-use code; it does not change the university password.
+\clearpage
+
+\subsection{Form Validation}
+\ReportScreen{form-validation.png}{Form validation in the project}{fig:validation}
+Figure~\ref{fig:validation} shows an actual validation response from the React social-profile form. A whitespace-only display name is rejected after trimming, and the form keeps the student on the same screen to correct it. Username format, field lengths and social links are also checked. Server-side ownership and permission checks protect saved changes. The editable social identity is separate from official college records, so changing a display name, bio or social department cannot alter AMS identity or grant a staff role.
+\clearpage
+
+\subsection{Parsing AMS Webpages Using Python and the DOM}
+\ReportScreen{results-overall.png}{Academic records presented in the results dashboard}{fig:results}
+Figure~\ref{fig:results} illustrates the academic presentation layer after supported records are normalized. The Python adapter uses verified-TLS requests and structured HTML parsing to read labelled AMS reports. Semester, report and examination-session divisions are preserved. Published summaries take precedence over calculated estimates; eligible course credits and grade points support the cumulative graph. The fictional example displays 8.40 CGPA and 79\% using the requested conversion. Unsupported page layouts are marked unavailable, while accepted records retain their original timestamp. Official university submissions are not performed by this parser.
+\clearpage
+
+\subsection{Creation of Webserver Using Node.js}
+\begin{figure}[H]\centering
+\begin{minipage}[c][100mm][c]{150mm}
+\begingroup\linespread{1}\selectfont
+\lstinputlisting[language=JavaScript,numbers=none,basicstyle=\footnotesize\ttfamily,columns=fullflexible]{code/node-server.js}
+\endgroup
+\end{minipage}
+\caption{Node.js campus webserver implementation}\label{fig:webserver}
+\end{figure}
+Figure~\ref{fig:webserver} shows an excerpt from the project's Express server. The service connects to MongoDB, initializes required models and starts the campus application. Its REST routes provide sessions, academic bridging, events, posts, forms, notifications and management. Protected requests enforce ownership, role scope and CSRF checks; request and file limits protect relevant inputs. Private responses use no-store handling. The built React interface can be served by the same campus container, keeping the browser and campus API on a common public origin.
+\clearpage
+
+\subsection{Design of the Three-Tier Application with MongoDB}
+\begin{figure}[H]\centering
+\begin{minipage}[c][100mm][c]{150mm}\centering
+\resizebox{\linewidth}{!}{\input{images/architecture}}
+\end{minipage}
+\caption{Three-tier application and private academic integration}\label{fig:architecture}
+\end{figure}
+Figure~\ref{fig:architecture} shows the project's presentation, application and persistence responsibilities\cite{microservices}. React forms the presentation tier. Node.js handles campus workflows and bridges owner-bound academic requests to the private FastAPI service. MongoDB stores campus records, sessions and academic snapshots, while persistent media storage holds checked uploads. Official academic data is excluded from public social queries. The AMS connection is a supported authenticated read path; this diagram describes the student project and does not claim to represent the university's internal server architecture.
+\clearpage
+
+\subsection{Design of Reactive Forms in React}
+\ReportScreen{event-registration.png}{Reactive event-registration form}{fig:react-form}
+Figure~\ref{fig:react-form} shows the controlled event-registration form. Student ID, department, phone, degree, study year and college are collected for the selected event; the account email comes from the signed-in workspace. Input changes update React state and the submit action exposes progress, confirmation or a recoverable error. Free events proceed to registration. Paid events require a configured provider and server-verified payment before issuing a ticket. The displayed event and student values are fictional; the report screenshot does not establish a real payment or event booking.
+\clearpage
+
+\subsection{Routing and Navigation in React}
+\ReportScreen{subject-routing.png}{React routing to subject attendance}{fig:attendance}
+Figure~\ref{fig:attendance} shows a dedicated subject-attendance route. Selecting a subject opens its full history, planning information and dated records while preserving the common navigation shell. The calendar and filters narrow the displayed history without changing source totals. Desktop navigation becomes a bottom bar with More on phones. Events, tickets, profiles and forms also use dedicated routes; comments remain associated with the active post or reel. These navigation choices let students move between academic and campus work without losing the relevant context.
+\clearpage
+
+\subsection{Creation of Microservices}
+\begin{figure}[H]\centering
+\begin{minipage}[c][100mm][c]{150mm}
+\begingroup\linespread{1}\selectfont
+\lstinputlisting[language={},numbers=none,basicstyle=\small\ttfamily,columns=fullflexible]{code/services.yaml}
+\endgroup
+\end{minipage}
+\caption{Campus and academic services in Docker Compose}\label{fig:services}
+\end{figure}
+Figure~\ref{fig:services} shows the service definitions used by the project. The campus API owns social interaction, events and application sessions; the private academic API owns AMS integration. Separate environment files hold private configuration and the media volume survives container recreation. Campus startup waits for the academic health check. Login and report work use bounded admission instead of unlimited parallel source requests. The delivered academic topology uses one worker because pending university verification clients are process-local; multi-host replication requires an explicit session strategy.
+\clearpage
+
+\subsection{Deployment of Microservices}
+\begin{figure}[H]\centering
+\begin{minipage}[c][100mm][c]{150mm}
+\begingroup\linespread{1}\selectfont
+\lstinputlisting[language={},numbers=none,basicstyle=\footnotesize\ttfamily,columns=fullflexible]{code/deployment-log.txt}
+\endgroup
+\end{minipage}
+\caption{Recorded Docker build and local SMTP verification}\label{fig:deployment}
+\end{figure}
+Figure~\ref{fig:deployment} shows recorded output from the project's Docker build and a local SMTP verification. The resulting campus image was checked against the final mail source and delivered both HTML and plain text to the local test inbox. Windows setup uses Docker Desktop, PowerShell and Atlas without a separate Ubuntu installation. Public operation additionally needs HTTPS, the correct browser origin, persistent keys/media and real provider configuration. This local evidence is not a claim of public university deployment or Internet inbox delivery.
+
+% 04-testing.tex
+\chapter{TESTING}
+\linespread{1.5}\selectfont
+\section{Testing}
+The supplied project record reports 607 passing tests: 163 frontend, 253 campus API, 180 Python academic-service and 11 Android configuration/packaging checks, with no failures or skips. It also records production-build and Docker health checks. These are previously recorded results, separate from fictional browser checks and historical live AMS observations.
+
+\subsection{Test Result}
+Table~\ref{tab:tests} summarizes representative verification outcomes.
+\begin{table}[H]\centering\normalsize\renewcommand{\arraystretch}{1.2}
+\begin{tabularx}{\linewidth}{|P{3.5cm}|Y|}\hline
+\textbf{Scenario}&\textbf{Recorded outcome}\\\hline
+Session continuity&Refresh/session restoration, transient retry and explicit logout verified.\\\hline
+Academic results&Credit joins, published summaries, selected-scale estimates, filters, PDF/Excel and keyboard graph tested.\\\hline
+Polling&Zero hidden requests and zero overview reloads for unchanged sync state in focused checks.\\\hline
+Phone layout&Login, Events and About checked at 320/390/1440 pixels in light/dark themes.\\\hline
+Permissions and notifications&Owner/staff boundaries, room changes, feedback retry and alert deduplication verified.\\\hline
+Work admission&Configured login/report capacities and cancellation checked with synthetic owners.\\\hline
+\end{tabularx}
+\caption{Representative verification outcomes}\label{tab:tests}
+\end{table}
+
+Earlier authorized reads covered 21 profile fields, five courses, 173 result/assessment rows and 71 credit rows for one account. Attendance evidence included 22 timetable entries, five subject summaries and 284 dated marks. No supported fee-ledger or Course Material rows were available. These observations are account-specific.
+
+\subsection{Test Bugs}
+Regressions cover academic joins, session restoration, stale responses, polling, mobile layout and duplicate alerts. Live deployment, physical-device evidence, background notifications, provider integrations and failover require separate validation.
+
+% 05-launch.tex
+\chapter{WEBSITE LAUNCH}
+\begin{figure}[H]\centering
+\includegraphics[height=18cm,width=17cm,keepaspectratio]{images/launch-events.png}
+\caption{Local web application preview}\label{fig:launch}
+\end{figure}
+Figure~\ref{fig:launch} shows the local Events preview with fictional records. Windows setup uses Docker Desktop and PowerShell with MongoDB Atlas. The campus API and private academic service must run alongside the interface.
+
+Public operation additionally requires a configured HTTPS origin, persistent keys and media, real provider settings and health checks. The UI preview does not establish a working private AMS session or a public university deployment.
+
+% 06-results.tex
+\chapter{RESULTS AND DISCUSSIONS}
+\section{Website performance}
+Figure~\ref{fig:results} shows the cumulative results graph. Filters preserve source semester and report divisions; published values take precedence. Eligible credits $c_i$ and grade points $g_i$ support
+\begin{equation}
+\mathrm{GPA}=\frac{\sum_i c_i g_i}{\sum_i c_i},\qquad \sum_i c_i>0.
+\label{eq:gpa}
+\end{equation}
+Cumulative totals span eligible semesters. The requested conversion is
+\begin{equation}
+\mathrm{Percentage}=(\mathrm{CGPA}-0.5)\times10.
+\label{eq:percentage}
+\end{equation}
+Published percentages override this estimate; incomplete or conflicting records prevent a complete calculated result.
+\begin{table}[H]\centering\normalsize\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\linewidth}{|Y|r|r|r|}\hline
+\textbf{Demonstration}&\textbf{Credits}&\textbf{Credit points}&\textbf{GPA/CGPA}\\\hline
+Semester I&6&44&7.33\\\hline
+Semester II&4&40&10.00\\\hline
+Cumulative&10&84&8.40\\\hline
+\end{tabularx}
+\caption{Fictional credit-weighted example: 8.40 CGPA gives 79\%}\label{tab:calculation}
+\end{table}
+\section{Security}
+Owner/role checks, CSRF protection, HttpOnly sessions and authenticated token encryption protect private work\cite{owasp,rbac}. Official records remain separate from social edits. Private academic responses are excluded from the offline shell cache; Downloads stores only explicit account-scoped copies.
+\section{Responsiveness and mobile-friendliness}
+Phone navigation, wrapping content and contained scrolling support narrow screens. Subject routes, reels and in-context comments preserve continuity. Device, provider and public-load validation remain deployment tasks.
+
+% 07-conclusion.tex
+\chapter{CONCLUSION AND FUTURE ENHANCEMENTS}
+\linespread{1.5}\selectfont
+\section{Conclusion}
+\project\ consolidates the two existing projects into one academic and campus workspace. Source-aware attendance, timetable, results and credits share navigation with events, social interaction, faculty forms and notifications. Official records remain separate from editable campus content.
+
+The application provides persistent session restoration, incremental synchronization, result calculations and mobile readability. Its recorded automated/browser/Docker checks support the delivered behavior. Missing source data is identified rather than invented; university registration writes and external provider operations retain their documented boundaries.
+
+\section{Future Enhancements}
+Priorities include a documented university API agreement, more authorized source-layout fixtures, deployment-specific load/failure testing and backup recovery. Multi-host academic replication needs an explicit university-session strategy and shared media design. Real email, merchant and physical-phone workflows need operator validation.
+
+A signed Android package can follow once HTTPS hosting and signing inputs are configured. Accessibility and moderation controls can expand further. Trained recommendations should be considered only with consented data and measured evaluation; the current community feed uses heuristics\cite{recommender-systems}. Placement/source modules should grow only as reliable authorized records become available.
+
+% 08-source.tex
+\chapter{SOURCE CODE}
+\begin{figure}[H]\centering
+\begin{minipage}{150mm}
+\begingroup\linespread{1}\selectfont
+\lstinputlisting[language=JavaScript,numbers=left,basicstyle=\footnotesize\ttfamily,columns=fullflexible,firstline=1,lastline=23]{code/security.js}
+\endgroup
+\end{minipage}
+\caption{Selected campus-service security source}\label{fig:source}
+\end{figure}
+Figure~\ref{fig:source} reproduces selected project helpers for hashing session tokens, checking configured webhook signatures and encrypting private academic link tokens. Keys come from persistent server configuration; no secret value is shown. The full application keeps React under \sourcefile{frontend/}, campus routes under \sourcefile{services/campus/} and academic integration under \sourcefile{services/academic/}. The excerpt illustrates selected helpers rather than the complete service.
+
+% 09-screenshots.tex
+\chapter{SCREENSHOTS}
+These additional project views show campus events and student community. All visible student and event values are fictional demonstration records.
+
+\noindent\begin{minipage}[t]{0.47\linewidth}
+\begin{figure}[H]\centering
+\includegraphics[width=\linewidth,height=138mm,keepaspectratio]{images/events-discovery-mobile.png}
+\caption{Mobile event discovery}\label{fig:events}
+\end{figure}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.47\linewidth}
+\begin{figure}[H]\centering
+\includegraphics[width=\linewidth,height=138mm,keepaspectratio]{images/community-mobile.png}
+\caption{Mobile community feed}\label{fig:community}
+\end{figure}
+\end{minipage}
+\par\vspace{4mm}
+Figures~\ref{fig:events} and~\ref{fig:community} show the shared phone navigation, event discovery, posts, reels and profile context. Registration opens the selected event's workflow, while comments and social actions remain associated with the active content. Academic, login and registration screens are illustrated individually in Chapter~3.
+
+\clearpage\phantomsection
+\addcontentsline{toc}{chapter}{References}
+\renewcommand{\bibname}{References}
+\begingroup\normalsize\linespread{1.1}\selectfont
+\begin{thebibliography}{12}
+\bibitem{veltech}
+Vel Tech Rangarajan Dr. Sagunthala R\&D Institute of Science and Technology,
+``Official university website.'' Accessed: Oct. 21, 2026. [Online]. Available:
+\url{https://www.veltech.edu.in/}
+\bibitem{ams}
+Vel Tech, ``Academic Management System.'' Accessed: Oct. 21, 2026.
+[Online]. Available: \url{https://ams.veltech.edu.in/Default.aspx}
+\bibitem{education}
+C. Romero and S. Ventura,
+``Educational data mining: A review of the state of the art,''
+\textit{IEEE Trans. Syst., Man, Cybern. C, Appl. Rev.},
+vol. 40, no. 6, pp. 601--618, 2010, doi: 10.1109/TSMCC.2010.2053532.
+\bibitem{mongo}
+MongoDB, ``Atlas free-cluster limitations.'' Accessed: Oct. 21, 2026.
+[Online]. Available: \url{https://www.mongodb.com/docs/atlas/reference/free-shared-limitations/}
+\bibitem{react}
+React, ``React documentation.'' Accessed: Oct. 21, 2026.
+[Online]. Available: \url{https://react.dev/}
+\bibitem{vite}
+Vite, ``Vite guide.'' Accessed: Oct. 21, 2026.
+[Online]. Available: \url{https://vite.dev/guide/}
+\bibitem{fastapi}
+FastAPI, ``FastAPI documentation.'' Accessed: Oct. 21, 2026.
+[Online]. Available: \url{https://fastapi.tiangolo.com/}
+\bibitem{docker}
+Docker, ``Docker Compose.'' Accessed: Oct. 21, 2026.
+[Online]. Available: \url{https://docs.docker.com/compose/}
+\bibitem{microservices}
+N. Alshuqayran, N. Ali, and R. Evans,
+``A systematic mapping study in microservice architecture,''
+in \textit{Proc. IEEE 9th Int. Conf. Service-Oriented Computing and Applications (SOCA)},
+2016, pp. 44--51, doi: 10.1109/SOCA.2016.15.
+\bibitem{owasp}
+OWASP Foundation, ``Session management cheat sheet.'' Accessed: Oct. 21, 2026.
+[Online]. Available:
+\url{https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html}
+\bibitem{rbac}
+R. S. Sandhu, E. J. Coyne, H. L. Feinstein, and C. E. Youman,
+``Role-based access control models,'' \textit{Computer},
+vol. 29, no. 2, pp. 38--47, 1996, doi: 10.1109/2.485845.
+\bibitem{recommender-systems}
+G. Adomavicius and A. Tuzhilin,
+``Toward the next generation of recommender systems: A survey of the state-of-the-art and possible extensions,''
+\textit{IEEE Trans. Knowl. Data Eng.}, vol. 17, no. 6, pp. 734--749, 2005,
+doi: 10.1109/TKDE.2005.99.
+\end{thebibliography}
+\endgroup
+
+\end{document}
