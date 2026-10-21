@@ -1,0 +1,37 @@
+{
+  "title": "Smart College Management Platform",
+  "report_pages": 32,
+  "chapter_3_figures": 12,
+  "files": [
+    {
+      "name": "README.md",
+      "bytes": 5059,
+      "sha256": "c77078c5d00f1693a3a24ee141040255a157c97f8e312ac31d4d3aae1a555bad"
+    },
+    {
+      "name": "chapter-3-preview.pdf",
+      "bytes": 1158223,
+      "sha256": "823884e006ee5c8f208be67acb213327a56ba8c422be5b5f4feecd67a4bae436"
+    },
+    {
+      "name": "chapter-3-preview.png",
+      "bytes": 477929,
+      "sha256": "69cdbeec2f6b1895c802f99aa40c1291a089c4d4abac211443d2b2f4b3f62ff5"
+    },
+    {
+      "name": "report-checks.json",
+      "bytes": 1173,
+      "sha256": "b607a190c8716205e2c7ed57e0df1b3c47b36a42304d6203c1dbb9163dd54876"
+    },
+    {
+      "name": "veltech-ams-mini-report-LaTeX.zip",
+      "bytes": 2205378,
+      "sha256": "1dd6797a78ca84a712de6f2d324d461bdc6dcc9dac8e9270069d41aca65612bf"
+    },
+    {
+      "name": "veltech-ams-mini-report.pdf",
+      "bytes": 2379575,
+      "sha256": "c51d1362242ca762703455861b0f6bc5422bf91b7db8c6e9c05e25c1c9b91327"
+    }
+  ]
+}
