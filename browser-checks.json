@@ -1,0 +1,58 @@
+{
+  "browser": "System Chromium / Python Playwright; Browser plugin unavailable",
+  "checks": [
+    {
+      "case": "captcha-then-wait",
+      "passed": true,
+      "details": "No welcome before verification; authenticated logo/photo; Wait survives the eight-second default exit; partial terminal status opens Home automatically; keyboard cycles both actions."
+    },
+    {
+      "case": "open-home-320",
+      "passed": true,
+      "details": "Core-record button opens Home while sync is active; no horizontal overflow; 44px controls."
+    },
+    {
+      "case": "open-home-390",
+      "passed": true,
+      "details": "Core-record button opens Home while sync is active; no horizontal overflow; 44px controls."
+    },
+    {
+      "case": "open-home-1440",
+      "passed": true,
+      "details": "Core-record button opens Home while sync is active; no horizontal overflow; 44px controls."
+    },
+    {
+      "case": "default-core-ready-release",
+      "passed": true
+    },
+    {
+      "case": "slow-initial-overview-escape",
+      "passed": true
+    },
+    {
+      "case": "saved-session-transient-retry",
+      "passed": true
+    },
+    {
+      "case": "results-390",
+      "passed": true,
+      "details": "Semester graph/CGPA/percentage unchanged; no assessment graphs; test/mid/assignment raw values, filter and XLSX export work; semester PDF downloads."
+    },
+    {
+      "case": "results-1440",
+      "passed": true,
+      "details": "Semester graph/CGPA/percentage unchanged; no assessment graphs; test/mid/assignment raw values, filter and XLSX export work; semester PDF downloads."
+    },
+    {
+      "case": "faculty-reduced-False",
+      "passed": true
+    },
+    {
+      "case": "student-reduced-True",
+      "passed": true
+    }
+  ],
+  "pageErrors": [],
+  "liveAmsRequests": 0,
+  "fixtures": "Fictional identities and intercepted API only."
+}

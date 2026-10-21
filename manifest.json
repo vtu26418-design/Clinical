@@ -1,0 +1,101 @@
+{
+  "version": "1.8.0",
+  "project": "veltech-ams-mini",
+  "files": [
+    {
+      "name": "ANDROID.md",
+      "bytes": 16515,
+      "sha256": "3fa1e85d13948282fbf19fb9b9bb474e85a493aaea7da743c4b7083144bef555"
+    },
+    {
+      "name": "EMAIL-SMTP.md",
+      "bytes": 7291,
+      "sha256": "78d9bba6efcc87fbd260063e2ea0475feb14d38009c726ea082d98273240cbc2"
+    },
+    {
+      "name": "HOSTING.md",
+      "bytes": 8068,
+      "sha256": "03ba4f0320943a50f01ca6a5bef0a6be2ab267e1ad853801058a7fc506a25a78"
+    },
+    {
+      "name": "assessment-marks.png",
+      "bytes": 52849,
+      "sha256": "07aebb7b071d160070cab80aa46e8bda971b411194e9a923365587d763c015b9"
+    },
+    {
+      "name": "browser-checks.json",
+      "bytes": 1859,
+      "sha256": "bf5756faaf2d95d96df6849dd06e965ceb23645bfd47dfdc7e7cb5e5790ae3f2"
+    },
+    {
+      "name": "checks.json",
+      "bytes": 879,
+      "sha256": "73fe59612c52f18c4e8768bed3cc3d95f86659a59b1ed7b0477218b329f9ba24"
+    },
+    {
+      "name": "deployment-guide.md",
+      "bytes": 5539,
+      "sha256": "5ec62241b313f1d0cc3356df1334de0c990b96d85560594ffba066972958a8bb"
+    },
+    {
+      "name": "deployment.md",
+      "bytes": 13767,
+      "sha256": "0ee35a9ca6d13476b546e935d68eb7c36fcf174f0493242bcf7f6ac7dd9cd1b8"
+    },
+    {
+      "name": "docker-checks.json",
+      "bytes": 703,
+      "sha256": "dc5b32fa8646175a1fe1829bb37ea79c2fe48823c2eb267f519d5b5d9bf8a70d"
+    },
+    {
+      "name": "preview-checks.json",
+      "bytes": 336,
+      "sha256": "0f6315fea4357a68867916a96598a91524354bd90c699fea1a9c054c8c2f9a3f"
+    },
+    {
+      "name": "preview.html",
+      "bytes": 1200371,
+      "sha256": "fea5bd3002f80094ad4b9d4dcf147f3b3d60de50767491fca73f0c300051d6c2"
+    },
+    {
+      "name": "semester-results.png",
+      "bytes": 57626,
+      "sha256": "083c69fc3dacc1c70b7596579a957e06034f73df6ae97972a431009aea87b40b"
+    },
+    {
+      "name": "setup-guide.md",
+      "bytes": 20923,
+      "sha256": "04235081dd17646a768835981371c5abb32de5dbabd706937a77a674fcfd41cf"
+    },
+    {
+      "name": "veltech-ams-mini-source.zip",
+      "bytes": 7538755,
+      "sha256": "985023f720633dbcb193c3b631dde4d77972241d1ee9bb19280f7dead66a072d"
+    },
+    {
+      "name": "veltech-ams-mini-web.zip",
+      "bytes": 7939012,
+      "sha256": "4bcacb3ab677a652b83a1b85ab81f495382f47e0a9c1a0293766fc2c63cc94d9"
+    },
+    {
+      "name": "verification.md",
+      "bytes": 26499,
+      "sha256": "482f76a3adc2f83b7bf4d736269b26e0f37f335181068cf9e4ac3d7a810f8db2"
+    },
+    {
+      "name": "welcome-logo.png",
+      "bytes": 204815,
+      "sha256": "e379441a6cb3c2f918ec26ba0da1471d12efcdbbe06cfea24a954e1e13626f92"
+    },
+    {
+      "name": "welcome-preview.mp4",
+      "bytes": 359792,
+      "sha256": "2435ec0018a1cc10826f85fd27327497e43602396d9631ef3dec5b08c821005e"
+    },
+    {
+      "name": "welcome-student.png",
+      "bytes": 222981,
+      "sha256": "eae03778c0ec90945f0e9c939425ce93d05818ed20b180a2817ef30d8050f400"
+    }
+  ]
+}

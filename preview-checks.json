@@ -1,0 +1,17 @@
+{
+  "preview": "Recorded actual updated React interface with fictional account only",
+  "checks": [
+    {
+      "width": 390,
+      "videoPlayed": true,
+      "allScreensLoaded": true,
+      "pageErrors": []
+    },
+    {
+      "width": 1440,
+      "videoPlayed": true,
+      "allScreensLoaded": true,
+      "pageErrors": []
+    }
+  ]
+}

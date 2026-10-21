@@ -1,0 +1,22 @@
+{
+  "images": "Rebuilt current source Dockerfiles",
+  "accounts": 4,
+  "firstOwnedWorkspaceReads": 4,
+  "concurrentSavedWorkspaceReads": 16,
+  "requestsFailed": 0,
+  "savedReadMedianMs": 39.7,
+  "savedReadMaxMs": 51.7,
+  "firstReadMaxMs": 111.7,
+  "verified": [
+    "real campus login/cookies",
+    "real private service link/bootstrap",
+    "single-request owned workspace contract",
+    "attendance and timetable ownership",
+    "no-store and no password fields",
+    "saved session restore",
+    "production web served",
+    "private academic health not exposed"
+  ],
+  "upstreamAmsRequests": 0,
+  "scope": "Synthetic local Docker integration; not a production or university capacity measurement."
+}
