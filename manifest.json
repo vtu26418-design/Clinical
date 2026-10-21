@@ -1,0 +1,36 @@
+{
+  "version": "1.8.0",
+  "project": "veltech-ams-mini",
+  "files": [
+    {
+      "name": "veltech-ams-mini-source.zip",
+      "bytes": 7476315,
+      "sha256": "0ad95163a9094a7ce963c0a192ca096e685f5a1a1a56150cd1648d324b110448"
+    },
+    {
+      "name": "veltech-ams-mini-web.zip",
+      "bytes": 7932875,
+      "sha256": "41dc6e9c3dc154ae742f811879ab800a6b8c00513e03a557903e3c8c4db85f17"
+    },
+    {
+      "name": "setup-guide.md",
+      "bytes": 19449,
+      "sha256": "8b1c3c7f2ed83fe63fc47f8242ba32b36cde912b3dd42b2f14c94817346da70c"
+    },
+    {
+      "name": "verification.md",
+      "bytes": 15595,
+      "sha256": "5df064a3f1e20ad3c44f4ba25d53c0acae5ff5736baac17ab0b1105ede698ede"
+    },
+    {
+      "name": "semester-pdf-example.pdf",
+      "bytes": 215850,
+      "sha256": "87698ca16d75504a6e8f5eaef6296e49bb388c04d24d8cef535ae91fe698eabe"
+    },
+    {
+      "name": "preview.html",
+      "bytes": 1470103,
+      "sha256": "bd7096ebed1ca9e63c865fe5aea755e8ffb79d18c18f88112aa447bd4b2cda38"
+    }
+  ]
+}
