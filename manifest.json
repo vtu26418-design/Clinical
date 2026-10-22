@@ -1,0 +1,71 @@
+{
+  "project": "veltech-ams-mini",
+  "version": "1.8.0",
+  "files": [
+    {
+      "name": "admin-dark.png",
+      "bytes": 154174,
+      "sha256": "f5b6841f8e737a898767476030cc8befb4dff0a408c9785ec120880d6073ab64"
+    },
+    {
+      "name": "admin-desktop.png",
+      "bytes": 437325,
+      "sha256": "dfdf586d7481bcff9362ead55aced3fc679281a17eb61231eae0a6a6feeb375e"
+    },
+    {
+      "name": "admin-phone.png",
+      "bytes": 117473,
+      "sha256": "c1c4ef634e85188bec28f4026d450aa0f70877cbf2428e6767979b2e110ed2d9"
+    },
+    {
+      "name": "admin-role-create.png",
+      "bytes": 180205,
+      "sha256": "009b7f4407ea4b1da8b27163238e4acd8f33bb7e1ecb744c2eb7d54228a76385"
+    },
+    {
+      "name": "admin-workspace.md",
+      "bytes": 12021,
+      "sha256": "cc5cb3fbc16027931d31006ff6dd1dae0a83f5ce34f3dc37287d222d941ea74b"
+    },
+    {
+      "name": "checks.json",
+      "bytes": 4547,
+      "sha256": "cde3c03419c4a17b869c5028305a978a6c183e1ea47bce5de4157285a77d0021"
+    },
+    {
+      "name": "email-smtp.md",
+      "bytes": 7737,
+      "sha256": "095306e9f20b41b34431105eedf18cf0798d9a5b735c0abe9de82e508dd46ae2"
+    },
+    {
+      "name": "preview.mp4",
+      "bytes": 1859280,
+      "sha256": "482441751ce84ba243b003ff95d9761b503400ea95d1ef79e97b2fbc208d17ac"
+    },
+    {
+      "name": "setup-guide.md",
+      "bytes": 21420,
+      "sha256": "60c016852fa9b5b1e1b6ed3e5b23e6f7cfda90b8b6105d3b001c50c79dbd830f"
+    },
+    {
+      "name": "student-seating.png",
+      "bytes": 133484,
+      "sha256": "86658026389ea625e9e104746f730576382e1fcb8ae08b1382321ea6f7c5304d"
+    },
+    {
+      "name": "veltech-ams-mini-source.zip",
+      "bytes": 7623418,
+      "sha256": "c6a388e2f6529705ee84bb73b9100fb347e6d03a92fe518c68169cd248085ae9"
+    },
+    {
+      "name": "veltech-ams-mini-web.zip",
+      "bytes": 7968736,
+      "sha256": "71d22ca4a4549d7b91c489372c9e02fc73ad61f68d87d2e7121ad5602a97fe79"
+    },
+    {
+      "name": "verification.md",
+      "bytes": 30977,
+      "sha256": "a1fdc0b5a2f209c8307fe4660c0aa4a2d3d552c27b56a12c6fad37d78dd6c63f"
+    }
+  ]
+}

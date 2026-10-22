@@ -1,0 +1,103 @@
+{
+  "automated": {
+    "frontend": 190,
+    "campusApi": 322,
+    "academicPython": 189,
+    "android": 11,
+    "total": 712
+  },
+  "browser": {
+    "checks": [
+      "admin-dashboard responsive 1440/390/320 without page overflow",
+      "shared login opens distinct owner admin shell",
+      "student shared login remains separate",
+      "create limited admin with only event view/create through UI",
+      "edit action grants after account creation",
+      "admin-student-records responsive 1440/390/320 without page overflow",
+      "directory roles and authorized student academic read",
+      "moderation removes content and records a reason",
+      "owner sees durable removal notification",
+      "admin-messages responsive 1440/390/320 without page overflow",
+      "campus message queues per-recipient delivery",
+      "event-specific faculty QR/manual/email assignment",
+      "faculty-event-entry responsive 1440/390/320 without page overflow",
+      "assigned faculty manual fallback marks event attendance",
+      "admin-seating-review responsive 1440/390/320 without page overflow",
+      "real private CSV parser, reviewed publication and exam pointer",
+      "student-own-seating responsive 1440/390/320 without page overflow",
+      "student own-VTU seat isolation and original file download",
+      "withdrawing seats removes student assignment",
+      "admin-calendar responsive 1440/390/320 without page overflow",
+      "administrator publishes substitute-day schedule",
+      "limited admin shell and server action denial",
+      "separate admin sign-in history is visible",
+      "student session survives refresh",
+      "SMTP substitute captures branded individual messages without external delivery",
+      "administrator settings exclude student-only and broken profile routes",
+      "admin-dark responsive 1440/390/320 without page overflow",
+      "administrator mobile More menu opens and closes in dark appearance"
+    ],
+    "pageErrors": [],
+    "fixturesOnly": true
+  },
+  "darkAppearance": {
+    "checks": [
+      "Admin dark 1440px: no overflow and card text contrast >=4.5",
+      "Admin dark 390px: no overflow and card text contrast >=4.5",
+      "Admin dark 320px: no overflow and card text contrast >=4.5",
+      "Dark mobile admin navigation opens/closes",
+      "Dark message editor text contrast >=4.5; no submit"
+    ],
+    "pageErrors": []
+  },
+  "roleBrowser": {
+    "checks": [
+      "owner creates named Event administrator with server-stored role and limits",
+      "event role cannot view unrelated people directory or create administrators",
+      "changing the named role replaces module limits and revokes old sessions",
+      "manual fine-tuning switches to Custom access and persists",
+      "authorized limited admin creates another admin within its own role/action ceiling",
+      "named-role creation and edit screens fit 320/390/1440px without page errors"
+    ],
+    "pageErrors": [],
+    "fixturesOnly": true
+  },
+  "dockerCore": {
+    "images": "Both Dockerfiles rebuilt; final seating file fix applied as a source-matching runtime layer",
+    "accounts": 4,
+    "firstOwnedWorkspaceReads": 4,
+    "concurrentSavedWorkspaceReads": 16,
+    "requestsFailed": 0,
+    "savedReadMedianMs": 33.3,
+    "savedReadMaxMs": 46.7,
+    "firstReadMaxMs": 116.4,
+    "verified": [
+      "real campus login/cookies",
+      "real private service link/bootstrap",
+      "single-request owned workspace contract",
+      "attendance and timetable ownership",
+      "no-store and no password fields",
+      "saved session restore",
+      "production web served",
+      "private academic health not exposed",
+      "private CSV parser authorized service call and unauthenticated denial"
+    ],
+    "upstreamAmsRequests": 0,
+    "scope": "Synthetic local Docker integration; not a production or university capacity measurement."
+  },
+  "dockerFinalRoles": {
+    "checks": [
+      "Named limited administrator created in production Docker runtime",
+      "Unassigned directory and administrator creation denied",
+      "Role replacement updates limits and revokes old session",
+      "Final production frontend bundle served exactly"
+    ],
+    "fixturesOnly": true,
+    "universityRequests": 0,
+    "realEmails": 0
+  },
+  "archives": "CRC/path/private-file guards passed; final source and web entry match verified build",
+  "freshExtraction": "Build passed; unchanged lockfiles npm ci passed; final extraction reused locked dependencies",
+  "versionUnchanged": "1.8.0",
+  "noRealAmsEmailPayments": true
+}
