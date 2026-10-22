@@ -1,0 +1,9 @@
+{
+  "checks": [
+    "fresh PostgreSQL configuration generated",
+    "existing private keys/configuration preserved on repeat",
+    "local and production Compose overlays valid",
+    "no public database ports",
+    "persistent PostgreSQL and media volumes"
+  ]
+}

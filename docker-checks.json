@@ -1,0 +1,16 @@
+{
+  "checks": [
+    "Both rebuilt production images start and pass database health checks",
+    "Shared login assigns persisted roles and student admin access is denied",
+    "Student account view includes authorized sign-in activity without credentials",
+    "Private service bridge returns the correct student workspace in Docker",
+    "Event creation and linked community publication work in the production image",
+    "Published schedule reaches the matching student audience",
+    "Session restoration works and an unconfigured APK release is hidden"
+  ],
+  "count": 7,
+  "localHealthMedianMs": 1.47,
+  "fixturesOnly": true,
+  "storage": "Isolated MongoDB for production image smoke; PostgreSQL covered by separate compatibility suite",
+  "notLoadTest": true
+}

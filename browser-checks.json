@@ -1,0 +1,31 @@
+{
+  "checks": [
+    "One login opens the separate administrator workspace",
+    "people-directory fits desktop / 390px / 320px",
+    "student-academic-records fits desktop / 390px / 320px",
+    "Student academic detail opens from PostgreSQL with private service ownership",
+    "event-publisher fits desktop / 390px / 320px",
+    "Dedicated event page publishes a free event and its community post",
+    "placement-editor fits desktop / 390px / 320px",
+    "student-home-reminders fits desktop / 390px / 320px",
+    "Student home shows upcoming exam and semester publication",
+    "placement-application fits desktop / 390px / 320px",
+    "Student application persists and appears in their own status",
+    "placement-review fits desktop / 390px / 320px",
+    "Placement staff review updates the applicant stage",
+    "Student receives placement review notification",
+    "schedule-publishing fits desktop / 390px / 320px",
+    "Schedule publication persists in the student audience",
+    "admin-settings fits desktop / 390px / 320px",
+    "Authorized admin changes future event expiry default",
+    "student-settings fits desktop / 390px / 320px",
+    "Student cannot edit event policy and no unsigned APK is offered",
+    "Refreshing retains student sign-in",
+    "Published event appears in the community feed",
+    "directory-dark fits desktop / 390px / 320px",
+    "Dark account navigation remains readable"
+  ],
+  "pageErrors": [],
+  "fixturesOnly": true,
+  "storage": "PostgreSQL + FerretDB"
+}

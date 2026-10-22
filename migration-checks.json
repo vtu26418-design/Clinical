@@ -1,0 +1,27 @@
+{
+  "migration": {
+    "database": "campus_test_v2_migration",
+    "collections": [
+      {
+        "name": "accounts",
+        "source": {
+          "count": 2,
+          "sha256": "1a34e61439ed7563cb6cef385b7241a60c6d604b67af775c10cfc04955f6e552"
+        },
+        "destination": {
+          "count": 2,
+          "sha256": "1a34e61439ed7563cb6cef385b7241a60c6d604b67af775c10cfc04955f6e552"
+        },
+        "verified": true
+      }
+    ],
+    "verified": true
+  },
+  "checks": [
+    "BSON IDs/dates/arrays preserved",
+    "unique indexes copied",
+    "populated destination rejected",
+    "verify detects changed destination",
+    "source preserved"
+  ]
+}
