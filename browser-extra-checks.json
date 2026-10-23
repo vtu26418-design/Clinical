@@ -1,0 +1,10 @@
+{
+  "checks": [
+    "Five-step event creator publishes persisted hybrid format, agenda and attendance instructions",
+    "Unregistered student cannot read participant meeting link from list or detail",
+    "Other student cannot see course-restricted document",
+    "Offline logout survives reload and does not restore private workspace",
+    "Reconnection reconciles server logout without automatically signing in"
+  ],
+  "errors": []
+}

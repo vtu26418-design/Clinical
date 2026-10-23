@@ -1,0 +1,15 @@
+{
+  "checks": [
+    "Latest production containers start over ordinary Docker bridge with private academic service and database health",
+    "Student cannot access staff schedule registry",
+    "Draft creation and reviewed university publication work in rebuilt image",
+    "Absent protected registrations fail closed in production image",
+    "Private protected AMS cache drives exact matching across rebuilt services",
+    "Removal immediately revokes student examinations in production image"
+  ],
+  "count": 6,
+  "fixturesOnly": true,
+  "storage": "Isolated MongoDB databases; no fresh PostgreSQL compatibility or load test in this update",
+  "network": "ordinary Docker bridge; academic service not published",
+  "notLoadTest": true
+}

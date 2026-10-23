@@ -1,0 +1,25 @@
+{
+  "checks": [
+    "Real API administrator sign-in",
+    "exam-import at 1440/390/320px",
+    "Actual PDF imports 35 numbered rows continuing across pagination",
+    "Reviewed course-targeted schedule published through real API",
+    "campus-documents-admin at 1440/390/320px",
+    "Academic staff file upload and publication works",
+    "publishing-directory at 1440/390/320px",
+    "Publishing directory management route integrated",
+    "event-create at 1440/390/320px",
+    "New campus event creator integrated",
+    "student-home at 1440/390/320px",
+    "Exams appear in the existing Home reminder section",
+    "student-exams at 1440/390/320px",
+    "Background exam poll keeps records and selected tab visible",
+    "Protected staff document downloads original bytes",
+    "student-documents at 1440/390/320px",
+    "Refresh restores saved workspace without login animation replay",
+    "Offline refresh retains document metadata and account-owned downloaded file",
+    "Previously downloaded protected PDF opens with the network disabled",
+    "Saved examinations remain readable offline"
+  ],
+  "errors": []
+}
