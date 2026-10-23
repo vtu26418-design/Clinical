@@ -12,8 +12,8 @@ This update retains version **2.0.0**. Existing attendance, results, community, 
 2. Open PowerShell in the extracted `veltech-ams-mini` folder. Start Docker Desktop, then run:
 
    ```powershell
-   .\Setup.ps1
-   .\Start.ps1
+   powershell -NoProfile -ExecutionPolicy Bypass -File .\Setup.ps1
+   powershell -NoProfile -ExecutionPolicy Bypass -File .\Start.ps1
    ```
 
    The scripts use Docker; Ubuntu and a local MongoDB install are not required. See `docs/V2-UPGRADE.md` for PostgreSQL-backed storage, preserving an existing Atlas database, backups and verified migration. Do not switch an existing database URI without the migration checks.
@@ -85,8 +85,8 @@ The server finds their account type; the user cannot choose elevated access.
 Later:
 
 ```powershell
-.\Start.ps1
-.\Stop.ps1
+powershell -NoProfile -ExecutionPolicy Bypass -File .\Start.ps1
+powershell -NoProfile -ExecutionPolicy Bypass -File .\Stop.ps1
 ```
 
 For Vite development only, install Node 24, run `npm run setup`, `npm run dev` and

@@ -65,8 +65,8 @@
     },
     {
       "name": "setup-guide.md",
-      "bytes": 30394,
-      "sha256": "57e6adec4229cc1fd491f7b4a9f00c01be9a214c97426266f2a6f720c4a5b800"
+      "bytes": 30602,
+      "sha256": "0b2bba025076f26218cb72b783703ffe36220f2017453e685abc5e0cad0b8244"
     },
     {
       "name": "smtp-guide.md",
@@ -85,28 +85,28 @@
     },
     {
       "name": "university-guide.md",
-      "bytes": 7613,
-      "sha256": "5c78470bfa949e4dd67fe7059fcd86dda7f297de8625d93d52cc7f801126cb55"
+      "bytes": 7717,
+      "sha256": "f424e6e01999198b962a903ad3f8c5a4b8e10b8176529df311853f95f542b961"
     },
     {
       "name": "upgrade-guide.md",
-      "bytes": 14941,
-      "sha256": "560398f2bef2a542b51c178ff2e0ed610499f0dba177912d33f6747a976ad747"
+      "bytes": 15045,
+      "sha256": "fac1cb860317524c80b37ae4f495a0feff50ea5a5ea4b16fccd466211cc8a6ba"
     },
     {
       "name": "veltech-ams-mini-source.zip",
-      "bytes": 7737219,
-      "sha256": "2561f971d4928274ed154b4f32f9e65a192a0e0b6383f038cb2c1852fb731809"
+      "bytes": 7737259,
+      "sha256": "de6f34a86c62f3dc97739d08bfba0c1f689129f4d6cb76e625deaf469b182934"
     },
     {
       "name": "veltech-ams-mini-v2.0.0.zip",
-      "bytes": 7737219,
-      "sha256": "2561f971d4928274ed154b4f32f9e65a192a0e0b6383f038cb2c1852fb731809"
+      "bytes": 7737259,
+      "sha256": "de6f34a86c62f3dc97739d08bfba0c1f689129f4d6cb76e625deaf469b182934"
     },
     {
       "name": "veltech-ams-mini-web.zip",
       "bytes": 8009920,
-      "sha256": "bcaf669535272c88eb403b39c33ac6ff6b34c45239c06a9eb104c9c4aa19d6cd"
+      "sha256": "4ac99bb161d5fd4ff111b787050b16b5b1396489e5f3e9b6ab532c1d3d299c79"
     },
     {
       "name": "verification.md",

@@ -22,8 +22,8 @@ The server finds their account type; the user cannot choose elevated access.
 Later:
 
 ```powershell
-.\Start.ps1
-.\Stop.ps1
+powershell -NoProfile -ExecutionPolicy Bypass -File .\Start.ps1
+powershell -NoProfile -ExecutionPolicy Bypass -File .\Stop.ps1
 ```
 
 For Vite development only, install Node 24, run `npm run setup`, `npm run dev` and
