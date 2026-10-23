@@ -1,0 +1,33 @@
+{
+  "checks": [
+    "overview fits 1440/390/320",
+    "Actual signed-in admin operational overview",
+    "registry-empty fits 1440/390/320",
+    "Schedule metadata saves a private draft",
+    "Actual reference PDF imports all 35 rows with correct merged dates and review warnings",
+    "import-review fits 1440/390/320",
+    "Reviewed schedule publishes atomically and exposes stable examination seating IDs",
+    "published-editor fits 1440/390/320",
+    "registry-published fits 1440/390/320",
+    "Two actual student sessions receive only their own protected registered courses",
+    "student-reminders fits 1440/390/320",
+    "student-exams fits 1440/390/320",
+    "Student examinations exclude AMS announcements and unrelated university courses",
+    "Authenticated student download matches the published original PDF",
+    "bulk-seating fits 1440/390/320",
+    "Bulk roster filters the exact exam course and publishes only the student\u2019s own seat with private original",
+    "calendar-reminders fits 1440/390/320",
+    "Home reflects published Saturday/Monday substitution and Sunday holiday",
+    "calendar-reminders fits 1440/390/320",
+    "Home reflects published Saturday/Monday substitution and Sunday holiday",
+    "timetable fits 1440/390/320",
+    "Timetable resolves actual Saturday to Monday classes and Sunday to no classes",
+    "Saving a correction leaves students on the previous complete publication",
+    "Republishing releases the corrected schedule to matching students",
+    "Inline deletion revokes student exams, seating and original documents",
+    "registry-final fits 1440/390/320"
+  ],
+  "pageErrors": [],
+  "fixturesOnly": true,
+  "upstreamAmsLoginTested": false
+}

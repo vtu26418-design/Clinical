@@ -1,0 +1,12 @@
+{
+  "checks": [
+    "Owner operational overview, real response counts, exam status/calendar and responsive 1440/390/320 without page overflow",
+    "Mobile More opens grouped navigation and Escape closes it; More text is explicit contrasting navy",
+    "Management duplicate chrome removed; role preset selects modules; search keeps selected module/actions visible at all three widths",
+    "Limited actor never requests calendar/manage or sees unauthorized metrics; disabled delete/update grants and custom role transition work",
+    "View-only event managers cannot open the direct editing control"
+  ],
+  "pageErrors": [],
+  "browser": "Playwright Chromium; Browser plugin not available",
+  "fixturesOnly": true
+}

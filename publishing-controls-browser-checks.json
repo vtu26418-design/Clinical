@@ -1,0 +1,11 @@
+{
+  "checks": [
+    "Edit an existing published form, save PATCH, preserve its ID/question IDs and immutable audience/event, return to updated form",
+    "After a response, content/settings lock, state-only PATCH closes submissions and retains existing answers; 1440/390/320 no page overflow",
+    "View-only admin sees no form edit/archive/state mutations or event edit/archive controls; analytics/waitlist retained",
+    "Faculty full-page form edit route updates an authorized publication"
+  ],
+  "pageErrors": [],
+  "fixturesOnly": true,
+  "browser": "Playwright Chromium; Browser plugin not available"
+}

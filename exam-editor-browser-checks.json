@@ -1,0 +1,14 @@
+{
+  "checks": [
+    "Registry shows actual published revision 0 counts and responsive table/stack at 1440, 390, 320 without page overflow",
+    "Full-page editor preserves live revision 0 and review gate at desktop/mobile widths",
+    "Missing exact course code blocks publication; row edit resets review; confirmed publish saves draft before publishing returned revision",
+    "Import displays parser warning and incomplete exact code for correction without publication",
+    "Delete requires inline confirmation, sends current revision and returns to registry with schedule removed",
+    "New metadata creates unpublished draft and opens full-page import/manual row workflow",
+    "View-only administrator cannot create, update, publish, import or delete; no mutation requests"
+  ],
+  "pageErrors": [],
+  "browser": "Playwright Chromium; Browser plugin not available",
+  "fixturesOnly": true
+}

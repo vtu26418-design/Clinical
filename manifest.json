@@ -1,0 +1,117 @@
+{
+  "project": "veltech-ams-mini",
+  "version": "2.0.0",
+  "update": "university-administration",
+  "files": [
+    {
+      "name": "README.md",
+      "bytes": 1423,
+      "sha256": "be993d65a7e44cd00fabb9d7676e0a562071bb7446281c796ec2e17214cf8740"
+    },
+    {
+      "name": "admin-clarity-browser-checks.json",
+      "bytes": 717,
+      "sha256": "85f74628462be2d1d1fb29b9fe55c74979ffe20bab0f881bc148602394070711"
+    },
+    {
+      "name": "admin-overview.png",
+      "bytes": 218626,
+      "sha256": "3329a39470e2b50bed8f13f9267206b1302c72e3142c1ccfdd3ab8e3de41ba6c"
+    },
+    {
+      "name": "bulk-seating-mobile.png",
+      "bytes": 212951,
+      "sha256": "9953e08ac58c19a2d35364744c78009bd790ed2a55a51cd50269a73b5a58faa3"
+    },
+    {
+      "name": "docker-runtime-checks.json",
+      "bytes": 665,
+      "sha256": "b04aa0a199f4b5eb2f8e6970a33f4b4c774768c91127ae7ed5752e7fc330889f"
+    },
+    {
+      "name": "exam-editor-browser-checks.json",
+      "bytes": 896,
+      "sha256": "6c3b4b830fbeda7b6d2a6dcddf4e65e6f385cd2ab7c2078c59426e06dd930c51"
+    },
+    {
+      "name": "exam-editor-mobile.png",
+      "bytes": 257271,
+      "sha256": "794163f868f1438d503e5e7a6a55b6e149df7b0681c5d5df7d23e0c7782146a6"
+    },
+    {
+      "name": "exam-schedules.png",
+      "bytes": 145384,
+      "sha256": "05a9fb08050724f001f84f89e469a5a8c5fa1097731715477dfa4b7702bc3176"
+    },
+    {
+      "name": "live-browser-checks.json",
+      "bytes": 1701,
+      "sha256": "fe5571657afa018d83e678a4f55cd7a9c6fa48e3690425380a6fe4cf88aa007d"
+    },
+    {
+      "name": "preview.md",
+      "bytes": 1423,
+      "sha256": "be993d65a7e44cd00fabb9d7676e0a562071bb7446281c796ec2e17214cf8740"
+    },
+    {
+      "name": "preview.mp4",
+      "bytes": 1517118,
+      "sha256": "320ff3d6c54a52ec45b9cde6d68715ac5135334eeeae674dbad4fe7d1735a7ba"
+    },
+    {
+      "name": "publishing-controls-browser-checks.json",
+      "bytes": 609,
+      "sha256": "6d2a257810a674eb6da9790a37213871ec10f54dc8d33780e515e678ef36764f"
+    },
+    {
+      "name": "setup-guide.md",
+      "bytes": 30394,
+      "sha256": "57e6adec4229cc1fd491f7b4a9f00c01be9a214c97426266f2a6f720c4a5b800"
+    },
+    {
+      "name": "smtp-guide.md",
+      "bytes": 7737,
+      "sha256": "095306e9f20b41b34431105eedf18cf0798d9a5b735c0abe9de82e508dd46ae2"
+    },
+    {
+      "name": "student-home-mobile.png",
+      "bytes": 339052,
+      "sha256": "e4a852ce9cf535b6a478959960d56caddd39510034b0f0f09dd1162485d38342"
+    },
+    {
+      "name": "timetable-mobile.png",
+      "bytes": 72165,
+      "sha256": "192155845112ae87d50e1b6ebef672bc976dbf850b7ef56681291e0a85c82134"
+    },
+    {
+      "name": "university-guide.md",
+      "bytes": 7613,
+      "sha256": "5c78470bfa949e4dd67fe7059fcd86dda7f297de8625d93d52cc7f801126cb55"
+    },
+    {
+      "name": "upgrade-guide.md",
+      "bytes": 14941,
+      "sha256": "560398f2bef2a542b51c178ff2e0ed610499f0dba177912d33f6747a976ad747"
+    },
+    {
+      "name": "veltech-ams-mini-source.zip",
+      "bytes": 7737219,
+      "sha256": "2561f971d4928274ed154b4f32f9e65a192a0e0b6383f038cb2c1852fb731809"
+    },
+    {
+      "name": "veltech-ams-mini-v2.0.0.zip",
+      "bytes": 7737219,
+      "sha256": "2561f971d4928274ed154b4f32f9e65a192a0e0b6383f038cb2c1852fb731809"
+    },
+    {
+      "name": "veltech-ams-mini-web.zip",
+      "bytes": 8009920,
+      "sha256": "bcaf669535272c88eb403b39c33ac6ff6b34c45239c06a9eb104c9c4aa19d6cd"
+    },
+    {
+      "name": "verification.md",
+      "bytes": 5039,
+      "sha256": "258ceb8b4de38ec34a242dde3a509c70017c750b174e198a67b45e7d2c10c8fb"
+    }
+  ]
+}

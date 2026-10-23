@@ -1,0 +1,15 @@
+{
+  "checks": [
+    "Latest production images start with ordinary Docker bridge networking",
+    "Student denied access to staff schedule registry",
+    "Draft/review/publication works in rebuilt image",
+    "Missing protected registrations fail closed",
+    "Private academic bridge and protected course matching work across rebuilt services",
+    "Removal immediately revokes student examination access"
+  ],
+  "count": 6,
+  "fixturesOnly": true,
+  "notLoadTest": true,
+  "network": "ordinary bridge; explicit NO_PROXY for private peers (matches shipped Compose)",
+  "storage": "Isolated MongoDB databases; PostgreSQL compatibility retained from version 2.0.0"
+}
