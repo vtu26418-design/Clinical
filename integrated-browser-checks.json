@@ -1,0 +1,24 @@
+{
+  "checks": [
+    "Launch shows new logo briefly, releases login without a server-sync wait",
+    "login fits 1440/390/320px",
+    "Mobile login has no banner and password visibility works",
+    "Password recovery uses a separate mobile view and Back does not replay launch",
+    "home-hub fits 1440/390/320px",
+    "One live Home hub combines class, course-matched exam and own seat without duplicate old blocks",
+    "settings-index fits 1440/390/320px",
+    "Settings mobile index and detail are separate views with Back/Forward history",
+    "notifications fits 1440/390/320px",
+    "Read action persists without a full academic workspace request",
+    "Mark all read works through real owned notification endpoints",
+    "Seating notification opens Examinations directly and refresh retains the linked section",
+    "apk-install fits 1440/390/320px",
+    "APK-first action downloads real2.2.0 signed bytes and verifies checksum; PWA remains separate",
+    "Saved-session refresh keeps student signed in and does not replay launch/login animations",
+    "Offline refresh retains own class/exam/seating data in read-only Home hub",
+    "Second student cannot see another student examination seat",
+    "admin-overview fits 1440/390/320px",
+    "Admin workspace typography and install route remain usable"
+  ],
+  "errors": []
+}

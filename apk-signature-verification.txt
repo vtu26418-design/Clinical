@@ -1,0 +1,17 @@
+Verifies
+Verified using v1 scheme (JAR signing): false
+Verified using v2 scheme (APK Signature Scheme v2): true
+Verified using v3 scheme (APK Signature Scheme v3): true
+Verified using v3.1 scheme (APK Signature Scheme v3.1): false
+Verified using v4 scheme (APK Signature Scheme v4): false
+Verified for SourceStamp: false
+Number of signers: 1
+Signer #1 certificate DN: CN=Velstudents Campus App, OU=Student App, O=Velstudents, C=IN
+Signer #1 certificate SHA-256 digest: 3b44dd8ac315564a27a7fa2d035c3e581aff205a7cb6e62ce45e283b28e4c768
+Signer #1 certificate SHA-1 digest: 3b56ea6b177b3e39ef1bb9b1c55544001ee662af
+Signer #1 certificate MD5 digest: 8dbdbadb03e45dc87b9df4c61eb7bfd4
+Signer #1 key algorithm: RSA
+Signer #1 key size (bits): 3072
+Signer #1 public key SHA-256 digest: b634494a058ef635ac4fe98bd74a1a7f1807b6f8741378eb32c32592156f802e
+Signer #1 public key SHA-1 digest: 3828155853a3d33f30504ec74cc06765638d2359
+Signer #1 public key MD5 digest: c8d92355d23b60776509b51613df01d9

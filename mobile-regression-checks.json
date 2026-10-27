@@ -1,0 +1,13 @@
+{
+  "checks": [
+    "attendance mobile320/390 no overflow/overlay/blank page",
+    "timetable mobile320/390 no overflow/overlay/blank page",
+    "academics mobile320/390 no overflow/overlay/blank page",
+    "events mobile320/390 no overflow/overlay/blank page",
+    "community mobile320/390 no overflow/overlay/blank page",
+    "connections mobile320/390 no overflow/overlay/blank page",
+    "profile mobile320/390 no overflow/overlay/blank page",
+    "settings/about mobile320/390 no overflow/overlay/blank page"
+  ],
+  "errors": []
+}

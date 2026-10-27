@@ -1,0 +1,18 @@
+{
+  "checks": [
+    "Latest production containers start over ordinary Docker bridge with private academic service and database health",
+    "Student cannot access staff schedule registry",
+    "Draft creation and reviewed university publication work in rebuilt image",
+    "Absent protected registrations fail closed in production image",
+    "Private protected AMS cache drives exact matching across rebuilt services",
+    "Removal immediately revokes student examinations in production image",
+    "Public release metadata and checksum-matching signed APK download work in production image",
+    "Production well-known association serves correct JSON without login",
+    "Academic records still require authentication while APK remains public"
+  ],
+  "count": 9,
+  "fixturesOnly": true,
+  "storage": "Isolated MongoDB; no fresh PostgreSQL or campus-scale load test",
+  "network": "ordinary Docker bridge; academic service not published",
+  "notLoadTest": true
+}
