@@ -1,0 +1,129 @@
+{
+  "checks": [
+    "Real CSS assembly order: sides rise, cap falls from above screen and settles, then centre appears",
+    "Completed assembly releases the real login screen",
+    "Navigation and refresh in the same tab do not replay the logo",
+    "Round hybrid logo and login fit 320/390/1440 viewports",
+    "Reduced-motion mode bypasses moving assembly and opens promptly",
+    "Post-login sync uses the same assembly before student identity and Home"
+  ],
+  "errors": [],
+  "stages": [
+    {
+      "time": 0,
+      "parts": [
+        {
+          "part": "app-launch-part part-left",
+          "opacity": 0,
+          "y": 52,
+          "x": -9
+        },
+        {
+          "part": "app-launch-part part-right",
+          "opacity": 0,
+          "y": 52,
+          "x": 9
+        },
+        {
+          "part": "app-launch-part part-cap",
+          "opacity": 0,
+          "y": -582,
+          "x": 0
+        },
+        {
+          "part": "app-launch-part part-centre",
+          "opacity": 0,
+          "y": 0,
+          "x": 0
+        }
+      ]
+    },
+    {
+      "time": 800,
+      "parts": [
+        {
+          "part": "app-launch-part part-left",
+          "opacity": 0.928511,
+          "y": 3.6541,
+          "x": -0.63244
+        },
+        {
+          "part": "app-launch-part part-right",
+          "opacity": 0.928511,
+          "y": 3.6541,
+          "x": 0.63244
+        },
+        {
+          "part": "app-launch-part part-cap",
+          "opacity": 1,
+          "y": -136.214,
+          "x": 0
+        },
+        {
+          "part": "app-launch-part part-centre",
+          "opacity": 0,
+          "y": 0,
+          "x": 0
+        }
+      ]
+    },
+    {
+      "time": 1650,
+      "parts": [
+        {
+          "part": "app-launch-part part-left",
+          "opacity": 1,
+          "y": 0,
+          "x": 0
+        },
+        {
+          "part": "app-launch-part part-right",
+          "opacity": 1,
+          "y": 0,
+          "x": 0
+        },
+        {
+          "part": "app-launch-part part-cap",
+          "opacity": 1,
+          "y": 0,
+          "x": 0
+        },
+        {
+          "part": "app-launch-part part-centre",
+          "opacity": 0,
+          "y": 0,
+          "x": 0
+        }
+      ]
+    },
+    {
+      "time": 2350,
+      "parts": [
+        {
+          "part": "app-launch-part part-left",
+          "opacity": 1,
+          "y": 0,
+          "x": 0
+        },
+        {
+          "part": "app-launch-part part-right",
+          "opacity": 1,
+          "y": 0,
+          "x": 0
+        },
+        {
+          "part": "app-launch-part part-cap",
+          "opacity": 1,
+          "y": 0,
+          "x": 0
+        },
+        {
+          "part": "app-launch-part part-centre",
+          "opacity": 1,
+          "y": 0,
+          "x": 0
+        }
+      ]
+    }
+  ]
+}
