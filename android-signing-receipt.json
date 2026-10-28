@@ -1,0 +1,17 @@
+{
+  "signatureVerified": true,
+  "alignmentVerified": true,
+  "certificateSha256": "3B:44:DD:8A:C3:15:56:4A:27:A7:FA:2D:03:5C:3E:58:1A:FF:20:5A:7C:B6:E6:2C:E4:5E:28:3B:28:E4:C7:68",
+  "apkSha256": "922ec17ef29ec220c5c002f60bc710f1fbd5d7ba101dcf03df758b488f788678",
+  "packageId": "in.velstudents.veltechams",
+  "versionName": "2.3.2",
+  "versionCode": 20302,
+  "deploymentUrl": "https://app.veltech-mini-ams.me",
+  "domainAssociation": {
+    "verified": false,
+    "status": "pending",
+    "note": "Deploy assetlinks.json for this release certificate. Until domain verification succeeds, the app may open with browser controls."
+  },
+  "builtFrom": "current-local-production-assets",
+  "physicalDeviceTested": false
+}
