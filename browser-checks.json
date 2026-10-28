@@ -1,0 +1,30 @@
+{
+  "checks": [
+    "All five recoloured parts assemble with independently visible emblem and no brightness/glow filter",
+    "Phone login shows updated static logo after bounded opening animation with no framework overlay",
+    "Post-login sequence uses same low-glare sky-blue layers before identity and Home",
+    "About and shell use updated shared logo without changing account or source data",
+    "Brand and live-reminder layout fit 320/390/1440 viewports",
+    "Animation opt-out and signed-in settings survive reload",
+    "Logo flows contain meaningful pages, correct titles, interactions and no runtime exceptions",
+    "Public APK page opens while anonymous without loading private session or academic records",
+    "Public APK guide and sharing controls fit 320/390/1440 widths",
+    "Copy APK link writes the stable own-domain attachment URL to the real clipboard",
+    "Anonymous direct download is an actual same-origin APK with the signed release checksum",
+    "APK click leaves guide open and reports request without claiming installation",
+    "All five updated transparent logo animation assets are served successfully",
+    "University settings separates official records, staff publications and device copies without mobile overflow",
+    "Signed APK is primary while optional browser/PWA installation stays collapsed",
+    "Notification inbox renders and stays within the phone viewport",
+    "Public and settings flows have no runtime exception or framework overlay"
+  ],
+  "errors": [],
+  "browser": "System Chromium via Playwright; Browser plugin absent",
+  "viewports": [
+    320,
+    390,
+    1440
+  ],
+  "ExpectedConsole": "Anonymous session401",
+  "PhysicalPhoneTested": false
+}
