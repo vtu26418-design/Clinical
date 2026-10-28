@@ -1,0 +1,41 @@
+{
+  "checks": [
+    "Transparent 3D layers load and ordered assembly renders at 390px",
+    "Mobile login renders meaningful content without banner/overlay",
+    "Actual 12-hour source values render live class and next class with IST time/rooms; local Inter font active",
+    "Returning verified portal-only VTU account enters Home with password only and no CAPTCHA step",
+    "Horizontal phone gesture moves Home to Attendance",
+    "Settings disables and restores phone page gestures",
+    "Home and live reminder fit 320/390/1440 viewports",
+    "Community suggestions form a horizontal mobile carousel",
+    "Follow sends one relationship write, preserves feed/scroll and avoids full workspace refetch",
+    "Like and comment update inline without route navigation",
+    "Settings and stable domain APK endpoint return exact signed checksum bytes without GitHub redirects",
+    "Optional asset refresh Later keeps view and authenticated session",
+    "Refreshing the app preserves login and Settings view",
+    "Installed web shell opens saved live-reminder records offline without reconnect login",
+    "Admin CSV import opens review with course-matched source rows",
+    "Published seating returns only each verified student own seat; full original stays staff-only",
+    "Own examination and seat appear inside Home live reminder hub",
+    "Simulated verified Android launch offers new build; Later remains deferred on reopen",
+    "No browser runtime errors or framework overlays observed",
+    "Android update dialog receives real taps at 390px",
+    "Update dialog downloads signed checksum bytes and closes normally",
+    "Events layout stays within 320/390/1440 viewport widths",
+    "Mobile More navigation opens and closes without trapping taps",
+    "Disabled opening animation remains disabled after reload"
+  ],
+  "errors": [],
+  "expectedConsoleConditions": [
+    "Anonymous session HTTP401",
+    "Network request errors during intentional offline check",
+    "Original roster download denied to student"
+  ],
+  "browser": "System Chromium through regular Playwright; Browser plugin absent",
+  "viewports": [
+    320,
+    390,
+    1440
+  ],
+  "AndroidEvidence": "Referrer/version simulated; physical device not tested"
+}
