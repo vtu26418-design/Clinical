@@ -1,0 +1,106 @@
+{
+  "selected_model": "random_forest",
+  "selection_rule": "Minimum validation MAE only; test values cannot choose the model.",
+  "horizon_days": 7,
+  "source": {
+    "data_kind": "synthetic practice; not observed retail sales",
+    "seed": 42,
+    "days_per_series": 730,
+    "generator": "Poisson counts with assumed weekday effect and trend; generated for software learning only",
+    "source_sha256": "c0f8a91575ec1819cb02c4783d23f8e7d3d172d1cd83fce572aaff57302c67fc",
+    "source_file": "demo_sales.csv"
+  },
+  "canonical_data_sha256": "c0f8a91575ec1819cb02c4783d23f8e7d3d172d1cd83fce572aaff57302c67fc",
+  "model_sha256": "a85fae3a2fec7db1230e147b4954225be98f5af78c4f034afe61ddc10cbed347",
+  "rows": 5840,
+  "series": 8,
+  "windows": {
+    "train_end": "2023-11-05 00:00:00",
+    "validation_start": "2023-11-06 00:00:00",
+    "validation_end": "2023-12-03 00:00:00",
+    "test_start": "2023-12-04 00:00:00",
+    "test_end": "2023-12-31 00:00:00",
+    "validation_origins": [
+      "2023-11-05 00:00:00",
+      "2023-11-12 00:00:00",
+      "2023-11-19 00:00:00",
+      "2023-11-26 00:00:00"
+    ],
+    "test_origins": [
+      "2023-12-03 00:00:00",
+      "2023-12-10 00:00:00",
+      "2023-12-17 00:00:00",
+      "2023-12-24 00:00:00"
+    ]
+  },
+  "validation_metrics": {
+    "naive": {
+      "mae": 9.428571428571429,
+      "rmse": 11.467344941179714,
+      "bias": 3.044642857142857,
+      "wape_percent": 24.98521235064474,
+      "n": 224
+    },
+    "seasonal_naive": {
+      "mae": 6.589285714285714,
+      "rmse": 8.227783940492639,
+      "bias": 0.0625,
+      "wape_percent": 17.461256358689223,
+      "n": 224
+    },
+    "linear_regression": {
+      "mae": 5.286253389873332,
+      "rmse": 6.6473108554879285,
+      "bias": 0.05808357120289907,
+      "wape_percent": 14.008290066622815,
+      "n": 224
+    },
+    "random_forest": {
+      "mae": 5.2322368877044045,
+      "rmse": 6.561158547097043,
+      "bias": -0.11757735448753828,
+      "wape_percent": 13.865149211472692,
+      "n": 224
+    }
+  },
+  "test_metrics": {
+    "naive": {
+      "mae": 10.3125,
+      "rmse": 12.795088343356044,
+      "bias": 3.9732142857142856,
+      "wape_percent": 26.381909547738694,
+      "n": 224
+    },
+    "seasonal_naive": {
+      "mae": 6.455357142857143,
+      "rmse": 8.053393251117374,
+      "bias": -0.44642857142857145,
+      "wape_percent": 16.514390132480585,
+      "n": 224
+    },
+    "linear_regression": {
+      "mae": 5.215728043060049,
+      "rmse": 6.554923538986468,
+      "bias": -0.654107995666316,
+      "wape_percent": 13.34311422619291,
+      "n": 224
+    },
+    "random_forest": {
+      "mae": 5.342322445192315,
+      "rmse": 6.717385134055677,
+      "bias": -0.8688093223928354,
+      "wape_percent": 13.666973820501125,
+      "n": 224
+    }
+  },
+  "serving_model": "Selected method refitted on all observed history AFTER evaluation; reported held-out metrics belong to evaluation fits, not an independent evaluation of this refit.",
+  "backtesting": "Four seven-day origins per block. Actual history becomes available between origins; within each horizon predictions feed subsequent lags. Learned models stay fitted to the initial training partition during evaluation.",
+  "inventory": "No observed inventory supplied. Replenishment outputs are explicit what-if scenarios.",
+  "python": "3.12.14",
+  "packages": {
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "scikit-learn": "1.8.0",
+    "joblib": "1.5.3"
+  }
+}

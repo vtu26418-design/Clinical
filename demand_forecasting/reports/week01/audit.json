@@ -1,0 +1,17 @@
+{
+  "data_kind": "synthetic practice; not observed retail sales",
+  "seed": 42,
+  "days_per_series": 730,
+  "generator": "Poisson counts with assumed weekday effect and trend; generated for software learning only",
+  "source_sha256": "c0f8a91575ec1819cb02c4783d23f8e7d3d172d1cd83fce572aaff57302c67fc",
+  "source_file": "demo_sales.csv",
+  "rows": 5840,
+  "series": 8,
+  "start": "2022-01-01",
+  "end": "2023-12-31",
+  "zero_sales_rows": 0,
+  "total_units": 193109.0,
+  "missing_values": 0,
+  "duplicate_keys": 0,
+  "notes": "Validated observed daily sales. Missing periods are rejected, not filled. Sales may understate demand during unobserved stockouts."
+}

@@ -6,4 +6,6 @@ This repository provides downloadable development-release assets for Clinical Tr
 
 Source base: https://github.com/mprem27/Clinical-trail-mltimodelv5
 
+Demand Forecasting & Inventory Optimization: [four-week project source, weekly ZIPs, learning guides and complete-month download](DEMAND_FORECASTING.md). These materials are available on the `demand-forecasting-month1` branch.
+
 The included feature-gap checklist explains partial and deferred capabilities. This is research decision-support software; the upgrade does not establish improved clinical predictive accuracy.

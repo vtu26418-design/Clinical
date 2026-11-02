@@ -1,0 +1,47 @@
+{
+  "source": {
+    "data_kind": "synthetic practice; not observed retail sales",
+    "seed": 42,
+    "days_per_series": 730,
+    "generator": "Poisson counts with assumed weekday effect and trend; generated for software learning only",
+    "source_sha256": "c0f8a91575ec1819cb02c4783d23f8e7d3d172d1cd83fce572aaff57302c67fc",
+    "source_file": "demo_sales.csv"
+  },
+  "horizon_days": 7,
+  "windows": {
+    "train_end": "2023-11-05 00:00:00",
+    "validation_start": "2023-11-06 00:00:00",
+    "validation_end": "2023-12-03 00:00:00",
+    "test_start": "2023-12-04 00:00:00",
+    "test_end": "2023-12-31 00:00:00",
+    "validation_origins": [
+      "2023-11-05 00:00:00",
+      "2023-11-12 00:00:00",
+      "2023-11-19 00:00:00",
+      "2023-11-26 00:00:00"
+    ],
+    "test_origins": [
+      "2023-12-03 00:00:00",
+      "2023-12-10 00:00:00",
+      "2023-12-17 00:00:00",
+      "2023-12-24 00:00:00"
+    ]
+  },
+  "validation_metrics": {
+    "naive": {
+      "mae": 9.428571428571429,
+      "rmse": 11.467344941179714,
+      "bias": 3.044642857142857,
+      "wape_percent": 24.98521235064474,
+      "n": 224
+    },
+    "seasonal_naive": {
+      "mae": 6.589285714285714,
+      "rmse": 8.227783940492639,
+      "bias": 0.0625,
+      "wape_percent": 17.461256358689223,
+      "n": 224
+    }
+  },
+  "note": "Week 2 uses validation only. The final test period remains reserved."
+}

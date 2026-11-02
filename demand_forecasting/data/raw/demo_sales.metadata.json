@@ -1,0 +1,7 @@
+{
+  "data_kind": "synthetic practice; not observed retail sales",
+  "seed": 42,
+  "days_per_series": 730,
+  "generator": "Poisson counts with assumed weekday effect and trend; generated for software learning only",
+  "source_sha256": "c0f8a91575ec1819cb02c4783d23f8e7d3d172d1cd83fce572aaff57302c67fc"
+}

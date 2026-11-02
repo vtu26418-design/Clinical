@@ -1,0 +1,20 @@
+DOWNLOAD VERIFICATION — DEMAND FORECASTING PROJECT
+
+Tested on Linux with Python 3.12.14 in a clean virtual environment.
+Windows and macOS instructions are supplied; those operating systems were not executed here.
+
+Week 1: 12 passed in 1.35s; extracted run_week.py workflow passed; ZIP integrity passed.
+Week 2: 19 passed in 1.34s; extracted run_week.py workflow passed; ZIP integrity passed.
+Week 3: 33 passed in 8.05s; extracted run_week.py workflow passed; ZIP integrity passed.
+Week 4: 39 passed, 1 warning in 17.89s; extracted run_week.py workflow passed; ZIP integrity passed.
+
+All three notebook code-cell sequences executed successfully from the extracted complete project.
+Actual local HTTP checks passed: API health, selected-model seven-day forecast, Streamlit health and HTML.
+A separate code review found three input-integrity issues; all were reproduced and fixed with regression tests.
+One upstream Starlette/AnyIO deprecation warning remains; no failed or skipped tests in the complete suite.
+Complete-month ZIP is identical to the verified Week 4 final project.
+No virtual environments, Git metadata, private data, API keys or trained binary models are included.
+Bundled sales and measured example results are SYNTHETIC PRACTICE DATA; obtain licensed real data for real findings.
+Inventory values are explicit what-if assumptions; no observed inventory is supplied.
+
+Verify archive bytes against SHA256SUMS.txt.
