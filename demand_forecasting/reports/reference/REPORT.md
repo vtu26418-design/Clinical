@@ -15,4 +15,4 @@ The test observations were not used to select the method. The serving refit uses
 
 For your internship results, repeat on licensed real historical sales and document source, exclusions, assumptions and independent evaluation. No observed inventory is bundled.
 
-See manifest.json for data/model hashes, split dates, forecast origins and package versions. No trained binary model is distributed; run the training command to create your own artifact.
+See manifest.json for data/model hashes, split dates, forecast origins and package versions. This release includes its own fitted practice artifacts under models/demo/. Re-run notebook 03 or the training command to reproduce them; real-data experiments should use separate directories.

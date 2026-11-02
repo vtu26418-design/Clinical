@@ -1,0 +1,22 @@
+{
+  "scenario_only": true,
+  "inventory_position": 20.0,
+  "lead_time_demand": 71.76306779961797,
+  "safety_stock": 14.244850264469465,
+  "reorder_point": 86.00791806408743,
+  "target_stock": 117.34262739276573,
+  "reorder_now": true,
+  "suggested_order_units": 98,
+  "inputs": {
+    "lead_days": 3,
+    "review_days": 1,
+    "on_hand": 20,
+    "on_order": 0,
+    "backorders": 0,
+    "daily_std": 5,
+    "service_level": 0.95,
+    "pack_size": 1,
+    "minimum_order": 0
+  },
+  "assumptions": "Operator-supplied what-if inputs. Safety stock = normal quantile \u00d7 daily demand SD \u00d7 sqrt(fixed lead time). Assumes independent daily demand and a normal approximation. Desired service level is not a measured guarantee. Sales SD may be a poor demand/error proxy. This is a reorder-point policy with a lead-plus-review target; no stockout probability is estimated."
+}

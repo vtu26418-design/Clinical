@@ -20,8 +20,8 @@ Then run, after reaching the corresponding week:
 ```bash
 python -m src.cli prepare --input data/raw/retail_subset.csv --output reports/real_week01
 python -m src.cli baseline --input data/raw/retail_subset.csv --output reports/real_week02
-python -m src.cli train --input data/raw/retail_subset.csv --output outputs/retail
-python -m src.cli forecast --input data/raw/retail_subset.csv --model outputs/retail/model.joblib --output outputs/retail/future.csv
+python -m src.cli train --input data/raw/retail_subset.csv --output reports/evaluation/retail --models models/retail
+python -m src.cli forecast --input data/raw/retail_subset.csv --model models/retail/selected_model.joblib --output reports/evaluation/retail/future.csv
 ```
 
 Record dataset URL, acquisition date, terms, columns, filtering decisions and exclusions in your report. The code records byte hashes but cannot independently certify uploaded-data licensing or authenticity. In Week 4 select **Upload sales CSV** in the dashboard. Start with two stores and no more than ten products. The dashboard limits scope to 20 series and 100,000 selected rows.

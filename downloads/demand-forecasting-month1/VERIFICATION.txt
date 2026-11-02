@@ -1,20 +1,21 @@
-DOWNLOAD VERIFICATION — DEMAND FORECASTING PROJECT
+VERIFIED RELEASE 2 — PYTHON/JUPYTER DEMAND FORECASTING WITH MODELS
 
-Tested on Linux with Python 3.12.14 in a clean virtual environment.
-Windows and macOS instructions are supplied; those operating systems were not executed here.
+Tested on Linux with Python 3.12.14 in a clean virtual environment. Windows/macOS setup instructions are supplied; those operating systems were not executed here.
+Application implementation languages: Python and Python Jupyter notebooks. PDF stack mapping: docs/PDF_REQUIREMENTS.md.
 
-Week 1: 12 passed in 1.35s; extracted run_week.py workflow passed; ZIP integrity passed.
-Week 2: 19 passed in 1.34s; extracted run_week.py workflow passed; ZIP integrity passed.
-Week 3: 33 passed in 8.05s; extracted run_week.py workflow passed; ZIP integrity passed.
-Week 4: 39 passed, 1 warning in 17.89s; extracted run_week.py workflow passed; ZIP integrity passed.
+Week 1: 12 passed in 2.06s; extracted CLI workflow, stage-specific real Jupyter notebook and ZIP integrity passed.
+Week 2: 19 passed in 1.31s; extracted CLI workflow, stage-specific real Jupyter notebook and ZIP integrity passed.
+Week 3: 39 passed in 18.86s; extracted CLI workflow, stage-specific real Jupyter notebook and ZIP integrity passed.
+Week 4: 48 passed, 1 warning in 56.32s; extracted CLI workflow, stage-specific real Jupyter notebook and ZIP integrity passed.
 
-All three notebook code-cell sequences executed successfully from the extracted complete project.
-Actual local HTTP checks passed: API health, selected-model seven-day forecast, Streamlit health and HTML.
-A separate code review found three input-integrity issues; all were reproduced and fixed with regression tests.
+All four notebooks executed in real kernels; 29 code cells ran successfully. Inline charts are included in the learning notebooks.
+Default complete dashboard startup passed with model fitting forbidden: bundled saved weights load automatically.
+The actual supplied weights replay their stored forecasts; saved test predictions reproduce reported metrics.
+Independent code review findings about mixed model/report runs and custom-output isolation were reproduced and fixed with three regression tests.
+Complete-month, With-Models and Week 4 ZIPs contain the identical final project.
+Week 3 and later include actual own-generated Linear Regression / Random Forest / selected joblib files under models/demo, with baseline specifications, registry, checksums and model card.
+Bundled sales and fitted models are SYNTHETIC PRACTICE DATA, not real retail business findings. No observed inventory is supplied; inventory outputs are explicit assumptions.
 One upstream Starlette/AnyIO deprecation warning remains; no failed or skipped tests in the complete suite.
-Complete-month ZIP is identical to the verified Week 4 final project.
-No virtual environments, Git metadata, private data, API keys or trained binary models are included.
-Bundled sales and measured example results are SYNTHETIC PRACTICE DATA; obtain licensed real data for real findings.
-Inventory values are explicit what-if assumptions; no observed inventory is supplied.
+No reference-repository code/weights/metrics, API keys, private user files, virtual environments or fabricated Git history are included.
 
-Verify archive bytes against SHA256SUMS.txt.
+Verify bytes with SHA256SUMS.txt.

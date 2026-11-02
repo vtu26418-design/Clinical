@@ -5,11 +5,11 @@
 
 **What to do and how:**
 1. Run `python -m src.cli train`. Four methods are compared: naive, seasonal naive, linear regression and Random Forest.
-2. Inspect `outputs/demo/manifest.json`. Selection uses validation MAE exclusively; test results are computed after that choice. The same initial training-only fitted models are evaluated across validation/test origins.
+2. Inspect `reports/evaluation/demo/manifest.json`. Selection uses validation MAE exclusively; test results are computed after that choice. The same initial training-only fitted models are evaluated across validation/test origins.
 3. Inspect actual per-row validation/test prediction CSVs. Calculate one model's MAE manually or with pandas. A baseline is allowed to win.
 4. Read notebook 03 and change one justified model setting in a separate experiment. Do not repeatedly tune against the final test set.
 5. After evaluation, the selected approach is refitted on all known history for serving. Its future predictions are not an independently validated performance claim.
-6. Run `python -m src.cli forecast` and inspect `outputs/demo/new_forecast.csv`.
+6. Run `python -m src.cli forecast` and inspect `reports/evaluation/demo/new_forecast.csv`.
 7. Run `python -m src.cli inventory --store 1 --item 1 --lead-days 3 --on-hand 20 --daily-std 5`. These numbers are explicit scenario assumptions, not real stock observations.
 
 **Inventory equations:** inventory position = on hand + outstanding orders − backorders; reorder point = lead-time forecast demand + safety stock; order toward lead-plus-review forecast demand + safety stock when the reorder trigger is met. Round up to pack size and minimum order when supplied. Safety stock uses z × daily demand SD × sqrt(fixed lead time), assuming independent daily demand and a normal approximation. A desired service level is not a validated guarantee. Lead-plus-review days cannot exceed the available forecast.

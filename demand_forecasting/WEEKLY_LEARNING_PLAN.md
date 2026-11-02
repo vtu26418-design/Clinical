@@ -36,13 +36,16 @@ Then run, after reaching the corresponding week:
 ```bash
 python -m src.cli prepare --input data/raw/retail_subset.csv --output reports/real_week01
 python -m src.cli baseline --input data/raw/retail_subset.csv --output reports/real_week02
-python -m src.cli train --input data/raw/retail_subset.csv --output outputs/retail
-python -m src.cli forecast --input data/raw/retail_subset.csv --model outputs/retail/model.joblib --output outputs/retail/future.csv
+python -m src.cli train --input data/raw/retail_subset.csv --output reports/evaluation/retail --models models/retail
+python -m src.cli forecast --input data/raw/retail_subset.csv --model models/retail/selected_model.joblib --output reports/evaluation/retail/future.csv
 ```
 
 Record dataset URL, acquisition date, terms, columns, filtering decisions and exclusions in your report. The code records byte hashes but cannot independently certify uploaded-data licensing or authenticity. In Week 4 select **Upload sales CSV** in the dashboard. Start with two stores and no more than ten products. The dashboard limits scope to 20 series and 100,000 selected rows.
 
 The Kaggle starting dataset supplies no observed inventory, supplier lead times, stockout flags, price or promotion columns. Do not invent these fields. Inventory inputs in this application are explicitly labelled what-if assumptions. Sales are a demand proxy and may be constrained by unavailable stock.
+
+## Python and Jupyter workflow update
+Application languages are Python and Python Jupyter notebooks. Run python -m jupyterlab and work through notebooks 01–04. Notebook 01 uses the PDF-listed statsmodels library for a training-period diagnostic. Saved learned models are supplied in models/demo/. Matching weights reload after app restart; the Models tab identifies files. New GUI runs persist under models/runs/<dataset-id>/. See docs/PDF_REQUIREMENTS.md. GitHub language percentages are descriptive, not prescribed.
 
 ## How to study each day
 Spend approximately 45 minutes learning, 90 minutes implementing/experimenting, 30 minutes checking results and 15 minutes documenting meaningful progress. Learn the exact topic you need, reproduce a small example, apply it here, then explain it without reading the code. A month develops a strong practical foundation; mastery requires more projects and continued study.
@@ -101,11 +104,11 @@ Spend approximately 45 minutes learning, 90 minutes implementing/experimenting, 
 
 **What to do and how:**
 1. Run `python -m src.cli train`. Four methods are compared: naive, seasonal naive, linear regression and Random Forest.
-2. Inspect `outputs/demo/manifest.json`. Selection uses validation MAE exclusively; test results are computed after that choice. The same initial training-only fitted models are evaluated across validation/test origins.
+2. Inspect `reports/evaluation/demo/manifest.json`. Selection uses validation MAE exclusively; test results are computed after that choice. The same initial training-only fitted models are evaluated across validation/test origins.
 3. Inspect actual per-row validation/test prediction CSVs. Calculate one model's MAE manually or with pandas. A baseline is allowed to win.
 4. Read notebook 03 and change one justified model setting in a separate experiment. Do not repeatedly tune against the final test set.
 5. After evaluation, the selected approach is refitted on all known history for serving. Its future predictions are not an independently validated performance claim.
-6. Run `python -m src.cli forecast` and inspect `outputs/demo/new_forecast.csv`.
+6. Run `python -m src.cli forecast` and inspect `reports/evaluation/demo/new_forecast.csv`.
 7. Run `python -m src.cli inventory --store 1 --item 1 --lead-days 3 --on-hand 20 --daily-std 5`. These numbers are explicit scenario assumptions, not real stock observations.
 
 **Inventory equations:** inventory position = on hand + outstanding orders − backorders; reorder point = lead-time forecast demand + safety stock; order toward lead-plus-review forecast demand + safety stock when the reorder trigger is met. Round up to pack size and minimum order when supplied. Safety stock uses z × daily demand SD × sqrt(fixed lead time), assuming independent daily demand and a normal approximation. A desired service level is not a validated guarantee. Lead-plus-review days cannot exceed the available forecast.
@@ -124,12 +127,12 @@ Spend approximately 45 minutes learning, 90 minutes implementing/experimenting, 
 **Topics:** Streamlit widgets/session state, Plotly, CSV/JSON export, input validation, SQL aggregation, API schemas, functional testing, package versions and technical communication.
 
 **What to do and how:**
-1. Run `python -m streamlit run app/streamlit_app.py`. Click Train / evaluate. Open all four tabs: Sales overview, Forecasts, Inventory scenarios, Model performance.
+1. Run `python -m streamlit run app/dashboard.py`. Click Train / evaluate. Open all four tabs: Sales overview, Forecasts, Inventory scenarios, Model performance.
 2. Change store/item selections and verify the result changes appropriately. Changing the training dataset invalidates stale model outputs.
 3. Upload a licensed real-data subset; document its source and limitations. Train separately from the bundled practice example.
 4. Export forecasts, held-out predictions, evaluation manifest and inventory scenario. Verify downloaded values against displayed results.
-5. Run `python -m src.cli sql`; inspect `outputs/demo/results.sqlite`. Example: `SELECT model, AVG(ABS(prediction-actual)) AS mae FROM test_predictions GROUP BY model;` This is descriptive reporting after selection.
-6. Optional API: `python -m uvicorn src.api:app --host 127.0.0.1 --port 8000`. Use `/docs` locally to test `/forecast` and `/inventory`. Default forecasts use seasonal naive; method `selected` uses the model produced by CLI training. Set DEMAND_SALES_CSV and DEMAND_MODEL_PATH for your own data. Keep this unauthenticated educational service on loopback; no production deployment is included.
+5. Run `python -m src.cli sql`; inspect `reports/evaluation/demo/results.sqlite`. Example: `SELECT model, AVG(ABS(prediction-actual)) AS mae FROM test_predictions GROUP BY model;` This is descriptive reporting after selection.
+6. Optional API: `python -m uvicorn api.main:app --host 127.0.0.1 --port 8000`. Use `/docs` locally to test `/forecast` and `/inventory`. Default forecasts use seasonal naive; method `selected` uses the model produced by CLI training. Set DEMAND_SALES_CSV and DEMAND_MODEL_PATH for your own data. Keep this unauthenticated educational service on loopback; no production deployment is included.
 7. Run `python -m pytest -q`. Tests exercise data errors, recursive forecasts, zero-denominator metrics, holdout independence, inventory arithmetic, API responses and actual Streamlit interactions.
 8. Recreate a clean environment from requirements-lock.txt. Complete the final report, README and slides. Explain which results use synthetic versus real data.
 

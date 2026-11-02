@@ -1,0 +1,130 @@
+{
+  "version": 1,
+  "selected_model": "random_forest",
+  "selected_file": "selected_model.joblib",
+  "source": {
+    "data_kind": "synthetic practice; not observed retail sales",
+    "seed": 42,
+    "days_per_series": 730,
+    "generator": "Poisson counts with assumed weekday effect and trend; generated for software learning only",
+    "source_sha256": "c0f8a91575ec1819cb02c4783d23f8e7d3d172d1cd83fce572aaff57302c67fc",
+    "source_file": "demo_sales.csv"
+  },
+  "training_end": "2023-12-31",
+  "canonical_data_sha256": "c0f8a91575ec1819cb02c4783d23f8e7d3d172d1cd83fce572aaff57302c67fc",
+  "features": [
+    "store",
+    "item",
+    "lag_1",
+    "lag_7",
+    "lag_14",
+    "mean_7",
+    "mean_28",
+    "std_28",
+    "weekday",
+    "month",
+    "year_day_sin",
+    "year_day_cos",
+    "time_index"
+  ],
+  "packages": {
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "scikit-learn": "1.8.0",
+    "joblib": "1.5.3"
+  },
+  "models": [
+    {
+      "name": "naive",
+      "file": "naive.json",
+      "sha256": "566997417c3889fd2f3d4473396a95257bebf05a1065a674ecf59f4ba7226808",
+      "selected": false,
+      "type": "baseline specification",
+      "validation_metrics": {
+        "mae": 9.428571428571429,
+        "rmse": 11.467344941179714,
+        "bias": 3.044642857142857,
+        "wape_percent": 24.98521235064474,
+        "n": 224
+      },
+      "test_metrics": {
+        "mae": 10.3125,
+        "rmse": 12.795088343356044,
+        "bias": 3.9732142857142856,
+        "wape_percent": 26.381909547738694,
+        "n": 224
+      }
+    },
+    {
+      "name": "seasonal_naive",
+      "file": "seasonal_naive.json",
+      "sha256": "89b7a0aa30a22fb4b907ce516533455dab5b3f97a5938f0bd46151a959d302a1",
+      "selected": false,
+      "type": "baseline specification",
+      "validation_metrics": {
+        "mae": 6.589285714285714,
+        "rmse": 8.227783940492639,
+        "bias": 0.0625,
+        "wape_percent": 17.461256358689223,
+        "n": 224
+      },
+      "test_metrics": {
+        "mae": 6.455357142857143,
+        "rmse": 8.053393251117374,
+        "bias": -0.44642857142857145,
+        "wape_percent": 16.514390132480585,
+        "n": 224
+      }
+    },
+    {
+      "name": "linear_regression",
+      "file": "linear_regression.joblib",
+      "sha256": "8b2ca7b803cf6bf1e9028cab214278cc1116d8094c5f63b208a383f266aa16dc",
+      "selected": false,
+      "type": "fitted scikit-learn pipeline",
+      "validation_metrics": {
+        "mae": 5.286253389873332,
+        "rmse": 6.6473108554879285,
+        "bias": 0.05808357120289907,
+        "wape_percent": 14.008290066622815,
+        "n": 224
+      },
+      "test_metrics": {
+        "mae": 5.215728043060049,
+        "rmse": 6.554923538986468,
+        "bias": -0.654107995666316,
+        "wape_percent": 13.34311422619291,
+        "n": 224
+      }
+    },
+    {
+      "name": "random_forest",
+      "file": "random_forest.joblib",
+      "sha256": "7f16e718a9243aabb4da8f536d0131e6f94e6552663a095c806b37b86cf017c1",
+      "selected": true,
+      "type": "fitted scikit-learn pipeline",
+      "validation_metrics": {
+        "mae": 5.2322368877044045,
+        "rmse": 6.561158547097043,
+        "bias": -0.11757735448753828,
+        "wape_percent": 13.865149211472692,
+        "n": 224
+      },
+      "test_metrics": {
+        "mae": 5.342322445192315,
+        "rmse": 6.717385134055677,
+        "bias": -0.8688093223928354,
+        "wape_percent": 13.666973820501125,
+        "n": 224
+      }
+    }
+  ],
+  "artifacts": {
+    "naive.json": "566997417c3889fd2f3d4473396a95257bebf05a1065a674ecf59f4ba7226808",
+    "seasonal_naive.json": "89b7a0aa30a22fb4b907ce516533455dab5b3f97a5938f0bd46151a959d302a1",
+    "linear_regression.joblib": "8b2ca7b803cf6bf1e9028cab214278cc1116d8094c5f63b208a383f266aa16dc",
+    "random_forest.joblib": "7f16e718a9243aabb4da8f536d0131e6f94e6552663a095c806b37b86cf017c1",
+    "selected_model.joblib": "7f16e718a9243aabb4da8f536d0131e6f94e6552663a095c806b37b86cf017c1"
+  },
+  "artifact_scope": "Serving refits on all known history AFTER evaluation; metrics belong to the separate evaluation fits."
+}
